@@ -4,7 +4,7 @@ A comprehensive web application for valuing Vietnamese stocks using multiple fin
 
 ## 🚀 Live Demo
 
-Visit the live application: [https://valuation-fawn.vercel.app]
+Visit the live application: [https://ec2-amd.vercel.app]
 
 ## 📋 Features
 
@@ -37,7 +37,7 @@ Visit the live application: [https://valuation-fawn.vercel.app]
 ### Backend Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/quanganhtapcode/vietnam-stock-valuation.git
+git clone https://github.com/quanganhtapcode/ec2.git
 cd vietnam-stock-valuation
 ```
 
@@ -63,7 +63,7 @@ The server will start on `http://localhost:5000`
 1. Push your code to a GitHub repository
 2. Go to repository Settings > Pages
 3. Select source branch (usually `main`)
-4. Your site will be available at `https://quanganhtapcode.github.io/valuation`
+4. Your site will be available at `https://quanganhtapcode.github.io/ec2`
 
 ### Vercel (Recommended for Full Stack)
 1. Connect your GitHub repository to Vercel
