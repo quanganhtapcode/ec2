@@ -32,7 +32,7 @@ class StockValuationApp {
             justified_pb: 25
         };
         this.valuationResults = null;
-        this.apiBaseUrl = 'https://quanganhdeptrai.dpdns.org/api';
+        this.apiBaseUrl = 'https://quanganhdeptrai.dpdns.org';
         this.charts = {
             roeRoa: null,
             liquidity: null,
