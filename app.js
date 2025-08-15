@@ -32,7 +32,7 @@ class StockValuationApp {
             justified_pb: 25
         };
         this.valuationResults = null;
-        this.apiBaseUrl = 'https://amenities-irc-monitors-federal.trycloudflare.com';
+        this.apiBaseUrl = 'https://newest-english-checked-enlargement.trycloudflare.com';
         this.charts = {
             roeRoa: null,
             liquidity: null,
