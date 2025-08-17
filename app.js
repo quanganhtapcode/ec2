@@ -32,7 +32,7 @@ class StockValuationApp {
             justified_pb: 25
         };
         this.valuationResults = null;
-        this.apiBaseUrl = 'https://layers-horrible-behavior-exp.trycloudflare.com';
+        this.apiBaseUrl = 'https://api.quanganh.org';
         this.charts = {
             roeRoa: null,
             liquidity: null,
