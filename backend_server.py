@@ -2331,7 +2331,6 @@ def add_cors_headers(response):
     except Exception:
         pass
     return response
-
 @app.route("/health")
 def health():
     try:
