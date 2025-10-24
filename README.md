@@ -4,7 +4,7 @@ A comprehensive web application for valuing Vietnamese stocks using multiple fin
 
 ## 🚀 Live Demo
 
-Visit the live application: [https://ec2-amd.vercel.app]
+Visit the live application: [https://valuation.quanganh.org]
 
 ## 📋 Features
 
