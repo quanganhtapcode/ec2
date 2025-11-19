@@ -1,4 +1,25 @@
-# Python
+# ========================================
+# BACKEND FILES (VPS ONLY - NOT FOR GITHUB)
+# ========================================
+backend_server.py
+valuation_models.py
+requirements.txt
+Procfile
+
+# Stock Data (VPS only - 694 JSON files)
+stock_data/
+
+# Deployment Scripts (local only)
+deploy.ps1
+deploy-quick.ps1
+DEPLOY_README.md
+
+# SSH Keys
+*.pem
+
+# ========================================
+# STANDARD PYTHON IGNORES
+# ========================================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -26,30 +47,29 @@ venv/
 env/
 ENV/
 
-# IDE
+# ========================================
+# IDE & OS
+# ========================================
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Logs
+# ========================================
+# LOGS & ENVIRONMENT
+# ========================================
 *.log
 logs/
-
-# Environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Dependency directories
+# ========================================
+# NODE MODULES
+# ========================================
 node_modules/
-
-# Production build
-dist/
-build/
