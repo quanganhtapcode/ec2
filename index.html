@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnam Stock Valuation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="translations.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body class="app-container">    <header class="app-header py-16">
+        <div class="container flex justify-between items-center">
+            <h1 class="app-title">Vietnam Stock Valuation</h1>
+            <div class="header-controls">
+                <div class="period-selector">
+                    <label for="period-select" class="period-label" data-i18n="dataPeriod">Data Period:</label>
+                    <select id="period-select" class="period-dropdown">
+                        <option value="year" data-i18n="latestYear">Latest Year</option>
+                        <option value="quarter" data-i18n="latestQuarter">Latest Quarter</option>
+                    </select>
+                </div>
+                <button id="language-toggle-btn" class="btn btn--outline language-toggle" aria-label="Toggle language">
+                    <span class="language-text">EN</span>
+                </button>
+                <button id="theme-toggle-btn" class="btn btn--outline theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon light-icon">☀️</span>
+                    <span class="theme-icon dark-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header><main class="app-main">
+        <section class="search-section container">
+            <div id="status-message" class="status-message hidden"></div>
+            <div class="search-section">
+                <form class="search-form">
+                    <div class="search-input-wrapper">
+                        <label for="stock-symbol" class="form-label" data-i18n="stockSymbolSearch">Stock Symbol Search</label>
+                        <input type="text" id="stock-symbol" class="form-control" placeholder="Enter stock symbol (e.g., VCB)" data-i18n-placeholder="enterStockSymbol">
+                    </div>
+                    <button type="button" id="load-data-btn" class="btn btn--primary" data-i18n="loadCompanyData">Load Company Data</button>
+                </form>
+            </div>
+
+
+        <section class="container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="overview" data-i18n="companyOverview">Company Overview</button>
+                <button class="tab-btn" data-tab="valuation" data-i18n="valuationAssumptions">Valuation & Assumptions</button>
+                <button class="tab-btn" data-tab="summary" data-i18n="summaryReport">Summary Report</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="overview" class="tab-pane active">
+                    <div class="company-details">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="companyInformation">Company Information</h3>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="symbol">Symbol:</span>
+                                    <span class="info-value" id="company-symbol">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="name">Name:</span>
+                                    <span class="info-value" id="company-name">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="industry">Industry:</span>
+                                    <span class="info-value" id="company-sector">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="exchange">Exchange:</span>
+                                    <span class="info-value" id="company-exchange">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="marketData">Market Data</h3>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="currentPrice">Current Price:</span>
+                                    <span class="info-value" id="current-price">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="marketCap">Market Cap:</span>
+                                    <span class="info-value" id="market-cap">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="sharesOutstanding">Shares Outstanding:</span>
+                                    <span class="info-value" id="shares-outstanding">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="eps">EPS:</span>
+                                    <span class="info-value" id="eps">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="bookValuePerShare">Book Value per Share:</span>
+                                    <span class="info-value" id="book-value-per-share">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="evEbitda">EV/EBITDA:</span>
+                                    <span class="info-value" id="ev-ebitda">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="financialMetrics">Financial Metrics</h3>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="revenue">Revenue:</span>
+                                    <span class="info-value" id="revenue">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="netIncome">Net Income:</span>
+                                    <span class="info-value" id="net-income">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="ebitda">EBITDA:</span>
+                                    <span class="info-value" id="ebitda">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="roe">ROE (%):</span>
+                                    <span class="info-value" id="roe">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="roa">ROA (%):</span>
+                                    <span class="info-value" id="roa">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="debtEquity">Debt/Equity:</span>
+                                    <span class="info-value" id="debt-equity">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ratios-grid mt-24">
+                        <div class="ratio-category">
+                            <h4 class="ratio-category-title" data-i18n="valuationRatios">Valuation Ratios</h4>
+                            <div class="ratio-items">
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="peRatio">P/E Ratio:</span>
+                                    <span class="ratio-value" id="pe-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="pbRatio">P/B Ratio:</span>
+                                    <span class="ratio-value" id="pb-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="psRatio">P/S Ratio:</span>
+                                    <span class="ratio-value" id="ps-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="pcfRatio">P/Cash Flow:</span>
+                                    <span class="ratio-value" id="pcf-ratio">--</span>
+                                </div>
+                            </div>
+                        </div>                        <div class="ratio-category">
+                            <h4 class="ratio-category-title" data-i18n="efficiencyRatios">Efficiency Ratios</h4>
+                            <div class="ratio-items">
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="assetTurnover">Asset Turnover:</span>
+                                    <span class="ratio-value" id="asset-turnover">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="inventoryTurnover">Inventory Turnover:</span>
+                                    <span class="ratio-value" id="inventory-turnover">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="fixedAssetTurnover">Fixed Asset Turnover:</span>
+                                    <span class="ratio-value" id="fixed-asset-turnover">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ratio-category">
+                            <h4 class="ratio-category-title" data-i18n="liquidityRatios">Liquidity Ratios</h4>
+                            <div class="ratio-items">
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="currentRatio">Current Ratio:</span>
+                                    <span class="ratio-value" id="current-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="quickRatio">Quick Ratio:</span>
+                                    <span class="ratio-value" id="quick-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="cashRatio">Cash Ratio:</span>
+                                    <span class="ratio-value" id="cash-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="interestCoverage">Interest Coverage:</span>
+                                    <span class="ratio-value" id="interest-coverage">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ratio-category">
+                            <h4 class="ratio-category-title" data-i18n="profitabilityMargins">Profitability Margins</h4>
+                            <div class="ratio-items">
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="grossProfitMargin">Gross Profit Margin:</span>
+                                    <span class="ratio-value" id="gross-profit-margin">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="ebitMargin">EBIT Margin:</span>
+                                    <span class="ratio-value" id="ebit-margin">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="netProfitMargin">Net Profit Margin:</span>
+                                    <span class="ratio-value" id="net-profit-margin">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="charts-grid historical-charts">
+                        <div class="chart-container full-width">
+                            <div class="chart-header">
+                                <h4 data-i18n="roeRoaTrends">ROE & ROA Trends (Last 5 Years)</h4>
+                            </div>
+                            <canvas id="roe-roa-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <div class="chart-header">
+                                <h4 data-i18n="liquidityTrends">Liquidity Ratios Trends (Last 5 Years)</h4>
+                            </div>
+                            <canvas id="liquidity-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <div class="chart-header">
+                                <h4 data-i18n="pePbTrends">P/E & P/B Ratios Trends (Last 5 Years)</h4>
+                            </div>
+                            <canvas id="pe-pb-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <div class="chart-header">
+                                <h4 data-i18n="nimTrend">Net Interest Margin (NIM) Trend (TTM)</h4>
+                            </div>
+                            <canvas id="nim-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="valuation" class="tab-pane">
+                    <div class="form-grid">
+                        <div class="card">
+                            <div class="card__body">                                <h3 data-i18n="modelAssumptions">Model Assumptions</h3>
+                                <form id="assumptions-form" class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="revenue-growth" class="form-label" data-i18n="revenueGrowth">Revenue Growth (%):</label>
+                                            <input type="number" id="revenue-growth" class="form-control" step="0.1" value="8.0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="terminal-growth" class="form-label" data-i18n="terminalGrowth">Terminal Growth (%):</label>
+                                            <input type="number" id="terminal-growth" class="form-control" step="0.1" value="3.0">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="wacc" class="form-label" data-i18n="wacc">WACC (%):</label>
+                                            <input type="number" id="wacc" class="form-control" step="0.1" value="10.5">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="required-return" class="form-label" data-i18n="requiredReturn">Required Return (%):</label>
+                                            <input type="number" id="required-return" class="form-control" step="0.1" value="12.0">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="tax-rate" class="form-label" data-i18n="taxRate">Tax Rate (%):</label>
+                                            <input type="number" id="tax-rate" class="form-control" step="0.1" value="20.0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="projection-years" class="form-label" data-i18n="projectionYears">Projection Years:</label>
+                                            <input type="number" id="projection-years" class="form-control" step="1" value="5">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" id="calculate-btn" class="btn btn--primary" data-i18n="calculateValuation">Calculate Valuation</button>
+                                        <button type="button" id="reset-assumptions-btn" class="btn btn--outline" data-i18n="resetAssumptions">Reset Assumptions</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card">                            <div class="card__body">
+                                <h3 data-i18n="selectValuationModels">Select Valuation Models</h3>
+                                <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--space-16);" data-i18n="selectModelsDesc">
+                                    Choose models to include. Weights auto-distribute evenly.
+                                </p>
+                                <form id="weights-form" class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="weight-checkbox-label">
+                                                <input type="checkbox" id="fcfe-enabled" class="weight-checkbox" checked>
+                                                <span class="weight-checkbox-text">
+                                                    <strong data-i18n="fcfe">FCFE</strong>
+                                                    <small style="display: block; color: var(--color-text-secondary);" data-i18n="fcfeDesc">Free Cash Flow to Equity</small>
+                                                </span>
+                                                <span id="fcfe-weight-display" class="weight-percentage">25.0%</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="weight-checkbox-label">
+                                                <input type="checkbox" id="fcff-enabled" class="weight-checkbox" checked>
+                                                <span class="weight-checkbox-text">
+                                                    <strong data-i18n="fcff">FCFF</strong>
+                                                    <small style="display: block; color: var(--color-text-secondary);" data-i18n="fcffDesc">Free Cash Flow to Firm</small>
+                                                </span>
+                                                <span id="fcff-weight-display" class="weight-percentage">25.0%</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="weight-checkbox-label">
+                                                <input type="checkbox" id="pe-enabled" class="weight-checkbox" checked>
+                                                <span class="weight-checkbox-text">
+                                                    <strong>P/E</strong>
+                                                    <small style="display: block; color: var(--color-text-secondary);" data-i18n="justifiedPE">Justified P/E</small>
+                                                </span>
+                                                <span id="pe-weight-display" class="weight-percentage">25.0%</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="weight-checkbox-label">
+                                                <input type="checkbox" id="pb-enabled" class="weight-checkbox" checked>
+                                                <span class="weight-checkbox-text">
+                                                    <strong>P/B</strong>
+                                                    <small style="display: block; color: var(--color-text-secondary);" data-i18n="justifiedPB">Justified P/B</small>
+                                                </span>
+                                                <span id="pb-weight-display" class="weight-percentage">25.0%</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="weight-controls">
+                                    <span style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                                        <span id="selected-count">4</span> <span data-i18n="modelsSelected">models selected</span>
+                                    </span>
+                                    <button id="select-all-btn" class="btn btn--outline btn--sm" data-i18n="selectAll">Select All</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results-grid mt-24">
+                        <div class="result-card">
+                            <span class="result-title">FCFE</span>
+                            <span class="result-value" id="fcfe-result">--</span>
+                            <span class="result-diff" id="fcfe-diff">--</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-title">FCFF</span>
+                            <span class="result-value" id="fcff-result">--</span>
+                            <span class="result-diff" id="fcff-diff">--</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-title">Justified P/E</span>
+                            <span class="result-value" id="pe-result">--</span>
+                            <span class="result-diff" id="pe-diff">--</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-title">Justified P/B</span>
+                            <span class="result-value" id="pb-result">--</span>
+                            <span class="result-diff" id="pb-diff">--</span>
+                        </div>
+                        <div class="result-card highlight">
+                            <span class="result-title" data-i18n="weightedAverage">Weighted Average</span>
+                            <span class="result-value" id="weighted-result">--</span>
+                            <span class="result-diff" id="weighted-diff">--</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-box">
+                        <h4 data-i18n="investmentRecommendation">Investment Recommendation</h4>
+                        <div class="recommendation" id="recommendation"><span data-i18n="waitingForData">Waiting for data</span></div>
+                        <div class="potential-return"><span data-i18n="potentialReturn">Potential Return:</span> <span id="return-value">--</span></div>
+                    </div>
+                </div>
+
+                <div id="summary" class="tab-pane">
+                    <div class="summary-grid">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="valuationSummary">Valuation Summary</h3>
+                                <div class="summary-table">
+                                    <div class="summary-section">
+                                        <h4 data-i18n="companyInformation">Company Information</h4>
+                                        <div class="summary-row">
+                                            <span class="summary-label" data-i18n="symbol">Stock Symbol:</span>
+                                            <span class="summary-value" id="summary-symbol">--</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label" data-i18n="name">Company Name:</span>
+                                            <span class="summary-value" id="summary-name">--</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label" data-i18n="industry">Industry:</span>
+                                            <span class="summary-value" id="summary-sector">--</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label" data-i18n="exchange">Exchange:</span>
+                                            <span class="summary-value" id="summary-exchange">--</span>
+                                        </div>
+                                    </div>
+                                    <div class="summary-section">
+                                        <h4 data-i18n="marketIndicators">Market Indicators</h4>
+                                        <div class="summary-row">
+                                            <span class="summary-label" data-i18n="currentPrice">Current Price:</span>
+                                            <span class="summary-value" id="summary-price">--</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label" data-i18n="marketCap">Market Cap:</span>
+                                            <span class="summary-value" id="summary-market-cap">--</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label" data-i18n="peRatio">P/E:</span>
+                                            <span class="summary-value" id="summary-pe">--</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label" data-i18n="pbRatio">P/B:</span>
+                                            <span class="summary-value" id="summary-pb">--</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="modelDetails">Model Details</h3>
+                                <div class="models-detail">
+                                    <div class="model-detail-section">
+                                        <h4><span data-i18n="fcfe">FCFE</span> (<span data-i18n="fcfeDesc">Free Cash Flow to Equity</span>)</h4>
+                                        <div class="summary-table">
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcfeEquityValue">Equity Value:</span>
+                                                <span class="summary-value" id="fcfe-equity">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcfeShareValue">Share Value:</span>
+                                                <span class="summary-value" id="fcfe-share-value">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcfeMarketDiff">Difference vs Market:</span>
+                                                <span class="summary-value" id="fcfe-market-diff">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="model-detail-section">
+                                        <h4><span data-i18n="fcff">FCFF</span> (<span data-i18n="fcffDesc">Free Cash Flow to Firm</span>)</h4>
+                                        <div class="summary-table">
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcffEV">Enterprise Value (EV):</span>
+                                                <span class="summary-value" id="fcff-ev">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcffEquityValue">Equity Value:</span>
+                                                <span class="summary-value" id="fcff-equity">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcffShareValue">Share Value:</span>
+                                                <span class="summary-value" id="fcff-share-value">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcffMarketDiff">Difference vs Market:</span>
+                                                <span class="summary-value" id="fcff-market-diff">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="model-detail-section">
+                                        <h4 data-i18n="justifiedPE">Justified P/E Valuation</h4>
+                                        <div class="summary-table">
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="justifiedPERatio">Justified P/E Ratio:</span>
+                                                <span class="summary-value" id="pe-justified-ratio">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="currentEPS">Current EPS:</span>
+                                                <span class="summary-value" id="pe-current-eps">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="peShareValue">Share Value:</span>
+                                                <span class="summary-value" id="pe-share-value">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="peMarketDiff">Difference vs Market:</span>
+                                                <span class="summary-value" id="pe-market-diff">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="model-detail-section">
+                                        <h4 data-i18n="justifiedPB">Justified P/B Valuation</h4>
+                                        <div class="summary-table">
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="justifiedPBRatio">Justified P/B Ratio:</span>
+                                                <span class="summary-value" id="pb-justified-ratio">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="bookValuePerShare">Book Value per Share:</span>
+                                                <span class="summary-value" id="pb-current-bvps">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="pbShareValue">Share Value:</span>
+                                                <span class="summary-value" id="pb-share-value">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="pbMarketDiff">Difference vs Market:</span>
+                                                <span class="summary-value" id="pb-market-diff">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-box-large">
+                        <h3 data-i18n="conclusionRecommendation">Conclusion and Recommendation</h3>
+                        <div class="recommendation-details">
+                            <div class="recommendation-summary">
+                                <div class="summary-table">
+                                    <div class="summary-row">
+                                        <span class="summary-label" data-i18n="targetPrice">Target Price:</span>
+                                        <span class="summary-value highlight" id="target-price">--</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="summary-label" data-i18n="upsideDownside">Upside/Downside Potential:</span>
+                                        <span class="summary-value" id="summary-potential">--</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="summary-label" data-i18n="confidenceLevel">Confidence Level:</span>
+                                        <span class="summary-value" id="confidence-level">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="final-recommendation-status">
+                                <h4 data-i18n="recommendation">Recommendation</h4>
+                                <div id="final-recommendation"><span data-i18n="waitingForData">Waiting for data</span></div>
+                                <p class="recommendation-reasoning" id="recommendation-reasoning" data-i18n="loadDataMessage">Please load company data and perform valuation calculations to receive investment recommendations.</p>
+                            </div>
+                            <div class="export-actions">
+                                <button id="export-report-btn" class="btn btn--primary" disabled data-i18n="exportPDFReport">Export PDF Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer py-16">
+        <div class="container text-center">
+            <p data-i18n="createdBy">Created by quanganhdeptrai</p>
+        </div>
+    </footer>
+</body>
+</html>
