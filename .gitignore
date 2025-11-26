@@ -19,7 +19,7 @@ DEPLOY_README.md
 
 # VietCap Downloader (contains sensitive Bearer token)
 download_vietcap_financials.py
-vietcap_financial_statements/
+# vietcap_financial_statements/  # Commented out - uploading Excel files to GitHub
 download_progress.json
 
 # ========================================
