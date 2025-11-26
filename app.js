@@ -171,7 +171,7 @@ class StockValuationApp {
         const downloadBtn = document.getElementById('download-financials-btn');
         
         if (downloadBtn) {
-            downloadBtn.addEventListener('click', () => {
+            downloadBtn.addEventListener('click', async () => {
                 // Get current stock symbol
                 const symbol = this.currentStock?.symbol || document.getElementById('stock-symbol').value.trim().toUpperCase();
                 
@@ -180,20 +180,53 @@ class StockValuationApp {
                     return;
                 }
                 
-                // Download from VPS backend instead of GitHub
+                // Validate ticker format
+                if (!/^[A-Z0-9]{1,10}$/.test(symbol)) {
+                    this.showStatus('Invalid ticker format', 'error');
+                    return;
+                }
+                
+                // Download from VPS backend with error handling
                 const fileUrl = `${this.API_BASE_URL}/api/download/${symbol}`;
                 
-                // Create temporary link and trigger download
-                const tempLink = document.createElement('a');
-                tempLink.href = fileUrl;
-                tempLink.download = `${symbol}.xlsx`;
-                tempLink.style.display = 'none';
-                document.body.appendChild(tempLink);
-                tempLink.click();
-                document.body.removeChild(tempLink);
-                
-                // Show success message
-                this.showStatus(`Downloading ${symbol}.xlsx...`, 'info');
+                try {
+                    // First, check if file exists with a HEAD request
+                    const checkResponse = await fetch(fileUrl, { method: 'HEAD' });
+                    
+                    if (checkResponse.status === 404) {
+                        this.showStatus(`Financial data for ${symbol} is not available`, 'error');
+                        return;
+                    }
+                    
+                    if (checkResponse.status === 429) {
+                        // Rate limit exceeded
+                        const errorData = await fetch(fileUrl).then(r => r.json());
+                        const minutes = errorData.retry_after_minutes || Math.ceil(errorData.retry_after / 60);
+                        this.showStatus(`Download limit exceeded. Please try again in ${minutes} minutes.`, 'error');
+                        return;
+                    }
+                    
+                    if (!checkResponse.ok) {
+                        this.showStatus(`Download failed: ${checkResponse.statusText}`, 'error');
+                        return;
+                    }
+                    
+                    // File exists, proceed with download
+                    const tempLink = document.createElement('a');
+                    tempLink.href = fileUrl;
+                    tempLink.download = `${symbol}.xlsx`;
+                    tempLink.style.display = 'none';
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    document.body.removeChild(tempLink);
+                    
+                    // Show success message
+                    this.showStatus(`Downloading ${symbol}.xlsx...`, 'success');
+                    
+                } catch (error) {
+                    console.error('Download error:', error);
+                    this.showStatus('Download failed. Please check your connection and try again.', 'error');
+                }
             });
         }
     }
