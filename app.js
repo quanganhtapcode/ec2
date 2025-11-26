@@ -86,6 +86,7 @@ class StockValuationApp {
             // Cancel any pending debounced requests
             if (this.debounceTimer) {
                 clearTimeout(this.debounceTimer);
+                this.debounceTimer = null;
             }
             
             // Enable download button if valid ticker is entered
@@ -94,6 +95,9 @@ class StockValuationApp {
             if (downloadBtn) {
                 downloadBtn.disabled = !symbol || symbol.length === 0;
             }
+            
+            // Auto-suggest with 500ms debounce (future enhancement)
+            // Could fetch ticker suggestions here
         });
 
         // Period selector with debounce

@@ -224,17 +224,44 @@ html {
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  /* Improve mobile performance */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
+  /* Optimize touch scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none; /* Prevent pull-to-refresh interference */
 }
 
+/* Universal touch optimizations */
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+/* Optimize interactive elements for touch */
+button,
+a,
+input,
+select,
+textarea,
+label[for],
+.tab-btn,
+.btn {
+  /* Increase minimum touch target size (WCAG 2.5.5, iOS/Android guidelines) */
+  min-height: 44px;
+  min-width: 44px;
+  /* Disable double-tap zoom, reduces tap delay by ~300ms */
+  touch-action: manipulation;
+  /* Remove iOS tap highlight */
+  -webkit-tap-highlight-color: transparent;
+  /* Better touch cursor */
+  cursor: pointer;
 }
 
 /* Typography */
@@ -323,6 +350,9 @@ pre code {
   border: none;
   text-decoration: none;
   position: relative;
+  /* Touch target already defined globally but ensure here */
+  min-height: 44px;
+  user-select: none; /* Prevent text selection on tap */
 }
 
 .btn:focus-visible {
