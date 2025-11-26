@@ -74,6 +74,11 @@ logs/
 .env.test.local
 .env.production.local
 
+# Backup files (too large for GitHub - 100MB+)
+backup*.zip
+*.backup
+*.bak
+
 # ========================================
 # NODE MODULES
 # ========================================
