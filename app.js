@@ -169,50 +169,31 @@ class StockValuationApp {
 
     setupDownloadModal() {
         const downloadBtn = document.getElementById('download-financials-btn');
-        const modal = document.getElementById('download-modal');
-        const closeBtn = modal?.querySelector('.modal-close');
-        const downloadLink = document.getElementById('download-link');
-        const stockSymbolDisplay = document.getElementById('download-stock-symbol');
         
-        if (downloadBtn && modal) {
+        if (downloadBtn) {
             downloadBtn.addEventListener('click', () => {
                 // Get current stock symbol
                 const symbol = this.currentStock?.symbol || document.getElementById('stock-symbol').value.trim().toUpperCase();
                 
                 if (!symbol) {
-                    alert('Please load stock data first');
+                    this.showStatus('Please load stock data first', 'error');
                     return;
                 }
                 
-                // Update modal with stock symbol
-                if (stockSymbolDisplay) {
-                    stockSymbolDisplay.textContent = symbol;
-                }
+                // Download from VPS backend instead of GitHub
+                const fileUrl = `${this.API_BASE_URL}/api/download/${symbol}`;
                 
-                // Update download link
-                if (downloadLink) {
-                    // Use GitHub raw URL for the Excel file
-                    const fileUrl = `https://github.com/quanganhtapcode/ec2/raw/master/vietcap_financial_statements/${symbol}.xlsx`;
-                    downloadLink.href = fileUrl;
-                    downloadLink.download = `${symbol}.xlsx`;
-                }
+                // Create temporary link and trigger download
+                const tempLink = document.createElement('a');
+                tempLink.href = fileUrl;
+                tempLink.download = `${symbol}.xlsx`;
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
                 
-                modal.style.display = 'flex';
-            });
-        }
-        
-        if (closeBtn && modal) {
-            closeBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-        }
-        
-        // Close modal when clicking outside
-        if (modal) {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
+                // Show success message
+                this.showStatus(`Downloading ${symbol}.xlsx...`, 'info');
             });
         }
     }
