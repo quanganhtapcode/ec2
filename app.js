@@ -187,7 +187,7 @@ class StockValuationApp {
                 }
                 
                 // Download from VPS backend with error handling
-                const fileUrl = `${this.API_BASE_URL}/api/download/${symbol}`;
+                const fileUrl = `${this.apiBaseUrl}/api/download/${symbol}`;
                 
                 try {
                     // First, check if file exists with a HEAD request
