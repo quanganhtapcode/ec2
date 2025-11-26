@@ -1921,8 +1921,9 @@ select.form-control {
   color: var(--color-text-secondary);
 }
 
-/* Theme Toggle */
-.theme-toggle {
+/* Theme Toggle & Language Toggle */
+.theme-toggle,
+.language-toggle {
   position: relative;
   display: flex;
   align-items: center;
@@ -1930,6 +1931,16 @@ select.form-control {
   min-width: 48px;
   height: 48px;
   padding: 8px;
+}
+
+.language-toggle {
+  font-weight: 500;
+  font-size: 14px;
+  min-width: 56px;
+}
+
+.lang-text {
+  transition: opacity 0.3s ease;
 }
 
 .theme-icon {
@@ -1958,7 +1969,8 @@ select.form-control {
   opacity: 1;
 }
 
-.theme-toggle:hover .theme-icon {
+.theme-toggle:hover .theme-icon,
+.language-toggle:hover .lang-text {
   transform: scale(1.1);
 }
 
@@ -2102,7 +2114,7 @@ select.form-control {
         flex-direction: row;
         align-items: center;
         gap: 0.5rem;
-        max-width: calc(100% - 60px);
+        max-width: calc(100% - 120px);
     }
     
     .period-label {
@@ -2126,7 +2138,8 @@ select.form-control {
         line-height: 1.5;
     }
     
-    .theme-toggle {
+    .theme-toggle,
+    .language-toggle {
         min-width: 44px;
         width: 44px;
         max-width: 44px;
@@ -2138,6 +2151,12 @@ select.form-control {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    
+    .language-toggle {
+        min-width: 52px;
+        width: 52px;
+        max-width: 52px;
     }
     
     .theme-icon {
@@ -2166,7 +2185,7 @@ select.form-control {
         flex-direction: row !important;
         align-items: center !important;
         gap: 0.5rem !important;
-        max-width: calc(100% - 52px) !important;
+        max-width: calc(100% - 100px) !important;
     }
     
     .period-label {
@@ -2189,7 +2208,8 @@ select.form-control {
         line-height: 1.5;
     }
     
-    .theme-toggle {
+    .theme-toggle,
+    .language-toggle {
         min-width: 44px !important;
         width: 44px !important;
         max-width: 44px !important;
@@ -2201,6 +2221,13 @@ select.form-control {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+    }
+    
+    .language-toggle {
+        min-width: 48px !important;
+        width: 48px !important;
+        max-width: 48px !important;
+        font-size: 13px !important;
     }
     
     .theme-icon {

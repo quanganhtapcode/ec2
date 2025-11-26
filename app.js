@@ -133,7 +133,32 @@ class StockValuationApp {
 
         // Export functionality
         document.getElementById('export-report-btn').addEventListener('click', () => this.exportReport());
-    }    setupThemeToggle() {
+        
+        // Setup language toggle
+        this.setupLanguageToggle();
+    }
+    
+    setupLanguageToggle() {
+        const languageToggle = document.getElementById('language-toggle-btn');
+        const langText = languageToggle.querySelector('.lang-text');
+        
+        // Get saved language or default to English
+        const savedLang = localStorage.getItem('language') || 'en';
+        this.currentLanguage = savedLang;
+        langText.textContent = savedLang.toUpperCase();
+        this.applyLanguage(savedLang);
+        
+        languageToggle.addEventListener('click', () => {
+            // Toggle between English and Vietnamese
+            const newLang = this.currentLanguage === 'en' ? 'vi' : 'en';
+            this.currentLanguage = newLang;
+            langText.textContent = newLang.toUpperCase();
+            localStorage.setItem('language', newLang);
+            this.applyLanguage(newLang);
+        });
+    }
+    
+    setupThemeToggle() {
         const themeToggle = document.getElementById('theme-toggle-btn');
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
