@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vietnam Stock Valuation</title>
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="translations.js?v=2"></script>
-    <script src="app.js?v=2" defer></script>
+    <script src="translations.js?v=3"></script>
+    <script src="app.js?v=3" defer></script>
 </head>
 <body class="app-container">    <header class="app-header py-16">
         <div class="container flex justify-between items-center">
@@ -20,9 +20,6 @@
                         <option value="quarter" data-i18n="latestQuarter">Latest Quarter</option>
                     </select>
                 </div>
-                <button id="language-toggle-btn" class="btn btn--outline language-toggle" aria-label="Toggle language">
-                    <span class="language-text">EN</span>
-                </button>
                 <button id="theme-toggle-btn" class="btn btn--outline theme-toggle" aria-label="Toggle theme">
                     <span class="theme-icon light-icon">☀️</span>
                     <span class="theme-icon dark-icon">🌙</span>
@@ -38,7 +35,10 @@
                         <label for="stock-symbol" class="form-label" data-i18n="stockSymbolSearch">Stock Symbol Search</label>
                         <input type="text" id="stock-symbol" class="form-control" placeholder="Enter stock symbol (e.g., VCB)" data-i18n-placeholder="enterStockSymbol">
                     </div>
-                    <button type="button" id="load-data-btn" class="btn btn--primary" data-i18n="loadCompanyData">Load Company Data</button>
+                    <div class="search-actions">
+                        <button type="button" id="load-data-btn" class="btn btn--primary" data-i18n="loadCompanyData">Load Company Data</button>
+                        <button type="button" id="download-financials-btn" class="btn btn--secondary" data-i18n="downloadFinancialData" disabled>Download Financial Data</button>
+                    </div>
                 </form>
             </div>
 
@@ -548,5 +548,40 @@
             <p data-i18n="createdBy">Created by quanganhdeptrai</p>
         </div>
     </footer>
+
+    <!-- Language Selection Modal -->
+    <div id="language-modal" class="modal" style="display: none;">
+        <div class="modal-content language-modal-content">
+            <h2 class="modal-title">Choose Your Language / Chọn Ngôn Ngữ</h2>
+            <p class="modal-subtitle">Select your preferred language / Chọn ngôn ngữ của bạn</p>
+            <div class="language-options">
+                <button class="language-option-btn" data-lang="vi">
+                    <span class="flag">🇻🇳</span>
+                    <span class="lang-name">Tiếng Việt</span>
+                </button>
+                <button class="language-option-btn" data-lang="en">
+                    <span class="flag">🇬🇧</span>
+                    <span class="lang-name">English</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Download Financial Data Modal -->
+    <div id="download-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="close-download-modal">×</button>
+            <h2 class="modal-title"><span data-i18n="downloadFinancialData">Download Financial Data</span>: <span id="download-stock-symbol">--</span></h2>
+            <div class="download-info">
+                <p><strong data-i18n="fileFormat">File Format:</strong> <span data-i18n="excelFormat">Excel (.xlsx)</span></p>
+                <p><strong data-i18n="dataIncludes">Includes:</strong> <span data-i18n="balanceSheet">Balance Sheet</span>, <span data-i18n="incomeStatement">Income Statement</span>, <span data-i18n="cashFlow">Cash Flow Statement</span></p>
+            </div>
+            <div class="download-actions">
+                <a id="download-link" href="#" class="btn btn--primary" download data-i18n="downloadNow">Download Now</a>
+                <p class="download-note" data-i18n="downloadNote">Note: Files are hosted on GitHub, download may take a few seconds.</p>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

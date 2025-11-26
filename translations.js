@@ -78,6 +78,24 @@ const translations = {
         pePbTrends: "Xu hướng P/E & P/B (5 năm)",
         nimTrend: "Xu hướng NIM (TTM)",
         
+        // Language Modal
+        selectLanguage: "Chọn ngôn ngữ",
+        selectLanguageDesc: "Vui lòng chọn ngôn ngữ của bạn",
+        
+        // Download Modal
+        downloadFinancialData: "Tải Dữ Liệu Tài Chính",
+        downloadFinancialDesc: "Tải xuống báo cáo tài chính của 694 công ty niêm yết trên HOSE, HNX và UPCOM",
+        fileFormat: "Định dạng file:",
+        excelFormat: "Excel (.xlsx)",
+        dataIncludes: "Bao gồm:",
+        balanceSheet: "Bảng cân đối kế toán",
+        incomeStatement: "Báo cáo kết quả kinh doanh",
+        cashFlow: "Báo cáo lưu chuyển tiền tệ",
+        totalFiles: "Tổng số file:",
+        filesCount: "694 công ty",
+        downloadNow: "Tải xuống",
+        downloadNote: "Lưu ý: File được lưu trữ trên GitHub, có thể mất vài giây để tải xuống.",
+        
         // Model Assumptions
         modelAssumptions: "Giả định mô hình",
         revenueGrowth: "Tăng trưởng doanh thu (%):",
@@ -244,6 +262,24 @@ const translations = {
         liquidityTrends: "Liquidity Ratios Trends (Last 5 Years)",
         pePbTrends: "P/E & P/B Ratios Trends (Last 5 Years)",
         nimTrend: "Net Interest Margin (NIM) Trend (TTM)",
+        
+        // Language Modal
+        selectLanguage: "Select Language",
+        selectLanguageDesc: "Please choose your language",
+        
+        // Download Modal
+        downloadFinancialData: "Download Financial Data",
+        downloadFinancialDesc: "Download financial statements for 694 listed companies on HOSE, HNX and UPCOM",
+        fileFormat: "File Format:",
+        excelFormat: "Excel (.xlsx)",
+        dataIncludes: "Includes:",
+        balanceSheet: "Balance Sheet",
+        incomeStatement: "Income Statement",
+        cashFlow: "Cash Flow Statement",
+        totalFiles: "Total Files:",
+        filesCount: "694 companies",
+        downloadNow: "Download",
+        downloadNote: "Note: Files are hosted on GitHub, download may take a few seconds.",
         
         // Model Assumptions
         modelAssumptions: "Model Assumptions",

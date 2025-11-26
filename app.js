@@ -54,7 +54,9 @@ class StockValuationApp {
         this.setupEventListeners();
         this.loadDefaultAssumptions();
         this.setupThemeToggle();
-        this.setupLanguageToggle();
+        this.showLanguageModal();
+        this.setupLanguageModal();
+        this.setupDownloadModal();
         this.applyLanguage(this.currentLanguage);
         this.setupCharts();
     }
@@ -135,19 +137,84 @@ class StockValuationApp {
         });
     }
 
-    setupLanguageToggle() {
-        const languageToggle = document.getElementById('language-toggle-btn');
-        const languageText = languageToggle.querySelector('.language-text');
+    showLanguageModal() {
+        // Check if user has already selected a language
+        const savedLanguage = localStorage.getItem('language');
+        if (!savedLanguage) {
+            const modal = document.getElementById('language-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+    }
+
+    setupLanguageModal() {
+        const modal = document.getElementById('language-modal');
+        const languageButtons = document.querySelectorAll('.language-option-btn');
         
-        // Set initial language text
-        languageText.textContent = this.currentLanguage === 'en' ? 'EN' : 'VI';
-        
-        languageToggle.addEventListener('click', () => {
-            this.currentLanguage = this.currentLanguage === 'en' ? 'vi' : 'en';
-            languageText.textContent = this.currentLanguage === 'en' ? 'EN' : 'VI';
-            localStorage.setItem('language', this.currentLanguage);
-            this.applyLanguage(this.currentLanguage);
+        languageButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedLang = btn.getAttribute('data-lang');
+                this.currentLanguage = selectedLang;
+                localStorage.setItem('language', selectedLang);
+                this.applyLanguage(selectedLang);
+                
+                // Close modal
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
+    }
+
+    setupDownloadModal() {
+        const downloadBtn = document.getElementById('download-financials-btn');
+        const modal = document.getElementById('download-modal');
+        const closeBtn = modal?.querySelector('.modal-close');
+        const downloadLink = document.getElementById('download-link');
+        const stockSymbolDisplay = document.getElementById('download-stock-symbol');
+        
+        if (downloadBtn && modal) {
+            downloadBtn.addEventListener('click', () => {
+                // Get current stock symbol
+                const symbol = this.currentStock?.symbol || document.getElementById('stock-symbol').value.trim().toUpperCase();
+                
+                if (!symbol) {
+                    alert('Please load stock data first');
+                    return;
+                }
+                
+                // Update modal with stock symbol
+                if (stockSymbolDisplay) {
+                    stockSymbolDisplay.textContent = symbol;
+                }
+                
+                // Update download link
+                if (downloadLink) {
+                    // Use GitHub raw URL for the Excel file
+                    const fileUrl = `https://github.com/quanganhtapcode/ec2/raw/master/vietcap_financial_statements/${symbol}.xlsx`;
+                    downloadLink.href = fileUrl;
+                    downloadLink.download = `${symbol}.xlsx`;
+                }
+                
+                modal.style.display = 'flex';
+            });
+        }
+        
+        if (closeBtn && modal) {
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+        
+        // Close modal when clicking outside
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
     }
 
     applyLanguage(lang) {
@@ -773,6 +840,12 @@ class StockValuationApp {
 
             this.stockData = stockData;
             this.currentStock = symbol;
+            
+            // Enable download button when stock data is loaded
+            const downloadBtn = document.getElementById('download-financials-btn');
+            if (downloadBtn) {
+                downloadBtn.disabled = false;
+            }
             
             this.updateOverviewDisplay(stockData);
             
