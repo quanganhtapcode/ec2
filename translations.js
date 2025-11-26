@@ -83,7 +83,7 @@ const translations = {
         selectLanguageDesc: "Vui lòng chọn ngôn ngữ của bạn",
         
         // Download Modal
-        downloadFinancialData: "📊",
+        downloadFinancialData: "Excel Data",
         downloadFinancialDesc: "Tải xuống báo cáo tài chính của 694 công ty niêm yết trên HOSE, HNX và UPCOM",
         fileFormat: "Định dạng file:",
         excelFormat: "Excel (.xlsx)",
@@ -268,7 +268,7 @@ const translations = {
         selectLanguageDesc: "Please choose your language",
         
         // Download Modal
-        downloadFinancialData: "📊",
+        downloadFinancialData: "Excel Data",
         downloadFinancialDesc: "Download financial statements for 694 listed companies on HOSE, HNX and UPCOM",
         fileFormat: "File Format:",
         excelFormat: "Excel (.xlsx)",
