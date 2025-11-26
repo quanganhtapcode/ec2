@@ -36,8 +36,10 @@
                         <input type="text" id="stock-symbol" class="form-control" placeholder="Enter stock symbol (e.g., VCB)" data-i18n-placeholder="enterStockSymbol">
                     </div>
                     <div class="search-actions">
-                        <button type="button" id="load-data-btn" class="btn btn--primary" data-i18n="loadCompanyData">Load Company Data</button>
-                        <button type="button" id="download-financials-btn" class="btn btn--secondary" data-i18n="downloadFinancialData" disabled>Download Financial Data</button>
+                        <button type="button" id="load-data-btn" class="btn btn--primary" data-i18n="loadCompanyData">Load Data</button>
+                        <button type="button" id="download-financials-btn" class="btn btn--secondary" title="Download full financial statements (Balance Sheet, Income Statement, Cash Flow) in Excel format" disabled>
+                            <span data-i18n="downloadFinancialData">📊</span>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -548,24 +550,6 @@
             <p data-i18n="createdBy">Created by quanganhdeptrai</p>
         </div>
     </footer>
-
-    <!-- Language Selection Modal -->
-    <div id="language-modal" class="modal" style="display: none;">
-        <div class="modal-content language-modal-content">
-            <h2 class="modal-title">Choose Your Language / Chọn Ngôn Ngữ</h2>
-            <p class="modal-subtitle">Select your preferred language / Chọn ngôn ngữ của bạn</p>
-            <div class="language-options">
-                <button class="language-option-btn" data-lang="vi">
-                    <span class="flag">🇻🇳</span>
-                    <span class="lang-name">Tiếng Việt</span>
-                </button>
-                <button class="language-option-btn" data-lang="en">
-                    <span class="flag">🇬🇧</span>
-                    <span class="lang-name">English</span>
-                </button>
-            </div>
-        </div>
-    </div>
 
 </body>
 </html>

@@ -38,14 +38,14 @@ class StockValuationApp {
             justified_pb: 25
         };
         this.valuationResults = null;
-        this.apiBaseUrl = 'https://api.quanganh.org'; // Production API endpoint
+        this.apiBaseUrl = 'http://localhost:5000'; // Production API endpoint
         this.charts = {
             roeRoa: null,
             liquidity: null,
             pePb: null,
             nim: null
         };
-        this.currentLanguage = localStorage.getItem('language') || 'vi'; // Default to Vietnamese
+        this.currentLanguage = 'en'; // Default to English
 
         this.init();
     }
@@ -54,8 +54,6 @@ class StockValuationApp {
         this.setupEventListeners();
         this.loadDefaultAssumptions();
         this.setupThemeToggle();
-        this.showLanguageModal();
-        this.setupLanguageModal();
         this.setupDownloadModal();
         this.applyLanguage(this.currentLanguage);
         this.setupCharts();
@@ -81,13 +79,20 @@ class StockValuationApp {
             }
         });
 
-        // Reset cache when symbol input changes
-        document.getElementById('stock-symbol').addEventListener('input', () => {
+        // Reset cache when symbol input changes and enable download button
+        document.getElementById('stock-symbol').addEventListener('input', (e) => {
             this.resetChartsState();
             
             // Cancel any pending debounced requests
             if (this.debounceTimer) {
                 clearTimeout(this.debounceTimer);
+            }
+            
+            // Enable download button if valid ticker is entered
+            const symbol = e.target.value.trim().toUpperCase();
+            const downloadBtn = document.getElementById('download-financials-btn');
+            if (downloadBtn) {
+                downloadBtn.disabled = !symbol || symbol.length === 0;
             }
         });
 
@@ -137,35 +142,7 @@ class StockValuationApp {
         });
     }
 
-    showLanguageModal() {
-        // Check if user has already selected a language
-        const savedLanguage = localStorage.getItem('language');
-        if (!savedLanguage) {
-            const modal = document.getElementById('language-modal');
-            if (modal) {
-                modal.style.display = 'flex';
-            }
-        }
-    }
 
-    setupLanguageModal() {
-        const modal = document.getElementById('language-modal');
-        const languageButtons = document.querySelectorAll('.language-option-btn');
-        
-        languageButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const selectedLang = btn.getAttribute('data-lang');
-                this.currentLanguage = selectedLang;
-                localStorage.setItem('language', selectedLang);
-                this.applyLanguage(selectedLang);
-                
-                // Close modal
-                if (modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        });
-    }
 
     setupDownloadModal() {
         const downloadBtn = document.getElementById('download-financials-btn');
@@ -176,7 +153,7 @@ class StockValuationApp {
                 const symbol = this.currentStock?.symbol || document.getElementById('stock-symbol').value.trim().toUpperCase();
                 
                 if (!symbol) {
-                    this.showStatus('Please load stock data first', 'error');
+                    this.showStatus('Please enter a stock symbol first', 'error');
                     return;
                 }
                 
@@ -220,8 +197,8 @@ class StockValuationApp {
                     tempLink.click();
                     document.body.removeChild(tempLink);
                     
-                    // Show success message
-                    this.showStatus(`Downloading ${symbol}.xlsx...`, 'success');
+                    // Show success message with details
+                    this.showStatus(`Downloading ${symbol}.xlsx - Full financial statements (Balance Sheet, Income Statement, Cash Flow)`, 'success');
                     
                 } catch (error) {
                     console.error('Download error:', error);
