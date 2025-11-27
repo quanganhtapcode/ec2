@@ -190,7 +190,7 @@ const translations = {
         disclaimerText: "Báo cáo này chỉ nhằm mục đích cung cấp thông tin và không cấu thành lời khuyên đầu tư. Hiệu suất trong quá khứ không đảm bảo kết quả trong tương lai. Vui lòng tham khảo ý kiến của chuyên gia tài chính có trình độ trước khi đưa ra quyết định đầu tư.",
         
         // Footer
-        createdBy: "Được tạo bởi quanganhdeptrai",
+        createdBy: "Được hỗ trợ bởi quanganh.org | Nền tảng định giá cổ phiếu chuyên nghiệp",
         
         // Status messages
         loadingData: "Đang tải dữ liệu...",
@@ -400,7 +400,7 @@ const translations = {
         disclaimerText: "This report is for informational purposes only and does not constitute investment advice. Past performance does not guarantee future results. Please consult with a qualified financial advisor before making investment decisions.",
         
         // Footer
-        createdBy: "Created by quanganhdeptrai",
+        createdBy: "Powered by quanganh.org | Professional Stock Valuation Platform",
         
         // Status messages
         loadingData: "Loading data...",
