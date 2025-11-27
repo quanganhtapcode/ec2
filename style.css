@@ -1592,6 +1592,13 @@ select.form-control {
 }
 
 /* Summary Page */
+.summary-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24);
+  margin-bottom: var(--space-32);
+}
+
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1802,6 +1809,11 @@ select.form-control {
   
   .results-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .summary-info-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
   }
   
   .summary-grid {

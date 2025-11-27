@@ -387,52 +387,54 @@
                 </div>
 
                 <div id="summary" class="tab-pane">
-                    <div class="summary-grid">
+                    <!-- Valuation Summary Grid - 2 columns -->
+                    <div class="summary-info-grid">
                         <div class="card">
                             <div class="card__body">
-                                <h3 data-i18n="valuationSummary">Valuation Summary</h3>
-                                <div class="summary-table">
-                                    <div class="summary-section">
-                                        <h4 data-i18n="companyInformation">Company Information</h4>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="symbol">Stock Symbol:</span>
-                                            <span class="summary-value" id="summary-symbol">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="name">Company Name:</span>
-                                            <span class="summary-value" id="summary-name">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="industry">Industry:</span>
-                                            <span class="summary-value" id="summary-sector">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="exchange">Exchange:</span>
-                                            <span class="summary-value" id="summary-exchange">--</span>
-                                        </div>
-                                    </div>
-                                    <div class="summary-section">
-                                        <h4 data-i18n="marketIndicators">Market Indicators</h4>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="currentPrice">Current Price:</span>
-                                            <span class="summary-value" id="summary-price">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="marketCap">Market Cap:</span>
-                                            <span class="summary-value" id="summary-market-cap">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="peRatio">P/E:</span>
-                                            <span class="summary-value" id="summary-pe">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="pbRatio">P/B:</span>
-                                            <span class="summary-value" id="summary-pb">--</span>
-                                        </div>
-                                    </div>
+                                <h3 data-i18n="companyInformation">Company Information</h3>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="symbol">Stock Symbol:</span>
+                                    <span class="summary-value" id="summary-symbol">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="name">Company Name:</span>
+                                    <span class="summary-value" id="summary-name">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="industry">Industry:</span>
+                                    <span class="summary-value" id="summary-sector">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="exchange">Exchange:</span>
+                                    <span class="summary-value" id="summary-exchange">--</span>
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="marketIndicators">Market Indicators</h3>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="currentPrice">Current Price:</span>
+                                    <span class="summary-value" id="summary-price">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="marketCap">Market Cap:</span>
+                                    <span class="summary-value" id="summary-market-cap">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="peRatio">P/E:</span>
+                                    <span class="summary-value" id="summary-pe">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="pbRatio">P/B:</span>
+                                    <span class="summary-value" id="summary-pb">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Details Grid - 2 columns -->
+                    <div class="summary-grid">
                         <div class="card">
                             <div class="card__body">
                                 <h3 data-i18n="modelDetails">Model Details</h3>
