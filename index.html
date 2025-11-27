@@ -294,9 +294,10 @@
                                 <form id="weights-form" class="form-group">
                                     <div class="form-row">
                                         <div class="form-group">
-                                            <label class="weight-checkbox-label">
-                                                <input type="checkbox" id="fcfe-enabled" class="weight-checkbox" checked>
+                                            <label class="weight-checkbox-label" data-model="fcfe">
+                                                <input type="checkbox" id="fcfe-enabled" class="weight-checkbox" checked style="display: none;">
                                                 <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
                                                     <strong data-i18n="fcfe">FCFE</strong>
                                                     <small style="display: block; color: var(--color-text-secondary);" data-i18n="fcfeDesc">Free Cash Flow to Equity</small>
                                                 </span>
@@ -304,9 +305,10 @@
                                             </label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="weight-checkbox-label">
-                                                <input type="checkbox" id="fcff-enabled" class="weight-checkbox" checked>
+                                            <label class="weight-checkbox-label" data-model="fcff">
+                                                <input type="checkbox" id="fcff-enabled" class="weight-checkbox" checked style="display: none;">
                                                 <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
                                                     <strong data-i18n="fcff">FCFF</strong>
                                                     <small style="display: block; color: var(--color-text-secondary);" data-i18n="fcffDesc">Free Cash Flow to Firm</small>
                                                 </span>
@@ -316,9 +318,10 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group">
-                                            <label class="weight-checkbox-label">
-                                                <input type="checkbox" id="pe-enabled" class="weight-checkbox" checked>
+                                            <label class="weight-checkbox-label" data-model="pe">
+                                                <input type="checkbox" id="pe-enabled" class="weight-checkbox" checked style="display: none;">
                                                 <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
                                                     <strong>P/E</strong>
                                                     <small style="display: block; color: var(--color-text-secondary);" data-i18n="justifiedPE">Justified P/E</small>
                                                 </span>
@@ -326,9 +329,10 @@
                                             </label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="weight-checkbox-label">
-                                                <input type="checkbox" id="pb-enabled" class="weight-checkbox" checked>
+                                            <label class="weight-checkbox-label" data-model="pb">
+                                                <input type="checkbox" id="pb-enabled" class="weight-checkbox" checked style="display: none;">
                                                 <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
                                                     <strong>P/B</strong>
                                                     <small style="display: block; color: var(--color-text-secondary);" data-i18n="justifiedPB">Justified P/B</small>
                                                 </span>
@@ -541,6 +545,7 @@
                             </div>
                             <div class="export-actions">
                                 <button id="export-report-btn" class="btn btn--primary" disabled data-i18n="exportPDFReport">Export PDF Report</button>
+                                <button id="export-excel-btn" class="btn btn--secondary" disabled data-i18n="exportExcelReport">Export Excel Report</button>
                             </div>
                         </div>
                     </div>

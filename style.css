@@ -1235,32 +1235,36 @@ select.form-control {
 
 /* Weight Checkbox Styles */
 .weight-checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: var(--space-10);
-  padding: var(--space-12);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-base);
-  cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-standard);
-  background: var(--color-surface);
-  position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-10);
+    padding: var(--space-12);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-base);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-standard);
+    background: var(--color-surface);
+    position: relative;
 }
 
-.weight-checkbox-label:hover {
+.weight-checkbox-label .checkmark {
+    font-size: 16px;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-right: 4px;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.weight-checkbox-label input:not(:checked) ~ .weight-checkbox-text .checkmark {
+    opacity: 0.2;
+}.weight-checkbox-label:hover {
   border-color: var(--color-primary);
   background: var(--color-secondary);
 }
 
 .weight-checkbox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  flex-shrink: 0;
-  accent-color: var(--color-primary);
-}
-
-.weight-checkbox-text {
+    display: none;
+}.weight-checkbox-text {
   flex: 1;
   min-width: 0;
 }
