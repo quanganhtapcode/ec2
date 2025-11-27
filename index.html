@@ -547,9 +547,19 @@
                                 <div id="final-recommendation"><span data-i18n="waitingForData">Waiting for data</span></div>
                                 <p class="recommendation-reasoning" id="recommendation-reasoning" data-i18n="loadDataMessage">Please load company data and perform valuation calculations to receive investment recommendations.</p>
                             </div>
-                            <div class="export-actions">
-                                <button id="export-report-btn" class="btn btn--primary" disabled data-i18n="exportPDFReport">Export PDF Report</button>
-                                <button id="export-excel-btn" class="btn btn--secondary" disabled data-i18n="exportExcelReport">Export Excel Report</button>
+                            <div class="export-actions-group">
+                                <div class="export-section">
+                                    <h4 class="export-section-title" data-i18n="exportReports">Export Reports</h4>
+                                    <div class="export-actions">
+                                        <button id="export-excel-btn" class="btn btn--primary" disabled>
+                                            <span data-i18n="exportExcelReport">📊 Export Excel Report</span>
+                                        </button>
+                                        <button id="export-report-btn" class="btn btn--secondary" disabled>
+                                            <span data-i18n="exportPDFReport">📄 Export PDF Report</span>
+                                        </button>
+                                    </div>
+                                    <p class="export-hint" data-i18n="exportHint">Complete valuation calculations to enable exports</p>
+                                </div>
                             </div>
                         </div>
                     </div>

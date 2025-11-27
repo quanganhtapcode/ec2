@@ -1703,10 +1703,42 @@ select.form-control {
   margin: 0;
 }
 
+.export-actions-group {
+  margin-top: var(--space-32);
+}
+
+.export-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  text-align: center;
+}
+
+.export-section-title {
+  margin: 0 0 var(--space-16) 0;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
 .export-actions {
   display: flex;
+  gap: var(--space-12);
   justify-content: center;
-  margin-top: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.export-actions .btn {
+  min-width: 200px;
+  font-weight: var(--font-weight-medium);
+}
+
+.export-hint {
+  margin-top: var(--space-12);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
 }
 
 /* Loading States */
@@ -2275,6 +2307,16 @@ select.form-control {
         font-size: 0.95rem;
         width: 100%;
         margin-bottom: 8px;
+    }
+    
+    .export-actions {
+        flex-direction: column;
+        gap: var(--space-12);
+    }
+    
+    .export-actions .btn {
+        width: 100%;
+        min-width: unset;
     }
     
     /* Search form stacked on mobile */

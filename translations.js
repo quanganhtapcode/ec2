@@ -162,8 +162,10 @@ const translations = {
         upsideDownside: "Tiềm năng tăng/giảm:",
         confidenceLevel: "Mức độ tin cậy:",
         recommendation: "Khuyến nghị",
-        exportPDFReport: "Xuất báo cáo PDF",
-        exportExcelReport: "Xuất báo cáo Excel",
+        exportReports: "Xuất báo cáo",
+        exportPDFReport: "📄 Xuất PDF",
+        exportExcelReport: "📊 Xuất Excel",
+        exportHint: "Hoàn tất tính toán định giá để xuất báo cáo",
         
         // CSV Export specific translations
         valuationReport: "BÁO CÁO ĐỊNH GIÁ CỔ PHIẾU",
@@ -372,8 +374,10 @@ const translations = {
         upsideDownside: "Upside/Downside Potential:",
         confidenceLevel: "Confidence Level:",
         recommendation: "Recommendation",
-        exportPDFReport: "Export PDF Report",
-        exportExcelReport: "Export Excel Report",
+        exportReports: "Export Reports",
+        exportPDFReport: "📄 Export PDF",
+        exportExcelReport: "📊 Export Excel",
+        exportHint: "Complete valuation calculations to enable exports",
         
         // CSV Export specific translations
         valuationReport: "STOCK VALUATION REPORT",

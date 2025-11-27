@@ -132,8 +132,23 @@ class StockValuationApp {
         document.getElementById('select-all-btn').addEventListener('click', () => this.toggleSelectAll());
 
         // Export functionality
-        document.getElementById('export-report-btn').addEventListener('click', () => this.exportReport());
-        document.getElementById('export-excel-btn').addEventListener('click', () => this.exportExcelReport());
+        const exportReportBtn = document.getElementById('export-report-btn');
+        const exportExcelBtn = document.getElementById('export-excel-btn');
+        
+        if (exportReportBtn) {
+            exportReportBtn.addEventListener('click', () => this.exportReport());
+        } else {
+            console.error('Export PDF button not found');
+        }
+        
+        if (exportExcelBtn) {
+            exportExcelBtn.addEventListener('click', () => {
+                console.log('Excel export button clicked');
+                this.exportExcelReport();
+            });
+        } else {
+            console.error('Export Excel button not found');
+        }
         
         // Setup language toggle
         this.setupLanguageToggle();
