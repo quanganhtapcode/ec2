@@ -124,8 +124,10 @@ class StockDataProvider:
     def __init__(self):
         self.sources = ["VCI"]
         self.vnstock = Vnstock()  # Keep for valuation calculations that still need it
-        self._stock_data_folder = '../stocks'
-        logger.info("StockDataProvider initialized - using stocks folder")
+        # Use absolute path from script location or relative from working directory
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        self._stock_data_folder = os.path.join(os.path.dirname(script_dir), 'stocks')
+        logger.info(f"StockDataProvider initialized - using stocks folder: {self._stock_data_folder}")
 
     def _search_symbol_in_all_industries(self, symbol: str) -> dict:
         """Load industry name mapping from JSON file"""
@@ -332,8 +334,7 @@ class StockDataProvider:
         
         try:
             # Look for individual stock file: stocks/{SYMBOL}.json
-            stock_data_folder = '../stocks'
-            stock_file = os.path.join(stock_data_folder, f"{symbol_upper}.json")
+            stock_file = os.path.join(self._stock_data_folder, f"{symbol_upper}.json")
             
             if os.path.exists(stock_file):
                 logger.info(f"✓ Found {symbol_upper}.json in stocks folder")
