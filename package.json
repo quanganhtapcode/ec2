@@ -4,8 +4,8 @@
   "description": "Vietnamese Stock Valuation Tool",
   "main": "index.html",
   "scripts": {
-    "start": "python backend_server.py",
-    "dev": "python backend_server.py"
+    "start": "python backend/server.py",
+    "dev": "python backend/server.py"
   },
   "keywords": [
     "stock",
