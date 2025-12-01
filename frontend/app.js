@@ -38,7 +38,7 @@ class StockValuationApp {
             justified_pb: 25
         };
         this.valuationResults = null;
-        this.apiBaseUrl = 'http://localhost:5000'; // Production API endpoint
+        this.apiBaseUrl = 'https://api.quanganh.org'; // Production API endpoint
         this.charts = {
             roeRoa: null,
             liquidity: null,
