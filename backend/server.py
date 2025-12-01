@@ -11,7 +11,7 @@ import time
 from datetime import datetime, timedelta
 from vnstock import Vnstock
 from vnstock.explorer.vci import Company
-from valuation_models import ValuationModels
+from models import ValuationModels
 import json
 import os
 from collections import defaultdict
@@ -124,8 +124,8 @@ class StockDataProvider:
     def __init__(self):
         self.sources = ["VCI"]
         self.vnstock = Vnstock()  # Keep for valuation calculations that still need it
-        self._stock_data_folder = 'stock_data'
-        logger.info("StockDataProvider initialized - using stock_data folder")
+        self._stock_data_folder = '../stocks'
+        logger.info("StockDataProvider initialized - using stocks folder")
 
     def _search_symbol_in_all_industries(self, symbol: str) -> dict:
         """Load industry name mapping from JSON file"""
@@ -331,12 +331,12 @@ class StockDataProvider:
         symbol_upper = symbol.upper()
         
         try:
-            # Look for individual stock file: stock_data/{SYMBOL}.json
-            stock_data_folder = 'stock_data'
+            # Look for individual stock file: stocks/{SYMBOL}.json
+            stock_data_folder = '../stocks'
             stock_file = os.path.join(stock_data_folder, f"{symbol_upper}.json")
             
             if os.path.exists(stock_file):
-                logger.info(f"✓ Found {symbol_upper}.json in stock_data folder")
+                logger.info(f"✓ Found {symbol_upper}.json in stocks folder")
                 try:
                     with open(stock_file, 'r', encoding='utf-8') as f:
                         stock_info = json.load(f)
@@ -2825,7 +2825,7 @@ def download_financial_data(ticker):
         # Use validated/sanitized ticker
         ticker = result
         
-        file_path = os.path.join('vietcap_financial_statements', f'{ticker}.xlsx')
+        file_path = os.path.join('../data', f'{ticker}.xlsx')
         
         # Check if file exists before attempting to serve
         if not os.path.exists(file_path):

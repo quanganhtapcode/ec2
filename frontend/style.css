@@ -1235,32 +1235,36 @@ select.form-control {
 
 /* Weight Checkbox Styles */
 .weight-checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: var(--space-10);
-  padding: var(--space-12);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-base);
-  cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-standard);
-  background: var(--color-surface);
-  position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-10);
+    padding: var(--space-12);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-base);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-standard);
+    background: var(--color-surface);
+    position: relative;
 }
 
-.weight-checkbox-label:hover {
+.weight-checkbox-label .checkmark {
+    font-size: 16px;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-right: 4px;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.weight-checkbox-label input:not(:checked) ~ .weight-checkbox-text .checkmark {
+    opacity: 0.2;
+}.weight-checkbox-label:hover {
   border-color: var(--color-primary);
   background: var(--color-secondary);
 }
 
 .weight-checkbox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  flex-shrink: 0;
-  accent-color: var(--color-primary);
-}
-
-.weight-checkbox-text {
+    display: none;
+}.weight-checkbox-text {
   flex: 1;
   min-width: 0;
 }
@@ -1588,6 +1592,13 @@ select.form-control {
 }
 
 /* Summary Page */
+.summary-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-24);
+  margin-bottom: var(--space-32);
+}
+
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1692,10 +1703,42 @@ select.form-control {
   margin: 0;
 }
 
+.export-actions-group {
+  margin-top: var(--space-32);
+}
+
+.export-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  text-align: center;
+}
+
+.export-section-title {
+  margin: 0 0 var(--space-16) 0;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
 .export-actions {
   display: flex;
+  gap: var(--space-12);
   justify-content: center;
-  margin-top: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.export-actions .btn {
+  min-width: 200px;
+  font-weight: var(--font-weight-medium);
+}
+
+.export-hint {
+  margin-top: var(--space-12);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
 }
 
 /* Loading States */
@@ -1798,6 +1841,11 @@ select.form-control {
   
   .results-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .summary-info-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
   }
   
   .summary-grid {
@@ -1921,8 +1969,9 @@ select.form-control {
   color: var(--color-text-secondary);
 }
 
-/* Theme Toggle */
-.theme-toggle {
+/* Theme Toggle & Language Toggle */
+.theme-toggle,
+.language-toggle {
   position: relative;
   display: flex;
   align-items: center;
@@ -1930,6 +1979,16 @@ select.form-control {
   min-width: 48px;
   height: 48px;
   padding: 8px;
+}
+
+.language-toggle {
+  font-weight: 500;
+  font-size: 14px;
+  min-width: 56px;
+}
+
+.lang-text {
+  transition: opacity 0.3s ease;
 }
 
 .theme-icon {
@@ -1958,7 +2017,8 @@ select.form-control {
   opacity: 1;
 }
 
-.theme-toggle:hover .theme-icon {
+.theme-toggle:hover .theme-icon,
+.language-toggle:hover .lang-text {
   transform: scale(1.1);
 }
 
@@ -2102,7 +2162,7 @@ select.form-control {
         flex-direction: row;
         align-items: center;
         gap: 0.5rem;
-        max-width: calc(100% - 60px);
+        max-width: calc(100% - 120px);
     }
     
     .period-label {
@@ -2126,7 +2186,8 @@ select.form-control {
         line-height: 1.5;
     }
     
-    .theme-toggle {
+    .theme-toggle,
+    .language-toggle {
         min-width: 44px;
         width: 44px;
         max-width: 44px;
@@ -2138,6 +2199,12 @@ select.form-control {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    
+    .language-toggle {
+        min-width: 52px;
+        width: 52px;
+        max-width: 52px;
     }
     
     .theme-icon {
@@ -2166,7 +2233,7 @@ select.form-control {
         flex-direction: row !important;
         align-items: center !important;
         gap: 0.5rem !important;
-        max-width: calc(100% - 52px) !important;
+        max-width: calc(100% - 100px) !important;
     }
     
     .period-label {
@@ -2189,7 +2256,8 @@ select.form-control {
         line-height: 1.5;
     }
     
-    .theme-toggle {
+    .theme-toggle,
+    .language-toggle {
         min-width: 44px !important;
         width: 44px !important;
         max-width: 44px !important;
@@ -2201,6 +2269,13 @@ select.form-control {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+    }
+    
+    .language-toggle {
+        min-width: 48px !important;
+        width: 48px !important;
+        max-width: 48px !important;
+        font-size: 13px !important;
     }
     
     .theme-icon {
@@ -2232,6 +2307,16 @@ select.form-control {
         font-size: 0.95rem;
         width: 100%;
         margin-bottom: 8px;
+    }
+    
+    .export-actions {
+        flex-direction: column;
+        gap: var(--space-12);
+    }
+    
+    .export-actions .btn {
+        width: 100%;
+        min-width: unset;
     }
     
     /* Search form stacked on mobile */

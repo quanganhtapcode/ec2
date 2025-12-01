@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vietnam Stock Valuation</title>
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
     <!-- Defer heavy library loading (~80KB) until after page load -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
-    <script src="translations.js?v=5"></script>
-    <script src="app.js?v=5" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+    <script src="translations.js?v=6"></script>
+    <script src="app.js?v=6" defer></script>
 </head>
 <body class="app-container">    <header class="app-header py-16">
         <div class="container flex justify-between items-center">
@@ -21,6 +24,9 @@
                         <option value="quarter" data-i18n="latestQuarter">Latest Quarter</option>
                     </select>
                 </div>
+                <button id="language-toggle-btn" class="btn btn--outline language-toggle" aria-label="Change language">
+                    <span class="lang-text">EN</span>
+                </button>
                 <button id="theme-toggle-btn" class="btn btn--outline theme-toggle" aria-label="Toggle theme">
                     <span class="theme-icon light-icon">☀️</span>
                     <span class="theme-icon dark-icon">🌙</span>
@@ -291,9 +297,10 @@
                                 <form id="weights-form" class="form-group">
                                     <div class="form-row">
                                         <div class="form-group">
-                                            <label class="weight-checkbox-label">
-                                                <input type="checkbox" id="fcfe-enabled" class="weight-checkbox" checked>
+                                            <label class="weight-checkbox-label" data-model="fcfe">
+                                                <input type="checkbox" id="fcfe-enabled" class="weight-checkbox" checked style="display: none;">
                                                 <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
                                                     <strong data-i18n="fcfe">FCFE</strong>
                                                     <small style="display: block; color: var(--color-text-secondary);" data-i18n="fcfeDesc">Free Cash Flow to Equity</small>
                                                 </span>
@@ -301,9 +308,10 @@
                                             </label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="weight-checkbox-label">
-                                                <input type="checkbox" id="fcff-enabled" class="weight-checkbox" checked>
+                                            <label class="weight-checkbox-label" data-model="fcff">
+                                                <input type="checkbox" id="fcff-enabled" class="weight-checkbox" checked style="display: none;">
                                                 <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
                                                     <strong data-i18n="fcff">FCFF</strong>
                                                     <small style="display: block; color: var(--color-text-secondary);" data-i18n="fcffDesc">Free Cash Flow to Firm</small>
                                                 </span>
@@ -313,9 +321,10 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group">
-                                            <label class="weight-checkbox-label">
-                                                <input type="checkbox" id="pe-enabled" class="weight-checkbox" checked>
+                                            <label class="weight-checkbox-label" data-model="pe">
+                                                <input type="checkbox" id="pe-enabled" class="weight-checkbox" checked style="display: none;">
                                                 <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
                                                     <strong>P/E</strong>
                                                     <small style="display: block; color: var(--color-text-secondary);" data-i18n="justifiedPE">Justified P/E</small>
                                                 </span>
@@ -323,9 +332,10 @@
                                             </label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="weight-checkbox-label">
-                                                <input type="checkbox" id="pb-enabled" class="weight-checkbox" checked>
+                                            <label class="weight-checkbox-label" data-model="pb">
+                                                <input type="checkbox" id="pb-enabled" class="weight-checkbox" checked style="display: none;">
                                                 <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
                                                     <strong>P/B</strong>
                                                     <small style="display: block; color: var(--color-text-secondary);" data-i18n="justifiedPB">Justified P/B</small>
                                                 </span>
@@ -378,52 +388,54 @@
                 </div>
 
                 <div id="summary" class="tab-pane">
-                    <div class="summary-grid">
+                    <!-- Valuation Summary Grid - 2 columns -->
+                    <div class="summary-info-grid">
                         <div class="card">
                             <div class="card__body">
-                                <h3 data-i18n="valuationSummary">Valuation Summary</h3>
-                                <div class="summary-table">
-                                    <div class="summary-section">
-                                        <h4 data-i18n="companyInformation">Company Information</h4>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="symbol">Stock Symbol:</span>
-                                            <span class="summary-value" id="summary-symbol">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="name">Company Name:</span>
-                                            <span class="summary-value" id="summary-name">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="industry">Industry:</span>
-                                            <span class="summary-value" id="summary-sector">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="exchange">Exchange:</span>
-                                            <span class="summary-value" id="summary-exchange">--</span>
-                                        </div>
-                                    </div>
-                                    <div class="summary-section">
-                                        <h4 data-i18n="marketIndicators">Market Indicators</h4>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="currentPrice">Current Price:</span>
-                                            <span class="summary-value" id="summary-price">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="marketCap">Market Cap:</span>
-                                            <span class="summary-value" id="summary-market-cap">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="peRatio">P/E:</span>
-                                            <span class="summary-value" id="summary-pe">--</span>
-                                        </div>
-                                        <div class="summary-row">
-                                            <span class="summary-label" data-i18n="pbRatio">P/B:</span>
-                                            <span class="summary-value" id="summary-pb">--</span>
-                                        </div>
-                                    </div>
+                                <h3 data-i18n="companyInformation">Company Information</h3>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="symbol">Stock Symbol:</span>
+                                    <span class="summary-value" id="summary-symbol">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="name">Company Name:</span>
+                                    <span class="summary-value" id="summary-name">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="industry">Industry:</span>
+                                    <span class="summary-value" id="summary-sector">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="exchange">Exchange:</span>
+                                    <span class="summary-value" id="summary-exchange">--</span>
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="marketIndicators">Market Indicators</h3>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="currentPrice">Current Price:</span>
+                                    <span class="summary-value" id="summary-price">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="marketCap">Market Cap:</span>
+                                    <span class="summary-value" id="summary-market-cap">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="peRatio">P/E:</span>
+                                    <span class="summary-value" id="summary-pe">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="pbRatio">P/B:</span>
+                                    <span class="summary-value" id="summary-pb">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Details Grid - 2 columns -->
+                    <div class="summary-grid">
                         <div class="card">
                             <div class="card__body">
                                 <h3 data-i18n="modelDetails">Model Details</h3>
@@ -536,8 +548,19 @@
                                 <div id="final-recommendation"><span data-i18n="waitingForData">Waiting for data</span></div>
                                 <p class="recommendation-reasoning" id="recommendation-reasoning" data-i18n="loadDataMessage">Please load company data and perform valuation calculations to receive investment recommendations.</p>
                             </div>
-                            <div class="export-actions">
-                                <button id="export-report-btn" class="btn btn--primary" disabled data-i18n="exportPDFReport">Export PDF Report</button>
+                            <div class="export-actions-group">
+                                <div class="export-section">
+                                    <h4 class="export-section-title" data-i18n="exportReports">Export Reports</h4>
+                                    <div class="export-actions">
+                                        <button id="export-excel-btn" class="btn btn--primary" disabled>
+                                            <span data-i18n="exportExcelReport">📊 Export Excel Report</span>
+                                        </button>
+                                        <button id="export-report-btn" class="btn btn--secondary" disabled>
+                                            <span data-i18n="exportPDFReport">📄 Export PDF Report</span>
+                                        </button>
+                                    </div>
+                                    <p class="export-hint" data-i18n="exportHint">Complete valuation calculations to enable exports</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -548,7 +571,17 @@
 
     <footer class="app-footer py-16">
         <div class="container text-center">
-            <p data-i18n="createdBy">Created by quanganhdeptrai</p>
+            <p>
+                <a href="https://www.linkedin.com/in/quanganhday/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: var(--font-weight-medium);">
+                    Quang Anh
+                </a> | Data provider: 
+                <a href="https://www.vietcap.com.vn/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none;">Vietcap</a>, 
+                <a href="https://www.tcbs.com.vn/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none;">TCBS</a>
+            </p>
+            <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-8);">
+                <a href="https://valuation.quanganh.org" style="color: var(--color-primary); text-decoration: none;">valuation.quanganh.org</a> | 
+                <a href="https://api.quanganh.org" style="color: var(--color-primary); text-decoration: none;">api.quanganh.org</a>
+            </p>
         </div>
     </footer>
 
