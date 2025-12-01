@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "public": false,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://api.quanganh.org/api/$1"
+    },
+    {
+      "source": "/",
+      "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/frontend/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        }
+      ]
+    }
+  ]
+}
