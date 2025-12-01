@@ -11,7 +11,7 @@ import time
 from datetime import datetime, timedelta
 from vnstock import Vnstock
 from vnstock.explorer.vci import Company
-from models import ValuationModels
+from backend.models import ValuationModels
 import json
 import os
 from collections import defaultdict
