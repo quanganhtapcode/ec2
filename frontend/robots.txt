@@ -1,0 +1,10 @@
+# Sitemap cho SEO
+User-agent: *
+Allow: /
+
+# Disallow admin/backend paths
+Disallow: /api/
+Disallow: /backend/
+
+# Sitemap location
+Sitemap: https://valuation.quanganh.org/sitemap.xml

@@ -1,0 +1,27 @@
+{
+  "name": "Vietnam Stock Valuation",
+  "short_name": "VN Valuation",
+  "description": "Professional Vietnamese stock valuation tool using DCF models",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fcfcf9",
+  "theme_color": "#21808D",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "business", "productivity"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
