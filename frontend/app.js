@@ -1187,18 +1187,36 @@ class StockValuationApp {
             return;
         }
 
+        // Check if this is a bank stock
+        const isBank = this.stockData && this.stockData.sector && 
+                      (this.stockData.sector.toLowerCase().includes('bank') || 
+                       this.stockData.sector.toLowerCase().includes('ngân hàng'));
+
+        // Show/hide chart containers based on sector
+        const nimChartContainer = document.getElementById('nim-chart')?.closest('.chart-container');
+        const liquidityChartContainer = document.getElementById('liquidity-chart')?.closest('.chart-container');
+        
+        if (nimChartContainer) {
+            nimChartContainer.style.display = isBank ? 'block' : 'none';
+        }
+        if (liquidityChartContainer) {
+            liquidityChartContainer.style.display = isBank ? 'none' : 'block';
+        }
+
         // Update ROE/ROA Chart
         this.charts.roeRoa.data.labels = this.historicalData.years;
         this.charts.roeRoa.data.datasets[0].data = this.historicalData.roa_data;
         this.charts.roeRoa.data.datasets[1].data = this.historicalData.roe_data;
         this.charts.roeRoa.update();
 
-        // Update Liquidity Chart
-        this.charts.liquidity.data.labels = this.historicalData.years;
-        this.charts.liquidity.data.datasets[0].data = this.historicalData.current_ratio_data;
-        this.charts.liquidity.data.datasets[1].data = this.historicalData.quick_ratio_data;
-        this.charts.liquidity.data.datasets[2].data = this.historicalData.cash_ratio_data;
-        this.charts.liquidity.update();
+        // Update Liquidity Chart (only if not a bank)
+        if (!isBank) {
+            this.charts.liquidity.data.labels = this.historicalData.years;
+            this.charts.liquidity.data.datasets[0].data = this.historicalData.current_ratio_data;
+            this.charts.liquidity.data.datasets[1].data = this.historicalData.quick_ratio_data;
+            this.charts.liquidity.data.datasets[2].data = this.historicalData.cash_ratio_data;
+            this.charts.liquidity.update();
+        }
 
         // Update P/E and P/B Chart
         if (this.charts.pePb) {
@@ -1207,8 +1225,9 @@ class StockValuationApp {
             this.charts.pePb.data.datasets[1].data = this.historicalData.pb_ratio_data || [];
             this.charts.pePb.update();
         }
-        // Update NIM Chart
-        if (this.charts.nim) {
+        
+        // Update NIM Chart (only for banks)
+        if (isBank && this.charts.nim) {
             this.charts.nim.data.labels = this.historicalData.years;
             this.charts.nim.data.datasets[0].data = this.historicalData.nim_data || [];
             this.charts.nim.update();
