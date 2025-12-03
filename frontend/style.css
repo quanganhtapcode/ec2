@@ -168,6 +168,7 @@
   --color-primary: #0A84FF;
   --color-primary-hover: #409CFF;
   --color-primary-active: #0077ED;
+  --color-primary-light: rgba(10, 132, 255, 0.15);
   --color-secondary: rgba(255, 255, 255, 0.08);
   --color-secondary-hover: rgba(255, 255, 255, 0.12);
   --color-secondary-active: rgba(255, 255, 255, 0.16);
@@ -198,6 +199,68 @@
   --color-error-rgb: 255, 69, 58;
   --color-warning-rgb: 255, 159, 10;
   --color-info-rgb: 94, 92, 230;
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] .app-header {
+  background: var(--color-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+[data-theme="dark"] .card {
+  background: var(--color-surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+[data-theme="dark"] .card::before {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-info) 100%);
+}
+
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .stock-input,
+[data-theme="dark"] .period-dropdown {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .stock-input:focus,
+[data-theme="dark"] .period-dropdown:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .recommendation-box,
+[data-theme="dark"] .recommendation-box-large {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .info-label,
+[data-theme="dark"] .summary-label,
+[data-theme="dark"] .ratio-label {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .info-value,
+[data-theme="dark"] .summary-value,
+[data-theme="dark"] .ratio-value {
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+[data-theme="dark"] .tab-btn.active {
+  background: rgba(10, 132, 255, 0.1);
+  border-left-color: var(--color-primary);
 }
 
 [data-theme="light"] {
@@ -847,7 +910,7 @@ select.form-control {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: linear-gradient(to bottom, #FFFFFF 0%, #FAFAFA 100%);
+  background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   backdrop-filter: blur(10px);
