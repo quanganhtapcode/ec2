@@ -1,11 +1,11 @@
 {
   "name": "Vietnam Stock Valuation",
   "short_name": "VN Valuation",
-  "description": "Professional Vietnamese stock valuation tool using DCF models",
+  "description": "Professional Vietnamese stock valuation using DCF models",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fcfcf9",
-  "theme_color": "#21808D",
+  "background_color": "#F5F5F7",
+  "theme_color": "#0066CC",
   "orientation": "portrait-primary",
   "icons": [
     {
