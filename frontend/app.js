@@ -173,6 +173,7 @@ class StockValuationApp {
         const savedLang = localStorage.getItem('language') || 'en';
         this.currentLanguage = savedLang;
         langText.textContent = savedLang.toUpperCase();
+        document.documentElement.setAttribute('lang', savedLang);
         this.applyLanguage(savedLang);
         
         languageToggle.addEventListener('click', () => {
@@ -181,6 +182,7 @@ class StockValuationApp {
             this.currentLanguage = newLang;
             langText.textContent = newLang.toUpperCase();
             localStorage.setItem('language', newLang);
+            document.documentElement.setAttribute('lang', newLang);
             this.applyLanguage(newLang);
         });
     }
@@ -291,6 +293,13 @@ class StockValuationApp {
             if (langData[key]) {
                 element.placeholder = langData[key];
             }
+        });
+
+        // Update footer elements with data-en and data-vi attributes
+        document.querySelectorAll('[data-en][data-vi]').forEach(element => {
+            const enText = element.getAttribute('data-en');
+            const viText = element.getAttribute('data-vi');
+            element.textContent = lang === 'en' ? enText : viText;
         });
 
         // Update app title (only if the element exists)
@@ -3591,7 +3600,7 @@ function showLegalModal(type) {
                 <p>Investments in securities market are subject to market risks. Past performance is not indicative of future results. You should carefully consider your investment objectives, level of experience, and risk appetite before making any investment decisions.</p>
                 
                 <h3>Data Accuracy</h3>
-                <p>While we strive to provide accurate and up-to-date information from reliable sources (Vietcap, TCBS, VCI), we do not guarantee the accuracy, completeness, or timeliness of the data. Users should verify all information independently before making investment decisions.</p>`
+                <p>While we strive to provide accurate and up-to-date information from reliable sources (Vietcap, TCBS), we do not guarantee the accuracy, completeness, or timeliness of the data. Users should verify all information independently before making investment decisions.</p>`
             },
             vi: {
                 title: 'Miễn trừ trách nhiệm',
@@ -3608,7 +3617,7 @@ function showLegalModal(type) {
                 <p>Đầu tư vào thị trường chứng khoán chịu rủi ro thị trường. Hiệu suất trong quá khứ không phản ánh kết quả trong tương lai. Bạn nên xem xét cẩn thận mục tiêu đầu tư, mức độ kinh nghiệm và khẩu vị rủi ro của mình trước khi đưa ra bất kỳ quyết định đầu tư nào.</p>
                 
                 <h3>Độ chính xác dữ liệu</h3>
-                <p>Mặc dù chúng tôi cố gắng cung cấp thông tin chính xác và cập nhật từ các nguồn đáng tin cậy (Vietcap, TCBS, VCI), chúng tôi không đảm bảo tính chính xác, đầy đủ hoặc kịp thời của dữ liệu. Người dùng nên xác minh độc lập tất cả thông tin trước khi đưa ra quyết định đầu tư.</p>`
+                <p>Mặc dù chúng tôi cố gắng cung cấp thông tin chính xác và cập nhật từ các nguồn đáng tin cậy (Vietcap, TCBS), chúng tôi không đảm bảo tính chính xác, đầy đủ hoặc kịp thời của dữ liệu. Người dùng nên xác minh độc lập tất cả thông tin trước khi đưa ra quyết định đầu tư.</p>`
             }
         },
         privacy: {
@@ -3618,13 +3627,13 @@ function showLegalModal(type) {
                 <p>This platform does not collect, store, or process any personal information from users. We do not use cookies for tracking purposes, and we do not require user registration or login.</p>
                 
                 <h3>Data Usage</h3>
-                <p>All stock data displayed is sourced from publicly available financial information provided by Vietcap Securities, TCBS Securities, and VCI Securities. No user-specific data is collected or analyzed.</p>
+                <p>All stock data displayed is sourced from publicly available financial information provided by Vietcap Securities and TCBS Securities. No user-specific data is collected or analyzed.</p>
                 
                 <h3>Local Storage</h3>
                 <p>The platform may use browser local storage to save user preferences such as language selection and theme preferences. This data is stored locally on your device and is not transmitted to any server.</p>
                 
                 <h3>Third-Party Services</h3>
-                <p>This platform uses third-party data providers (Vietcap, TCBS, VCI) for financial information. Please refer to their respective privacy policies for information on how they handle data.</p>
+                <p>This platform uses third-party data providers (Vietcap, TCBS) for financial information. Please refer to their respective privacy policies for information on how they handle data.</p>
                 
                 <h3>Data Security</h3>
                 <p>Since we do not collect personal information, there is no personal data at risk. However, we recommend using secure internet connections when accessing financial information.</p>
@@ -3638,13 +3647,13 @@ function showLegalModal(type) {
                 <p>Nền tảng này không thu thập, lưu trữ hoặc xử lý bất kỳ thông tin cá nhân nào từ người dùng. Chúng tôi không sử dụng cookies để theo dõi và không yêu cầu đăng ký hoặc đăng nhập người dùng.</p>
                 
                 <h3>Sử dụng dữ liệu</h3>
-                <p>Tất cả dữ liệu cổ phiếu được hiển thị đều có nguồn gốc từ thông tin tài chính công khai được cung cấp bởi Chứng khoán Vietcap, Chứng khoán TCBS và Chứng khoán VCI. Không có dữ liệu cụ thể của người dùng được thu thập hoặc phân tích.</p>
+                <p>Tất cả dữ liệu cổ phiếu được hiển thị đều có nguồn gốc từ thông tin tài chính công khai được cung cấp bởi Chứng khoán Vietcap và Chứng khoán TCBS. Không có dữ liệu cụ thể của người dùng được thu thập hoặc phân tích.</p>
                 
                 <h3>Lưu trữ cục bộ</h3>
                 <p>Nền tảng có thể sử dụng bộ nhớ cục bộ của trình duyệt để lưu tùy chọn của người dùng như lựa chọn ngôn ngữ và tùy chọn chủ đề. Dữ liệu này được lưu trữ cục bộ trên thiết bị của bạn và không được truyền đến bất kỳ máy chủ nào.</p>
                 
                 <h3>Dịch vụ bên thứ ba</h3>
-                <p>Nền tảng này sử dụng các nhà cung cấp dữ liệu bên thứ ba (Vietcap, TCBS, VCI) cho thông tin tài chính. Vui lòng tham khảo chính sách bảo mật tương ứng của họ để biết thông tin về cách họ xử lý dữ liệu.</p>
+                <p>Nền tảng này sử dụng các nhà cung cấp dữ liệu bên thứ ba (Vietcap, TCBS) cho thông tin tài chính. Vui lòng tham khảo chính sách bảo mật tương ứng của họ để biết thông tin về cách họ xử lý dữ liệu.</p>
                 
                 <h3>Bảo mật dữ liệu</h3>
                 <p>Vì chúng tôi không thu thập thông tin cá nhân nên không có dữ liệu cá nhân nào có nguy cơ. Tuy nhiên, chúng tôi khuyến nghị sử dụng kết nối internet an toàn khi truy cập thông tin tài chính.</p>
