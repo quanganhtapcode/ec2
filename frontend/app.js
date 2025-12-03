@@ -167,12 +167,22 @@ class StockValuationApp {
     
     setupLanguageToggle() {
         const languageToggle = document.getElementById('language-toggle-btn');
-        const langText = languageToggle.querySelector('.lang-text');
+        const enFlag = languageToggle.querySelector('.en-flag');
+        const viFlag = languageToggle.querySelector('.vi-flag');
         
         // Get saved language or default to English
         const savedLang = localStorage.getItem('language') || 'en';
         this.currentLanguage = savedLang;
-        langText.textContent = savedLang.toUpperCase();
+        
+        // Show appropriate flag
+        if (savedLang === 'en') {
+            enFlag.style.display = 'inline';
+            viFlag.style.display = 'none';
+        } else {
+            enFlag.style.display = 'none';
+            viFlag.style.display = 'inline';
+        }
+        
         document.documentElement.setAttribute('lang', savedLang);
         this.applyLanguage(savedLang);
         
@@ -180,7 +190,16 @@ class StockValuationApp {
             // Toggle between English and Vietnamese
             const newLang = this.currentLanguage === 'en' ? 'vi' : 'en';
             this.currentLanguage = newLang;
-            langText.textContent = newLang.toUpperCase();
+            
+            // Toggle flag visibility
+            if (newLang === 'en') {
+                enFlag.style.display = 'inline';
+                viFlag.style.display = 'none';
+            } else {
+                enFlag.style.display = 'none';
+                viFlag.style.display = 'inline';
+            }
+            
             localStorage.setItem('language', newLang);
             document.documentElement.setAttribute('lang', newLang);
             this.applyLanguage(newLang);
