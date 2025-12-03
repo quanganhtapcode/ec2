@@ -14,6 +14,7 @@ const translations = {
         // Search section
         stockSymbolSearch: "Tìm kiếm mã cổ phiếu",
         enterStockSymbol: "Nhập mã cổ phiếu (VD: VCB)",
+        search: "Tìm kiếm",
         loadCompanyData: "Tải dữ liệu công ty",
         
         // Tabs
@@ -223,6 +224,7 @@ const translations = {
         // Search section
         stockSymbolSearch: "Stock Symbol Search",
         enterStockSymbol: "Enter stock symbol (e.g., VCB)",
+        search: "Search",
         loadCompanyData: "Load Company Data",
         
         // Tabs

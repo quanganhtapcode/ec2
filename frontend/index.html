@@ -46,45 +46,34 @@
     <script src="translations.js?v=7"></script>
     <script src="app.js?v=7" defer></script>
 </head>
-<body class="app-container">    <header class="app-header py-16">
-        <div class="container flex justify-between items-center">
-            <h1 class="app-title">Vietnam Stock Valuation</h1>
-            <div class="header-controls">
+<body class="app-container">
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loader"></div>
+    </div>
+    <div id="status-message" class="status-message hidden"></div>
+    <header class="app-header py-16">
+        <div class="container header-bar">
+            <form class="search-form header-search-form">
                 <div class="period-selector">
-                    <label for="period-select" class="period-label" data-i18n="dataPeriod">Data Period:</label>
                     <select id="period-select" class="period-dropdown">
                         <option value="year" data-i18n="latestYear">Latest Year</option>
                         <option value="quarter" data-i18n="latestQuarter">Latest Quarter</option>
                     </select>
                 </div>
-                <button id="language-toggle-btn" class="btn btn--outline language-toggle" aria-label="Change language">
-                    <span class="lang-text">EN</span>
+                <label for="stock-symbol" class="form-label sr-only" data-i18n="stockSymbolSearch">Stock Symbol Search</label>
+                <input type="text" id="stock-symbol" class="form-control stock-input" placeholder="Enter stock symbol (e.g., VCB)" data-i18n-placeholder="enterStockSymbol">
+                <button type="submit" id="search-btn" class="btn btn--primary btn--icon" aria-label="Search" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
                 </button>
-                <button id="theme-toggle-btn" class="btn btn--outline theme-toggle" aria-label="Toggle theme">
-                    <span class="theme-icon light-icon">☀️</span>
-                    <span class="theme-icon dark-icon">🌙</span>
+                <button type="button" id="download-financials-btn" class="btn btn--secondary" title="Download full financial statements (Balance Sheet, Income Statement, Cash Flow) in Excel format" disabled>
+                    <span data-i18n="downloadFinancialData">Excel Data</span>
                 </button>
-            </div>
+            </form>
         </div>
     </header><main class="app-main">
-        <section class="search-section container">
-            <div id="status-message" class="status-message hidden"></div>
-            <div class="search-section">
-                <form class="search-form">
-                    <div class="search-input-wrapper">
-                        <label for="stock-symbol" class="form-label" data-i18n="stockSymbolSearch">Stock Symbol Search</label>
-                        <input type="text" id="stock-symbol" class="form-control" placeholder="Enter stock symbol (e.g., VCB)" data-i18n-placeholder="enterStockSymbol">
-                    </div>
-                    <div class="search-actions">
-                        <button type="button" id="load-data-btn" class="btn btn--primary" data-i18n="loadCompanyData">Load Data</button>
-                        <button type="button" id="download-financials-btn" class="btn btn--secondary" title="Download full financial statements (Balance Sheet, Income Statement, Cash Flow) in Excel format" disabled>
-                            <span data-i18n="downloadFinancialData">Excel Data</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-
         <section class="container">
             <div class="tabs">
                 <button class="tab-btn active" data-tab="overview" data-i18n="companyOverview">Company Overview</button>
@@ -603,18 +592,29 @@
     </main>
 
     <footer class="app-footer py-16">
-        <div class="container text-center">
-            <p>
-                <a href="https://www.linkedin.com/in/quanganhday/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: var(--font-weight-medium);">
-                    Quang Anh
-                </a> | Data provider: 
-                <a href="https://www.vietcap.com.vn/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none;">Vietcap</a>, 
-                <a href="https://www.tcbs.com.vn/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none;">TCBS</a>
-            </p>
-            <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-8);">
-                <a href="https://valuation.quanganh.org" style="color: var(--color-primary); text-decoration: none;">valuation.quanganh.org</a> | 
-                <a href="https://api.quanganh.org" style="color: var(--color-primary); text-decoration: none;">api.quanganh.org</a>
-            </p>
+        <div class="container">
+            <div class="footer-controls">
+                <button id="language-toggle-btn" class="btn btn--outline language-toggle" aria-label="Change language">
+                    <span class="lang-text">EN</span>
+                </button>
+                <button id="theme-toggle-btn" class="btn btn--outline theme-toggle" aria-label="Toggle theme">
+                    <span class="theme-icon light-icon">☀️</span>
+                    <span class="theme-icon dark-icon">🌙</span>
+                </button>
+            </div>
+            <div class="footer-content text-center">
+                <p>
+                    <a href="https://www.linkedin.com/in/quanganhday/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: var(--font-weight-medium);">
+                        Quang Anh
+                    </a> | Data provider: 
+                    <a href="https://www.vietcap.com.vn/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none;">Vietcap</a>, 
+                    <a href="https://www.tcbs.com.vn/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none;">TCBS</a>
+                </p>
+                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-8);">
+                    <a href="https://valuation.quanganh.org" style="color: var(--color-primary); text-decoration: none;">valuation.quanganh.org</a> | 
+                    <a href="https://api.quanganh.org" style="color: var(--color-primary); text-decoration: none;">api.quanganh.org</a>
+                </p>
+            </div>
         </div>
     </footer>
 
