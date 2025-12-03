@@ -3,32 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VN Stock Valuation | DCF Analysis Tool</title>
+    <title>Vietnam Stock Valuation - Professional Stock Analysis & DCF Calculator</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Advanced DCF valuation tool for Vietnamese stocks. Analyze VN30 companies with FCFE, FCFF, P/E, P/B models. Real-time financial data and comprehensive reports.">
-    <meta name="keywords" content="Vietnam stock valuation, DCF calculator, FCFE FCFF model, VN30 analysis, intrinsic value, discounted cash flow, Vietnamese stocks, investment analysis, financial modeling, stock screener">
+    <meta name="description" content="Free Vietnamese stock valuation tool using DCF models (FCFE, FCFF, P/E, P/B). Analyze VN30, financial metrics, and make informed investment decisions.">
+    <meta name="keywords" content="Vietnam stock, stock valuation, DCF calculator, FCFE, FCFF, VN30, stock analysis, investment">
     <meta name="author" content="Quang Anh">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://valuation.quanganh.org/">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://valuation.quanganh.org/">
-    <meta property="og:title" content="VN Stock Valuation | Professional DCF Analysis">
-    <meta property="og:description" content="Advanced DCF valuation for Vietnamese stocks. Real-time analysis with FCFE, FCFF, P/E, and P/B models. Comprehensive financial reports.">
+    <meta property="og:title" content="Vietnam Stock Valuation - Professional DCF Calculator">
+    <meta property="og:description" content="Free Vietnamese stock valuation tool using DCF models (FCFE, FCFF, P/E, P/B). Analyze financial metrics and make informed investment decisions.">
     <meta property="og:image" content="https://valuation.quanganh.org/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="VN Stock Valuation">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://valuation.quanganh.org/">
-    <meta property="twitter:title" content="VN Stock Valuation | DCF Analysis Tool">
-    <meta property="twitter:description" content="Advanced DCF valuation for Vietnamese stocks with real-time data. FCFE, FCFF, P/E, P/B models included.">
+    <meta property="twitter:title" content="Vietnam Stock Valuation - Professional DCF Calculator">
+    <meta property="twitter:description" content="Free Vietnamese stock valuation tool using DCF models. Analyze VN30 stocks with professional financial metrics.">
     <meta property="twitter:image" content="https://valuation.quanganh.org/og-image.png">
-    <meta property="twitter:creator" content="@quanganh">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -43,46 +37,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css?v=8">
-    
-    <!-- JSON-LD Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "VN Stock Valuation",
-      "applicationCategory": "FinanceApplication",
-      "description": "Advanced DCF valuation tool for Vietnamese stocks with FCFE, FCFF, P/E, and P/B models",
-      "url": "https://valuation.quanganh.org/",
-      "author": {
-        "@type": "Person",
-        "name": "Quang Anh"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "VND"
-      },
-      "operatingSystem": "Any",
-      "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "127"
-      }
-    }
-    </script>
-    
+    <link rel="stylesheet" href="style.css?v=7">
     <!-- Defer heavy library loading (~80KB) until after page load -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
-    <script src="translations.js?v=8"></script>
-    <script src="app.js?v=8" defer></script>
+    <script src="translations.js?v=7"></script>
+    <script src="app.js?v=7" defer></script>
 </head>
 <body class="app-container">    <header class="app-header py-16">
         <div class="container flex justify-between items-center">
+            <h1 class="app-title">Vietnam Stock Valuation</h1>
             <div class="header-controls">
                 <div class="period-selector">
                     <label for="period-select" class="period-label" data-i18n="dataPeriod">Data Period:</label>
@@ -100,12 +66,9 @@
                 </button>
             </div>
         </div>
-    </header>
-
-    <main class="app-main">
-        <section class="container">
+    </header><main class="app-main">
+        <section class="search-section container">
             <div id="status-message" class="status-message hidden"></div>
-            
             <div class="search-section">
                 <form class="search-form">
                     <div class="search-input-wrapper">
@@ -120,7 +83,6 @@
                     </div>
                 </form>
             </div>
-        </section>
 
 
         <section class="container">
