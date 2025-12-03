@@ -221,42 +221,28 @@ class StockValuationApp {
                     return;
                 }
                 
+                // Show loading state
+                this.showStatus(`Preparing download for ${symbol}...`, 'loading');
+                
                 // Download from VPS backend with error handling
                 const fileUrl = `${this.apiBaseUrl}/api/download/${symbol}`;
                 
                 try {
-                    // First, check if file exists with a HEAD request
-                    const checkResponse = await fetch(fileUrl, { method: 'HEAD' });
-                    
-                    if (checkResponse.status === 404) {
-                        this.showStatus(`Financial data for ${symbol} is not available`, 'error');
-                        return;
-                    }
-                    
-                    if (checkResponse.status === 429) {
-                        // Rate limit exceeded
-                        const errorData = await fetch(fileUrl).then(r => r.json());
-                        const minutes = errorData.retry_after_minutes || Math.ceil(errorData.retry_after / 60);
-                        this.showStatus(`Download limit exceeded. Please try again in ${minutes} minutes.`, 'error');
-                        return;
-                    }
-                    
-                    if (!checkResponse.ok) {
-                        this.showStatus(`Download failed: ${checkResponse.statusText}`, 'error');
-                        return;
-                    }
-                    
-                    // File exists, proceed with download
+                    // Directly trigger download with invisible link
                     const tempLink = document.createElement('a');
                     tempLink.href = fileUrl;
                     tempLink.download = `${symbol}.xlsx`;
                     tempLink.style.display = 'none';
                     document.body.appendChild(tempLink);
                     tempLink.click();
-                    document.body.removeChild(tempLink);
                     
-                    // Show success message with details
-                    this.showStatus(`Downloading ${symbol}.xlsx - Full financial statements (Balance Sheet, Income Statement, Cash Flow)`, 'success');
+                    // Show success message
+                    this.showStatus(`Downloading ${symbol}.xlsx - Full financial statements`, 'success');
+                    
+                    // Clean up after delay
+                    setTimeout(() => {
+                        document.body.removeChild(tempLink);
+                    }, 100);
                     
                 } catch (error) {
                     console.error('Download error:', error);
