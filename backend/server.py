@@ -2511,9 +2511,10 @@ def get_historical_chart_data(symbol):
                 })
         
         logger.info(f"Fetching fresh historical chart data for {symbol}")
-        # Lấy industry từ CSV
-        company_info = provider._get_company_info_from_csv(symbol)
-        industry = company_info.get('industry', '').strip()
+        # Lấy sector từ JSON file
+        stock_info = provider._search_symbol_in_all_industries(symbol)
+        industry = stock_info.get('sector', '').strip()
+        logger.info(f"🏢 Sector for {symbol}: '{industry}'")
         stock = provider.vnstock.stock(symbol=symbol, source='VCI')
         ratio_quarter = stock.finance.ratio(period='quarter', lang='en', dropna=True)
         if ratio_quarter.empty:

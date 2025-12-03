@@ -38,7 +38,8 @@ class StockValuationApp {
             justified_pb: 25
         };
         this.valuationResults = null;
-        this.apiBaseUrl = 'https://api.quanganh.org'; // Production API endpoint
+        this.apiBaseUrl = 'http://localhost:5000'; // Local testing
+        // this.apiBaseUrl = 'https://api.quanganh.org'; // Production API endpoint
         this.charts = {
             roeRoa: null,
             liquidity: null,
@@ -3530,4 +3531,273 @@ document.addEventListener('DOMContentLoaded', () => {
         new StockValuationApp(); // Proceed without charts
     };
     document.head.appendChild(script);
+    
+    // Footer legal links handlers
+    setupLegalModals();
 });
+
+function setupLegalModals() {
+    const disclaimerLink = document.getElementById('disclaimer-link');
+    const privacyLink = document.getElementById('privacy-link');
+    const termsLink = document.getElementById('terms-link');
+    const contactLink = document.getElementById('contact-link');
+    
+    if (disclaimerLink) {
+        disclaimerLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLegalModal('disclaimer');
+        });
+    }
+    
+    if (privacyLink) {
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLegalModal('privacy');
+        });
+    }
+    
+    if (termsLink) {
+        termsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLegalModal('terms');
+        });
+    }
+    
+    if (contactLink) {
+        contactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLegalModal('contact');
+        });
+    }
+}
+
+function showLegalModal(type) {
+    const currentLang = document.documentElement.getAttribute('lang') || 'en';
+    
+    const content = {
+        disclaimer: {
+            en: {
+                title: 'Disclaimer',
+                body: `<h3>Investment Disclaimer</h3>
+                <p>The information provided on this platform is for general informational purposes only. All information is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information.</p>
+                
+                <h3>Not Financial Advice</h3>
+                <p>The content is not intended to be a substitute for professional financial advice. Always seek the advice of your financial advisor or other qualified financial service provider with any questions you may have regarding your investment decisions.</p>
+                
+                <h3>No Investment Recommendations</h3>
+                <p>Nothing on this platform constitutes investment advice, performance data or any recommendation that any security, portfolio of securities, investment product, transaction or investment strategy is suitable for any specific person.</p>
+                
+                <h3>Risk Warning</h3>
+                <p>Investments in securities market are subject to market risks. Past performance is not indicative of future results. You should carefully consider your investment objectives, level of experience, and risk appetite before making any investment decisions.</p>
+                
+                <h3>Data Accuracy</h3>
+                <p>While we strive to provide accurate and up-to-date information from reliable sources (Vietcap, TCBS, VCI), we do not guarantee the accuracy, completeness, or timeliness of the data. Users should verify all information independently before making investment decisions.</p>`
+            },
+            vi: {
+                title: 'Miễn trừ trách nhiệm',
+                body: `<h3>Miễn trừ trách nhiệm đầu tư</h3>
+                <p>Thông tin được cung cấp trên nền tảng này chỉ mang tính chất tham khảo chung. Tất cả thông tin được cung cấp với thiện chí, tuy nhiên chúng tôi không đưa ra bất kỳ tuyên bố hoặc bảo đảm nào, rõ ràng hay ngụ ý, về tính chính xác, đầy đủ, hợp lệ, độ tin cậy, tính khả dụng hoặc đầy đủ của bất kỳ thông tin nào.</p>
+                
+                <h3>Không phải lời khuyên tài chính</h3>
+                <p>Nội dung không nhằm thay thế lời khuyên tài chính chuyên nghiệp. Luôn tìm kiếm lời khuyên từ cố vấn tài chính của bạn hoặc nhà cung cấp dịch vụ tài chính có trình độ khác với bất kỳ câu hỏi nào bạn có về quyết định đầu tư của mình.</p>
+                
+                <h3>Không khuyến nghị đầu tư</h3>
+                <p>Không có nội dung nào trên nền tảng này cấu thành lời khuyên đầu tư, dữ liệu hiệu suất hoặc bất kỳ khuyến nghị nào rằng bất kỳ chứng khoán, danh mục chứng khoán, sản phẩm đầu tư, giao dịch hoặc chiến lược đầu tư nào phù hợp với bất kỳ người cụ thể nào.</p>
+                
+                <h3>Cảnh báo rủi ro</h3>
+                <p>Đầu tư vào thị trường chứng khoán chịu rủi ro thị trường. Hiệu suất trong quá khứ không phản ánh kết quả trong tương lai. Bạn nên xem xét cẩn thận mục tiêu đầu tư, mức độ kinh nghiệm và khẩu vị rủi ro của mình trước khi đưa ra bất kỳ quyết định đầu tư nào.</p>
+                
+                <h3>Độ chính xác dữ liệu</h3>
+                <p>Mặc dù chúng tôi cố gắng cung cấp thông tin chính xác và cập nhật từ các nguồn đáng tin cậy (Vietcap, TCBS, VCI), chúng tôi không đảm bảo tính chính xác, đầy đủ hoặc kịp thời của dữ liệu. Người dùng nên xác minh độc lập tất cả thông tin trước khi đưa ra quyết định đầu tư.</p>`
+            }
+        },
+        privacy: {
+            en: {
+                title: 'Privacy Policy',
+                body: `<h3>Information Collection</h3>
+                <p>This platform does not collect, store, or process any personal information from users. We do not use cookies for tracking purposes, and we do not require user registration or login.</p>
+                
+                <h3>Data Usage</h3>
+                <p>All stock data displayed is sourced from publicly available financial information provided by Vietcap Securities, TCBS Securities, and VCI Securities. No user-specific data is collected or analyzed.</p>
+                
+                <h3>Local Storage</h3>
+                <p>The platform may use browser local storage to save user preferences such as language selection and theme preferences. This data is stored locally on your device and is not transmitted to any server.</p>
+                
+                <h3>Third-Party Services</h3>
+                <p>This platform uses third-party data providers (Vietcap, TCBS, VCI) for financial information. Please refer to their respective privacy policies for information on how they handle data.</p>
+                
+                <h3>Data Security</h3>
+                <p>Since we do not collect personal information, there is no personal data at risk. However, we recommend using secure internet connections when accessing financial information.</p>
+                
+                <h3>Changes to Privacy Policy</h3>
+                <p>We reserve the right to update this privacy policy at any time. Continued use of the platform after changes constitutes acceptance of the updated policy.</p>`
+            },
+            vi: {
+                title: 'Chính sách bảo mật',
+                body: `<h3>Thu thập thông tin</h3>
+                <p>Nền tảng này không thu thập, lưu trữ hoặc xử lý bất kỳ thông tin cá nhân nào từ người dùng. Chúng tôi không sử dụng cookies để theo dõi và không yêu cầu đăng ký hoặc đăng nhập người dùng.</p>
+                
+                <h3>Sử dụng dữ liệu</h3>
+                <p>Tất cả dữ liệu cổ phiếu được hiển thị đều có nguồn gốc từ thông tin tài chính công khai được cung cấp bởi Chứng khoán Vietcap, Chứng khoán TCBS và Chứng khoán VCI. Không có dữ liệu cụ thể của người dùng được thu thập hoặc phân tích.</p>
+                
+                <h3>Lưu trữ cục bộ</h3>
+                <p>Nền tảng có thể sử dụng bộ nhớ cục bộ của trình duyệt để lưu tùy chọn của người dùng như lựa chọn ngôn ngữ và tùy chọn chủ đề. Dữ liệu này được lưu trữ cục bộ trên thiết bị của bạn và không được truyền đến bất kỳ máy chủ nào.</p>
+                
+                <h3>Dịch vụ bên thứ ba</h3>
+                <p>Nền tảng này sử dụng các nhà cung cấp dữ liệu bên thứ ba (Vietcap, TCBS, VCI) cho thông tin tài chính. Vui lòng tham khảo chính sách bảo mật tương ứng của họ để biết thông tin về cách họ xử lý dữ liệu.</p>
+                
+                <h3>Bảo mật dữ liệu</h3>
+                <p>Vì chúng tôi không thu thập thông tin cá nhân nên không có dữ liệu cá nhân nào có nguy cơ. Tuy nhiên, chúng tôi khuyến nghị sử dụng kết nối internet an toàn khi truy cập thông tin tài chính.</p>
+                
+                <h3>Thay đổi chính sách bảo mật</h3>
+                <p>Chúng tôi có quyền cập nhật chính sách bảo mật này bất kỳ lúc nào. Việc tiếp tục sử dụng nền tảng sau khi có thay đổi đồng nghĩa với việc chấp nhận chính sách đã cập nhật.</p>`
+            }
+        },
+        terms: {
+            en: {
+                title: 'Terms of Service',
+                body: `<h3>Acceptance of Terms</h3>
+                <p>By accessing and using this stock valuation platform, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                
+                <h3>Use License</h3>
+                <p>Permission is granted to temporarily access the materials (information or software) on this platform for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
+                
+                <h3>Restrictions</h3>
+                <p>You may not:
+                <ul>
+                    <li>Modify or copy the materials</li>
+                    <li>Use the materials for any commercial purpose or public display</li>
+                    <li>Attempt to decompile or reverse engineer any software contained on the platform</li>
+                    <li>Remove any copyright or proprietary notations from the materials</li>
+                    <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+                </ul>
+                </p>
+                
+                <h3>Service Availability</h3>
+                <p>We strive to maintain high availability but do not guarantee that the platform will be available at all times. The service may be interrupted for maintenance, updates, or due to circumstances beyond our control.</p>
+                
+                <h3>Accuracy of Materials</h3>
+                <p>The materials appearing on this platform could include technical, typographical, or photographic errors. We do not warrant that any of the materials on the platform are accurate, complete, or current.</p>
+                
+                <h3>Links</h3>
+                <p>We have not reviewed all of the sites linked to our platform and are not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by us.</p>
+                
+                <h3>Modifications</h3>
+                <p>We may revise these terms of service at any time without notice. By using this platform, you are agreeing to be bound by the current version of these terms of service.</p>
+                
+                <h3>Governing Law</h3>
+                <p>These terms and conditions are governed by and construed in accordance with the laws of Vietnam.</p>`
+            },
+            vi: {
+                title: 'Điều khoản sử dụng',
+                body: `<h3>Chấp nhận điều khoản</h3>
+                <p>Bằng cách truy cập và sử dụng nền tảng định giá cổ phiếu này, bạn chấp nhận và đồng ý bị ràng buộc bởi các điều khoản và điều khoản của thỏa thuận này.</p>
+                
+                <h3>Giấy phép sử dụng</h3>
+                <p>Được cấp quyền truy cập tạm thời vào các tài liệu (thông tin hoặc phần mềm) trên nền tảng này chỉ để xem tạm thời, phi thương mại, cá nhân. Đây là việc cấp giấy phép, không phải chuyển nhượng quyền sở hữu.</p>
+                
+                <h3>Hạn chế</h3>
+                <p>Bạn không được:
+                <ul>
+                    <li>Sửa đổi hoặc sao chép tài liệu</li>
+                    <li>Sử dụng tài liệu cho bất kỳ mục đích thương mại hoặc hiển thị công khai nào</li>
+                    <li>Cố gắng dịch ngược hoặc đảo ngược kỹ thuật bất kỳ phần mềm nào có trong nền tảng</li>
+                    <li>Xóa bất kỳ thông báo bản quyền hoặc độc quyền nào khỏi tài liệu</li>
+                    <li>Chuyển tài liệu cho người khác hoặc "sao chép" tài liệu trên bất kỳ máy chủ nào khác</li>
+                </ul>
+                </p>
+                
+                <h3>Tính khả dụng của dịch vụ</h3>
+                <p>Chúng tôi cố gắng duy trì tính khả dụng cao nhưng không đảm bảo rằng nền tảng sẽ khả dụng mọi lúc. Dịch vụ có thể bị gián đoạn để bảo trì, cập nhật hoặc do các trường hợp ngoài tầm kiểm soát của chúng tôi.</p>
+                
+                <h3>Độ chính xác của tài liệu</h3>
+                <p>Các tài liệu xuất hiện trên nền tảng này có thể bao gồm các lỗi kỹ thuật, đánh máy hoặc ảnh. Chúng tôi không đảm bảo rằng bất kỳ tài liệu nào trên nền tảng là chính xác, đầy đủ hoặc hiện tại.</p>
+                
+                <h3>Liên kết</h3>
+                <p>Chúng tôi chưa xem xét tất cả các trang web được liên kết với nền tảng của chúng tôi và không chịu trách nhiệm về nội dung của bất kỳ trang web được liên kết nào như vậy. Việc bao gồm bất kỳ liên kết nào không ngụ ý sự chứng thực của chúng tôi.</p>
+                
+                <h3>Sửa đổi</h3>
+                <p>Chúng tôi có thể sửa đổi các điều khoản dịch vụ này bất kỳ lúc nào mà không cần thông báo. Bằng cách sử dụng nền tảng này, bạn đồng ý bị ràng buộc bởi phiên bản hiện tại của các điều khoản dịch vụ này.</p>
+                
+                <h3>Luật điều chỉnh</h3>
+                <p>Các điều khoản và điều kiện này được điều chỉnh và giải thích theo luật pháp Việt Nam.</p>`
+            }
+        },
+        contact: {
+            en: {
+                title: 'Contact Information',
+                body: `<h3>Get in Touch</h3>
+                <p>For inquiries, feedback, or collaboration opportunities, please feel free to reach out through any of the following channels:</p>
+                
+                <h3>Email</h3>
+                <p><a href="mailto:quanganh.ibd@gmail.com" style="color: var(--color-primary); text-decoration: none;">quanganh.ibd@gmail.com</a></p>
+                
+                <h3>Phone</h3>
+                <p><a href="tel:+84813601054" style="color: var(--color-primary); text-decoration: none;">+84 813 601 054</a></p>
+                
+                <h3>LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/quanganhday/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none;">linkedin.com/in/quanganhday</a></p>
+                
+                <h3>Response Time</h3>
+                <p>I typically respond to inquiries within 24-48 hours during business days. For urgent matters, please indicate "URGENT" in your email subject line.</p>`
+            },
+            vi: {
+                title: 'Thông Tin Liên Hệ',
+                body: `<h3>Liên Hệ</h3>
+                <p>Để được tư vấn, góp ý hoặc cơ hội hợp tác, vui lòng liên hệ qua các kênh sau:</p>
+                
+                <h3>Email</h3>
+                <p><a href="mailto:quanganh.ibd@gmail.com" style="color: var(--color-primary); text-decoration: none;">quanganh.ibd@gmail.com</a></p>
+                
+                <h3>Điện Thoại</h3>
+                <p><a href="tel:+84813601054" style="color: var(--color-primary); text-decoration: none;">+84 813 601 054</a></p>
+                
+                <h3>LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/quanganhday/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none;">linkedin.com/in/quanganhday</a></p>
+                
+                <h3>Thời Gian Phản Hồi</h3>
+                <p>Tôi thường phản hồi các yêu cầu trong vòng 24-48 giờ trong ngày làm việc. Đối với các vấn đề khẩn cấp, vui lòng ghi "KHẨN CẤP" trong tiêu đề email.</p>`
+            }
+        }
+    };
+    
+    const data = content[type][currentLang];
+    
+    // Create modal overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'legal-modal-overlay';
+    overlay.innerHTML = `
+        <div class="legal-modal">
+            <div class="legal-modal-header">
+                <h2>${data.title}</h2>
+                <button class="legal-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="legal-modal-body">
+                ${data.body}
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(overlay);
+    
+    // Close handlers
+    const closeBtn = overlay.querySelector('.legal-modal-close');
+    closeBtn.addEventListener('click', () => {
+        overlay.remove();
+    });
+    
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.remove();
+        }
+    });
+    
+    // Escape key handler
+    const escHandler = (e) => {
+        if (e.key === 'Escape') {
+            overlay.remove();
+            document.removeEventListener('keydown', escHandler);
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+}
