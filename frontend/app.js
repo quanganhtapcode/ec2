@@ -3760,14 +3760,27 @@ function showLegalModal(type) {
     
     document.body.appendChild(overlay);
     
+    // Position overlay at current scroll position
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    overlay.style.top = scrollTop + 'px';
+    
+    // Prevent body scroll and ensure modal content starts at top
+    document.body.style.overflow = 'hidden';
+    const modalBody = overlay.querySelector('.legal-modal-body');
+    if (modalBody) {
+        modalBody.scrollTop = 0;
+    }
+    
     // Close handlers
     const closeBtn = overlay.querySelector('.legal-modal-close');
     closeBtn.addEventListener('click', () => {
+        document.body.style.overflow = '';
         overlay.remove();
     });
     
     overlay.addEventListener('click', (e) => {
         if (e.target === overlay) {
+            document.body.style.overflow = '';
             overlay.remove();
         }
     });
@@ -3775,6 +3788,7 @@ function showLegalModal(type) {
     // Escape key handler
     const escHandler = (e) => {
         if (e.key === 'Escape') {
+            document.body.style.overflow = '';
             overlay.remove();
             document.removeEventListener('keydown', escHandler);
         }

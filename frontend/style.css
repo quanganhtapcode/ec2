@@ -797,8 +797,8 @@ select.form-control {
   padding-right: var(--space-8);
 }
 .py-16 {
-  padding-top: var(--space-2);
-  padding-bottom: var(--space-2);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .px-16 {
   padding-left: var(--space-16);
@@ -949,27 +949,50 @@ select.form-control {
   position: relative;
 }
 
+.app-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-32);
+}
+
 .footer-content {
   max-width: var(--container-xl);
   margin: 0 auto;
-  padding: var(--space-2) var(--space-12);
+  padding: var(--space-8) var(--space-12);
   text-align: center;
 }
 
 .footer-links-row {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: var(--space-10);
-  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.footer-row-top,
+.footer-row-bottom {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: var(--space-6);
+    flex-wrap: nowrap;
+    padding: var(--space-4) 0;
+}.footer-row-bottom {
+  padding: var(--space-8) 0;
 }
 
 .footer-links-row a {
   color: var(--color-text-secondary);
   text-decoration: none;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   transition: color var(--duration-fast) var(--ease-standard);
   white-space: nowrap;
+  letter-spacing: 0.01em;
+  min-height: auto;
+  min-width: auto;
+  padding: var(--space-4) var(--space-6);
 }
 
 .footer-links-row a:hover {
@@ -977,9 +1000,10 @@ select.form-control {
 }
 
 .footer-separator {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
   user-select: none;
+  opacity: 0.5;
 }
 
 .footer-copyright {
@@ -989,41 +1013,61 @@ select.form-control {
 }
 
 .footer-btn {
-  background: transparent;
+  background: var(--color-bg-secondary);
   border: none;
-  padding: 0;
+  padding: var(--space-2) var(--space-6);
   margin: 0;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
   cursor: pointer;
-  transition: color var(--duration-fast) var(--ease-standard);
+  transition: all var(--duration-fast) var(--ease-standard);
   white-space: nowrap;
+  border-radius: var(--radius-sm);
+  min-width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-btn:hover {
   color: var(--color-primary);
+  background: var(--color-surface);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 480px) {
+  .footer-content {
+    padding: var(--space-12) var(--space-8);
+  }
+  
   .footer-links-row {
     gap: var(--space-4);
   }
   
-  .footer-links-row a,
-  .footer-separator,
-  .footer-copyright {
-    font-size: 8px;
+  .footer-row-top,
+  .footer-row-bottom {
+    gap: var(--space-6);
+  }
+  
+  .footer-links-row a {
+    font-size: 12px;
+  }
+  
+  .footer-separator {
+    font-size: 12px;
   }
   
   .footer-btn {
-    font-size: 7px !important;
-    transform: scale(0.7);
-    padding: 0 2px;
+    font-size: 12px !important;
+    padding: var(--space-3) var(--space-8);
+    min-width: 44px;
   }
   
   .footer-btn .lang-text,
   .footer-btn .theme-icon {
-    font-size: 7px;
+    font-size: 12px;
   }
 }
 
@@ -2719,11 +2763,11 @@ select.form-control {
    ================================= */
 
 .legal-modal-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -2732,7 +2776,6 @@ select.form-control {
   justify-content: center;
   z-index: 10001;
   padding: var(--space-20);
-  overflow-y: auto;
 }
 
 .legal-modal {
@@ -2834,9 +2877,14 @@ select.form-control {
 }
 
 @media (max-width: 768px) {
+  .legal-modal-overlay {
+    padding: var(--space-12);
+    align-items: center;
+  }
+  
   .legal-modal {
     max-height: 90vh;
-    margin: var(--space-16);
+    margin: 0;
   }
   
   .legal-modal-header {
@@ -2864,9 +2912,11 @@ select.form-control {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.75);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 10vh;
   z-index: 10000;
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -2970,6 +3020,12 @@ select.form-control {
 }
 
 @media (max-width: 480px) {
+  .modal {
+    padding-top: 5vh;
+    padding-left: var(--space-12);
+    padding-right: var(--space-12);
+  }
+  
   .modal-content {
     padding: var(--space-20);
   }
