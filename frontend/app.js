@@ -961,10 +961,13 @@ class StockValuationApp {
             if (chartResponse.ok) {
                 const chartData = await chartResponse.json();
                 
+                console.log('📊 Chart data response:', chartData);
+                
                 if (chartData.success) {
                     // Only update if this is still the current symbol
                     if (this.currentStock === symbol) {
                         this.historicalData = chartData.data;
+                        console.log('📈 Historical data set:', this.historicalData);
                         this.chartsLoaded = true;
                         
                         // Cache the chart data for future use
