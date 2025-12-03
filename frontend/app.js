@@ -1228,6 +1228,9 @@ class StockValuationApp {
         
         // Update NIM Chart (only for banks)
         if (isBank && this.charts.nim) {
+            console.log('🏦 Bank detected, updating NIM chart');
+            console.log('NIM data:', this.historicalData.nim_data);
+            console.log('Years:', this.historicalData.years);
             this.charts.nim.data.labels = this.historicalData.years;
             this.charts.nim.data.datasets[0].data = this.historicalData.nim_data || [];
             this.charts.nim.update();
