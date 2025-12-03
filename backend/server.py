@@ -2593,10 +2593,12 @@ def get_historical_chart_data(symbol):
                 cash_ratio_val = None
                 nim_val = np.nan
                 try:
+                    logger.info(f"Calculating NIM for {symbol} - Year: {year}, Quarter: {quarter}")
                     mask_income = (income_quarter['yearReport'] == year) & (income_quarter['lengthReport'] == quarter)
                     if hasattr(mask_income, 'any') and mask_income.any():
                         idx_current = income_quarter[mask_income].index[0]
                         pos = income_quarter.index.get_loc(idx_current)
+                        logger.info(f"Position in income data: {pos}")
                         if pos >= 3:
                             idxs = income_quarter.index[pos-3:pos+1]
                             numerator = 0.0
@@ -2658,8 +2660,16 @@ def get_historical_chart_data(symbol):
                                 denominator = 0.0
                             if denominator != 0:
                                 nim_val = (numerator / denominator) * 100
+                                logger.info(f"NIM calculated: {nim_val:.4f}% (numerator: {numerator}, denominator: {denominator})")
+                            else:
+                                logger.warning(f"NIM denominator is 0 for {symbol} {year}Q{quarter}")
+                        else:
+                            logger.warning(f"Not enough data (pos={pos}) to calculate NIM for {symbol} {year}Q{quarter}")
+                    else:
+                        logger.warning(f"No matching income data for {symbol} {year}Q{quarter}")
                 except Exception as e:
                     nim_val = np.nan
+                    logger.error(f"Error calculating NIM for {symbol} {year}Q{quarter}: {e}")
                 nim_val = float(nim_val) if pd.notna(nim_val) else 0
             historical_data["years"].append(period_label)
             historical_data["roe_data"].append(roe_val)
