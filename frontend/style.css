@@ -1480,21 +1480,22 @@ select.form-control {
 
 /* Tab Navigation (Segmented Control Style) */
 .tabs {
-  display: inline-flex;
+  display: flex;
+  /* Changed from inline-flex to flex for centering */
   flex-direction: row;
-  /* Force horizontal */
   align-items: center;
+  justify-content: center;
+  /* Center items if they don't fill width, or... */
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
-  /* Match search bar radius */
   padding: 4px;
   gap: 4px;
-  margin-bottom: var(--space-32);
+  margin: 0 auto var(--space-32) auto;
+  /* Center the container itself */
   width: 100%;
   max-width: 600px;
   box-shadow: var(--shadow-sm);
-  /* Subtle depth */
 }
 
 /* Dark mode adjustment for tabs container */
@@ -1601,18 +1602,25 @@ select.form-control {
 }
 
 @media (max-width: 480px) {
+
+  /* Keep text visible even on small screens */
   .tab-btn span {
-    display: none;
-    /* Show only icons on very small screens to fit 3 tabs */
+    display: inline-block !important;
+    font-size: 11px;
+    /* Slightly smaller text for tight fit */
   }
 
   .tab-btn {
-    padding: 12px;
+    padding: 8px 4px;
+    /* Reduced padding */
+    flex-direction: column;
+    /* Stack icon and text if very tight, or keep row? row is better for segmented */
+    gap: 4px;
   }
 
   .tab-icon {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
   }
 }
 
