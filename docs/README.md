@@ -8,6 +8,8 @@ Visit the live application: [https://valuation.quanganh.org]
 
 ## 📋 Features
 
+- **Smart Search**: Auto-loads stock data when typing (debounced)
+- **Reactive Valuation**: Automatically recalculates valuation models when data loads or assumptions change
 - **Real-time Stock Data**: Fetches live data from Vietnamese stock market
 - **Multiple Valuation Models**: 
   - Free Cash Flow to Equity (FCFE)

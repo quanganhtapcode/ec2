@@ -19,6 +19,7 @@ class StockValuationApp {
             chartData: null
         };
         this.debounceTimer = null; // For debouncing symbol input
+        this.valuationDebounceTimer = null; // For debouncing valuation calculation
         this.loadingState = {
             stockData: false,
             chartData: false
@@ -107,8 +108,12 @@ class StockValuationApp {
                 downloadBtn.disabled = !symbol || symbol.length === 0;
             }
 
-            // Auto-suggest with 500ms debounce (future enhancement)
-            // Could fetch ticker suggestions here
+            // Auto-suggest/Auto-load with debounce
+            this.debounceTimer = setTimeout(() => {
+                if (symbol.length >= 3) { // Only search if we have at least 3 chars
+                    this.loadStockData();
+                }
+            }, 800);
         });
 
         // Period Toggle Button (New UI V2)
@@ -148,11 +153,17 @@ class StockValuationApp {
 
         // Assumptions form
         document.getElementById('calculate-btn').addEventListener('click', () => this.calculateValuation());
-        document.getElementById('reset-assumptions-btn').addEventListener('click', () => this.resetAssumptions());
+        document.getElementById('reset-assumptions-btn').addEventListener('click', () => {
+            this.resetAssumptions();
+            this.debouncedCalculateValuation();
+        });
 
         // Real-time updates on assumption changes
         document.querySelectorAll('#assumptions-form input').forEach(input => {
-            input.addEventListener('input', () => this.updateAssumptions());
+            input.addEventListener('input', () => {
+                this.updateAssumptions();
+                this.debouncedCalculateValuation();
+            });
         });
 
         // Model weights checkboxes
@@ -925,6 +936,10 @@ class StockValuationApp {
             this.updateOverviewDisplay(stockData);
 
             this.showStatus('Data loaded successfully', 'success');
+
+            // Auto-calculate valuation when data is loaded (Preload)
+            this.calculateValuation();
+
             this.showLoading(false);
             this.loadingState.stockData = false;
 
@@ -1063,6 +1078,15 @@ class StockValuationApp {
                 }
             }
         }
+    }
+
+    debouncedCalculateValuation() {
+        if (this.valuationDebounceTimer) {
+            clearTimeout(this.valuationDebounceTimer);
+        }
+        this.valuationDebounceTimer = setTimeout(() => {
+            this.calculateValuation();
+        }, 500);
     }
 
     async calculateValuation() {
