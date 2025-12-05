@@ -167,10 +167,24 @@ class StockDataProvider:
                 match = self._listing_cache[self._listing_cache['symbol'].str.upper() == symbol_upper]
                 if not match.empty:
                     row = match.iloc[0]
+                    # Pandas Series - use direct indexing with try/except
+                    try:
+                        organ_name = row['organ_name'] if pd.notna(row['organ_name']) else symbol_upper
+                    except:
+                        organ_name = symbol_upper
+                    try:
+                        industry = row['icb_name3'] if pd.notna(row['icb_name3']) else 'Unknown'
+                    except:
+                        industry = 'Unknown'
+                    try:
+                        exchange = row['exchange'] if pd.notna(row['exchange']) else 'Unknown'
+                    except:
+                        exchange = 'Unknown'
+                    
                     return {
-                        'organ_name': row.get('organ_name', symbol_upper),
-                        'industry': row.get('icb_name3', 'Unknown'),
-                        'exchange': row.get('exchange', 'Unknown')
+                        'organ_name': organ_name,
+                        'industry': industry,
+                        'exchange': exchange
                     }
             
             return None  # Not found
