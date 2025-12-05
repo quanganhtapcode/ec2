@@ -69,7 +69,7 @@ class StockValuationApp {
         // Prevent form submit from reloading/clearing input
         const searchForm = document.querySelector('.header-search-form');
         if (searchForm) {
-            searchForm.addEventListener('submit', function(e) {
+            searchForm.addEventListener('submit', function (e) {
                 e.preventDefault();
             });
         }
@@ -82,7 +82,7 @@ class StockValuationApp {
                 this.loadStockData();
             });
         }
-        
+
         document.getElementById('stock-symbol').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -93,23 +93,43 @@ class StockValuationApp {
         // Reset cache when symbol input changes and enable download button
         document.getElementById('stock-symbol').addEventListener('input', (e) => {
             this.resetChartsState();
-            
+
             // Cancel any pending debounced requests
             if (this.debounceTimer) {
                 clearTimeout(this.debounceTimer);
                 this.debounceTimer = null;
             }
-            
+
             // Enable download button if valid ticker is entered
             const symbol = e.target.value.trim().toUpperCase();
             const downloadBtn = document.getElementById('download-financials-btn');
             if (downloadBtn) {
                 downloadBtn.disabled = !symbol || symbol.length === 0;
             }
-            
+
             // Auto-suggest with 500ms debounce (future enhancement)
             // Could fetch ticker suggestions here
         });
+
+        // Period Toggle Button (New UI V2)
+        const periodToggleBtn = document.getElementById('period-toggle-btn');
+        if (periodToggleBtn) {
+            periodToggleBtn.addEventListener('click', () => {
+                const select = document.getElementById('period-select');
+                const periodText = document.getElementById('period-text');
+
+                // Toggle
+                select.value = select.value === 'year' ? 'quarter' : 'year';
+
+                // Update UI text
+                if (periodText) {
+                    periodText.textContent = select.value === 'year' ? 'Year' : 'Quarter';
+                }
+
+                // Trigger change event
+                select.dispatchEvent(new Event('change'));
+            });
+        }
 
         // Period selector with debounce
         document.getElementById('period-select').addEventListener('change', () => {
@@ -118,7 +138,7 @@ class StockValuationApp {
                 if (this.debounceTimer) {
                     clearTimeout(this.debounceTimer);
                 }
-                
+
                 // Debounce to prevent rapid switching
                 this.debounceTimer = setTimeout(() => {
                     this.loadStockData();
@@ -145,13 +165,13 @@ class StockValuationApp {
         // Export functionality
         const exportReportBtn = document.getElementById('export-report-btn');
         const exportExcelBtn = document.getElementById('export-excel-btn');
-        
+
         if (exportReportBtn) {
             exportReportBtn.addEventListener('click', () => this.exportReport());
         } else {
             console.error('Export PDF button not found');
         }
-        
+
         if (exportExcelBtn) {
             exportExcelBtn.addEventListener('click', () => {
                 console.log('Excel export button clicked');
@@ -160,20 +180,20 @@ class StockValuationApp {
         } else {
             console.error('Export Excel button not found');
         }
-        
+
         // Setup language toggle
         this.setupLanguageToggle();
     }
-    
+
     setupLanguageToggle() {
         const languageToggle = document.getElementById('language-toggle-btn');
         const enFlag = languageToggle.querySelector('.en-flag');
         const viFlag = languageToggle.querySelector('.vi-flag');
-        
+
         // Get saved language or default to English
         const savedLang = localStorage.getItem('language') || 'en';
         this.currentLanguage = savedLang;
-        
+
         // Show appropriate flag
         if (savedLang === 'en') {
             enFlag.style.display = 'inline';
@@ -182,15 +202,15 @@ class StockValuationApp {
             enFlag.style.display = 'none';
             viFlag.style.display = 'inline';
         }
-        
+
         document.documentElement.setAttribute('lang', savedLang);
         this.applyLanguage(savedLang);
-        
+
         languageToggle.addEventListener('click', () => {
             // Toggle between English and Vietnamese
             const newLang = this.currentLanguage === 'en' ? 'vi' : 'en';
             this.currentLanguage = newLang;
-            
+
             // Toggle flag visibility
             if (newLang === 'en') {
                 enFlag.style.display = 'inline';
@@ -199,13 +219,13 @@ class StockValuationApp {
                 enFlag.style.display = 'none';
                 viFlag.style.display = 'inline';
             }
-            
+
             localStorage.setItem('language', newLang);
             document.documentElement.setAttribute('lang', newLang);
             this.applyLanguage(newLang);
         });
     }
-    
+
     setupThemeToggle() {
         const themeToggle = document.getElementById('theme-toggle-btn');
         const currentTheme = localStorage.getItem('theme') || 'light';
@@ -223,29 +243,29 @@ class StockValuationApp {
 
     setupDownloadModal() {
         const downloadBtn = document.getElementById('download-financials-btn');
-        
+
         if (downloadBtn) {
             downloadBtn.addEventListener('click', async () => {
                 // Get current stock symbol
                 const symbol = this.currentStock?.symbol || document.getElementById('stock-symbol').value.trim().toUpperCase();
-                
+
                 if (!symbol) {
                     this.showStatus('Please enter a stock symbol first', 'error');
                     return;
                 }
-                
+
                 // Validate ticker format
                 if (!/^[A-Z0-9]{1,10}$/.test(symbol)) {
                     this.showStatus('Invalid ticker format', 'error');
                     return;
                 }
-                
+
                 // Show loading state
                 this.showStatus(`Preparing download for ${symbol}...`, 'loading');
-                
+
                 // Download from VPS backend with error handling
                 const fileUrl = `${this.apiBaseUrl}/api/download/${symbol}`;
-                
+
                 try {
                     // Directly trigger download with invisible link
                     const tempLink = document.createElement('a');
@@ -254,15 +274,15 @@ class StockValuationApp {
                     tempLink.style.display = 'none';
                     document.body.appendChild(tempLink);
                     tempLink.click();
-                    
+
                     // Show success message
                     this.showStatus(`Downloading ${symbol}.xlsx - Full financial statements`, 'success');
-                    
+
                     // Clean up after delay
                     setTimeout(() => {
                         document.body.removeChild(tempLink);
                     }, 100);
-                    
+
                 } catch (error) {
                     console.error('Download error:', error);
                     this.showStatus('Download failed. Please check your connection and try again.', 'error');
@@ -344,7 +364,7 @@ class StockValuationApp {
 
     setupCharts() {
         console.log('Setting up charts...');
-        
+
         // Initialize ROE/ROA Chart with area/mountain style
         const roeRoaCtx = document.getElementById('roe-roa-chart').getContext('2d');
         this.charts.roeRoa = new Chart(roeRoaCtx, {
@@ -359,7 +379,7 @@ class StockValuationApp {
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 3,
                         fill: 'origin',
-                        tension: 0.4,                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        tension: 0.4, pointBackgroundColor: 'rgba(75, 192, 192, 1)',
                         pointBorderColor: '#fff',
                         pointBorderWidth: 1,
                         pointRadius: 3,
@@ -389,10 +409,10 @@ class StockValuationApp {
                     mode: 'index'
                 },
                 scales: {
-                    x: { 
+                    x: {
                         grid: { display: false },
                         ticks: { maxTicksLimit: 5 }
-                    },                    y: { 
+                    }, y: {
                         beginAtZero: true,
                         title: { display: false },
                         grid: { color: 'rgba(0,0,0,0.1)' },
@@ -430,7 +450,7 @@ class StockValuationApp {
                         backgroundColor: 'rgba(75, 192, 192, 0.1)',
                         borderWidth: 3,
                         fill: false,
-                        tension: 0.3,                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        tension: 0.3, pointBackgroundColor: 'rgba(75, 192, 192, 1)',
                         pointBorderColor: '#fff',
                         pointBorderWidth: 1,
                         pointRadius: 3,
@@ -474,10 +494,10 @@ class StockValuationApp {
                     mode: 'index'
                 },
                 scales: {
-                    x: { 
+                    x: {
                         grid: { display: false },
                         ticks: { maxTicksLimit: 5 }
-                    },                    y: { 
+                    }, y: {
                         beginAtZero: true,
                         title: { display: false },
                         grid: { color: 'rgba(0,0,0,0.1)' },
@@ -511,129 +531,44 @@ class StockValuationApp {
             return;
         }
         console.log('P/E P/B chart canvas found, creating chart...');
-        
+
         try {
             this.charts.pePb = new Chart(pePbCtx.getContext('2d'), {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [
-                    {
-                        label: 'P/E Ratio',
-                        data: [],
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.1)',
-                        borderWidth: 3,
-                        fill: false,
-                        tension: 0.3,
-                        pointBackgroundColor: 'rgba(255, 99, 132, 1)',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 1,
-                        pointRadius: 3,
-                        pointHoverRadius: 5,
-                        yAxisID: 'y'
-                    },
-                    {
-                        label: 'P/B Ratio',
-                        data: [],
-                        borderColor: 'rgba(153, 102, 255, 1)',
-                        backgroundColor: 'rgba(153, 102, 255, 0.1)',
-                        borderWidth: 3,
-                        fill: false,
-                        tension: 0.3,
-                        pointBackgroundColor: 'rgba(153, 102, 255, 1)',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 1,
-                        pointRadius: 3,
-                        pointHoverRadius: 5,
-                        yAxisID: 'y1'
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                interaction: {
-                    intersect: false,
-                    mode: 'index'
-                },
-                scales: {
-                    x: { 
-                        grid: { display: false },
-                        ticks: { maxTicksLimit: 5 }
-                    },
-                    y: {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        beginAtZero: true,
-                        title: { display: true, text: 'P/E Ratio' },
-                        grid: { color: 'rgba(0,0,0,0.1)' },
-                        ticks: { maxTicksLimit: 6 }
-                    },
-                    y1: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        beginAtZero: true,
-                        title: { display: true, text: 'P/B Ratio' },
-                        grid: {
-                            drawOnChartArea: false,
-                        },
-                        ticks: { maxTicksLimit: 6 }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: { usePointStyle: true, padding: 20 },
-                        onClick: function(e, legendItem) {
-                            const index = legendItem.datasetIndex;
-                            const chart = this.chart;
-                            const meta = chart.getDatasetMeta(index);
-                            
-                            // Toggle visibility
-                            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
-                            chart.update();
-                        }
-                    },
-                    tooltip: {
-                        backgroundColor: 'rgba(0,0,0,0.8)',
-                        titleColor: '#fff',
-                        bodyColor: '#fff',
-                        cornerRadius: 8,
-                        displayColors: true
-                    }
-                },
-                elements: {
-                    point: { hoverBorderWidth: 3 }
-                }
-            }
-        });
-        
-        console.log('P/E P/B chart created successfully');
-        
-        // Initialize NIM Chart
-        const nimCtx = document.getElementById('nim-chart')?.getContext('2d');
-        if (nimCtx) {
-            this.charts.nim = new Chart(nimCtx, {
                 type: 'line',
                 data: {
                     labels: [],
-                    datasets: [{
-                        label: 'NIM (%)',
-                        data: [],
-                        backgroundColor: 'rgba(255, 206, 86, 0.1)',
-                        borderColor: 'rgba(255, 206, 86, 1)',
-                        borderWidth: 3,
-                        fill: false,
-                        tension: 0.3,
-                        pointBackgroundColor: 'rgba(255, 206, 86, 1)',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 1,
-                        pointRadius: 3,
-                        pointHoverRadius: 5
-                    }]
+                    datasets: [
+                        {
+                            label: 'P/E Ratio',
+                            data: [],
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.3,
+                            pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 1,
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'P/B Ratio',
+                            data: [],
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            backgroundColor: 'rgba(153, 102, 255, 0.1)',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.3,
+                            pointBackgroundColor: 'rgba(153, 102, 255, 1)',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 1,
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                            yAxisID: 'y1'
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
@@ -643,48 +578,133 @@ class StockValuationApp {
                         mode: 'index'
                     },
                     scales: {
-                        x: { 
-                            grid: { display: false }, 
-                            ticks: { maxTicksLimit: 5 } 
+                        x: {
+                            grid: { display: false },
+                            ticks: { maxTicksLimit: 5 }
                         },
-                        y: { 
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
                             beginAtZero: true,
+                            title: { display: true, text: 'P/E Ratio' },
                             grid: { color: 'rgba(0,0,0,0.1)' },
-                            ticks: { 
-                                maxTicksLimit: 6,
-                                callback: function(value) {
-                                    return value.toFixed(2) + '%';
-                                }
+                            ticks: { maxTicksLimit: 6 }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            beginAtZero: true,
+                            title: { display: true, text: 'P/B Ratio' },
+                            grid: {
+                                drawOnChartArea: false,
                             },
-                            title: {
-                                display: true,
-                                text: 'NIM (%)'
-                            }
+                            ticks: { maxTicksLimit: 6 }
                         }
                     },
                     plugins: {
-                        legend: { 
-                            position: 'top', 
-                            labels: { usePointStyle: true, padding: 20 } 
-                        },
-                        tooltip: { 
-                            backgroundColor: 'rgba(0,0,0,0.8)', 
-                            titleColor: '#fff', 
-                            bodyColor: '#fff', 
-                            cornerRadius: 8, 
-                            displayColors: true,
-                            callbacks: {
-                                label: function(context) {
-                                    return `NIM: ${context.parsed.y.toFixed(3)}%`;
-                                }
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, padding: 20 },
+                            onClick: function (e, legendItem) {
+                                const index = legendItem.datasetIndex;
+                                const chart = this.chart;
+                                const meta = chart.getDatasetMeta(index);
+
+                                // Toggle visibility
+                                meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
+                                chart.update();
                             }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            cornerRadius: 8,
+                            displayColors: true
                         }
                     },
-                    elements: { point: { hoverBorderWidth: 3 } }
+                    elements: {
+                        point: { hoverBorderWidth: 3 }
+                    }
                 }
             });
-        }
-        
+
+            console.log('P/E P/B chart created successfully');
+
+            // Initialize NIM Chart
+            const nimCtx = document.getElementById('nim-chart')?.getContext('2d');
+            if (nimCtx) {
+                this.charts.nim = new Chart(nimCtx, {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: 'NIM (%)',
+                            data: [],
+                            backgroundColor: 'rgba(255, 206, 86, 0.1)',
+                            borderColor: 'rgba(255, 206, 86, 1)',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.3,
+                            pointBackgroundColor: 'rgba(255, 206, 86, 1)',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 1,
+                            pointRadius: 3,
+                            pointHoverRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: { maxTicksLimit: 5 }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: 'rgba(0,0,0,0.1)' },
+                                ticks: {
+                                    maxTicksLimit: 6,
+                                    callback: function (value) {
+                                        return value.toFixed(2) + '%';
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'NIM (%)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: { usePointStyle: true, padding: 20 }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0,0,0,0.8)',
+                                titleColor: '#fff',
+                                bodyColor: '#fff',
+                                cornerRadius: 8,
+                                displayColors: true,
+                                callbacks: {
+                                    label: function (context) {
+                                        return `NIM: ${context.parsed.y.toFixed(3)}%`;
+                                    }
+                                }
+                            }
+                        },
+                        elements: { point: { hoverBorderWidth: 3 } }
+                    }
+                });
+            }
+
         } catch (error) {
             console.error('Error creating P/E P/B chart:', error);
         }
@@ -731,7 +751,7 @@ class StockValuationApp {
 
         // Count selected models
         const selectedCount = [fcfeEnabled, fcffEnabled, peEnabled, pbEnabled].filter(Boolean).length;
-        
+
         // Ensure at least one model is selected
         if (selectedCount === 0) {
             // Re-check the last unchecked checkbox
@@ -780,8 +800,8 @@ class StockValuationApp {
 
     updateTotalWeight() {
         // No longer needed but keep for compatibility
-        const total = this.modelWeights.fcfe + this.modelWeights.fcff + 
-                     this.modelWeights.justified_pe + this.modelWeights.justified_pb;
+        const total = this.modelWeights.fcfe + this.modelWeights.fcff +
+            this.modelWeights.justified_pe + this.modelWeights.justified_pb;
         return total;
     }
 
@@ -806,7 +826,7 @@ class StockValuationApp {
         };
 
         this.loadDefaultAssumptions();
-    }    async loadStockData() {
+    } async loadStockData() {
         const symbol = document.getElementById('stock-symbol').value.trim().toUpperCase();
         const period = document.getElementById('period-select').value || 'year'; // Get period from dropdown, default to year
 
@@ -817,18 +837,18 @@ class StockValuationApp {
 
         // CRITICAL: Cancel ALL pending requests immediately when new symbol is entered
         this.cancelAllPendingRequests();
-        
+
         // Clear old data immediately to prevent showing stale data
         this.clearDisplay();
         this.resetChartsState();
 
         // Fast loading: Load stock data immediately without waiting for charts
         await this.loadStockDataOnly(symbol, period);
-        
+
         // Background loading: Load charts in the background if needed
         this.loadChartsInBackground(symbol, period);
     }
-    
+
     cancelAllPendingRequests() {
         // Cancel stock data request
         if (this.abortControllers.stockData) {
@@ -836,7 +856,7 @@ class StockValuationApp {
             this.abortControllers.stockData.abort();
             this.abortControllers.stockData = null;
         }
-        
+
         // Cancel chart data request
         if (this.abortControllers.chartData) {
             console.log('⚠️ Cancelling pending chart data request');
@@ -848,7 +868,7 @@ class StockValuationApp {
     async loadStockDataOnly(symbol, period) {
         // CRITICAL: Check if this symbol is still current before processing
         const requestSymbol = symbol;
-        
+
         this.showLoading(true);
         this.showStatus('Loading data...', 'info');
         this.loadingState.stockData = true;
@@ -862,7 +882,7 @@ class StockValuationApp {
 
             // Always fetch current price for accurate valuation comparison
             const fetchPrice = true;
-            
+
             // Fetch stock data only - fastest possible loading
             const stockResponse = await fetch(`${this.apiBaseUrl}/api/app-data/${symbol}?period=${period}&fetch_price=${fetchPrice}`, {
                 signal: controller.signal
@@ -895,22 +915,22 @@ class StockValuationApp {
 
             this.stockData = stockData;
             this.currentStock = symbol;
-            
+
             // Enable download button when stock data is loaded
             const downloadBtn = document.getElementById('download-financials-btn');
             if (downloadBtn) {
                 downloadBtn.disabled = false;
             }
-            
+
             this.updateOverviewDisplay(stockData);
-            
+
             this.showStatus('Data loaded successfully', 'success');
             this.showLoading(false);
             this.loadingState.stockData = false;
 
         } catch (error) {
             console.error('Error loading stock data:', error);
-            
+
             if (error.name === 'AbortError') {
                 // Don't show error for intentional cancellations
                 console.log('Previous stock data request cancelled');
@@ -920,7 +940,7 @@ class StockValuationApp {
                 this.currentStock = null;
                 this.clearDisplay();
             }
-            
+
             this.showLoading(false);
             this.loadingState.stockData = false;
         } finally {
@@ -966,22 +986,22 @@ class StockValuationApp {
             });
 
             clearTimeout(timeoutId);
-            
+
             if (chartResponse.ok) {
                 const chartData = await chartResponse.json();
-                
+
                 console.log('📊 Chart data response:', chartData);
-                
+
                 if (chartData.success) {
                     // Only update if this is still the current symbol
                     if (this.currentStock === symbol) {
                         this.historicalData = chartData.data;
                         console.log('📈 Historical data set:', this.historicalData);
                         this.chartsLoaded = true;
-                        
+
                         // Cache the chart data for future use
                         this.chartCache.set(symbol, chartData.data);
-                        
+
                         this.updateCharts();
                         this.showStatus('Charts loaded', 'success');
                     } else {
@@ -1001,7 +1021,7 @@ class StockValuationApp {
         } finally {
             this.loadingState.chartData = false;
             this.showChartLoadingIndicator(false);
-            
+
             // Clear the abort controller reference
             if (this.abortControllers.chartData === controller) {
                 this.abortControllers.chartData = null;
@@ -1053,17 +1073,17 @@ class StockValuationApp {
                 this.showStatus('Please enter a stock symbol first', 'error');
                 return;
             }
-            
+
             // Load stock data first, then calculate valuation
             this.showStatus('Loading stock data before valuation...', 'info');
             const period = document.getElementById('period-select').value || 'year';
             await this.loadStockDataOnly(symbol, period);
-            
+
             if (!this.currentStock) {
                 this.showStatus('Failed to load stock data. Please try again.', 'error');
                 return;
             }
-            
+
             // Load charts in background (non-blocking)
             this.loadChartsInBackground(symbol, period);
         }
@@ -1156,7 +1176,7 @@ class StockValuationApp {
 
             document.getElementById('export-report-btn').disabled = false;
             document.getElementById('export-excel-btn').disabled = false;
-            
+
             this.showStatus('Valuation completed successfully', 'success');
 
         } catch (error) {
@@ -1175,8 +1195,8 @@ class StockValuationApp {
         if (!this.valuationCache || !this.valuationCache.results) return;
 
         const results = this.valuationCache.results;
-        const totalWeight = this.modelWeights.fcfe + this.modelWeights.fcff + 
-                           this.modelWeights.justified_pe + this.modelWeights.justified_pb;
+        const totalWeight = this.modelWeights.fcfe + this.modelWeights.fcff +
+            this.modelWeights.justified_pe + this.modelWeights.justified_pb;
 
         if (totalWeight === 0) {
             this.valuationResults.weighted_average = 0;
@@ -1200,14 +1220,14 @@ class StockValuationApp {
         }
 
         // Check if this is a bank stock
-        const isBank = this.stockData && this.stockData.sector && 
-                      (this.stockData.sector.toLowerCase().includes('bank') || 
-                       this.stockData.sector.toLowerCase().includes('ngân hàng'));
+        const isBank = this.stockData && this.stockData.sector &&
+            (this.stockData.sector.toLowerCase().includes('bank') ||
+                this.stockData.sector.toLowerCase().includes('ngân hàng'));
 
         // Show/hide chart containers based on sector
         const nimChartContainer = document.getElementById('nim-chart')?.closest('.chart-container');
         const liquidityChartContainer = document.getElementById('liquidity-chart')?.closest('.chart-container');
-        
+
         if (nimChartContainer) {
             nimChartContainer.style.display = isBank ? 'block' : 'none';
         }
@@ -1237,7 +1257,7 @@ class StockValuationApp {
             this.charts.pePb.data.datasets[1].data = this.historicalData.pb_ratio_data || [];
             this.charts.pePb.update();
         }
-        
+
         // Update NIM Chart (only for banks)
         if (isBank && this.charts.nim) {
             console.log('🏦 Bank detected, updating NIM chart');
@@ -1396,10 +1416,10 @@ class StockValuationApp {
             }
 
             this.generatePDFReport(jsPDF);
-            
+
             // Also download Excel financial data
             await this.downloadFinancialData();
-            
+
             this.showStatus('PDF report and Excel data downloaded successfully!', 'success');
 
         } catch (error) {
@@ -1416,23 +1436,23 @@ class StockValuationApp {
 
     async downloadFinancialData() {
         const symbol = this.currentStock?.symbol || this.stockData?.symbol;
-        
+
         if (!symbol) {
             console.warn('No symbol available for Excel download');
             return;
         }
 
         const fileUrl = `${this.apiBaseUrl}/api/download/${symbol}`;
-        
+
         try {
             // Check if file exists
             const checkResponse = await fetch(fileUrl, { method: 'HEAD' });
-            
+
             if (!checkResponse.ok) {
                 console.warn(`Excel data not available for ${symbol}`);
                 return;
             }
-            
+
             // File exists, download it
             const tempLink = document.createElement('a');
             tempLink.href = fileUrl;
@@ -1441,7 +1461,7 @@ class StockValuationApp {
             document.body.appendChild(tempLink);
             tempLink.click();
             document.body.removeChild(tempLink);
-            
+
             console.log(`Excel financial data downloaded for ${symbol}`);
         } catch (error) {
             console.error('Error downloading Excel data:', error);
@@ -1451,7 +1471,7 @@ class StockValuationApp {
 
     generatePDFReport(jsPDFConstructor) {
         const doc = new jsPDFConstructor();
-        
+
         const lang = this.currentLanguage;
         const t = translations[lang];
 
@@ -1542,7 +1562,7 @@ class StockValuationApp {
         // Helper: Add table row
         const addTableRow = (label, value, isHeader = false, isHighlight = false) => {
             checkPageBreak(10);
-            
+
             doc.setFontSize(10);
             doc.setFont('helvetica', isHeader ? 'bold' : 'normal');
 
@@ -1573,20 +1593,20 @@ class StockValuationApp {
         // ========== HEADER ==========
         doc.setFillColor(41, 98, 255);
         doc.rect(0, 0, pageWidth, 40, 'F');
-        
+
         doc.setTextColor(255, 255, 255);
         doc.setFontSize(20);
         doc.setFont('helvetica', 'bold');
         doc.text('STOCK VALUATION REPORT', pageWidth / 2, 15, { align: 'center' });
-        
+
         doc.setFontSize(14);
         doc.setFont('helvetica', 'normal');
         const companyName = `${this.stockData.name || this.currentStock} (${this.currentStock})`;
         doc.text(companyName, pageWidth / 2, 25, { align: 'center' });
-        
+
         doc.setFontSize(10);
         doc.text(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), pageWidth / 2, 33, { align: 'center' });
-        
+
         yPosition = 50;
 
         // ========== COMPANY INFORMATION ==========
@@ -1620,11 +1640,11 @@ class StockValuationApp {
         addSectionTitle(t.marketComparison || 'Market Comparison');
         addTableRow('Current Market Price', this.formatCurrency(currentPrice));
         addTableRow('Intrinsic Value (Target)', this.formatCurrency(weightedValue));
-        
+
         const upsideText = `${upside >= 0 ? '+' : ''}${upside.toFixed(2)}%`;
         const upsideLabel = upside >= 0 ? 'Upside Potential' : 'Downside Risk';
         addTableRow(upsideLabel, upsideText, false, Math.abs(upside) > 10);
-        
+
         // Recommendation
         if (this.valuationResults.market_comparison?.recommendation) {
             const rec = this.valuationResults.market_comparison.recommendation;
@@ -1633,7 +1653,7 @@ class StockValuationApp {
 
         // ========== PAGE 2: ASSUMPTIONS ==========
         checkPageBreak(80);
-        
+
         addSectionTitle(t.modelAssumptions || 'Valuation Assumptions');
         addTableRow('Revenue Growth Rate', `${this.assumptions.revenueGrowth}%`);
         addTableRow('Terminal Growth Rate', `${this.assumptions.terminalGrowth}%`);
@@ -1686,10 +1706,10 @@ class StockValuationApp {
     // Helper: Convert Vietnamese labels to English (avoid UTF-8 issues)
     toEnglishLabel(text) {
         if (typeof text !== 'string') return String(text);
-        
+
         // Keep numbers and common symbols
         if (/^[\d\s,.%\-+()/:]+$/.test(text)) return text;
-        
+
         // Common Vietnamese to English mappings
         const mappings = {
             'Thông tin công ty': 'Company Information',
@@ -1705,7 +1725,7 @@ class StockValuationApp {
             'Bán': 'SELL',
             'Bán mạnh': 'STRONG SELL'
         };
-        
+
         return mappings[text] || text;
     }
 
@@ -1786,7 +1806,7 @@ Generated by Stock Valuation Tool
                 this.showStatus('ExcelJS library not loaded yet, please try again', 'warning');
                 return;
             }
-            
+
             if (typeof JSZip === 'undefined') {
                 this.showStatus('JSZip library not loaded yet, please try again', 'warning');
                 return;
@@ -1797,57 +1817,57 @@ Generated by Stock Valuation Tool
             const zip = new JSZip();
             const symbol = this.currentStock;
             const dateStr = new Date().toISOString().split('T')[0];
-            
+
             // FILE 1: Create valuation report Excel
             const workbook = new ExcelJS.Workbook();
             workbook.creator = 'quanganh.org';
             workbook.created = new Date();
-            
+
             // SHEET: Summary Dashboard
             const summarySheet = workbook.addWorksheet('Summary Dashboard', {
                 views: [{ showGridLines: false }]
             });
             await this.createSummaryDashboard(summarySheet, workbook);
-            
+
             // SHEET: FCFE Detailed Calculations (with formulas)
             const fcfeSheet = workbook.addWorksheet('FCFE Analysis', {
                 views: [{ showGridLines: true }]
             });
             this.createFCFESheet(fcfeSheet);
-            
+
             // SHEET: FCFF Detailed Calculations (with formulas)
             const fcffSheet = workbook.addWorksheet('FCFF Analysis', {
                 views: [{ showGridLines: true }]
             });
             this.createFCFFSheet(fcffSheet);
-            
+
             // SHEET: P/E Analysis (with formulas)
             const peSheet = workbook.addWorksheet('PE Analysis', {
                 views: [{ showGridLines: true }]
             });
             this.createPESheet(peSheet);
-            
+
             // SHEET: P/B Analysis (with formulas)
             const pbSheet = workbook.addWorksheet('PB Analysis', {
                 views: [{ showGridLines: true }]
             });
             this.createPBSheet(pbSheet);
-            
+
             // SHEET: Assumptions & Inputs
             const assumptionsSheet = workbook.addWorksheet('Assumptions', {
                 views: [{ showGridLines: true }]
             });
             this.createAssumptionsSheet(assumptionsSheet);
-            
+
             // Generate valuation Excel buffer
             const valuationBuffer = await workbook.xlsx.writeBuffer();
             zip.file(`${symbol}_Valuation_${dateStr}.xlsx`, valuationBuffer);
-            
+
             // FILE 2: Try to fetch original financial data Excel
             let originalDataAdded = false;
             try {
                 const response = await fetch(`${this.apiBaseUrl}/api/download/${symbol}`);
-                
+
                 if (response.ok && response.headers.get('content-type')?.includes('spreadsheet')) {
                     const originalBuffer = await response.arrayBuffer();
                     zip.file(`${symbol}_Financial_Data.xlsx`, originalBuffer);
@@ -1859,10 +1879,10 @@ Generated by Stock Valuation Tool
             } catch (error) {
                 console.error('Error fetching original financial data:', error);
             }
-            
+
             // Generate ZIP and download
             const zipBlob = await zip.generateAsync({ type: 'blob' });
-            
+
             if (typeof saveAs !== 'undefined') {
                 saveAs(zipBlob, `${symbol}_Complete_Report_${dateStr}.zip`);
             } else {
@@ -1876,8 +1896,8 @@ Generated by Stock Valuation Tool
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
             }
-            
-            const successMsg = originalDataAdded 
+
+            const successMsg = originalDataAdded
                 ? `ZIP package downloaded with valuation report and original financial data!`
                 : `ZIP package downloaded with valuation report!`;
             this.showStatus(successMsg, 'success');
@@ -1889,44 +1909,44 @@ Generated by Stock Valuation Tool
 
     async addOriginalFinancialData(workbook) {
         const symbol = this.currentStock;
-        
+
         try {
             // Fetch original Excel file from VPS
             const response = await fetch(`${this.apiBaseUrl}/api/download/${symbol}`);
-            
+
             if (response.ok && response.headers.get('content-type')?.includes('spreadsheet')) {
                 const arrayBuffer = await response.arrayBuffer();
                 const originalWorkbook = new ExcelJS.Workbook();
                 await originalWorkbook.xlsx.load(arrayBuffer);
-                
+
                 console.log(`Loading original Excel file with ${originalWorkbook.worksheets.length} sheets`);
-                
+
                 // Copy ALL sheets from original workbook
                 for (let sheetIndex = 0; sheetIndex < originalWorkbook.worksheets.length; sheetIndex++) {
                     const sheet = originalWorkbook.worksheets[sheetIndex];
-                    
+
                     console.log(`Copying sheet ${sheetIndex + 1}: ${sheet.name}`);
-                    
+
                     // Create new sheet with original name
                     const newSheet = workbook.addWorksheet(sheet.name);
-                    
+
                     // Copy all rows and cells with full formatting
                     sheet.eachRow({ includeEmpty: true }, (row, rowNumber) => {
                         const newRow = newSheet.getRow(rowNumber);
-                        
+
                         // Copy row height first
                         if (row.height) {
                             newRow.height = row.height;
                         }
-                        
+
                         row.eachCell({ includeEmpty: true }, (cell, colNumber) => {
                             const newCell = newRow.getCell(colNumber);
-                            
+
                             // Copy value (including formulas)
                             if (cell.value !== undefined && cell.value !== null) {
                                 newCell.value = cell.value;
                             }
-                            
+
                             // Deep copy all style properties
                             if (cell.style) {
                                 newCell.style = {
@@ -1943,26 +1963,26 @@ Generated by Stock Valuation Tool
                                     numFmt: cell.numFmt
                                 };
                             }
-                            
+
                             // Copy data validation
                             if (cell.dataValidation) {
                                 newCell.dataValidation = cell.dataValidation;
                             }
-                            
+
                             // Copy hyperlink
                             if (cell.hyperlink) {
                                 newCell.hyperlink = cell.hyperlink;
                             }
-                            
+
                             // Copy note/comment
                             if (cell.note) {
                                 newCell.note = cell.note;
                             }
                         });
-                        
+
                         newRow.commit();
                     });
-                    
+
                     // Copy column widths and properties
                     if (sheet.columns) {
                         sheet.columns.forEach((col, idx) => {
@@ -1980,7 +2000,7 @@ Generated by Stock Valuation Tool
                             }
                         });
                     }
-                    
+
                     // Copy merged cells
                     if (sheet.model && sheet.model.merges) {
                         Object.keys(sheet.model.merges).forEach(mergeRef => {
@@ -1991,32 +2011,32 @@ Generated by Stock Valuation Tool
                             }
                         });
                     }
-                    
+
                     // Copy sheet properties
                     if (sheet.properties) {
                         newSheet.properties = {
                             ...sheet.properties
                         };
                     }
-                    
+
                     // Copy page setup
                     if (sheet.pageSetup) {
                         newSheet.pageSetup = {
                             ...sheet.pageSetup
                         };
                     }
-                    
+
                     // Copy views (frozen panes, etc)
                     if (sheet.views && sheet.views.length > 0) {
                         newSheet.views = sheet.views.map(view => ({ ...view }));
                     }
-                    
+
                     // Copy auto filter
                     if (sheet.autoFilter) {
                         newSheet.autoFilter = sheet.autoFilter;
                     }
                 }
-                
+
                 console.log(`Successfully integrated ${originalWorkbook.worksheets.length} sheets from original financial data`);
                 return true; // Success
             } else {
@@ -2031,7 +2051,7 @@ Generated by Stock Valuation Tool
 
     createAssumptionsSheet(sheet) {
         let row = 1;
-        
+
         // Header
         sheet.mergeCells('A1:D1');
         sheet.getCell('A1').value = 'VALUATION ASSUMPTIONS & INPUTS';
@@ -2040,13 +2060,13 @@ Generated by Stock Valuation Tool
         sheet.getCell('A1').alignment = { horizontal: 'center', vertical: 'middle' };
         sheet.getRow(1).height = 30;
         row += 2;
-        
+
         // Company Data Section
         sheet.getCell(`A${row}`).value = 'COMPANY DATA';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'E7E6E6' } };
         row++;
-        
+
         const companyData = [
             ['Stock Symbol', this.currentStock],
             ['Company Name', this.stockData.name],
@@ -2069,7 +2089,7 @@ Generated by Stock Valuation Tool
             ['ROA (%)', this.stockData.roa || 0, '0.00'],
             ['Debt/Equity', this.stockData.debt_to_equity || 0, '0.00']
         ];
-        
+
         companyData.forEach(([label, value, format]) => {
             sheet.getCell(`A${row}`).value = label;
             sheet.getCell(`B${row}`).value = value;
@@ -2081,15 +2101,15 @@ Generated by Stock Valuation Tool
             }
             row++;
         });
-        
+
         row += 2;
-        
+
         // Valuation Assumptions Section
         sheet.getCell(`A${row}`).value = 'VALUATION ASSUMPTIONS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'E7E6E6' } };
         row++;
-        
+
         const assumptions = [
             ['Revenue Growth Rate (%)', this.assumptions.revenueGrowth, '0.00'],
             ['Terminal Growth Rate (%)', this.assumptions.terminalGrowth, '0.00'],
@@ -2099,7 +2119,7 @@ Generated by Stock Valuation Tool
             ['Projection Years', this.assumptions.projectionYears, '0'],
             ['Payout Ratio (%)', this.assumptions.payoutRatio || 50, '0.00']
         ];
-        
+
         assumptions.forEach(([label, value, format]) => {
             sheet.getCell(`A${row}`).value = label;
             sheet.getCell(`B${row}`).value = value;
@@ -2109,15 +2129,15 @@ Generated by Stock Valuation Tool
             sheet.getCell(`A${row}`).font = { bold: true };
             row++;
         });
-        
+
         row += 2;
-        
+
         // Model Weights Section
         sheet.getCell(`A${row}`).value = 'MODEL WEIGHTS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'E7E6E6' } };
         row++;
-        
+
         const weights = [
             ['FCFE Weight (%)', this.modelWeights.fcfe],
             ['FCFF Weight (%)', this.modelWeights.fcff],
@@ -2125,7 +2145,7 @@ Generated by Stock Valuation Tool
             ['P/B Weight (%)', this.modelWeights.justified_pb],
             ['Total', this.modelWeights.fcfe + this.modelWeights.fcff + this.modelWeights.justified_pe + this.modelWeights.justified_pb]
         ];
-        
+
         weights.forEach(([label, value], idx) => {
             sheet.getCell(`A${row}`).value = label;
             sheet.getCell(`B${row}`).value = value;
@@ -2137,7 +2157,7 @@ Generated by Stock Valuation Tool
             }
             row++;
         });
-        
+
         // Column widths
         sheet.getColumn(1).width = 45;
         sheet.getColumn(2).width = 25;
@@ -2146,9 +2166,9 @@ Generated by Stock Valuation Tool
     async createSummaryDashboard(sheet, workbook) {
         const lang = this.currentLanguage;
         const t = translations[lang];
-        
+
         let row = 1;
-        
+
         // Header with branding
         sheet.mergeCells('A1:F1');
         sheet.getCell('A1').value = 'COMPREHENSIVE STOCK VALUATION REPORT';
@@ -2157,19 +2177,19 @@ Generated by Stock Valuation Tool
         sheet.getCell('A1').alignment = { horizontal: 'center', vertical: 'middle' };
         sheet.getRow(1).height = 30;
         row++;
-        
+
         sheet.mergeCells('A2:F2');
         sheet.getCell('A2').value = 'Powered by quanganh.org | Professional Stock Analysis Platform';
         sheet.getCell('A2').font = { italic: true, size: 10 };
         sheet.getCell('A2').alignment = { horizontal: 'center' };
         row += 2;
-        
+
         // Company Info Section
         sheet.getCell(`A${row}`).value = 'COMPANY INFORMATION';
         sheet.getCell(`A${row}`).font = { bold: true, size: 14 };
         sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'E7E6E6' } };
         row++;
-        
+
         const companyInfo = [
             ['Stock Symbol', this.currentStock],
             ['Company Name', this.stockData.name],
@@ -2177,7 +2197,7 @@ Generated by Stock Valuation Tool
             ['Exchange', this.stockData.exchange],
             ['Report Date', new Date().toLocaleString()]
         ];
-        
+
         companyInfo.forEach(([label, value]) => {
             sheet.getCell(`A${row}`).value = label;
             sheet.getCell(`B${row}`).value = value;
@@ -2185,13 +2205,13 @@ Generated by Stock Valuation Tool
             row++;
         });
         row++;
-        
+
         // Market Data Section
         sheet.getCell(`A${row}`).value = 'MARKET DATA';
         sheet.getCell(`A${row}`).font = { bold: true, size: 14 };
         sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'E7E6E6' } };
         row++;
-        
+
         const marketDataRow = row;
         const marketData = [
             ['Current Price (VND)', this.stockData.current_price, '#,##0'],
@@ -2201,7 +2221,7 @@ Generated by Stock Valuation Tool
             ['P/B Ratio', this.stockData.pb_ratio, '#,##0.00'],
             ['EPS (VND)', this.stockData.eps, '#,##0']
         ];
-        
+
         marketData.forEach(([label, value, format]) => {
             sheet.getCell(`A${row}`).value = label;
             sheet.getCell(`B${row}`).value = value;
@@ -2210,13 +2230,13 @@ Generated by Stock Valuation Tool
             row++;
         });
         row++;
-        
+
         // Valuation Summary Section with FORMULAS
         sheet.getCell(`A${row}`).value = 'VALUATION SUMMARY';
         sheet.getCell(`A${row}`).font = { bold: true, size: 14 };
         sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'E7E6E6' } };
         row++;
-        
+
         // Header row for valuation table
         const valHeaderRow = row;
         ['Method', 'Fair Value (VND)', 'Current Price', 'Upside %', 'Weight %', 'Weighted Value'].forEach((header, idx) => {
@@ -2227,10 +2247,10 @@ Generated by Stock Valuation Tool
             cell.alignment = { horizontal: 'center' };
         });
         row++;
-        
+
         const valuationStartRow = row;
         const currentPrice = this.stockData.current_price;
-        
+
         // FCFE Row with formulas
         sheet.getCell(`A${row}`).value = 'FCFE';
         sheet.getCell(`B${row}`).value = this.valuationResults.fcfe.shareValue;
@@ -2244,7 +2264,7 @@ Generated by Stock Valuation Tool
         sheet.getCell(`F${row}`).value = { formula: `B${row}*E${row}` };
         sheet.getCell(`F${row}`).numFmt = '#,##0';
         row++;
-        
+
         // FCFF Row
         sheet.getCell(`A${row}`).value = 'FCFF';
         sheet.getCell(`B${row}`).value = this.valuationResults.fcff.shareValue;
@@ -2258,7 +2278,7 @@ Generated by Stock Valuation Tool
         sheet.getCell(`F${row}`).value = { formula: `B${row}*E${row}` };
         sheet.getCell(`F${row}`).numFmt = '#,##0';
         row++;
-        
+
         // P/E Row
         sheet.getCell(`A${row}`).value = 'P/E';
         sheet.getCell(`B${row}`).value = this.valuationResults.justified_pe.shareValue;
@@ -2272,7 +2292,7 @@ Generated by Stock Valuation Tool
         sheet.getCell(`F${row}`).value = { formula: `B${row}*E${row}` };
         sheet.getCell(`F${row}`).numFmt = '#,##0';
         row++;
-        
+
         // P/B Row
         sheet.getCell(`A${row}`).value = 'P/B';
         sheet.getCell(`B${row}`).value = this.valuationResults.justified_pb.shareValue;
@@ -2286,21 +2306,21 @@ Generated by Stock Valuation Tool
         sheet.getCell(`F${row}`).value = { formula: `B${row}*E${row}` };
         sheet.getCell(`F${row}`).numFmt = '#,##0';
         row++;
-        
+
         // Total row with formula
         sheet.getCell(`A${row}`).value = 'WEIGHTED AVERAGE';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
-        sheet.getCell(`F${row}`).value = { formula: `SUM(F${valuationStartRow}:F${row-1})` };
+        sheet.getCell(`F${row}`).value = { formula: `SUM(F${valuationStartRow}:F${row - 1})` };
         sheet.getCell(`F${row}`).numFmt = '#,##0';
         sheet.getCell(`F${row}`).font = { bold: true, size: 12, color: { argb: '0066CC' } };
-        
+
         // Calculate upside for weighted average
         const weightedRow = row;
         sheet.getCell(`D${row}`).value = { formula: `(F${row}-C${valuationStartRow})/C${valuationStartRow}*100` };
         sheet.getCell(`D${row}`).numFmt = '0.00"%"';
         sheet.getCell(`D${row}`).font = { bold: true };
         row += 2;
-        
+
         // Add a simple chart showing valuation comparison
         try {
             // Note: ExcelJS chart support is limited, but we'll add a basic column chart
@@ -2310,7 +2330,7 @@ Generated by Stock Valuation Tool
         } catch (e) {
             console.warn('Chart creation not supported:', e);
         }
-        
+
         // Column widths
         sheet.getColumn(1).width = 25;
         sheet.getColumn(2).width = 18;
@@ -2322,7 +2342,7 @@ Generated by Stock Valuation Tool
 
     createFCFESheet(sheet) {
         let row = 1;
-        
+
         // Header
         sheet.mergeCells('A1:G1');
         sheet.getCell('A1').value = 'FCFE (Free Cash Flow to Equity) ANALYSIS';
@@ -2330,47 +2350,47 @@ Generated by Stock Valuation Tool
         sheet.getCell('A1').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '0066CC' } };
         sheet.getCell('A1').alignment = { horizontal: 'center' };
         row += 2;
-        
+
         // Assumptions Section
         sheet.getCell(`A${row}`).value = 'ASSUMPTIONS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
-        
+
         const assumptionsStart = row;
         sheet.getCell(`A${row}`).value = 'Cost of Equity (%)';
         sheet.getCell(`B${row}`).value = this.assumptions.requiredReturn / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'CostOfEquity';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Terminal Growth Rate (%)';
         sheet.getCell(`B${row}`).value = this.assumptions.terminalGrowth / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'TerminalGrowth';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Projection Years';
         sheet.getCell(`B${row}`).value = this.assumptions.projectionYears;
         sheet.getCell(`B${row}`).name = 'ProjectionYears';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Shares Outstanding';
         sheet.getCell(`B${row}`).value = this.stockData.shares_outstanding;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'SharesOutstanding';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Current Stock Price (VND)';
         sheet.getCell(`B${row}`).value = this.stockData.current_price;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'CurrentPrice';
         row += 2;
-        
+
         // Cash Flow Projections Table
         sheet.getCell(`A${row}`).value = 'CASH FLOW PROJECTIONS & DISCOUNTING';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
-        
+
         // Table headers
         const tableHeaderRow = row;
         ['Year', 'FCFE (VND)', 'Discount Rate', 'Discount Factor', 'Present Value (VND)', 'Formula', 'Calculation'].forEach((header, idx) => {
@@ -2380,72 +2400,72 @@ Generated by Stock Valuation Tool
             cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'D9D9D9' } };
         });
         row++;
-        
+
         const dataStartRow = row;
-        
+
         // Calculate projected cash flows (since backend doesn't provide them)
         const baseFCFE = this.stockData.net_income_ttm || this.stockData.eps * this.stockData.shares_outstanding || 0;
         const growthRate = this.assumptions.revenueGrowth / 100;
         const years = this.assumptions.projectionYears;
-        
+
         const projectedCashFlows = [];
         for (let i = 0; i < years; i++) {
             projectedCashFlows.push(baseFCFE * Math.pow(1 + growthRate, i + 1));
         }
-        
+
         // Projected cash flows with FORMULAS
         projectedCashFlows.forEach((cf, idx) => {
             const year = idx + 1;
-            
+
             sheet.getCell(`A${row}`).value = year;
             sheet.getCell(`B${row}`).value = cf;
             sheet.getCell(`B${row}`).numFmt = '#,##0';
-            
+
             sheet.getCell(`C${row}`).value = { formula: 'CostOfEquity' };
             sheet.getCell(`C${row}`).numFmt = '0.00%';
-            
+
             sheet.getCell(`D${row}`).value = { formula: `1/((1+C${row})^A${row})` };
             sheet.getCell(`D${row}`).numFmt = '0.0000';
-            
+
             sheet.getCell(`E${row}`).value = { formula: `B${row}*D${row}` };
             sheet.getCell(`E${row}`).numFmt = '#,##0';
-            
+
             sheet.getCell(`F${row}`).value = `PV = CF / (1+r)^n`;
             sheet.getCell(`F${row}`).font = { italic: true };
-            
+
             const rPct = this.assumptions.requiredReturn;
             sheet.getCell(`G${row}`).value = `${cf.toLocaleString('vi-VN')} / (1+${rPct}%)^${year}`;
             sheet.getCell(`G${row}`).font = { size: 9 };
-            
+
             row++;
         });
-        
+
         // Terminal Value Row with FORMULA
         const terminalRow = row;
         const lastCF = projectedCashFlows[projectedCashFlows.length - 1];
-        const terminalValue = lastCF * (1 + this.assumptions.terminalGrowth/100) / (this.assumptions.requiredReturn/100 - this.assumptions.terminalGrowth/100);
-        
+        const terminalValue = lastCF * (1 + this.assumptions.terminalGrowth / 100) / (this.assumptions.requiredReturn / 100 - this.assumptions.terminalGrowth / 100);
+
         sheet.getCell(`A${row}`).value = `Terminal (Y${years})`;
         sheet.getCell(`A${row}`).font = { italic: true };
-        
-        sheet.getCell(`B${row}`).value = { formula: `B${row-1}*(1+TerminalGrowth)/(CostOfEquity-TerminalGrowth)` };
+
+        sheet.getCell(`B${row}`).value = { formula: `B${row - 1}*(1+TerminalGrowth)/(CostOfEquity-TerminalGrowth)` };
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'TerminalValue';
-        
+
         sheet.getCell(`C${row}`).value = { formula: 'CostOfEquity' };
         sheet.getCell(`C${row}`).numFmt = '0.00%';
-        
+
         sheet.getCell(`D${row}`).value = { formula: `1/((1+C${row})^${years})` };
         sheet.getCell(`D${row}`).numFmt = '0.0000';
-        
+
         sheet.getCell(`E${row}`).value = { formula: `B${row}*D${row}` };
         sheet.getCell(`E${row}`).numFmt = '#,##0';
-        
+
         sheet.getCell(`F${row}`).value = `TV = CF(1+g)/(r-g)`;
         sheet.getCell(`F${row}`).font = { italic: true };
-        
+
         row += 2;
-        
+
         // Summary calculations with FORMULAS
         sheet.getCell(`A${row}`).value = 'Total Present Value (Equity Value)';
         sheet.getCell(`A${row}`).font = { bold: true };
@@ -2454,7 +2474,7 @@ Generated by Stock Valuation Tool
         sheet.getCell(`E${row}`).font = { bold: true };
         sheet.getCell(`E${row}`).name = 'TotalEquityValue';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Fair Value per Share';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         sheet.getCell(`E${row}`).value = { formula: 'TotalEquityValue/SharesOutstanding' };
@@ -2462,18 +2482,18 @@ Generated by Stock Valuation Tool
         sheet.getCell(`E${row}`).font = { bold: true, size: 12, color: { argb: '0066CC' } };
         sheet.getCell(`E${row}`).name = 'FairValue_FCFE';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Current Market Price';
         sheet.getCell(`E${row}`).value = { formula: 'CurrentPrice' };
         sheet.getCell(`E${row}`).numFmt = '#,##0';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Upside/Downside (%)';
         sheet.getCell(`A${row}`).font = { bold: true };
         sheet.getCell(`E${row}`).value = { formula: `(FairValue_FCFE-CurrentPrice)/CurrentPrice` };
         sheet.getCell(`E${row}`).numFmt = '0.00%';
         sheet.getCell(`E${row}`).font = { bold: true };
-        
+
         // Column widths
         sheet.getColumn(1).width = 20;
         sheet.getColumn(2).width = 18;
@@ -2486,7 +2506,7 @@ Generated by Stock Valuation Tool
 
     createFCFFSheet(sheet) {
         let row = 1;
-        
+
         // Header
         sheet.mergeCells('A1:G1');
         sheet.getCell('A1').value = 'FCFF (Free Cash Flow to Firm) ANALYSIS';
@@ -2494,51 +2514,51 @@ Generated by Stock Valuation Tool
         sheet.getCell('A1').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '28A745' } };
         sheet.getCell('A1').alignment = { horizontal: 'center' };
         row += 2;
-        
+
         // Assumptions
         sheet.getCell(`A${row}`).value = 'ASSUMPTIONS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'WACC (%)';
         sheet.getCell(`B${row}`).value = this.assumptions.wacc / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'WACC';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Terminal Growth Rate (%)';
         sheet.getCell(`B${row}`).value = this.assumptions.terminalGrowth / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'TerminalGrowth_FCFF';
         row++;
-        
+
         // Estimate debt and cash
         const estimatedDebt = (this.stockData.debt_to_equity || 0) * (this.stockData.book_value_per_share || 0) * this.stockData.shares_outstanding;
         const estimatedCash = (this.stockData.current_ratio || 1) * (this.stockData.market_cap || 0) * 0.1; // Rough estimate
-        
+
         sheet.getCell(`A${row}`).value = 'Total Debt (estimated)';
         sheet.getCell(`B${row}`).value = estimatedDebt;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'TotalDebt';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Cash & Equivalents (estimated)';
         sheet.getCell(`B${row}`).value = estimatedCash;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'TotalCash';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Shares Outstanding';
         sheet.getCell(`B${row}`).value = this.stockData.shares_outstanding;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'SharesOutstanding_FCFF';
         row += 2;
-        
+
         // Cash Flow Projections
         sheet.getCell(`A${row}`).value = 'CASH FLOW PROJECTIONS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
-        
+
         ['Year', 'FCFF (VND)', 'Discount Rate', 'Discount Factor', 'Present Value (VND)', 'Formula'].forEach((header, idx) => {
             const cell = sheet.getCell(row, idx + 1);
             cell.value = header;
@@ -2546,59 +2566,59 @@ Generated by Stock Valuation Tool
             cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'D9D9D9' } };
         });
         row++;
-        
+
         const dataStartRow = row;
-        
+
         // Calculate FCFF projections
         const baseEBITDA = this.stockData.ebitda || this.stockData.net_income_ttm * 1.5 || 0;
         const growthRate = this.assumptions.revenueGrowth / 100;
         const years = this.assumptions.projectionYears;
-        
+
         const projectedFCFF = [];
         for (let i = 0; i < years; i++) {
-            projectedFCFF.push(baseEBITDA * Math.pow(1 + growthRate, i + 1) * (1 - this.assumptions.taxRate/100));
+            projectedFCFF.push(baseEBITDA * Math.pow(1 + growthRate, i + 1) * (1 - this.assumptions.taxRate / 100));
         }
-        
+
         projectedFCFF.forEach((cf, idx) => {
             const year = idx + 1;
-            
+
             sheet.getCell(`A${row}`).value = year;
             sheet.getCell(`B${row}`).value = cf;
             sheet.getCell(`B${row}`).numFmt = '#,##0';
-            
+
             sheet.getCell(`C${row}`).value = { formula: 'WACC' };
             sheet.getCell(`C${row}`).numFmt = '0.00%';
-            
+
             sheet.getCell(`D${row}`).value = { formula: `1/((1+C${row})^A${row})` };
             sheet.getCell(`D${row}`).numFmt = '0.0000';
-            
+
             sheet.getCell(`E${row}`).value = { formula: `B${row}*D${row}` };
             sheet.getCell(`E${row}`).numFmt = '#,##0';
-            
+
             sheet.getCell(`F${row}`).value = `PV = FCFF / (1+WACC)^${year}`;
             sheet.getCell(`F${row}`).font = { italic: true, size: 9 };
-            
+
             row++;
         });
-        
+
         // Terminal Value
         const terminalRow = row;
         sheet.getCell(`A${row}`).value = `Terminal`;
-        
-        sheet.getCell(`B${row}`).value = { formula: `B${row-1}*(1+TerminalGrowth_FCFF)/(WACC-TerminalGrowth_FCFF)` };
+
+        sheet.getCell(`B${row}`).value = { formula: `B${row - 1}*(1+TerminalGrowth_FCFF)/(WACC-TerminalGrowth_FCFF)` };
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'TerminalValue_FCFF';
-        
+
         sheet.getCell(`C${row}`).value = { formula: 'WACC' };
         sheet.getCell(`C${row}`).numFmt = '0.00%';
-        
+
         sheet.getCell(`D${row}`).value = { formula: `1/((1+C${row})^${years})` };
         sheet.getCell(`D${row}`).numFmt = '0.0000';
-        
+
         sheet.getCell(`E${row}`).value = { formula: `B${row}*D${row}` };
         sheet.getCell(`E${row}`).numFmt = '#,##0';
         row += 2;
-        
+
         // Calculations with FORMULAS
         sheet.getCell(`A${row}`).value = 'Enterprise Value (EV)';
         sheet.getCell(`A${row}`).font = { bold: true };
@@ -2606,24 +2626,24 @@ Generated by Stock Valuation Tool
         sheet.getCell(`E${row}`).numFmt = '#,##0';
         sheet.getCell(`E${row}`).name = 'EnterpriseValue';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = '- Debt';
         sheet.getCell(`E${row}`).value = { formula: 'TotalDebt' };
         sheet.getCell(`E${row}`).numFmt = '#,##0';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = '+ Cash';
         sheet.getCell(`E${row}`).value = { formula: 'TotalCash' };
         sheet.getCell(`E${row}`).numFmt = '#,##0';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = '= Equity Value';
         sheet.getCell(`A${row}`).font = { bold: true };
         sheet.getCell(`E${row}`).value = { formula: `EnterpriseValue-TotalDebt+TotalCash` };
         sheet.getCell(`E${row}`).numFmt = '#,##0';
         sheet.getCell(`E${row}`).name = 'EquityValue_FCFF';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Fair Value per Share';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         sheet.getCell(`E${row}`).value = { formula: 'EquityValue_FCFF/SharesOutstanding_FCFF' };
@@ -2631,18 +2651,18 @@ Generated by Stock Valuation Tool
         sheet.getCell(`E${row}`).font = { bold: true, size: 12, color: { argb: '28A745' } };
         sheet.getCell(`E${row}`).name = 'FairValue_FCFF';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Current Market Price';
         sheet.getCell(`E${row}`).value = this.stockData.current_price;
         sheet.getCell(`E${row}`).numFmt = '#,##0';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Upside/Downside (%)';
         sheet.getCell(`A${row}`).font = { bold: true };
-        sheet.getCell(`E${row}`).value = { formula: `(FairValue_FCFF-E${row-1})/E${row-1}` };
+        sheet.getCell(`E${row}`).value = { formula: `(FairValue_FCFF-E${row - 1})/E${row - 1}` };
         sheet.getCell(`E${row}`).numFmt = '0.00%';
         sheet.getCell(`E${row}`).font = { bold: true };
-        
+
         sheet.getColumn(1).width = 25;
         sheet.getColumn(2).width = 18;
         sheet.getColumn(3).width = 15;
@@ -2653,48 +2673,48 @@ Generated by Stock Valuation Tool
 
     createPESheet(sheet) {
         let row = 1;
-        
+
         sheet.mergeCells('A1:E1');
         sheet.getCell('A1').value = 'P/E RATIO ANALYSIS';
         sheet.getCell('A1').font = { bold: true, size: 14, color: { argb: 'FFFFFF' } };
         sheet.getCell('A1').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC107' } };
         sheet.getCell('A1').alignment = { horizontal: 'center' };
         row += 2;
-        
+
         // Inputs
         sheet.getCell(`A${row}`).value = 'INPUTS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Current EPS';
         sheet.getCell(`B${row}`).value = this.stockData.eps || 0;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'CurrentEPS';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'ROE (%)';
         sheet.getCell(`B${row}`).value = (this.stockData.roe || 0) / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'ROE';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Payout Ratio (%)';
         sheet.getCell(`B${row}`).value = (this.assumptions.payoutRatio || 50) / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'PayoutRatio';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Required Return (%)';
         sheet.getCell(`B${row}`).value = this.assumptions.requiredReturn / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'RequiredReturn_PE';
         row += 2;
-        
+
         // Calculation
         sheet.getCell(`A${row}`).value = 'CALCULATION';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Growth Rate (g)';
         sheet.getCell(`B${row}`).value = { formula: 'ROE*(1-PayoutRatio)' };
         sheet.getCell(`B${row}`).numFmt = '0.00%';
@@ -2702,7 +2722,7 @@ Generated by Stock Valuation Tool
         sheet.getCell(`C${row}`).value = 'g = ROE × (1 - Payout Ratio)';
         sheet.getCell(`C${row}`).font = { italic: true };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Justified P/E Ratio';
         sheet.getCell(`B${row}`).value = { formula: 'PayoutRatio/(RequiredReturn_PE-GrowthRate_PE)' };
         sheet.getCell(`B${row}`).numFmt = '0.00';
@@ -2710,7 +2730,7 @@ Generated by Stock Valuation Tool
         sheet.getCell(`C${row}`).value = 'P/E = Payout / (r - g)';
         sheet.getCell(`C${row}`).font = { italic: true };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Fair Value per Share';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         sheet.getCell(`B${row}`).value = { formula: 'JustifiedPE*CurrentEPS' };
@@ -2719,16 +2739,16 @@ Generated by Stock Valuation Tool
         sheet.getCell(`C${row}`).value = 'Fair Value = Justified P/E × EPS';
         sheet.getCell(`C${row}`).font = { italic: true };
         row += 2;
-        
+
         sheet.getCell(`A${row}`).value = 'Current Market Price';
         sheet.getCell(`B${row}`).value = this.stockData.current_price;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Upside/Downside';
-        sheet.getCell(`B${row}`).value = { formula: `(B${row-3}-B${row-1})/B${row-1}` };
+        sheet.getCell(`B${row}`).value = { formula: `(B${row - 3}-B${row - 1})/B${row - 1}` };
         sheet.getCell(`B${row}`).numFmt = '0.00%';
-        
+
         sheet.getColumn(1).width = 25;
         sheet.getColumn(2).width = 20;
         sheet.getColumn(3).width = 35;
@@ -2736,42 +2756,42 @@ Generated by Stock Valuation Tool
 
     createPBSheet(sheet) {
         let row = 1;
-        
+
         sheet.mergeCells('A1:E1');
         sheet.getCell('A1').value = 'P/B RATIO ANALYSIS';
         sheet.getCell('A1').font = { bold: true, size: 14, color: { argb: 'FFFFFF' } };
         sheet.getCell('A1').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'DC3545' } };
         sheet.getCell('A1').alignment = { horizontal: 'center' };
         row += 2;
-        
+
         // Inputs
         sheet.getCell(`A${row}`).value = 'INPUTS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Book Value per Share';
         sheet.getCell(`B${row}`).value = this.stockData.book_value_per_share || 0;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).name = 'BVPS';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'ROE (%)';
         sheet.getCell(`B${row}`).value = (this.stockData.roe || 0) / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'ROE_PB';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Required Return (%)';
         sheet.getCell(`B${row}`).value = this.assumptions.requiredReturn / 100;
         sheet.getCell(`B${row}`).numFmt = '0.00%';
         sheet.getCell(`B${row}`).name = 'RequiredReturn_PB';
         row += 2;
-        
+
         // Calculation
         sheet.getCell(`A${row}`).value = 'CALCULATION';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Justified P/B Ratio';
         sheet.getCell(`B${row}`).value = { formula: 'ROE_PB/RequiredReturn_PB' };
         sheet.getCell(`B${row}`).numFmt = '0.00';
@@ -2779,7 +2799,7 @@ Generated by Stock Valuation Tool
         sheet.getCell(`C${row}`).value = 'P/B = ROE / r';
         sheet.getCell(`C${row}`).font = { italic: true };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Fair Value per Share';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         sheet.getCell(`B${row}`).value = { formula: 'JustifiedPB*BVPS' };
@@ -2788,16 +2808,16 @@ Generated by Stock Valuation Tool
         sheet.getCell(`C${row}`).value = 'Fair Value = Justified P/B × BVPS';
         sheet.getCell(`C${row}`).font = { italic: true };
         row += 2;
-        
+
         sheet.getCell(`A${row}`).value = 'Current Market Price';
         sheet.getCell(`B${row}`).value = this.stockData.current_price;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Upside/Downside';
-        sheet.getCell(`B${row}`).value = { formula: `(B${row-3}-B${row-1})/B${row-1}` };
+        sheet.getCell(`B${row}`).value = { formula: `(B${row - 3}-B${row - 1})/B${row - 1}` };
         sheet.getCell(`B${row}`).numFmt = '0.00%';
-        
+
         sheet.getColumn(1).width = 25;
         sheet.getColumn(2).width = 20;
         sheet.getColumn(3).width = 35;
@@ -2805,11 +2825,11 @@ Generated by Stock Valuation Tool
 
     createFinancialDataSheet(sheet) {
         let row = 1;
-        
+
         sheet.getCell('A1').value = 'FINANCIAL DATA REFERENCE';
         sheet.getCell('A1').font = { bold: true, size: 14 };
         row += 2;
-        
+
         // Company Info
         const companyData = [
             ['Symbol', this.currentStock],
@@ -2832,7 +2852,7 @@ Generated by Stock Valuation Tool
             ['ROA (%)', this.stockData.roa],
             ['Debt/Equity', this.stockData.debt_to_equity]
         ];
-        
+
         companyData.forEach(([label, value]) => {
             sheet.getCell(`A${row}`).value = label;
             sheet.getCell(`B${row}`).value = value;
@@ -2844,7 +2864,7 @@ Generated by Stock Valuation Tool
             }
             row++;
         });
-        
+
         sheet.getColumn(1).width = 30;
         sheet.getColumn(2).width = 25;
     }
@@ -2855,15 +2875,15 @@ Generated by Stock Valuation Tool
         const weightedValue = this.valuationResults.weighted_average;
         const currentPrice = this.stockData.current_price;
         const upside = ((weightedValue - currentPrice) / currentPrice) * 100;
-        
+
         let row = 1;
-        
+
         // Helper to add section
         const addSection = (title, data) => {
             sheet.getCell(`A${row}`).value = title;
             sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
             row++;
-            
+
             data.forEach(([label, value]) => {
                 sheet.getCell(`A${row}`).value = label;
                 sheet.getCell(`B${row}`).value = value;
@@ -2871,20 +2891,20 @@ Generated by Stock Valuation Tool
             });
             row++; // Empty row
         };
-        
+
         // Brand Header
         sheet.mergeCells(`A${row}:E${row}`);
         sheet.getCell(`A${row}`).value = t.valuationReport || 'STOCK VALUATION REPORT';
         sheet.getCell(`A${row}`).font = { bold: true, size: 16 };
         sheet.getCell(`A${row}`).alignment = { horizontal: 'center' };
         row++;
-        
+
         sheet.mergeCells(`A${row}:E${row}`);
         sheet.getCell(`A${row}`).value = 'Powered by quanganh.org | Professional Stock Analysis Platform';
         sheet.getCell(`A${row}`).font = { italic: true, size: 10 };
         sheet.getCell(`A${row}`).alignment = { horizontal: 'center' };
         row += 2;
-        
+
         // Company Info
         addSection('═══ 1. COMPANY INFORMATION ═══', [
             ['Stock Symbol', this.currentStock],
@@ -2893,7 +2913,7 @@ Generated by Stock Valuation Tool
             ['Exchange', this.stockData.exchange],
             ['Report Date', new Date().toLocaleString(lang === 'vi' ? 'vi-VN' : 'en-US')]
         ]);
-        
+
         // Market Data
         addSection('═══ 2. MARKET DATA ═══', [
             ['Current Price', `${currentPrice.toLocaleString('vi-VN')} VND`],
@@ -2903,7 +2923,7 @@ Generated by Stock Valuation Tool
             ['P/B Ratio', `${this.stockData.pb_ratio?.toFixed(2)}x`],
             ['EPS', `${this.stockData.eps?.toLocaleString('vi-VN')} VND`]
         ]);
-        
+
         // Valuation Summary
         addSection('═══ 3. VALUATION SUMMARY ═══', [
             ['FCFE Fair Value', `${this.valuationResults.fcfe.shareValue.toLocaleString('vi-VN')} VND (${this.modelWeights.fcfe}%)`],
@@ -2914,31 +2934,31 @@ Generated by Stock Valuation Tool
             ['>>> WEIGHTED TARGET PRICE', `${weightedValue.toLocaleString('vi-VN')} VND`],
             ['>>> Upside/Downside', `${upside >= 0 ? '+' : ''}${upside.toFixed(2)}%`]
         ]);
-        
+
         // DETAILED CALCULATIONS - FCFE
         sheet.getCell(`A${row}`).value = '═══ 4. DETAILED STEP-BY-STEP CALCULATIONS ═══';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row += 2;
-        
+
         sheet.getCell(`A${row}`).value = '4.1 FCFE (Free Cash Flow to Equity) - Discounted Cash Flow Method';
         sheet.getCell(`A${row}`).font = { bold: true };
         row++;
-        
+
         const fcfe = this.valuationResults.fcfe;
         const r = this.assumptions.requiredReturn / 100;
-        
+
         if (fcfe.projectedCashFlows && fcfe.projectedCashFlows.length > 0) {
             sheet.getCell(`A${row}`).value = 'Step-by-step discount calculation:';
             row++;
-            
+
             fcfe.projectedCashFlows.forEach((cf, idx) => {
                 const year = idx + 1;
                 const pv = cf / Math.pow(1 + r, year);
                 sheet.getCell(`A${row}`).value = `Year ${year}: FCFE = ${cf.toLocaleString('vi-VN')} VND`;
-                sheet.getCell(`B${row}`).value = `→ PV = ${cf.toLocaleString('vi-VN')} / (1+${(r*100).toFixed(1)}%)^${year} = ${pv.toLocaleString('vi-VN')} VND`;
+                sheet.getCell(`B${row}`).value = `→ PV = ${cf.toLocaleString('vi-VN')} / (1+${(r * 100).toFixed(1)}%)^${year} = ${pv.toLocaleString('vi-VN')} VND`;
                 row++;
             });
-            
+
             // Terminal Value
             const tv = fcfe.terminalValue || 0;
             const tvPV = tv / Math.pow(1 + r, fcfe.projectedCashFlows.length);
@@ -2947,9 +2967,9 @@ Generated by Stock Valuation Tool
             sheet.getCell(`B${row}`).value = `${tv.toLocaleString('vi-VN')} VND`;
             row++;
             sheet.getCell(`A${row}`).value = `→ PV of Terminal Value:`;
-            sheet.getCell(`B${row}`).value = `${tv.toLocaleString('vi-VN')} / (1+${(r*100).toFixed(1)}%)^${fcfe.projectedCashFlows.length} = ${tvPV.toLocaleString('vi-VN')} VND`;
+            sheet.getCell(`B${row}`).value = `${tv.toLocaleString('vi-VN')} / (1+${(r * 100).toFixed(1)}%)^${fcfe.projectedCashFlows.length} = ${tvPV.toLocaleString('vi-VN')} VND`;
             row += 2;
-            
+
             // Sum
             sheet.getCell(`A${row}`).value = `Total Present Value (Equity Value):`;
             sheet.getCell(`B${row}`).value = `${(fcfe.equityValue || 0).toLocaleString('vi-VN')} VND`;
@@ -2963,11 +2983,11 @@ Generated by Stock Valuation Tool
             sheet.getCell(`B${row}`).font = { bold: true, color: { argb: 'FF0066CC' } };
             row += 2;
         }
-        
+
         // Set column widths
         sheet.getColumn(1).width = 40;
         sheet.getColumn(2).width = 60;
-        
+
         // Add footer
         row += 2;
         sheet.getCell(`A${row}`).value = 'Generated by quanganh.org - Professional Stock Valuation Platform';
@@ -2980,9 +3000,9 @@ Generated by Stock Valuation Tool
         // Headers
         sheet.getCell('A1').value = 'COMPANY DATA';
         sheet.getCell('A1').font = { bold: true, size: 14 };
-        
+
         let row = 2;
-        
+
         // Company Info
         const companyData = [
             ['Symbol', this.currentStock],
@@ -3003,7 +3023,7 @@ Generated by Stock Valuation Tool
             ['ROA (%)', this.stockData.roa],
             ['Debt/Equity', this.stockData.debt_to_equity]
         ];
-        
+
         companyData.forEach(([label, value]) => {
             sheet.getCell(`A${row}`).value = label;
             sheet.getCell(`B${row}`).value = value;
@@ -3012,13 +3032,13 @@ Generated by Stock Valuation Tool
             }
             row++;
         });
-        
+
         // Assumptions
         row += 2;
         sheet.getCell(`A${row}`).value = 'VALUATION ASSUMPTIONS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 14 };
         row++;
-        
+
         const assumptions = [
             ['Revenue Growth Rate (%)', this.assumptions.revenueGrowth],
             ['Terminal Growth Rate (%)', this.assumptions.terminalGrowth],
@@ -3027,46 +3047,46 @@ Generated by Stock Valuation Tool
             ['Tax Rate (%)', this.assumptions.taxRate],
             ['Projection Years', this.assumptions.projectionYears]
         ];
-        
+
         assumptions.forEach(([label, value]) => {
             sheet.getCell(`A${row}`).value = label;
             sheet.getCell(`B${row}`).value = value;
             row++;
         });
-        
+
         // FCFE Projections
         row += 2;
         sheet.getCell(`A${row}`).value = 'FCFE PROJECTIONS';
         sheet.getCell(`A${row}`).font = { bold: true, size: 14 };
         row++;
-        
+
         sheet.getCell(`A${row}`).value = 'Year';
         sheet.getCell(`B${row}`).value = 'FCFE (VND)';
         sheet.getCell(`C${row}`).value = 'Discount Factor';
         sheet.getCell(`D${row}`).value = 'Present Value (VND)';
         sheet.getRow(row).font = { bold: true };
         row++;
-        
+
         const fcfe = this.valuationResults.fcfe;
         const r = this.assumptions.requiredReturn / 100;
-        
+
         if (fcfe.projectedCashFlows) {
             fcfe.projectedCashFlows.forEach((cf, idx) => {
                 const year = idx + 1;
                 const discountFactor = 1 / Math.pow(1 + r, year);
                 const pv = cf * discountFactor;
-                
+
                 sheet.getCell(`A${row}`).value = year;
                 sheet.getCell(`B${row}`).value = cf;
                 sheet.getCell(`C${row}`).value = discountFactor;
                 sheet.getCell(`D${row}`).value = pv;
-                
+
                 sheet.getCell(`B${row}`).numFmt = '#,##0';
                 sheet.getCell(`C${row}`).numFmt = '0.0000';
                 sheet.getCell(`D${row}`).numFmt = '#,##0';
                 row++;
             });
-            
+
             // Terminal Value
             sheet.getCell(`A${row}`).value = `Terminal (Y${fcfe.projectedCashFlows.length})`;
             sheet.getCell(`B${row}`).value = fcfe.terminalValue;
@@ -3076,7 +3096,7 @@ Generated by Stock Valuation Tool
             sheet.getCell(`C${row}`).numFmt = '0.0000';
             sheet.getCell(`D${row}`).numFmt = '#,##0';
         }
-        
+
         // Set column widths
         sheet.getColumn(1).width = 30;
         sheet.getColumn(2).width = 20;
@@ -3087,28 +3107,28 @@ Generated by Stock Valuation Tool
     generateCSVReport() {
         const lang = this.currentLanguage;
         const t = translations[lang];
-        
+
         const weightedValue = this.valuationResults.weighted_average;
         const currentPrice = this.stockData.current_price;
         const upside = ((weightedValue - currentPrice) / currentPrice) * 100;
-        
+
         let csv = [];
         const SEP = ',';
-        
+
         // Brand Header
         csv.push('═══════════════════════════════════════════════════════════════════════════════');
         csv.push(`${t.valuationReport || 'STOCK VALUATION REPORT'}`);
         csv.push('Powered by quanganh.org | Professional Stock Analysis Platform');
         csv.push('═══════════════════════════════════════════════════════════════════════════════');
         csv.push('');
-        
+
         // Report Metadata
         csv.push(`${t.companyInformation || 'Company'}${SEP}${this.stockData.name} (${this.currentStock})`);
         csv.push(`${t.reportDate || 'Report Date'}${SEP}${new Date().toLocaleDateString(lang === 'vi' ? 'vi-VN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}`);
         csv.push(`${t.dataPeriod || 'Data Period'}${SEP}${this.stockData.data_frequency === 'quarter' ? (t.latestQuarter || 'Latest Quarter') : (t.latestYear || 'Latest Year')}`);
         csv.push('');
         csv.push('───────────────────────────────────────────────────────────────────────────────');
-        
+
         // SECTION 1: Company Overview
         csv.push('');
         csv.push(`═══ 1. ${t.companyInformation || 'COMPANY INFORMATION'} ═══`);
@@ -3117,7 +3137,7 @@ Generated by Stock Valuation Tool
         csv.push(`${t.industry || 'Industry'}${SEP}${this.stockData.sector || '--'}`);
         csv.push(`${t.exchange || 'Exchange'}${SEP}${this.stockData.exchange || '--'}`);
         csv.push('');
-        
+
         // SECTION 2: Market Data
         csv.push(`═══ 2. ${t.marketData || 'MARKET DATA'} ═══`);
         csv.push(`Metric${SEP}Value${SEP}Unit`);
@@ -3129,31 +3149,31 @@ Generated by Stock Valuation Tool
         csv.push(`${t.peRatio || 'P/E Ratio'}${SEP}${this.stockData.pe_ratio?.toFixed(2) || '--'}${SEP}x`);
         csv.push(`${t.pbRatio || 'P/B Ratio'}${SEP}${this.stockData.pb_ratio?.toFixed(2) || '--'}${SEP}x`);
         csv.push('');
-        
+
         // SECTION 3: Valuation Summary
         csv.push(`═══ 3. ${t.valuationResults || 'VALUATION SUMMARY'} ═══`);
         csv.push(`Model${SEP}Fair Value (VND)${SEP}Weight${SEP}Difference vs Market`);
         const fcfe = this.valuationResults.fcfe;
         const fcfeDiff = ((fcfe.shareValue - currentPrice) / currentPrice * 100).toFixed(1);
         csv.push(`FCFE${SEP}${fcfe.shareValue.toLocaleString('vi-VN')}${SEP}${this.modelWeights.fcfe}%${SEP}${fcfeDiff}%`);
-        
+
         const fcff = this.valuationResults.fcff;
         const fcffDiff = ((fcff.shareValue - currentPrice) / currentPrice * 100).toFixed(1);
         csv.push(`FCFF${SEP}${fcff.shareValue.toLocaleString('vi-VN')}${SEP}${this.modelWeights.fcff}%${SEP}${fcffDiff}%`);
-        
+
         const pe = this.valuationResults.justified_pe;
         const peDiff = ((pe.shareValue - currentPrice) / currentPrice * 100).toFixed(1);
         csv.push(`Justified P/E${SEP}${pe.shareValue.toLocaleString('vi-VN')}${SEP}${this.modelWeights.justified_pe}%${SEP}${peDiff}%`);
-        
+
         const pb = this.valuationResults.justified_pb;
         const pbDiff = ((pb.shareValue - currentPrice) / currentPrice * 100).toFixed(1);
         csv.push(`Justified P/B${SEP}${pb.shareValue.toLocaleString('vi-VN')}${SEP}${this.modelWeights.justified_pb}%${SEP}${pbDiff}%`);
-        
+
         csv.push('───────────────────────────────────────────────────────────────────────────────');
         csv.push(`>>> ${t.weightedAverageTargetPrice || 'WEIGHTED TARGET PRICE'}${SEP}${weightedValue.toLocaleString('vi-VN')} VND${SEP}${SEP}${upside >= 0 ? '+' : ''}${upside.toFixed(2)}%`);
         csv.push('───────────────────────────────────────────────────────────────────────────────');
         csv.push('');
-        
+
         // SECTION 4: Detailed Calculations - FCFE
         csv.push(`═══ 4. ${t.modelDetails || 'DETAILED VALUATION CALCULATIONS'} ═══`);
         csv.push('');
@@ -3173,7 +3193,7 @@ Generated by Stock Valuation Tool
         csv.push(`Growth Rate (g)${SEP}${this.assumptions.revenueGrowth}%`);
         csv.push(`Discount Rate (r)${SEP}${this.assumptions.requiredReturn}%`);
         csv.push('');
-        
+
         // 4.2 FCFF
         csv.push('4.2 FCFF (Free Cash Flow to Firm) Method');
         csv.push(`Description${SEP}Value (VND)`);
@@ -3192,7 +3212,7 @@ Generated by Stock Valuation Tool
         csv.push(`Formula${SEP}EV = Σ(FCFF_t / (1+WACC)^t) + TV / (1+WACC)^n`);
         csv.push(`WACC${SEP}${this.assumptions.wacc}%`);
         csv.push('');
-        
+
         // 4.3 P/E
         csv.push('4.3 Justified P/E Valuation');
         csv.push(`Description${SEP}Value`);
@@ -3204,7 +3224,7 @@ Generated by Stock Valuation Tool
         csv.push(`Growth Rate (g)${SEP}${this.assumptions.revenueGrowth}%`);
         csv.push(`Required Return (r)${SEP}${this.assumptions.requiredReturn}%`);
         csv.push('');
-        
+
         // 4.4 P/B
         csv.push('4.4 Justified P/B Valuation');
         csv.push(`Description${SEP}Value`);
@@ -3214,7 +3234,7 @@ Generated by Stock Valuation Tool
         csv.push(`Formula${SEP}Justified P/B = ROE × Payout × (1+g) / (r-g)`);
         csv.push(`ROE${SEP}${this.stockData.roe?.toFixed(2)}%`);
         csv.push('');
-        
+
         // SECTION 5: Investment Decision
         csv.push(`═══ 5. ${t.recommendation || 'INVESTMENT RECOMMENDATION'} ═══`);
         csv.push(`Current Market Price${SEP}${currentPrice.toLocaleString('vi-VN')} VND`);
@@ -3225,7 +3245,7 @@ Generated by Stock Valuation Tool
             csv.push(`>>> Investment Recommendation${SEP}${rec.toUpperCase()}`);
         }
         csv.push('');
-        
+
         // SECTION 6: Assumptions & Parameters
         csv.push(`═══ 6. ${t.modelAssumptions || 'VALUATION ASSUMPTIONS'} ═══`);
         csv.push(`Parameter${SEP}Value`);
@@ -3236,7 +3256,7 @@ Generated by Stock Valuation Tool
         csv.push(`Corporate Tax Rate${SEP}${this.assumptions.taxRate}%`);
         csv.push(`Projection Period${SEP}${this.assumptions.projectionYears} years`);
         csv.push('');
-        
+
         // SECTION 7: Financial Health
         csv.push(`═══ 7. ${t.financialMetrics || 'FINANCIAL HEALTH METRICS'} ═══`);
         csv.push(`Metric${SEP}Value${SEP}Unit`);
@@ -3247,7 +3267,7 @@ Generated by Stock Valuation Tool
         csv.push(`ROA (Return on Assets)${SEP}${this.stockData.roa?.toFixed(2) || '--'}${SEP}%`);
         csv.push(`Debt/Equity Ratio${SEP}${this.stockData.debt_to_equity?.toFixed(2) || '--'}${SEP}x`);
         csv.push('');
-        
+
         // Footer
         csv.push('═══════════════════════════════════════════════════════════════════════════════');
         csv.push('DISCLAIMER');
@@ -3259,7 +3279,7 @@ Generated by Stock Valuation Tool
         csv.push(`Report Generated: ${new Date().toLocaleString(lang === 'vi' ? 'vi-VN' : 'en-US')}`);
         csv.push('Website: https://valuation.quanganh.org | API: https://api.quanganh.org');
         csv.push('═══════════════════════════════════════════════════════════════════════════════');
-        
+
         return csv.join('\n');
     }
 
@@ -3459,7 +3479,7 @@ Generated by Stock Valuation Tool
         this.safeUpdateElement('summary-market-cap', this.formatLargeNumber(data.market_cap));
         this.safeUpdateElement('summary-pe', this.formatNumber(data.pe_ratio));
         this.safeUpdateElement('summary-pb', this.formatNumber(data.pb_ratio));
-    }    updateModelDetails() {
+    } updateModelDetails() {
         if (!this.valuationResults || !this.stockData) {
             return;
         }
@@ -3500,11 +3520,11 @@ Generated by Stock Valuation Tool
         this.safeUpdateElement('pb-share-value', this.formatCurrency(this.valuationResults.justified_pb.shareValue));
         const pbDiff = ((this.valuationResults.justified_pb.shareValue - currentPrice) / currentPrice) * 100;
         this.safeUpdateElement('pb-market-diff', `${pbDiff > 0 ? '+' : ''}${pbDiff.toFixed(1)}%`);
-          // Update target price and summary
+        // Update target price and summary
         this.safeUpdateElement('target-price', this.formatCurrency(this.valuationResults.weighted_average));
         const upside = ((this.valuationResults.weighted_average - currentPrice) / currentPrice) * 100;
         this.safeUpdateElement('summary-potential', `${upside > 0 ? '+' : ''}${upside.toFixed(1)}%`);
-        
+
         // Update recommendation for page 3
         this.updateRecommendation();
     }
@@ -3530,7 +3550,7 @@ document.addEventListener('DOMContentLoaded', () => {
         new StockValuationApp(); // Proceed without charts
     };
     document.head.appendChild(script);
-    
+
     // Footer legal links handlers
     setupLegalModals();
 });
@@ -3540,28 +3560,28 @@ function setupLegalModals() {
     const privacyLink = document.getElementById('privacy-link');
     const termsLink = document.getElementById('terms-link');
     const contactLink = document.getElementById('contact-link');
-    
+
     if (disclaimerLink) {
         disclaimerLink.addEventListener('click', (e) => {
             e.preventDefault();
             showLegalModal('disclaimer');
         });
     }
-    
+
     if (privacyLink) {
         privacyLink.addEventListener('click', (e) => {
             e.preventDefault();
             showLegalModal('privacy');
         });
     }
-    
+
     if (termsLink) {
         termsLink.addEventListener('click', (e) => {
             e.preventDefault();
             showLegalModal('terms');
         });
     }
-    
+
     if (contactLink) {
         contactLink.addEventListener('click', (e) => {
             e.preventDefault();
@@ -3572,7 +3592,7 @@ function setupLegalModals() {
 
 function showLegalModal(type) {
     const currentLang = document.documentElement.getAttribute('lang') || 'en';
-    
+
     const content = {
         disclaimer: {
             en: {
@@ -3759,9 +3779,9 @@ function showLegalModal(type) {
             }
         }
     };
-    
+
     const data = content[type][currentLang];
-    
+
     // Create modal overlay
     const overlay = document.createElement('div');
     overlay.className = 'legal-modal-overlay';
@@ -3776,34 +3796,34 @@ function showLegalModal(type) {
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(overlay);
-    
+
     // Position overlay at current scroll position
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     overlay.style.top = scrollTop + 'px';
-    
+
     // Prevent body scroll and ensure modal content starts at top
     document.body.style.overflow = 'hidden';
     const modalBody = overlay.querySelector('.legal-modal-body');
     if (modalBody) {
         modalBody.scrollTop = 0;
     }
-    
+
     // Close handlers
     const closeBtn = overlay.querySelector('.legal-modal-close');
     closeBtn.addEventListener('click', () => {
         document.body.style.overflow = '';
         overlay.remove();
     });
-    
+
     overlay.addEventListener('click', (e) => {
         if (e.target === overlay) {
             document.body.style.overflow = '';
             overlay.remove();
         }
     });
-    
+
     // Escape key handler
     const escHandler = (e) => {
         if (e.key === 'Escape') {
