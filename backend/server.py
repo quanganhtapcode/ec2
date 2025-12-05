@@ -544,7 +544,13 @@ class StockDataProvider:
                     # Try to get info from vnstock overview if available
                     if 'overview' in quarter_data:
                         overview = quarter_data['overview']
-                    if 'overview' in quarter_data:
+                        # Debug: Log available keys to fix missing data issues
+                        try:
+                            logger.info(f"Overview keys for {symbol}: {overview.keys().tolist() if hasattr(overview, 'keys') else 'Not dict-like'}")
+                            logger.info(f"Overview sample: {overview.to_dict() if hasattr(overview, 'to_dict') else str(overview)}")
+                        except Exception as e:
+                            logger.warning(f"Could not log overview debug info: {e}")
+
                         overview = quarter_data['overview']
                         # Support both camelCase (API) and snake_case (DataFrame/Listing) keys
                         # Notebook confirms 'organ_name', 'exchange', 'icb_name3' are used in listing
