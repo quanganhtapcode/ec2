@@ -1355,48 +1355,47 @@ select.form-control {
   }
 }
 
-/* Loader Animation - Bouncing Ball with Blur */
+/* Loader Animation - Rotating Cross/Plus */
 .loader {
   width: 40px;
-  height: 30px;
-  --c: no-repeat linear-gradient(var(--color-primary) 0 0);
+  aspect-ratio: 1;
+  --c: linear-gradient(var(--color-primary) 0 0);
+  --m: radial-gradient(farthest-side, var(--color-primary) 92%, #0000);
   background:
-    var(--c) 0 100%/8px 30px,
-    var(--c) 50% 100%/8px 20px,
-    var(--c) 100% 100%/8px 10px;
-  position: relative;
-  clip-path: inset(-100% 0);
-}
-
-.loader:before {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  left: -16px;
-  top: 0;
+    var(--m) center / 12px 12px,
+    var(--c) left 50% top -20px / 8px 16px,
+    var(--c) left 50% bottom -20px / 8px 16px,
+    var(--c) top 50% left -20px / 16px 8px,
+    var(--c) top 50% right -20px / 16px 8px;
+  background-repeat: no-repeat;
   animation:
-    l5-1 2s linear infinite,
-    l5-2 0.5s cubic-bezier(0, 200, .8, 200) infinite;
+    l18-1 1.5s infinite,
+    l18-2 1.5s infinite;
 }
 
-@keyframes l5-1 {
-  0% {
-    left: -16px;
-    transform: translateY(-8px)
-  }
+@keyframes l18-1 {
 
-  100% {
-    left: calc(100% + 8px);
-    transform: translateY(22px)
+  30%,
+  70% {
+    background-position:
+      center,
+      left 50% top calc(50% - 8px),
+      left 50% bottom calc(50% - 8px),
+      top 50% left calc(50% - 8px),
+      top 50% right calc(50% - 8px)
   }
 }
 
-@keyframes l5-2 {
+@keyframes l18-2 {
+
+  0%,
+  40% {
+    transform: rotate(0)
+  }
+
+  60%,
   100% {
-    top: -0.1px
+    transform: rotate(90deg)
   }
 }
 
