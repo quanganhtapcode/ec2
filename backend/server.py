@@ -544,11 +544,24 @@ class StockDataProvider:
                     # Try to get info from vnstock overview if available
                     if 'overview' in quarter_data:
                         overview = quarter_data['overview']
-                        # vnstock overview keys often include: 'organName', 'icbName', 'comGroupCode'
+                    if 'overview' in quarter_data:
+                        overview = quarter_data['overview']
+                        # Support both camelCase (API) and snake_case (DataFrame/Listing) keys
+                        # Notebook confirms 'organ_name', 'exchange', 'icb_name3' are used in listing
+                        
+                        # Name
+                        name = overview.get('organName') or overview.get('organ_name') or symbol
+                        
+                        # Industry
+                        industry = overview.get('icbName') or overview.get('icb_name3') or overview.get('industry') or "Unknown"
+                        
+                        # Exchange
+                        exchange = overview.get('comGroupCode') or overview.get('exchange') or overview.get('com_group_code') or "Unknown"
+                        
                         company_info = {
-                            'organ_name': overview.get('organName', symbol),
-                            'industry': overview.get('icbName', overview.get('industry', "Unknown")),
-                            'exchange': overview.get('comGroupCode', overview.get('exchange', "Unknown"))
+                            'organ_name': name,
+                            'industry': industry,
+                            'exchange': exchange
                         }
                     else:
                         company_info = {
