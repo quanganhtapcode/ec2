@@ -9,7 +9,7 @@ from flask_compress import Compress
 import logging
 import time
 from datetime import datetime, timedelta
-from vnstock import Vnstock
+from vnstock import Vnstock, Listing
 from vnstock.explorer.vci import Company
 from backend.models import ValuationModels
 import json
@@ -124,10 +124,60 @@ class StockDataProvider:
     def __init__(self):
         self.sources = ["VCI"]
         self.vnstock = Vnstock()  # Keep for valuation calculations that still need it
+        self.listing = Listing()  # For company metadata lookup
+        self._listing_cache = None  # Cache for listing data (DataFrame)
+        self._industry_mapping = {}  # symbol -> industry mapping
         # Use absolute path from script location or relative from working directory
         script_dir = os.path.dirname(os.path.abspath(__file__))
         self._stock_data_folder = os.path.join(os.path.dirname(script_dir), 'stocks')
         logger.info(f"StockDataProvider initialized - using stocks folder: {self._stock_data_folder}")
+
+    def _get_company_metadata_from_listing(self, symbol: str) -> dict:
+        """Get company metadata (name, industry, exchange) from vnstock Listing API"""
+        symbol_upper = symbol.upper()
+        
+        try:
+            # Load and cache listing data on first call
+            if self._listing_cache is None:
+                logger.info("Loading listing data from vnstock API (first time)...")
+                try:
+                    # symbols_by_exchange has: symbol, exchange, organ_name
+                    exchange_df = self.listing.symbols_by_exchange()
+                    # symbols_by_industries has: symbol, organ_name, icb_name3 (industry)
+                    industries_df = self.listing.symbols_by_industries()
+                    
+                    # Merge both DataFrames on 'symbol'
+                    if not exchange_df.empty and not industries_df.empty:
+                        self._listing_cache = pd.merge(
+                            exchange_df[['symbol', 'exchange', 'organ_name']],
+                            industries_df[['symbol', 'icb_name3']],
+                            on='symbol',
+                            how='outer'
+                        )
+                        logger.info(f"Loaded listing data for {len(self._listing_cache)} symbols")
+                    else:
+                        self._listing_cache = pd.DataFrame()
+                        logger.warning("Failed to load listing data - empty DataFrames")
+                except Exception as e:
+                    logger.error(f"Error fetching listing data: {e}")
+                    self._listing_cache = pd.DataFrame()
+            
+            # Look up the symbol in the cached DataFrame
+            if not self._listing_cache.empty:
+                match = self._listing_cache[self._listing_cache['symbol'].str.upper() == symbol_upper]
+                if not match.empty:
+                    row = match.iloc[0]
+                    return {
+                        'organ_name': row.get('organ_name', symbol_upper),
+                        'industry': row.get('icb_name3', 'Unknown'),
+                        'exchange': row.get('exchange', 'Unknown')
+                    }
+            
+            return None  # Not found
+            
+        except Exception as e:
+            logger.error(f"Error looking up {symbol} in listing cache: {e}")
+            return None
 
     def _search_symbol_in_all_industries(self, symbol: str) -> dict:
         """Load industry name mapping from JSON file"""
@@ -540,41 +590,19 @@ class StockDataProvider:
                         'exchange': annual_data.get('exchange', "Unknown")
                     }
                 else:
-                    # Fallback if no local JSON found
-                    # Try to get info from vnstock overview if available
-                    if 'overview' in quarter_data:
-                        overview = quarter_data['overview']
-                        # Debug: Log available keys to fix missing data issues
-                        try:
-                            logger.info(f"Overview keys for {symbol}: {overview.keys().tolist() if hasattr(overview, 'keys') else 'Not dict-like'}")
-                            logger.info(f"Overview sample: {overview.to_dict() if hasattr(overview, 'to_dict') else str(overview)}")
-                        except Exception as e:
-                            logger.warning(f"Could not log overview debug info: {e}")
-
-                        overview = quarter_data['overview']
-                        # Support both camelCase (API) and snake_case (DataFrame/Listing) keys
-                        # Notebook confirms 'organ_name', 'exchange', 'icb_name3' are used in listing
-                        
-                        # Name
-                        name = overview.get('organName') or overview.get('organ_name') or symbol
-                        
-                        # Industry
-                        industry = overview.get('icbName') or overview.get('icb_name3') or overview.get('industry') or "Unknown"
-                        
-                        # Exchange
-                        exchange = overview.get('comGroupCode') or overview.get('exchange') or overview.get('com_group_code') or "Unknown"
-                        
-                        company_info = {
-                            'organ_name': name,
-                            'industry': industry,
-                            'exchange': exchange
-                        }
+                    # Fallback: Use Listing API to get company metadata
+                    logger.info(f"No local JSON for {symbol}, trying Listing API...")
+                    listing_metadata = self._get_company_metadata_from_listing(symbol)
+                    
+                    if listing_metadata:
+                        logger.info(f"✓ Found {symbol} metadata from Listing API: {listing_metadata}")
+                        company_info = listing_metadata
                     else:
+                        logger.warning(f"✗ No metadata found for {symbol} in Listing API")
                         company_info = {
                             'organ_name': symbol,
-                            # Try to look up in industry mapping if we have it
-                            'industry': self._industry_mapping.get(symbol, "Unknown"),
-                            'exchange': "Unknown"
+                            'industry': 'Unknown',
+                            'exchange': 'Unknown'
                         }
                 
                 # Process quarter data into the expected format
