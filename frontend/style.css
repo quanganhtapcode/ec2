@@ -671,7 +671,8 @@ select.form-control {
 /* Card component */
 .card {
   background-color: var(--color-surface);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-base);
+  /* Match other components */
   border: 1px solid var(--color-card-border);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
@@ -1581,13 +1582,16 @@ select.form-control {
     overflow-x: auto;
     width: 100%;
     max-width: 100%;
-    justify-content: flex-start;
-    /* Alignment */
+    justify-content: stretch;
+    /* Stretch to fill */
   }
 
   .tab-btn {
     padding: var(--space-8);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
+    /* Increase font size on mobile tablet */
+    flex: 1;
+    /* Stretch */
   }
 
   .tab-btn span {
@@ -1606,21 +1610,24 @@ select.form-control {
   /* Keep text visible even on small screens */
   .tab-btn span {
     display: inline-block !important;
-    font-size: 11px;
-    /* Slightly smaller text for tight fit */
+    font-size: 13px;
+    /* Increased from 11px to fill space */
   }
 
   .tab-btn {
-    padding: 8px 4px;
-    /* Reduced padding */
+    padding: 10px 4px;
+    /* Increased padding */
     flex-direction: row;
-    /* Force row to keep icon and text on same line */
-    gap: 6px;
+    gap: 8px;
+    /* More gap */
+    flex: 1;
+    /* Force equal width */
   }
 
   .tab-icon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    /* Larger icon */
+    height: 18px;
   }
 }
 
