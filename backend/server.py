@@ -541,11 +541,22 @@ class StockDataProvider:
                     }
                 else:
                     # Fallback if no local JSON found
-                    company_info = {
-                        'organ_name': symbol,
-                        'industry': self._get_industry_for_symbol(symbol),
-                        'exchange': "Unknown"
-                    }
+                    # Try to get info from vnstock overview if available
+                    if 'overview' in quarter_data:
+                        overview = quarter_data['overview']
+                        # vnstock overview keys often include: 'organName', 'icbName', 'comGroupCode'
+                        company_info = {
+                            'organ_name': overview.get('organName', symbol),
+                            'industry': overview.get('icbName', overview.get('industry', "Unknown")),
+                            'exchange': overview.get('comGroupCode', overview.get('exchange', "Unknown"))
+                        }
+                    else:
+                        company_info = {
+                            'organ_name': symbol,
+                            # Try to look up in industry mapping if we have it
+                            'industry': self._industry_mapping.get(symbol, "Unknown"),
+                            'exchange': "Unknown"
+                        }
                 
                 # Process quarter data into the expected format
                 processed_data = self._process_quarter_data(quarter_data, symbol, company_info)
