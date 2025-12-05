@@ -1484,7 +1484,8 @@ select.form-control {
   display: flex;
   /* Changed from inline-flex to flex for centering */
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
+  /* Stretch items to fill height */
   justify-content: center;
   /* Center items if they don't fill width, or... */
   background-color: var(--color-surface);
@@ -1515,6 +1516,9 @@ select.form-control {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Ensure click hits the button, not children */
+  position: relative;
+  z-index: 1;
   gap: var(--space-8);
   padding: var(--space-8) var(--space-12);
   border-radius: var(--radius-base);
@@ -1569,6 +1573,13 @@ select.form-control {
   width: 16px;
   height: 16px;
   opacity: 0.8;
+  pointer-events: none;
+  /* Let clicks pass to button */
+}
+
+.tab-btn span {
+  pointer-events: none;
+  /* Let clicks pass to button */
 }
 
 .tab-btn.active .tab-icon {
