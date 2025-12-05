@@ -1581,11 +1581,12 @@ select.form-control {
   .tabs {
     flex-direction: row;
     /* KEEP horizontal on mobile */
-    overflow-x: auto;
+    /* Remove overflow scroll, we want to scale */
     width: 100%;
-    max-width: 100%;
-    justify-content: stretch;
-    /* Stretch to fill */
+    max-width: none;
+    /* Remove constraining max-width */
+    justify-content: space-between;
+    /* Distribute evenly */
   }
 
   .tab-btn {
