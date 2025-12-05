@@ -530,8 +530,22 @@ class StockDataProvider:
             quarter_data = self._get_quarter_data_from_vnstock(symbol)
             
             if quarter_data:
-                # Get company info from CSV if available (for display purposes only)
-                company_info = self._get_company_info_from_csv(symbol)
+                # Get company metadata from local JSON files (best source for static info)
+                annual_data = self._search_symbol_in_all_industries(symbol)
+                
+                if annual_data:
+                    company_info = {
+                        'organ_name': annual_data.get('name', symbol),
+                        'industry': annual_data.get('sector', annual_data.get('industry', "Unknown")),
+                        'exchange': annual_data.get('exchange', "Unknown")
+                    }
+                else:
+                    # Fallback if no local JSON found
+                    company_info = {
+                        'organ_name': symbol,
+                        'industry': self._get_industry_for_symbol(symbol),
+                        'exchange': "Unknown"
+                    }
                 
                 # Process quarter data into the expected format
                 processed_data = self._process_quarter_data(quarter_data, symbol, company_info)
