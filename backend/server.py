@@ -730,13 +730,21 @@ class StockDataProvider:
                     "success": True
                 }
                 
-                # Extract key ratios
+                # Extract key ratios - convert numpy types to native Python
                 for col in latest_ratio.index:
                     if isinstance(col, tuple):
                         key = col[1] if len(col) > 1 else col[0]
                     else:
                         key = col
-                    result[key] = latest_ratio[col]
+                    value = latest_ratio[col]
+                    # Convert numpy types to native Python types for JSON serialization
+                    if pd.notna(value):
+                        if isinstance(value, (np.integer, np.int64)):
+                            result[key] = int(value)
+                        elif isinstance(value, (np.floating, np.float64)):
+                            result[key] = float(value)
+                        else:
+                            result[key] = value
                 
                 return result
         except Exception as e:
