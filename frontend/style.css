@@ -1613,9 +1613,9 @@ select.form-control {
   .tab-btn {
     padding: 8px 4px;
     /* Reduced padding */
-    flex-direction: column;
-    /* Stack icon and text if very tight, or keep row? row is better for segmented */
-    gap: 4px;
+    flex-direction: row;
+    /* Force row to keep icon and text on same line */
+    gap: 6px;
   }
 
   .tab-icon {
