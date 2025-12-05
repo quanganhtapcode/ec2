@@ -18,9 +18,9 @@ const translations = {
         loadCompanyData: "Tải dữ liệu công ty",
 
         // Tabs
-        companyOverview: "Tổng quan công ty",
-        valuationAssumptions: "Định giá & Giả định",
-        summaryReport: "Báo cáo tổng hợp",
+        companyOverview: "Tổng quan",
+        valuationAssumptions: "Định giá",
+        summaryReport: "Báo cáo",
 
         // Company Information
         companyInformation: "Thông tin công ty",
@@ -228,9 +228,9 @@ const translations = {
         loadCompanyData: "Load Company Data",
 
         // Tabs
-        companyOverview: "Company Overview",
-        valuationAssumptions: "Valuation & Assumptions",
-        summaryReport: "Summary Report",
+        companyOverview: "Overview",
+        valuationAssumptions: "Valuation",
+        summaryReport: "Report",
 
         // Company Information
         companyInformation: "Company Information",
