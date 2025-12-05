@@ -1044,7 +1044,8 @@ select.form-control {
   display: grid;
   grid-template-columns: repeat(4, auto);
   gap: var(--space-32);
-  margin-left: var(--space-64);
+  gap: var(--space-32);
+  margin-left: 0;
 }
 
 .footer-links a {
@@ -1451,22 +1452,27 @@ select.form-control {
 /* Tab Navigation (Segmented Control Style) */
 .tabs {
   display: inline-flex;
-  background-color: var(--color-surface); /* or secondary for contrast */
+  background-color: var(--color-surface);
+  /* or secondary for contrast */
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   padding: 4px;
   gap: 4px;
   margin-bottom: var(--space-32);
   width: 100%;
-  max-width: 600px; /* Optional constraint */
+  max-width: 600px;
+  /* Optional constraint */
 }
 
 /* Dark mode adjustment for tabs container */
 [data-theme="dark"] .tabs {
-  background-color: rgba(255, 255, 255, 0.05); /* Slightly lighter than bg */
+  background-color: rgba(255, 255, 255, 0.05);
+  /* Slightly lighter than bg */
 }
+
 [data-theme="light"] .tabs {
-  background-color: #f1f3f5; /* Light gray */
+  background-color: #f1f3f5;
+  /* Light gray */
 }
 
 .tab-btn {
@@ -1476,7 +1482,9 @@ select.form-control {
   justify-content: center;
   gap: var(--space-8);
   padding: var(--space-8) var(--space-12);
-  border-radius: var(--radius-base);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-full);
+  border: none;
   border: none;
   background: transparent;
   color: var(--color-text-secondary);
@@ -1505,13 +1513,14 @@ select.form-control {
 
 /* Fix active state in dark mode to pop out */
 [data-theme="dark"] .tab-btn.active {
-  background-color: #2C2C2E; /* Match card surface */
+  background-color: #2C2C2E;
+  /* Match card surface */
   color: var(--color-primary);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .tab-icon {
-  width: 16px; 
+  width: 16px;
   height: 16px;
   opacity: 0.8;
 }
@@ -1524,38 +1533,45 @@ select.form-control {
 /* Mobile responsive for tabs */
 @media (max-width: 640px) {
   .tabs {
-    flex-direction: column; /* Stack on very small screens? Or scroll? */
+    flex-direction: column;
+    /* Stack on very small screens? Or scroll? */
     /* Let's keep horizontal but maybe smaller text */
     flex-direction: row;
-    overflow-x: auto; /* Allow scroll if needed */
+    overflow-x: auto;
+    /* Allow scroll if needed */
     max-width: 100%;
   }
-  
+
   .tab-btn {
     padding: var(--space-8);
     font-size: var(--font-size-xs);
   }
-  
+
   .tab-btn span {
-    display: none; /* Hide text on mobile, show only icons? Or truncate */
+    display: none;
+    /* Hide text on mobile, show only icons? Or truncate */
   }
+
   /* Actually strictly hidding text might be too aggressive, let's just make it compact */
-   .tab-btn span {
-      display: inline-block;
-   }
+  .tab-btn span {
+    display: inline-block;
+  }
 }
 
 @media (max-width: 480px) {
-    .tab-btn span {
-        display: none; /* Show only icons on very small screens to fit 3 tabs */
-    }
-    .tab-btn {
-        padding: 12px;
-    }
-    .tab-icon {
-        width: 20px;
-        height: 20px;
-    }
+  .tab-btn span {
+    display: none;
+    /* Show only icons on very small screens to fit 3 tabs */
+  }
+
+  .tab-btn {
+    padding: 12px;
+  }
+
+  .tab-icon {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 /* Tab Content */
