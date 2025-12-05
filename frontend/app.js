@@ -83,6 +83,11 @@ class StockValuationApp {
         if (searchBtn) {
             searchBtn.addEventListener('click', (e) => {
                 e.preventDefault();
+                // Clear any pending debounce to prevent duplicate request
+                if (this.debounceTimer) {
+                    clearTimeout(this.debounceTimer);
+                    this.debounceTimer = null;
+                }
                 this.loadStockData();
             });
         }
@@ -90,6 +95,11 @@ class StockValuationApp {
         document.getElementById('stock-symbol').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
+                // Clear any pending debounce to prevent duplicate request
+                if (this.debounceTimer) {
+                    clearTimeout(this.debounceTimer);
+                    this.debounceTimer = null;
+                }
                 this.loadStockData();
             }
         });
@@ -111,12 +121,17 @@ class StockValuationApp {
                 downloadBtn.disabled = !symbol || symbol.length === 0;
             }
 
-            // Auto-suggest/Auto-load with debounce
-            this.debounceTimer = setTimeout(() => {
-                if (symbol.length >= 3) { // Only search if we have at least 3 chars
-                    this.loadStockData();
-                }
-            }, 800);
+            // Auto-load with debounce - only if user stops typing for 1.2 seconds
+            // This prevents multiple requests while typing
+            if (symbol.length >= 3) {
+                this.debounceTimer = setTimeout(() => {
+                    // Double check the symbol hasn't changed
+                    const currentSymbol = document.getElementById('stock-symbol').value.trim().toUpperCase();
+                    if (currentSymbol === symbol && currentSymbol.length >= 3) {
+                        this.loadStockData();
+                    }
+                }, 1200); // Increased to 1.2 seconds
+            }
         });
 
         // Period Toggle Button (New UI V2)
