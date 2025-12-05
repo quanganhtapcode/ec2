@@ -659,21 +659,85 @@ class StockDataProvider:
             # Calculate missing ratios from available data
             annual_data = self.calculate_missing_ratios(annual_data)
             
-            # Use data from JSON file (name, exchange already in JSON)
+            # Check if name, sector, exchange are properly set in JSON
+            # If missing or just the symbol, use Listing API fallback
+            json_name = annual_data.get('name', '')
+            json_sector = annual_data.get('sector', annual_data.get('industry', ''))
+            json_exchange = annual_data.get('exchange', '')
+            
+            # If any metadata is missing or same as symbol, try Listing API
+            if not json_name or json_name == symbol or not json_sector or json_sector == 'Unknown' or not json_exchange or json_exchange == 'Unknown':
+                logger.info(f"JSON for {symbol} missing metadata, trying Listing API...")
+                listing_metadata = self._get_company_metadata_from_listing(symbol)
+                if listing_metadata:
+                    logger.info(f"✓ Got metadata from Listing API: {listing_metadata}")
+                    annual_data['name'] = listing_metadata.get('organ_name', json_name or symbol)
+                    annual_data['sector'] = listing_metadata.get('industry', json_sector or 'Unknown')
+                    annual_data['exchange'] = listing_metadata.get('exchange', json_exchange or 'Unknown')
+            
             annual_data.update({
                 "symbol": symbol,
-                "name": annual_data.get('name', symbol),  # Already in JSON
-                "sector": annual_data.get('sector', annual_data.get('industry', 'Unknown')),  # Already in JSON
-                "exchange": annual_data.get('exchange', 'Unknown'),  # Already in JSON
+                "name": annual_data.get('name', symbol),
+                "sector": annual_data.get('sector', annual_data.get('industry', 'Unknown')),
+                "exchange": annual_data.get('exchange', 'Unknown'),
                 "data_period": period,
                 "success": True
             })
             
             return annual_data
         
-        # Not found in JSON files, fallback to live API
-        logger.warning(f"Symbol {symbol} not found in any industry JSON file, fetching from live API")
-        return self._get_live_stock_data(symbol, period)
+        # Not found in JSON files, try Listing API + live financial data
+        logger.warning(f"Symbol {symbol} not found in JSON files, trying Listing API and live data...")
+        
+        # Get metadata from Listing API
+        company_info = self._get_company_metadata_from_listing(symbol)
+        if company_info:
+            logger.info(f"✓ Got {symbol} metadata from Listing: {company_info}")
+        else:
+            company_info = {'organ_name': symbol, 'industry': 'Unknown', 'exchange': 'Unknown'}
+        
+        # Try to get financial data from vnstock API
+        try:
+            stock = self.vnstock.stock(symbol=symbol, source="VCI")
+            ratio_data = stock.finance.ratio(period='year', lang='en', dropna=True)
+            
+            if not ratio_data.empty:
+                # Get latest year data
+                latest_ratio = ratio_data.iloc[0]
+                
+                # Build response with Listing metadata + financial ratios
+                result = {
+                    "symbol": symbol,
+                    "name": company_info['organ_name'],
+                    "sector": company_info['industry'],
+                    "exchange": company_info['exchange'],
+                    "data_period": period,
+                    "data_source": "VCI",
+                    "success": True
+                }
+                
+                # Extract key ratios
+                for col in latest_ratio.index:
+                    if isinstance(col, tuple):
+                        key = col[1] if len(col) > 1 else col[0]
+                    else:
+                        key = col
+                    result[key] = latest_ratio[col]
+                
+                return result
+        except Exception as e:
+            logger.error(f"Error fetching live data for {symbol}: {e}")
+        
+        # Return minimal data with Listing metadata
+        return {
+            "symbol": symbol,
+            "name": company_info['organ_name'],
+            "sector": company_info['industry'],
+            "exchange": company_info['exchange'],
+            "data_period": period,
+            "success": False,
+            "error": f"No financial data found for {symbol}"
+        }
 
     def _process_quarter_data(self, quarter_data: dict, symbol: str, company_info: dict) -> dict:
         """Process quarter data from vnstock into the expected format"""
