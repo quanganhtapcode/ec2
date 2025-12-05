@@ -64,7 +64,10 @@ class StockValuationApp {
     setupEventListeners() {
         // Tab navigation
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => this.switchTab(e.target.dataset.tab));
+            btn.addEventListener('click', (e) => {
+                const tabId = e.currentTarget.dataset.tab;
+                if (tabId) this.switchTab(tabId);
+            });
         });
 
         // Prevent form submit from reloading/clearing input
