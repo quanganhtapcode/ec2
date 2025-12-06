@@ -2996,7 +2996,7 @@ def get_company_profile(symbol):
             company = Company(symbol)
             profile_df = company.profile()
             
-            if profile_df.empty:
+            if profile_df is None or profile_df.empty:
                 logger.warning(f"No profile data found for {symbol}")
                 return jsonify({
                     'symbol': symbol,
@@ -3005,16 +3005,24 @@ def get_company_profile(symbol):
                     'message': 'No profile data available'
                 }), 404
             
-            # Extract profile data
-            profile = profile_df.iloc[0]
+            # Extract profile data - handle DataFrame properly
+            def safe_get(df, column, default=''):
+                try:
+                    if column in df.columns:
+                        val = df[column].iloc[0]
+                        if pd.notna(val):
+                            return str(val)
+                    return default
+                except:
+                    return default
             
             # Get the company_profile field (main description)
-            company_profile = profile.get('company_profile', '') if pd.notna(profile.get('company_profile')) else ''
-            history_dev = profile.get('history_dev', '') if pd.notna(profile.get('history_dev')) else ''
-            business_strategies = profile.get('business_strategies', '') if pd.notna(profile.get('business_strategies')) else ''
-            business_risk = profile.get('business_risk', '') if pd.notna(profile.get('business_risk')) else ''
-            key_developments = profile.get('key_developments', '') if pd.notna(profile.get('key_developments')) else ''
-            company_name = profile.get('company_name', symbol) if pd.notna(profile.get('company_name')) else symbol
+            company_profile = safe_get(profile_df, 'company_profile', '')
+            history_dev = safe_get(profile_df, 'history_dev', '')
+            business_strategies = safe_get(profile_df, 'business_strategies', '')
+            business_risk = safe_get(profile_df, 'business_risk', '')
+            key_developments = safe_get(profile_df, 'key_developments', '')
+            company_name = safe_get(profile_df, 'company_name', symbol)
             
             # Truncate company_profile to first 500 chars for UI display
             short_profile = company_profile[:500] + '...' if len(company_profile) > 500 else company_profile
@@ -3035,6 +3043,8 @@ def get_company_profile(symbol):
             
         except Exception as e:
             logger.error(f"Error fetching profile for {symbol}: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
             return jsonify({
                 'symbol': symbol,
                 'company_profile': None,
