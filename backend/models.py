@@ -85,6 +85,41 @@ class ValuationModels:
                     'total_models': 4
                 }
 
+        # Sensitivity Analysis (FCFF)
+        try:
+            base_wacc = assumptions.get('wacc', 0.10)
+            base_growth = assumptions.get('terminal_growth', 0.02)
+            
+            # Ranges: +/- 1% with 0.5% steps
+            # Ensure proper rounding to avoid floating point weirdness
+            wacc_range = [base_wacc - 0.01, base_wacc - 0.005, base_wacc, base_wacc + 0.005, base_wacc + 0.01]
+            growth_range = [base_growth - 0.01, base_growth - 0.005, base_growth, base_growth + 0.005, base_growth + 0.01]
+            
+            sensitivity_matrix = {
+                'row_headers': [round(w * 100, 1) for w in wacc_range], # WACC rows (as %)
+                'col_headers': [round(g * 100, 1) for g in growth_range], # Growth cols (as %)
+                'values': []
+            }
+            
+            for w in wacc_range:
+                row_values = []
+                for g in growth_range:
+                    # Create temp assumptions
+                    temp_assumptions = assumptions.copy()
+                    temp_assumptions['wacc'] = w
+                    temp_assumptions['terminal_growth'] = g
+                    
+                    # Calculate FCFF with temp assumptions
+                    val = self.calculate_fcff(temp_assumptions)
+                    row_values.append(int(val)) # Store integer value
+                sensitivity_matrix['values'].append(row_values)
+                
+            results['sensitivity_analysis'] = sensitivity_matrix
+            
+        except Exception as e:
+            # print(f"Sensitivity analysis error: {e}")
+            results['sensitivity_analysis'] = None
+
         return results
 
     # ===================================================

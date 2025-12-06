@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="style.css?v=13">
     <link rel="stylesheet" href="css/toast.css?v=2">
     <link rel="stylesheet" href="css/company-profile.css?v=10">
+    <link rel="stylesheet" href="css/valuation.css?v=1">
     <link rel="stylesheet" href="css/tradingview.css?v=3">
     <!-- Defer heavy library loading (~80KB) until after page load -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
@@ -55,7 +56,7 @@
     <script src="js/toast.js?v=2"></script>
     <script src="js/company-profile.js?v=9"></script>
     <script src="js/tradingview.js?v=7"></script>
-    <script src="app.js?v=13" defer></script>
+    <script src="app.js?v=14" defer></script>
 </head>
 
 <body class="app-container">
@@ -735,6 +736,35 @@
                                                 <span class="summary-value" id="pb-market-diff">--</span>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sensitivity Analysis Section (New) -->
+                    <div class="row mt-24">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card__header">
+                                    <h3 data-i18n="sensitivityAnalysis">Sensitivity Analysis (FCFF)</h3>
+                                </div>
+                                <div class="card__body">
+                                    <p class="text-secondary mb-16" style="font-size: 14px;">
+                                        Matrix showing how valuation changes with different WACC (Rows) and Terminal
+                                        Growth (Columns) estimates.
+                                        <b style="color: var(--color-primary)">Base Case</b> is highlighted.
+                                    </p>
+                                    <div class="sensitivity-container"
+                                        style="overflow-x: auto; display: flex; justify-content: center;">
+                                        <table class="sensitivity-table" id="sensitivity-table">
+                                            <thead>
+                                                <!-- Header injected by JS -->
+                                            </thead>
+                                            <tbody>
+                                                <!-- Rows injected by JS -->
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

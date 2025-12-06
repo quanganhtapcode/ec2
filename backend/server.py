@@ -2551,6 +2551,7 @@ def calculate_valuation(symbol):
             },
             'financial_data': financial_data,
             'summary': results.get('summary', {}),
+            'sensitivity_analysis': results.get('sensitivity_analysis'),
             'assumptions_used': assumptions,
             'success': True,
             'timestamp': datetime.now().isoformat()

@@ -1,0 +1,96 @@
+/* Sensitivity Analysis Table Styles */
+.sensitivity-table {
+    border-collapse: collapse;
+    font-size: 14px;
+    background-color: var(--color-background-card);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: auto;
+    margin: 0 auto;
+}
+
+.sensitivity-table th,
+.sensitivity-table td {
+    padding: 12px 16px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s ease;
+    min-width: 80px;
+}
+
+.sensitivity-table th {
+    background-color: var(--color-background);
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.sensitivity-table tr:first-child th {
+    border-bottom: 2px solid var(--color-border);
+}
+
+/* Base Case Highlight */
+.sensitivity-cell-base {
+    border: 2px solid var(--color-primary) !important;
+    font-weight: 700;
+    position: relative;
+    z-index: 10;
+}
+
+/* Heatmap Colors (Light Mode) */
+.sensitivity-cell-very-high {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+/* Green-100 */
+.sensitivity-cell-high {
+    background-color: #f0fdf4;
+    color: #15803d;
+}
+
+/* Green-50 */
+.sensitivity-cell-med {
+    background-color: #fefce8;
+    color: #854d0e;
+}
+
+/* Yellow-50 */
+.sensitivity-cell-low {
+    background-color: #fef2f2;
+    color: #991b1b;
+}
+
+/* Red-50 */
+.sensitivity-cell-very-low {
+    background-color: #fee2e2;
+    color: #7f1d1d;
+}
+
+/* Red-100 */
+
+/* Dark Mode Overrides */
+[data-theme="dark"] .sensitivity-cell-very-high {
+    background-color: rgba(34, 197, 94, 0.3);
+    color: #86efac;
+}
+
+[data-theme="dark"] .sensitivity-cell-high {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+}
+
+[data-theme="dark"] .sensitivity-cell-med {
+    background-color: rgba(234, 179, 8, 0.15);
+    color: #fde047;
+}
+
+[data-theme="dark"] .sensitivity-cell-low {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+}
+
+[data-theme="dark"] .sensitivity-cell-very-low {
+    background-color: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}

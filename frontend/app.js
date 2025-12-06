@@ -1197,7 +1197,8 @@ class StockValuationApp {
                 weighted_average: result.valuations.weighted_average,
                 summary: result.summary,
                 market_comparison: result.market_comparison,
-                financial_data: result.financial_data
+                financial_data: result.financial_data,
+                sensitivity_analysis: result.sensitivity_analysis
             };
 
             // Cache the valuation results
@@ -1209,6 +1210,10 @@ class StockValuationApp {
             this.updateValuationDisplay();
             this.updateWeightedResults();
             this.updateRecommendation();
+
+            if (this.valuationResults.sensitivity_analysis) {
+                this.renderSensitivityMatrix(this.valuationResults.sensitivity_analysis);
+            }
 
             document.getElementById('export-report-btn').disabled = false;
             document.getElementById('export-excel-btn').disabled = false;
@@ -1434,6 +1439,52 @@ class StockValuationApp {
 
         // Placeholder for confidence level
         this.safeUpdateElement('confidence-level', this.valuationResults.summary?.confidence || '--');
+    }
+
+    renderSensitivityMatrix(matrix) {
+        const table = document.getElementById('sensitivity-table');
+        if (!table || !matrix) return;
+
+        // Header (Growth Rate)
+        let theadHtml = '<tr><th style="text-align: left">WACC \\ Growth</th>';
+        matrix.col_headers.forEach(h => {
+            theadHtml += `<th>${h}%</th>`;
+        });
+        theadHtml += '</tr>';
+        table.querySelector('thead').innerHTML = theadHtml;
+
+        // Body (WACC Rows)
+        let tbodyHtml = '';
+        const midRow = Math.floor(matrix.row_headers.length / 2);
+        const midCol = Math.floor(matrix.col_headers.length / 2);
+        const baseValue = matrix.values[midRow][midCol];
+
+        matrix.row_headers.forEach((wacc, rIndex) => {
+            tbodyHtml += `<tr><th>${wacc}%</th>`; // Row Header
+
+            matrix.values[rIndex].forEach((val, cIndex) => {
+                let cellClass = '';
+
+                // Base case highlight
+                if (rIndex === midRow && cIndex === midCol) {
+                    cellClass = 'sensitivity-cell-base sensitivity-cell-med';
+                } else {
+                    // Color grading (Heatmap)
+                    const diffPct = (val - baseValue) / baseValue;
+                    if (diffPct > 0.15) cellClass = 'sensitivity-cell-very-high';
+                    else if (diffPct > 0.05) cellClass = 'sensitivity-cell-high';
+                    else if (diffPct > -0.05) cellClass = 'sensitivity-cell-med';
+                    else if (diffPct > -0.15) cellClass = 'sensitivity-cell-low';
+                    else cellClass = 'sensitivity-cell-very-low';
+                }
+
+                tbodyHtml += `<td class="${cellClass}">${this.formatCurrency(val)}</td>`;
+            });
+
+            tbodyHtml += '</tr>';
+        });
+
+        table.querySelector('tbody').innerHTML = tbodyHtml;
     }
 
     async exportReport() {
