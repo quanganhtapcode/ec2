@@ -2974,9 +2974,9 @@ def rate_limit_download(f):
 
 @app.route('/api/company/profile/<symbol>')
 def get_company_profile(symbol):
-    """Get company profile/description from vnstock API
+    """Get company overview/description from vnstock API
     
-    Returns company_profile (description), history_dev, business_strategies, etc.
+    Uses company.overview() which is more reliable than profile()
     """
     try:
         # Validate symbol
@@ -2990,22 +2990,22 @@ def get_company_profile(symbol):
         
         symbol = result  # Use sanitized symbol
         
-        logger.info(f"Fetching company profile for {symbol}")
+        logger.info(f"Fetching company overview for {symbol}")
         
         try:
             company = Company(symbol)
-            profile_df = company.profile()
+            overview_df = company.overview()
             
-            if profile_df is None or profile_df.empty:
-                logger.warning(f"No profile data found for {symbol}")
+            if overview_df is None or overview_df.empty:
+                logger.warning(f"No overview data found for {symbol}")
                 return jsonify({
                     'symbol': symbol,
                     'company_profile': None,
                     'success': False,
-                    'message': 'No profile data available'
+                    'message': 'No overview data available'
                 }), 404
             
-            # Extract profile data - handle DataFrame properly
+            # Extract overview data - handle DataFrame properly
             def safe_get(df, column, default=''):
                 try:
                     if column in df.columns:
@@ -3016,33 +3016,41 @@ def get_company_profile(symbol):
                 except:
                     return default
             
-            # Get the company_profile field (main description)
-            company_profile = safe_get(profile_df, 'company_profile', '')
-            history_dev = safe_get(profile_df, 'history_dev', '')
-            business_strategies = safe_get(profile_df, 'business_strategies', '')
-            business_risk = safe_get(profile_df, 'business_risk', '')
-            key_developments = safe_get(profile_df, 'key_developments', '')
-            company_name = safe_get(profile_df, 'company_name', symbol)
+            # Build company description from available fields
+            company_name = safe_get(overview_df, 'short_name', symbol)
+            industry = safe_get(overview_df, 'icb_name3', '')
+            established = safe_get(overview_df, 'established_year', '')
+            employees = safe_get(overview_df, 'no_employees', '')
+            website = safe_get(overview_df, 'website', '')
             
-            # Truncate company_profile to first 500 chars for UI display
-            short_profile = company_profile[:500] + '...' if len(company_profile) > 500 else company_profile
+            # Create a description from available data
+            description_parts = []
+            if company_name:
+                description_parts.append(f"{company_name}")
+            if industry:
+                description_parts.append(f"hoạt động trong lĩnh vực {industry}")
+            if established:
+                description_parts.append(f"thành lập năm {established}")
+            if employees:
+                description_parts.append(f"với {employees} nhân viên")
             
-            logger.info(f"Successfully fetched profile for {symbol}")
+            company_description = ', '.join(description_parts) + '.' if description_parts else ''
+            
+            logger.info(f"Successfully fetched overview for {symbol}")
             
             return jsonify({
                 'symbol': symbol,
                 'company_name': company_name,
-                'company_profile': short_profile,
-                'full_profile': company_profile,
-                'history_dev': history_dev,
-                'business_strategies': business_strategies,
-                'business_risk': business_risk,
-                'key_developments': key_developments,
+                'company_profile': company_description,
+                'industry': industry,
+                'established_year': established,
+                'employees': employees,
+                'website': website,
                 'success': True
             })
             
         except Exception as e:
-            logger.error(f"Error fetching profile for {symbol}: {e}")
+            logger.error(f"Error fetching overview for {symbol}: {e}")
             import traceback
             logger.error(traceback.format_exc())
             return jsonify({
@@ -3054,6 +3062,88 @@ def get_company_profile(symbol):
             
     except Exception as exc:
         logger.error(f"API /company/profile error {symbol}: {exc}")
+        return jsonify({'success': False, 'error': str(exc)}), 500
+
+
+@app.route('/api/stock/history/<symbol>')
+def get_stock_history(symbol):
+    """Get historical price data for charting
+    
+    Returns last 6 months of daily OHLCV data
+    """
+    try:
+        # Validate symbol
+        is_valid, result = validate_stock_symbol(symbol)
+        if not is_valid:
+            return jsonify({
+                'error': 'Invalid symbol',
+                'message': result,
+                'success': False
+            }), 400
+        
+        symbol = result  # Use sanitized symbol
+        
+        logger.info(f"Fetching historical data for {symbol}")
+        
+        try:
+            from vnstock import Quote
+            from datetime import datetime, timedelta
+            
+            quote = Quote(symbol)
+            
+            # Get last 6 months of data
+            end_date = datetime.now()
+            start_date = end_date - timedelta(days=180)
+            
+            history_df = quote.history(
+                start=start_date.strftime('%Y-%m-%d'),
+                end=end_date.strftime('%Y-%m-%d'),
+                interval='1D'
+            )
+            
+            if history_df is None or history_df.empty:
+                logger.warning(f"No historical data found for {symbol}")
+                return jsonify({
+                    'symbol': symbol,
+                    'data': [],
+                    'success': False,
+                    'message': 'No historical data available'
+                }), 404
+            
+            # Convert to list of dicts for JSON
+            history_data = []
+            for _, row in history_df.iterrows():
+                history_data.append({
+                    'date': row.get('time', row.name).strftime('%Y-%m-%d') if hasattr(row.get('time', row.name), 'strftime') else str(row.get('time', row.name)),
+                    'open': float(row.get('open', 0)),
+                    'high': float(row.get('high', 0)),
+                    'low': float(row.get('low', 0)),
+                    'close': float(row.get('close', 0)),
+                    'volume': float(row.get('volume', 0))
+                })
+            
+            logger.info(f"Successfully fetched {len(history_data)} data points for {symbol}")
+            
+            return jsonify({
+                'symbol': symbol,
+                'data': history_data,
+                'count': len(history_data),
+                'success': True
+            })
+            
+        except Exception as e:
+            logger.error(f"Error fetching history for {symbol}: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+            return jsonify({
+                'symbol': symbol,
+                'data': [],
+                'success': False,
+                'error': str(e)
+            }), 500
+            
+    except Exception as exc:
+        logger.error(f"API /stock/history error {symbol}: {exc}")
         return jsonify({'success': False, 'error': str(exc)}), 500
 
 @app.route('/api/download/<ticker>')

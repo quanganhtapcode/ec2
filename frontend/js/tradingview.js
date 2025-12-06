@@ -1,156 +1,213 @@
 /**
- * TradingView Widget Manager
- * Handles initialization and management of TradingView stock charts
- * Note: Vietnamese stocks may have limited availability on TradingView
+ * Stock Price Chart Manager
+ * Uses Chart.js with data from vnstock API
  */
 
-class TradingViewManager {
-    constructor() {
-        this.widget = null;
+class StockChartManager {
+    constructor(apiBaseUrl) {
+        this.apiBaseUrl = apiBaseUrl;
+        this.chart = null;
         this.currentSymbol = null;
-        this.scriptLoaded = false;
-    }
-
-    /**
-     * Map Vietnamese exchange to TradingView exchange code
-     * @param {string} exchange - Exchange name (HOSE, HNX, UPCOM)
-     * @returns {string} TradingView exchange code
-     */
-    mapExchange(exchange) {
-        if (!exchange) return 'HOSE';
-
-        const exchangeUpper = exchange.toUpperCase();
-        if (exchangeUpper.includes('HNX')) {
-            return 'HNX';
-        } else if (exchangeUpper.includes('UPCOM')) {
-            return 'UPCOM';
-        } else if (exchangeUpper.includes('HOSE') || exchangeUpper.includes('HSX')) {
-            return 'HOSE';
-        }
-        return 'HOSE'; // Default
     }
 
     /**
      * Detect current theme (dark or light)
-     * @returns {string} 'dark' or 'light'
+     * @returns {boolean} true if dark mode
      */
-    getTheme() {
-        return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    isDarkMode() {
+        return document.documentElement.getAttribute('data-theme') === 'dark';
     }
 
     /**
-     * Initialize TradingView widget for a symbol
-     * Uses Symbol Overview widget which has better support for Vietnamese stocks
-     * @param {string} symbol - Stock symbol
-     * @param {string} exchange - Exchange name
+     * Get chart colors based on theme
      */
-    async initWidget(symbol, exchange) {
+    getChartColors() {
+        const isDark = this.isDarkMode();
+        return {
+            line: isDark ? '#4ade80' : '#22c55e', // Green
+            fill: isDark ? 'rgba(74, 222, 128, 0.1)' : 'rgba(34, 197, 94, 0.1)',
+            grid: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+            text: isDark ? '#94a3b8' : '#64748b',
+            tooltip: isDark ? '#1e293b' : '#ffffff'
+        };
+    }
+
+    /**
+     * Initialize chart for a symbol
+     * @param {string} symbol - Stock symbol
+     */
+    async initChart(symbol) {
         const container = document.getElementById('tradingview-widget');
         if (!container) return;
 
         this.currentSymbol = symbol;
 
-        // Map exchange
-        const tvExchange = this.mapExchange(exchange);
-        const tvSymbol = `${tvExchange}:${symbol}`;
-
-        // Detect theme
-        const isDarkMode = this.getTheme() === 'dark';
-
-        // Clear container and create widget with Symbol Overview (better VN stock support)
-        container.innerHTML = '';
-
-        // Create container div for the widget
-        const widgetDiv = document.createElement('div');
-        widgetDiv.className = 'tradingview-widget-container__widget';
-        widgetDiv.style.height = '400px';
-        widgetDiv.style.width = '100%';
-        container.appendChild(widgetDiv);
-
-        // Create and append the Symbol Overview widget script
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
-        script.async = true;
-        script.innerHTML = JSON.stringify({
-            "symbols": [[tvSymbol, tvSymbol]],
-            "chartOnly": false,
-            "width": "100%",
-            "height": "400",
-            "locale": "vi_VN",
-            "colorTheme": isDarkMode ? "dark" : "light",
-            "autosize": true,
-            "showVolume": true,
-            "showMA": true,
-            "hideDateRanges": false,
-            "hideMarketStatus": false,
-            "hideSymbolLogo": false,
-            "scalePosition": "right",
-            "scaleMode": "Normal",
-            "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif",
-            "fontSize": "10",
-            "noTimeScale": false,
-            "valuesTracking": "1",
-            "changeMode": "price-and-percent",
-            "chartType": "area",
-            "maLineColor": "#2962FF",
-            "maLineWidth": 1,
-            "maLength": 9,
-            "lineWidth": 2,
-            "lineType": 0,
-            "dateRanges": [
-                "1d|1",
-                "1m|30",
-                "3m|60",
-                "12m|1D",
-                "60m|1W",
-                "all|1M"
-            ]
-        });
-
-        // Handle script load error - show fallback message
-        script.onerror = () => {
-            container.innerHTML = `
-                <div class="tradingview-widget-placeholder">
-                    <div style="text-align: center;">
-                        <p style="margin-bottom: 8px;">Chart không khả dụng cho ${tvSymbol}</p>
-                        <a href="https://www.tradingview.com/chart/?symbol=${tvSymbol}" target="_blank" rel="noopener" 
-                           style="color: var(--color-primary); text-decoration: underline;">
-                           Xem trên TradingView →
-                        </a>
-                    </div>
+        // Show loading state
+        container.innerHTML = `
+            <div class="chart-loading" style="display: flex; align-items: center; justify-content: center; height: 400px; color: var(--color-text-secondary);">
+                <div style="text-align: center;">
+                    <div class="loader" style="width: 40px; height: 40px; margin: 0 auto 12px;"></div>
+                    <span>Loading chart data...</span>
                 </div>
-            `;
-        };
+            </div>
+        `;
 
-        widgetDiv.appendChild(script);
-        console.log(`TradingView Symbol Overview widget initialized for ${tvSymbol}`);
+        try {
+            const response = await fetch(`${this.apiBaseUrl}/api/stock/history/${symbol}`);
+            const data = await response.json();
+
+            // Check if still the current symbol
+            if (this.currentSymbol !== symbol) return;
+
+            if (!data.success || !data.data || data.data.length === 0) {
+                container.innerHTML = `
+                    <div class="tradingview-widget-placeholder">
+                        <div style="text-align: center;">
+                            <p>No chart data available for ${symbol}</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            // Create canvas for Chart.js
+            container.innerHTML = '<canvas id="stock-price-chart" style="width: 100%; height: 400px;"></canvas>';
+            const canvas = document.getElementById('stock-price-chart');
+            const ctx = canvas.getContext('2d');
+
+            // Prepare data
+            const labels = data.data.map(d => d.date);
+            const prices = data.data.map(d => d.close);
+            const volumes = data.data.map(d => d.volume);
+
+            const colors = this.getChartColors();
+
+            // Destroy existing chart if any
+            if (this.chart) {
+                this.chart.destroy();
+            }
+
+            // Create new chart
+            this.chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: `${symbol} Price`,
+                        data: prices,
+                        borderColor: colors.line,
+                        backgroundColor: colors.fill,
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: colors.tooltip,
+                            titleColor: this.isDarkMode() ? '#fff' : '#333',
+                            bodyColor: this.isDarkMode() ? '#fff' : '#333',
+                            borderColor: colors.grid,
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                label: (context) => {
+                                    const price = context.parsed.y;
+                                    return `Price: ${new Intl.NumberFormat('vi-VN').format(price)} VND`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            grid: {
+                                color: colors.grid,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: colors.text,
+                                maxTicksLimit: 8,
+                                maxRotation: 0
+                            }
+                        },
+                        y: {
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                color: colors.grid,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: colors.text,
+                                callback: (value) => {
+                                    return new Intl.NumberFormat('vi-VN', {
+                                        notation: 'compact',
+                                        maximumFractionDigits: 1
+                                    }).format(value);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            console.log(`Stock chart created for ${symbol} with ${data.data.length} data points`);
+
+        } catch (error) {
+            console.error('Error loading chart data:', error);
+            if (this.currentSymbol === symbol) {
+                container.innerHTML = `
+                    <div class="tradingview-widget-placeholder">
+                        <div style="text-align: center;">
+                            <p>Unable to load chart data</p>
+                            <small style="color: var(--color-text-secondary);">${error.message}</small>
+                        </div>
+                    </div>
+                `;
+            }
+        }
     }
 
     /**
-     * Clear the widget
+     * Clear the chart
      */
     clear() {
         this.currentSymbol = null;
+        if (this.chart) {
+            this.chart.destroy();
+            this.chart = null;
+        }
         const container = document.getElementById('tradingview-widget');
         if (container) {
             container.innerHTML = '<div class="tradingview-widget-placeholder">Search for a stock to view price chart</div>';
         }
-        this.widget = null;
     }
 
     /**
-     * Update widget theme (call when user toggles theme)
+     * Update chart theme
      */
     updateTheme() {
         if (this.currentSymbol) {
-            // Reinitialize with new theme
-            this.initWidget(this.currentSymbol, null);
+            this.initChart(this.currentSymbol);
         }
     }
 }
 
-// Export for use in main app
+// Export for use in main app - replace TradingViewManager
 if (typeof window !== 'undefined') {
-    window.TradingViewManager = TradingViewManager;
+    window.TradingViewManager = StockChartManager; // Use same name for compatibility
 }
