@@ -2972,6 +2972,80 @@ def rate_limit_download(f):
         return f(*args, **kwargs)
     return decorated_function
 
+@app.route('/api/company/profile/<symbol>')
+def get_company_profile(symbol):
+    """Get company profile/description from vnstock API
+    
+    Returns company_profile (description), history_dev, business_strategies, etc.
+    """
+    try:
+        # Validate symbol
+        is_valid, result = validate_stock_symbol(symbol)
+        if not is_valid:
+            return jsonify({
+                'error': 'Invalid symbol',
+                'message': result,
+                'success': False
+            }), 400
+        
+        symbol = result  # Use sanitized symbol
+        
+        logger.info(f"Fetching company profile for {symbol}")
+        
+        try:
+            company = Company(symbol)
+            profile_df = company.profile()
+            
+            if profile_df.empty:
+                logger.warning(f"No profile data found for {symbol}")
+                return jsonify({
+                    'symbol': symbol,
+                    'company_profile': None,
+                    'success': False,
+                    'message': 'No profile data available'
+                }), 404
+            
+            # Extract profile data
+            profile = profile_df.iloc[0]
+            
+            # Get the company_profile field (main description)
+            company_profile = profile.get('company_profile', '') if pd.notna(profile.get('company_profile')) else ''
+            history_dev = profile.get('history_dev', '') if pd.notna(profile.get('history_dev')) else ''
+            business_strategies = profile.get('business_strategies', '') if pd.notna(profile.get('business_strategies')) else ''
+            business_risk = profile.get('business_risk', '') if pd.notna(profile.get('business_risk')) else ''
+            key_developments = profile.get('key_developments', '') if pd.notna(profile.get('key_developments')) else ''
+            company_name = profile.get('company_name', symbol) if pd.notna(profile.get('company_name')) else symbol
+            
+            # Truncate company_profile to first 500 chars for UI display
+            short_profile = company_profile[:500] + '...' if len(company_profile) > 500 else company_profile
+            
+            logger.info(f"Successfully fetched profile for {symbol}")
+            
+            return jsonify({
+                'symbol': symbol,
+                'company_name': company_name,
+                'company_profile': short_profile,
+                'full_profile': company_profile,
+                'history_dev': history_dev,
+                'business_strategies': business_strategies,
+                'business_risk': business_risk,
+                'key_developments': key_developments,
+                'success': True
+            })
+            
+        except Exception as e:
+            logger.error(f"Error fetching profile for {symbol}: {e}")
+            return jsonify({
+                'symbol': symbol,
+                'company_profile': None,
+                'success': False,
+                'error': str(e)
+            }), 500
+            
+    except Exception as exc:
+        logger.error(f"API /company/profile error {symbol}: {exc}")
+        return jsonify({'success': False, 'error': str(exc)}), 500
+
 @app.route('/api/download/<ticker>')
 @rate_limit_download
 def download_financial_data(ticker):

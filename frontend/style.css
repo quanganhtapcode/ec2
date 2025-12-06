@@ -3725,3 +3725,8 @@ select.form-control {
     height: 18px;
   }
 }
+
+/* Note: Company Profile and TradingView styles have been moved to separate CSS modules:
+   - css/company-profile.css
+   - css/tradingview.css
+*/

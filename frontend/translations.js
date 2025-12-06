@@ -73,6 +73,10 @@ const translations = {
         ebitMargin: "Biên EBIT:",
         netProfitMargin: "Biên lợi nhuận ròng:",
 
+        // Company Description & Price Chart
+        companyDescription: "Giới thiệu công ty",
+        priceChart: "Biểu đồ giá cổ phiếu",
+
         // Charts
         roeRoaTrends: "Xu hướng ROE & ROA (5 năm)",
         liquidityTrends: "Xu hướng thanh khoản (5 năm)",
@@ -282,6 +286,10 @@ const translations = {
         grossProfitMargin: "Gross Profit Margin:",
         ebitMargin: "EBIT Margin:",
         netProfitMargin: "Net Profit Margin:",
+
+        // Company Description & Price Chart
+        companyDescription: "About the Company",
+        priceChart: "Stock Price Chart",
 
         // Charts
         roeRoaTrends: "ROE & ROA Trends (Last 5 Years)",

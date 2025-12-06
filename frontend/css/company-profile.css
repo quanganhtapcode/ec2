@@ -1,0 +1,54 @@
+/**
+ * Company Profile/Description Section Styles
+ * Displays company introduction and overview
+ */
+
+/* ============================================
+   Company Profile & Description Section
+   ============================================ */
+
+.company-profile-section {
+    width: 100%;
+}
+
+.company-profile-section .card {
+    background: var(--color-surface);
+}
+
+.company-description-text {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: var(--space-8);
+}
+
+.company-description-text::-webkit-scrollbar {
+    width: 6px;
+}
+
+.company-description-text::-webkit-scrollbar-track {
+    background: var(--color-secondary);
+    border-radius: var(--radius-full);
+}
+
+.company-description-text::-webkit-scrollbar-thumb {
+    background: var(--color-text-secondary);
+    border-radius: var(--radius-full);
+    opacity: 0.5;
+}
+
+.company-description-text::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+    .company-description-text {
+        font-size: var(--font-size-xs);
+        max-height: 120px;
+        line-height: 1.6;
+    }
+}

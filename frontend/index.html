@@ -43,6 +43,8 @@
 
     <link rel="stylesheet" href="style.css?v=8">
     <link rel="stylesheet" href="css/toast.css?v=1">
+    <link rel="stylesheet" href="css/company-profile.css?v=1">
+    <link rel="stylesheet" href="css/tradingview.css?v=1">
     <!-- Defer heavy library loading (~80KB) until after page load -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js" defer></script>
@@ -50,6 +52,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
     <script src="translations.js?v=8"></script>
     <script src="js/toast.js?v=1"></script>
+    <script src="js/company-profile.js?v=1"></script>
+    <script src="js/tradingview.js?v=1"></script>
     <script src="app.js?v=8" defer></script>
 </head>
 
@@ -129,8 +133,9 @@
         <section class="container">
             <div class="tabs tabs-segmented">
                 <button class="tab-btn active" data-tab="overview">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" class="tab-icon"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <rect x="3" y="3" width="7" height="7"></rect>
                         <rect x="14" y="3" width="7" height="7"></rect>
                         <rect x="14" y="14" width="7" height="7"></rect>
@@ -139,8 +144,9 @@
                     <span data-i18n="companyOverview">Overview</span>
                 </button>
                 <button class="tab-btn" data-tab="valuation">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" class="tab-icon"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <line x1="18" y1="20" x2="18" y2="10"></line>
                         <line x1="12" y1="20" x2="12" y2="4"></line>
                         <line x1="6" y1="20" x2="6" y2="14"></line>
@@ -148,8 +154,9 @@
                     <span data-i18n="valuationAssumptions">Valuation</span>
                 </button>
                 <button class="tab-btn" data-tab="summary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" class="tab-icon"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                         <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -162,7 +169,18 @@
 
             <div class="tab-content">
                 <div id="overview" class="tab-pane active">
-                    <div class="company-details">
+                    <!-- 1. Company Description / About the Company -->
+                    <div class="company-profile-section">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="companyDescription">About the Company</h3>
+                                <p id="company-description" class="company-description-text">--</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Company Information -->
+                    <div class="company-details mt-24">
                         <div class="card">
                             <div class="card__body">
                                 <h3 data-i18n="companyInformation">Company Information</h3>
@@ -184,35 +202,27 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- 3. TradingView Stock Chart Widget -->
+                    <div class="tradingview-widget-section mt-24">
                         <div class="card">
                             <div class="card__body">
-                                <h3 data-i18n="marketData">Market Data</h3>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="currentPrice">Current Price:</span>
-                                    <span class="info-value" id="current-price">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="marketCap">Market Cap:</span>
-                                    <span class="info-value" id="market-cap">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="sharesOutstanding">Shares Outstanding:</span>
-                                    <span class="info-value" id="shares-outstanding">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="eps">EPS:</span>
-                                    <span class="info-value" id="eps">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="bookValuePerShare">Book Value per Share:</span>
-                                    <span class="info-value" id="book-value-per-share">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="evEbitda">EV/EBITDA:</span>
-                                    <span class="info-value" id="ev-ebitda">--</span>
+                                <h3 data-i18n="priceChart">Stock Price Chart</h3>
+                                <div id="tradingview-widget-container" class="tradingview-widget-container">
+                                    <div id="tradingview-widget" style="height: 400px;"></div>
+                                    <div class="tradingview-widget-copyright">
+                                        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                                            <span class="blue-text">Track all markets on TradingView</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- 4. Financial Metrics -->
+                    <div class="financial-metrics-section mt-24">
                         <div class="card">
                             <div class="card__body">
                                 <h3 data-i18n="financialMetrics">Financial Metrics</h3>
@@ -239,6 +249,39 @@
                                 <div class="info-row">
                                     <span class="info-label" data-i18n="debtEquity">Debt/Equity:</span>
                                     <span class="info-value" id="debt-equity">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Market Data -->
+                    <div class="market-data-section mt-24">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="marketData">Market Data</h3>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="currentPrice">Current Price:</span>
+                                    <span class="info-value" id="current-price">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="marketCap">Market Cap:</span>
+                                    <span class="info-value" id="market-cap">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="sharesOutstanding">Shares Outstanding:</span>
+                                    <span class="info-value" id="shares-outstanding">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="eps">EPS:</span>
+                                    <span class="info-value" id="eps">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="bookValuePerShare">Book Value per Share:</span>
+                                    <span class="info-value" id="book-value-per-share">--</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label" data-i18n="evEbitda">EV/EBITDA:</span>
+                                    <span class="info-value" id="ev-ebitda">--</span>
                                 </div>
                             </div>
                         </div>
