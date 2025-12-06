@@ -28,7 +28,9 @@ class StockChartManager {
             fill: isDark ? 'rgba(74, 222, 128, 0.1)' : 'rgba(34, 197, 94, 0.1)',
             grid: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
             text: isDark ? '#94a3b8' : '#64748b',
-            tooltip: isDark ? '#1e293b' : '#ffffff'
+            tooltip: isDark ? '#1e293b' : '#ffffff',
+            volUp: isDark ? 'rgba(74, 222, 128, 0.5)' : 'rgba(34, 197, 94, 0.5)',   // Green volume
+            volDown: isDark ? 'rgba(248, 113, 113, 0.5)' : 'rgba(239, 68, 68, 0.5)' // Red volume
         };
     }
 
@@ -84,7 +86,7 @@ class StockChartManager {
 
             if (!response.ok) {
                 const text = await response.text();
-                console.error('API Error Response:', text);
+                // console.error('API Error Response:', text);
                 throw new Error(`Server returned ${response.status}: ${text.substring(0, 50)}...`);
             }
 
@@ -116,34 +118,57 @@ class StockChartManager {
             const canvas = document.getElementById('stock-price-chart');
             const ctx = canvas.getContext('2d');
 
-            // Prepare data
+            const colors = this.getChartColors();
+
+            // Prepare data arrays
             const labels = data.data.map(d => d.date);
             const prices = data.data.map(d => d.close);
             const volumes = data.data.map(d => d.volume);
 
-            const colors = this.getChartColors();
+            // Generate colors for volume bars based on price action (Close > Open ? Green : Red)
+            const volumeColors = data.data.map(d => {
+                return (d.close >= d.open) ? colors.volUp : colors.volDown;
+            });
 
             // Destroy existing chart if any
             if (this.chart) {
                 this.chart.destroy();
             }
 
+            // Calculate max volume to scale the volume bars nicely at the bottom
+            const maxVolume = Math.max(...volumes);
+
             // Create new chart
             this.chart = new Chart(ctx, {
-                type: 'line',
+                type: 'line', // Default type
                 data: {
                     labels: labels,
-                    datasets: [{
-                        label: `${symbol} Price`,
-                        data: prices,
-                        borderColor: colors.line,
-                        backgroundColor: colors.fill,
-                        fill: true,
-                        tension: 0.3, // Smooth curve
-                        pointRadius: range === '1M' ? 3 : 0, // Show points for short range only
-                        pointHoverRadius: 5,
-                        borderWidth: 2
-                    }]
+                    datasets: [
+                        {
+                            label: 'Price',
+                            data: prices,
+                            borderColor: colors.line,
+                            backgroundColor: colors.fill,
+                            fill: true,
+                            tension: 0.3,
+                            pointRadius: range === '1M' ? 3 : 0,
+                            pointHoverRadius: 5,
+                            borderWidth: 2,
+                            yAxisID: 'y', // Main axis
+                            order: 1 // Draw on top
+                        },
+                        {
+                            type: 'bar', // Mixed chart type
+                            label: 'Volume',
+                            data: volumes,
+                            backgroundColor: volumeColors,
+                            borderColor: 'transparent',
+                            barThickness: 'flex',
+                            maxBarThickness: 10,
+                            yAxisID: 'y_vol', // Secondary axis
+                            order: 2 // Draw behind
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
@@ -163,12 +188,21 @@ class StockChartManager {
                             borderColor: colors.grid,
                             borderWidth: 1,
                             padding: 12,
-                            displayColors: false,
+                            displayColors: true,
                             callbacks: {
                                 label: (context) => {
-                                    // Multiply by 1000 for correct VND display
-                                    const price = context.parsed.y * 1000;
-                                    return `Price: ${new Intl.NumberFormat('vi-VN').format(price)} VND`;
+                                    const label = context.dataset.label || '';
+                                    const value = context.parsed.y;
+
+                                    if (label === 'Price') {
+                                        // Format Price: 32.6 -> 32,600
+                                        const price = value * 1000;
+                                        return `${label}: ${new Intl.NumberFormat('vi-VN').format(price)} VND`;
+                                    } else if (label === 'Volume') {
+                                        // Format Volume
+                                        return `${label}: ${new Intl.NumberFormat('vi-VN', { notation: "compact" }).format(value)}`;
+                                    }
+                                    return `${label}: ${value}`;
                                 }
                             }
                         }
@@ -187,6 +221,7 @@ class StockChartManager {
                             }
                         },
                         y: {
+                            type: 'linear',
                             display: true,
                             position: 'right',
                             grid: {
@@ -196,12 +231,21 @@ class StockChartManager {
                             ticks: {
                                 color: colors.text,
                                 callback: (value) => {
-                                    // Multiply by 1000 for scale labels as well
                                     return new Intl.NumberFormat('vi-VN', {
                                         notation: 'compact',
                                         maximumFractionDigits: 1
                                     }).format(value * 1000);
                                 }
+                            }
+                        },
+                        y_vol: {
+                            type: 'linear',
+                            display: false, // Hide volume axis labels
+                            position: 'left',
+                            min: 0,
+                            max: maxVolume * 6, // Scale trick: Make max 6x actual volume so bars only take bottom 1/6
+                            grid: {
+                                display: false // No grid lines for volume
                             }
                         }
                     }
