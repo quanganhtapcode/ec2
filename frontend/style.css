@@ -316,11 +316,6 @@ body {
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
   overscroll-behavior-y: none;
-  /* Prevent pull-to-refresh interference */
-  /* GPU acceleration for smooth scrolling */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
 }
 
 body.no-scroll {
