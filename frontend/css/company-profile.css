@@ -8,55 +8,95 @@
    ============================================ */
 
 .company-info-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--space-16);
     width: 100%;
     margin-bottom: var(--space-24);
+    /* Added margin bottom spacing */
+    align-items: stretch;
+    /* Ensure children stretch to match height */
 }
 
-/* Ensure both columns have same height using flex */
+/* Columns */
 .company-info-row>div {
+    flex: 1;
+    min-width: 300px;
+    /* Force wrap on very small screens */
     display: flex;
+    /* Enable flex for children (card) to fill height */
 }
 
-.company-info-row>div>.card {
+/* Card fills height */
+.company-details .card,
+.company-profile-section .card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    /* Ensure card styles if missing */
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-card-border);
+}
+
+.company-details .card__body,
+.company-profile-section .card__body {
     flex: 1;
+    padding: var(--space-20);
     display: flex;
     flex-direction: column;
 }
 
-.company-info-row>div>.card>.card__body {
-    flex: 1;
-}
-
 /* ============================================
-   Company Profile & Description Section
+   Typography - Fixed Sizes
    ============================================ */
 
-.company-profile-section {
-    width: 100%;
-}
-
-.company-profile-section .card {
-    background: var(--color-surface);
-    height: 100%;
-}
-
-.company-profile-section .card__body h3 {
-    font-size: var(--font-size-base);
+/* Headers */
+.company-details h3,
+.company-profile-section h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px !important;
     font-weight: 600;
-    margin-bottom: var(--space-12);
+    margin-top: 0;
+    margin-bottom: var(--space-16);
+    color: var(--color-text);
+}
+
+/* Content Text */
+.company-details .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 14px !important;
+    color: var(--color-text);
+}
+
+.company-details .info-row:last-child {
+    border-bottom: none;
+}
+
+.company-details .info-label {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.company-details .info-value {
+    font-weight: 600;
+    text-align: right;
 }
 
 .company-description-wrapper {
     position: relative;
+    flex: 1;
 }
 
 .company-description-text {
     color: var(--color-text-secondary);
-    font-size: var(--font-size-sm);
-    line-height: 1.7;
+    font-size: 14px !important;
+    line-height: 1.6;
     margin: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
@@ -64,7 +104,8 @@
 
 /* Collapsed state */
 .company-description-text.collapsed {
-    max-height: 100px;
+    max-height: 120px;
+    /* Slightly taller for better visibility */
 }
 
 /* Expanded state */
@@ -97,7 +138,7 @@
     background: none;
     border: none;
     color: var(--color-primary);
-    font-size: var(--font-size-xs);
+    font-size: 12px;
     font-weight: 500;
     cursor: pointer;
     padding: var(--space-8) 0 0 0;
@@ -120,64 +161,15 @@
 }
 
 /* ============================================
-   Company Details Section (Left Column)
-   ============================================ */
-
-.company-details {
-    width: 100%;
-}
-
-.company-details .card {
-    height: 100%;
-    background: var(--color-surface);
-}
-
-.company-details .card__body h3 {
-    font-size: var(--font-size-base);
-    font-weight: 600;
-    margin-bottom: var(--space-12);
-}
-
-/* Match font sizes for info rows */
-.company-details .info-row {
-    font-size: var(--font-size-sm);
-}
-
-.company-details .info-label {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-secondary);
-}
-
-.company-details .info-value {
-    font-size: var(--font-size-sm);
-    color: var(--color-text);
-}
-
-/* ============================================
    Mobile Responsive
    ============================================ */
 
 @media (max-width: 768px) {
     .company-info-row {
-        grid-template-columns: 1fr;
-        gap: var(--space-12);
+        flex-direction: column;
     }
 
     .company-info-row>div {
-        min-height: auto;
-    }
-
-    .company-description-text {
-        font-size: var(--font-size-xs);
-        line-height: 1.6;
-    }
-
-    .company-description-text.collapsed {
-        max-height: 80px;
-    }
-
-    .company-profile-section .card__body h3,
-    .company-details .card__body h3 {
-        font-size: var(--font-size-sm);
+        min-width: 100%;
     }
 }
