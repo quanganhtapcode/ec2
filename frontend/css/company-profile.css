@@ -13,32 +13,34 @@
     gap: var(--space-16);
     width: 100%;
     margin-bottom: var(--space-24);
-    /* Added margin bottom spacing */
     align-items: stretch;
-    /* Ensure children stretch to match height */
+    /* Stretch columns to equal height */
 }
 
 /* Columns */
 .company-info-row>div {
     flex: 1;
+    /* 50% width each */
     min-width: 300px;
-    /* Force wrap on very small screens */
     display: flex;
-    /* Enable flex for children (card) to fill height */
+    flex-direction: column;
+    /* Allow children to grow vertically */
 }
 
 /* Card fills height */
 .company-details .card,
 .company-profile-section .card {
+    flex: 1;
+    /* Grow to fill the column height */
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     background: var(--color-surface);
-    /* Ensure card styles if missing */
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--color-card-border);
+    height: auto;
+    /* Allow flex to control height */
 }
 
 .company-details .card__body,
@@ -105,7 +107,6 @@
 /* Collapsed state */
 .company-description-text.collapsed {
     max-height: 120px;
-    /* Slightly taller for better visibility */
 }
 
 /* Expanded state */
@@ -171,5 +172,6 @@
 
     .company-info-row>div {
         min-width: 100%;
+        margin-bottom: var(--space-16);
     }
 }
