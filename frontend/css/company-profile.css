@@ -113,7 +113,7 @@
 
 /* Collapsed state */
 .company-description-text.collapsed {
-    max-height: 120px !important;
+    max-height: 250px !important;
 }
 
 /* Expanded state */
@@ -133,8 +133,7 @@
     font-weight: 500 !important;
     cursor: pointer !important;
     padding: 8px 0 0 0 !important;
-    margin-top: 12px !important;
-    /* Space from text, not pushed to bottom */
+    margin-top: auto !important;
 }
 
 .read-more-btn:hover {

@@ -166,7 +166,8 @@ class StockChartManager {
                             displayColors: false,
                             callbacks: {
                                 label: (context) => {
-                                    const price = context.parsed.y;
+                                    // Multiply by 1000 for correct VND display
+                                    const price = context.parsed.y * 1000;
                                     return `Price: ${new Intl.NumberFormat('vi-VN').format(price)} VND`;
                                 }
                             }
@@ -195,10 +196,11 @@ class StockChartManager {
                             ticks: {
                                 color: colors.text,
                                 callback: (value) => {
+                                    // Multiply by 1000 for scale labels as well
                                     return new Intl.NumberFormat('vi-VN', {
                                         notation: 'compact',
                                         maximumFractionDigits: 1
-                                    }).format(value);
+                                    }).format(value * 1000);
                                 }
                             }
                         }
