@@ -55,7 +55,21 @@ class StockChartManager {
 
         try {
             const response = await fetch(`${this.apiBaseUrl}/api/stock/history/${symbol}`);
-            const data = await response.json();
+
+            if (!response.ok) {
+                const text = await response.text();
+                console.error('API Error Response:', text);
+                throw new Error(`Server returned ${response.status}: ${text.substring(0, 50)}...`);
+            }
+
+            const text = await response.text();
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                console.error("Failed to parse JSON response:", text);
+                throw new Error(`Invalid JSON: ${text.substring(0, 100)}...`);
+            }
 
             // Check if still the current symbol
             if (this.currentSymbol !== symbol) return;

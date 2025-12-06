@@ -3114,17 +3114,40 @@ def get_stock_history(symbol):
                     'message': 'No historical data available'
                 }), 404
             
+            # Normalize columns to lowercase
+            history_df.columns = [c.lower() for c in history_df.columns]
+            
             # Convert to list of dicts for JSON
             history_data = []
+            
+            # Identify date column
+            date_col = 'time'
+            if 'time' not in history_df.columns:
+                if 'date' in history_df.columns:
+                    date_col = 'date'
+                elif 'tradingdate' in history_df.columns:
+                    date_col = 'tradingdate'
+            
             for _, row in history_df.iterrows():
-                history_data.append({
-                    'date': row.get('time', row.name).strftime('%Y-%m-%d') if hasattr(row.get('time', row.name), 'strftime') else str(row.get('time', row.name)),
-                    'open': float(row.get('open', 0)),
-                    'high': float(row.get('high', 0)),
-                    'low': float(row.get('low', 0)),
-                    'close': float(row.get('close', 0)),
-                    'volume': float(row.get('volume', 0))
-                })
+                try:
+                    # Handle date parsing safely
+                    d_val = row.get(date_col, row.name)
+                    if hasattr(d_val, 'strftime'):
+                        d_str = d_val.strftime('%Y-%m-%d')
+                    else:
+                        d_str = str(d_val).split(' ')[0] # Take YYYY-MM-DD part
+                        
+                    history_data.append({
+                        'date': d_str,
+                        'open': float(row.get('open', 0)),
+                        'high': float(row.get('high', 0)),
+                        'low': float(row.get('low', 0)),
+                        'close': float(row.get('close', 0)),
+                        'volume': float(row.get('volume', 0))
+                    })
+                except Exception as e:
+                    logger.warning(f"Skipping row due to error: {e}")
+                    continue
             
             logger.info(f"Successfully fetched {len(history_data)} data points for {symbol}")
             
