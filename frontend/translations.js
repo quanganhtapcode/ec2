@@ -76,6 +76,8 @@ const translations = {
         // Company Description & Price Chart
         companyDescription: "Giới thiệu công ty",
         priceChart: "Biểu đồ giá cổ phiếu",
+        readMore: "Xem thêm",
+        showLess: "Thu gọn",
 
         // Charts
         roeRoaTrends: "Xu hướng ROE & ROA (5 năm)",
@@ -290,6 +292,8 @@ const translations = {
         // Company Description & Price Chart
         companyDescription: "About the Company",
         priceChart: "Stock Price Chart",
+        readMore: "Read more",
+        showLess: "Show less",
 
         // Charts
         roeRoaTrends: "ROE & ROA Trends (Last 5 Years)",
