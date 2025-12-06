@@ -35,8 +35,9 @@ class StockChartManager {
     /**
      * Initialize chart for a symbol
      * @param {string} symbol - Stock symbol
+     * @param {string} exchange - Exchange name (not used, kept for compatibility)
      */
-    async initChart(symbol) {
+    async initWidget(symbol, exchange) {
         const container = document.getElementById('tradingview-widget');
         if (!container) return;
 
@@ -202,7 +203,7 @@ class StockChartManager {
      */
     updateTheme() {
         if (this.currentSymbol) {
-            this.initChart(this.currentSymbol);
+            this.initWidget(this.currentSymbol, null);
         }
     }
 }

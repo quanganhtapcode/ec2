@@ -19,6 +19,9 @@ from functools import wraps
 
 app = Flask(__name__)
 
+# Ensure JSON responses use UTF-8 encoding (display Vietnamese correctly)
+app.config['JSON_AS_ASCII'] = False
+
 # Enable gzip compression for JSON responses (reduces size by 60-80%)
 compress = Compress()
 compress.init_app(app)
