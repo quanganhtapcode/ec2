@@ -51,7 +51,7 @@ class StockValuationApp {
 
         // Initialize modular managers
         this.companyProfileManager = new CompanyProfileManager(this.apiBaseUrl);
-        this.tradingViewManager = new TradingViewManager();
+        this.tradingViewManager = new TradingViewManager(this.apiBaseUrl);
 
         this.init();
     }
