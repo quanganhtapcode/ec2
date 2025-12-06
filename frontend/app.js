@@ -52,6 +52,8 @@ class StockValuationApp {
         // Initialize modular managers
         this.companyProfileManager = new CompanyProfileManager(this.apiBaseUrl);
         this.tradingViewManager = new TradingViewManager(this.apiBaseUrl);
+        // Initialize API Client
+        this.api = new ApiClient(this.apiBaseUrl);
 
         this.init();
     }
@@ -287,7 +289,7 @@ class StockValuationApp {
                 this.showStatus(`Preparing download for ${symbol}...`, 'loading');
 
                 // Download from VPS backend with error handling
-                const fileUrl = `${this.apiBaseUrl}/api/download/${symbol}`;
+                const fileUrl = this.api.getDownloadUrl(symbol);
 
                 try {
                     // Directly trigger download with invisible link
@@ -907,23 +909,10 @@ class StockValuationApp {
             const fetchPrice = true;
 
             // Fetch stock data only - fastest possible loading
-            const stockResponse = await fetch(`${this.apiBaseUrl}/api/app-data/${symbol}?period=${period}&fetch_price=${fetchPrice}`, {
-                signal: controller.signal
-            });
+            // Fetch stock data using ApiClient
+            const stockData = await this.api.getAppData(symbol, period, fetchPrice, controller.signal);
 
             clearTimeout(timeoutId);
-
-            if (!stockResponse.ok) {
-                if (stockResponse.status === 404) {
-                    throw new Error('No data found for this stock symbol');
-                } else if (stockResponse.status === 500) {
-                    throw new Error('Server error while loading data');
-                } else {
-                    throw new Error('Unable to connect to server');
-                }
-            }
-
-            const stockData = await stockResponse.json();
 
             if (!stockData.success) {
                 throw new Error(stockData.error || 'Unable to load data from server');
@@ -1008,14 +997,11 @@ class StockValuationApp {
         try {
             const timeoutId = setTimeout(() => controller.abort(), 20000); // Longer timeout for chart data
 
-            const chartResponse = await fetch(`${this.apiBaseUrl}/api/historical-chart-data/${symbol}`, {
-                signal: controller.signal
-            });
+            const chartData = await this.api.getHistoricalChart(symbol, controller.signal);
 
             clearTimeout(timeoutId);
 
-            if (chartResponse.ok) {
-                const chartData = await chartResponse.json();
+            if (chartData) {
 
                 console.log('📊 Chart data response:', chartData);
 
@@ -1161,19 +1147,7 @@ class StockValuationApp {
                 }
             };
 
-            const response = await fetch(`${this.apiBaseUrl}/api/valuation/${this.currentStock}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestData)
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const result = await response.json();
+            const result = await this.api.calculateValuation(this.currentStock, requestData);
 
             if (!result.success) {
                 throw new Error(result.error || 'Valuation calculation failed');
@@ -1529,16 +1503,16 @@ class StockValuationApp {
             return;
         }
 
-        const fileUrl = `${this.apiBaseUrl}/api/download/${symbol}`;
-
         try {
-            // Check if file exists
-            const checkResponse = await fetch(fileUrl, { method: 'HEAD' });
+            // Check if file exists using ApiClient
+            const isAvailable = await this.api.checkDownloadAvailability(symbol);
 
-            if (!checkResponse.ok) {
+            if (!isAvailable) {
                 console.warn(`Excel data not available for ${symbol}`);
                 return;
             }
+
+            const fileUrl = this.api.getDownloadUrl(symbol);
 
             // File exists, download it
             const tempLink = document.createElement('a');
