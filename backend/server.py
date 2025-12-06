@@ -3035,9 +3035,9 @@ def get_company_profile(symbol):
             # Use company_profile field directly if available, otherwise use history
             company_description = company_profile_text if company_profile_text else history
             
-            # Truncate if too long (max 600 chars for UI)
-            if len(company_description) > 600:
-                company_description = company_description[:600] + '...'
+            # No truncation
+            # if len(company_description) > 600:
+            #     company_description = company_description[:600] + '...'
             
             logger.info(f"Successfully fetched overview for {symbol}")
             
