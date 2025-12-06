@@ -18,8 +18,7 @@
 }
 
 /* Wrapper Divs (Direct children of Grid) */
-.company-info-row .company-details,
-.company-info-row .company-profile-section {
+.company-info-row>div {
     width: 100% !important;
     height: 100% !important;
     /* Fill grid cell height */
@@ -28,8 +27,7 @@
 }
 
 /* Card Styling - The visual white box */
-.company-info-row .company-details .card,
-.company-info-row .company-profile-section .card {
+.company-info-row>div>.card {
     flex: 1 1 auto !important;
     /* Grow to fill wrapper */
     display: flex !important;
@@ -96,7 +94,7 @@
     color: var(--color-text) !important;
 }
 
-/* About Section Text */
+/* About Section Text - Specific to Profile Section */
 .company-description-wrapper {
     position: relative !important;
     flex: 1 !important;
@@ -132,12 +130,10 @@
     border: none !important;
     color: var(--color-primary) !important;
     font-size: 12px !important;
-    /* Keep button small/subtle */
     font-weight: 500 !important;
     cursor: pointer !important;
     padding: 8px 0 0 0 !important;
     margin-top: auto !important;
-    /* Push to bottom if flex */
 }
 
 .read-more-btn:hover {

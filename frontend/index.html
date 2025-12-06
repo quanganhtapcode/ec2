@@ -43,7 +43,7 @@
 
     <link rel="stylesheet" href="style.css?v=13">
     <link rel="stylesheet" href="css/toast.css?v=2">
-    <link rel="stylesheet" href="css/company-profile.css?v=7">
+    <link rel="stylesheet" href="css/company-profile.css?v=8">
     <link rel="stylesheet" href="css/tradingview.css?v=2">
     <!-- Defer heavy library loading (~80KB) until after page load -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
@@ -235,67 +235,72 @@
                         </div>
                     </div>
 
-                    <!-- 4. Financial Metrics -->
-                    <div class="financial-metrics-section mt-24">
-                        <div class="card">
-                            <div class="card__body">
-                                <h3 data-i18n="financialMetrics">Financial Metrics</h3>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="revenue">Revenue:</span>
-                                    <span class="info-value" id="revenue">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="netIncome">Net Income:</span>
-                                    <span class="info-value" id="net-income">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="ebitda">EBITDA:</span>
-                                    <span class="info-value" id="ebitda">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="roe">ROE (%):</span>
-                                    <span class="info-value" id="roe">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="roa">ROA (%):</span>
-                                    <span class="info-value" id="roa">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="debtEquity">Debt/Equity:</span>
-                                    <span class="info-value" id="debt-equity">--</span>
+                    <!-- 4. Financial Metrics & Market Data (2 columns) -->
+                    <div class="company-info-row mt-24">
+                        <!-- Left: Financial Metrics -->
+                        <div class="financial-metrics-section">
+                            <div class="card">
+                                <div class="card__body">
+                                    <h3 data-i18n="financialMetrics">Financial Metrics</h3>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="revenue">Revenue:</span>
+                                        <span class="info-value" id="revenue">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="netIncome">Net Income:</span>
+                                        <span class="info-value" id="net-income">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="ebitda">EBITDA:</span>
+                                        <span class="info-value" id="ebitda">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="roe">ROE (%):</span>
+                                        <span class="info-value" id="roe">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="roa">ROA (%):</span>
+                                        <span class="info-value" id="roa">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="debtEquity">Debt/Equity:</span>
+                                        <span class="info-value" id="debt-equity">--</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 5. Market Data -->
-                    <div class="market-data-section mt-24">
-                        <div class="card">
-                            <div class="card__body">
-                                <h3 data-i18n="marketData">Market Data</h3>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="currentPrice">Current Price:</span>
-                                    <span class="info-value" id="current-price">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="marketCap">Market Cap:</span>
-                                    <span class="info-value" id="market-cap">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="sharesOutstanding">Shares Outstanding:</span>
-                                    <span class="info-value" id="shares-outstanding">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="eps">EPS:</span>
-                                    <span class="info-value" id="eps">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="bookValuePerShare">Book Value per Share:</span>
-                                    <span class="info-value" id="book-value-per-share">--</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="info-label" data-i18n="evEbitda">EV/EBITDA:</span>
-                                    <span class="info-value" id="ev-ebitda">--</span>
+                        <!-- Right: Market Data -->
+                        <div class="market-data-section">
+                            <div class="card">
+                                <div class="card__body">
+                                    <h3 data-i18n="marketData">Market Data</h3>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="currentPrice">Current Price:</span>
+                                        <span class="info-value" id="current-price">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="marketCap">Market Cap:</span>
+                                        <span class="info-value" id="market-cap">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="sharesOutstanding">Shares
+                                            Outstanding:</span>
+                                        <span class="info-value" id="shares-outstanding">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="eps">EPS:</span>
+                                        <span class="info-value" id="eps">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="bookValuePerShare">Book Value per
+                                            Share:</span>
+                                        <span class="info-value" id="book-value-per-share">--</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label" data-i18n="evEbitda">EV/EBITDA:</span>
+                                        <span class="info-value" id="ev-ebitda">--</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
