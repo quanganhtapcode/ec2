@@ -3024,39 +3024,32 @@ def get_company_profile(symbol):
                     logger.debug(f"safe_get error for {column}: {ex}")
                     return default
             
-            # Try different field names based on VCI data structure
-            company_name = safe_get(overview_df, 'short_name', '') or safe_get(overview_df, 'company_name', symbol)
-            industry = safe_get(overview_df, 'icb_name3', '') or safe_get(overview_df, 'industry', '')
-            established = safe_get(overview_df, 'established_year', '')
-            employees = safe_get(overview_df, 'no_employees', '') or safe_get(overview_df, 'employees', '')
-            website = safe_get(overview_df, 'website', '')
-            company_type = safe_get(overview_df, 'company_type', '')
+            # Get fields from VCI overview data
+            company_profile_text = safe_get(overview_df, 'company_profile', '')
+            history = safe_get(overview_df, 'history', '')
+            industry = safe_get(overview_df, 'icb_name3', '')
+            icb_name2 = safe_get(overview_df, 'icb_name2', '')
+            charter_capital = safe_get(overview_df, 'charter_capital', '')
+            issue_share = safe_get(overview_df, 'issue_share', '')
             
-            # Create a description from available data
-            description_parts = []
-            if company_name:
-                description_parts.append(f"{company_name}")
-            if industry:
-                description_parts.append(f"hoạt động trong lĩnh vực {industry}")
-            if company_type:
-                description_parts.append(f"loại hình: {company_type}")
-            if established:
-                description_parts.append(f"thành lập năm {established}")
-            if employees:
-                description_parts.append(f"với {employees} nhân viên")
+            # Use company_profile field directly if available, otherwise use history
+            company_description = company_profile_text if company_profile_text else history
             
-            company_description = ', '.join(description_parts) + '.' if description_parts else f'{symbol} - Thông tin công ty'
+            # Truncate if too long (max 600 chars for UI)
+            if len(company_description) > 600:
+                company_description = company_description[:600] + '...'
             
-            logger.info(f"Successfully fetched overview for {symbol}: {company_name}")
+            logger.info(f"Successfully fetched overview for {symbol}")
             
             return jsonify({
                 'symbol': symbol,
-                'company_name': company_name if company_name else symbol,
+                'company_name': symbol,  # Use symbol as name since short_name not available
                 'company_profile': company_description,
                 'industry': industry,
-                'established_year': established,
-                'employees': employees,
-                'website': website,
+                'icb_name2': icb_name2,
+                'charter_capital': charter_capital,
+                'issue_share': issue_share,
+                'history': history[:300] + '...' if len(history) > 300 else history,
                 'success': True
             })
             
