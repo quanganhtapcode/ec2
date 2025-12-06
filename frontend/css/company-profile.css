@@ -12,6 +12,12 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--space-16);
     width: 100%;
+    align-items: stretch;
+}
+
+/* Ensure both columns have same size */
+.company-info-row>div {
+    min-height: 180px;
 }
 
 /* ============================================
@@ -25,6 +31,12 @@
 .company-profile-section .card {
     background: var(--color-surface);
     height: 100%;
+}
+
+.company-profile-section .card__body h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--space-12);
 }
 
 .company-description-wrapper {
@@ -98,7 +110,7 @@
 }
 
 /* ============================================
-   Company Details Section (Right Column)
+   Company Details Section (Left Column)
    ============================================ */
 
 .company-details {
@@ -107,6 +119,28 @@
 
 .company-details .card {
     height: 100%;
+    background: var(--color-surface);
+}
+
+.company-details .card__body h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--space-12);
+}
+
+/* Match font sizes for info rows */
+.company-details .info-row {
+    font-size: var(--font-size-sm);
+}
+
+.company-details .info-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.company-details .info-value {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
 }
 
 /* ============================================
@@ -119,6 +153,10 @@
         gap: var(--space-12);
     }
 
+    .company-info-row>div {
+        min-height: auto;
+    }
+
     .company-description-text {
         font-size: var(--font-size-xs);
         line-height: 1.6;
@@ -126,5 +164,10 @@
 
     .company-description-text.collapsed {
         max-height: 80px;
+    }
+
+    .company-profile-section .card__body h3,
+    .company-details .card__body h3 {
+        font-size: var(--font-size-sm);
     }
 }
