@@ -2995,7 +2995,10 @@ def download_financial_data(ticker):
         # Use validated/sanitized ticker
         ticker = result
         
-        file_path = os.path.join('../data', f'{ticker}.xlsx')
+        # Use absolute path to data folder (script's parent directory)
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        data_folder = os.path.join(os.path.dirname(script_dir), 'data')
+        file_path = os.path.join(data_folder, f'{ticker}.xlsx')
         
         # Check if file exists before attempting to serve
         if not os.path.exists(file_path):

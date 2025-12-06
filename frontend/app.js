@@ -121,17 +121,7 @@ class StockValuationApp {
                 downloadBtn.disabled = !symbol || symbol.length === 0;
             }
 
-            // Auto-load with debounce - only if user stops typing for 1.2 seconds
-            // This prevents multiple requests while typing
-            if (symbol.length >= 3) {
-                this.debounceTimer = setTimeout(() => {
-                    // Double check the symbol hasn't changed
-                    const currentSymbol = document.getElementById('stock-symbol').value.trim().toUpperCase();
-                    if (currentSymbol === symbol && currentSymbol.length >= 3) {
-                        this.loadStockData();
-                    }
-                }, 1200); // Increased to 1.2 seconds
-            }
+            // Auto-load disabled - user must press Enter or click search button to load data
         });
 
         // Period Toggle Button (New UI V2)
