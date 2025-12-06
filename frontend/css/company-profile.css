@@ -4,67 +4,76 @@
  */
 
 /* ============================================
-   Two-Column Layout Container
+   Two-Column Layout Container - GRID SYSTEM
    ============================================ */
 
 .company-info-row {
-    display: flex !important;
-    flex-wrap: wrap !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
     width: 100% !important;
-    gap: 16px !important;
     margin-bottom: 24px !important;
     align-items: stretch !important;
+    /* Force items to equal height */
 }
 
-/* Columns */
+/* Wrapper Divs (Direct children of Grid) */
 .company-info-row .company-details,
 .company-info-row .company-profile-section {
-    flex: 1 !important;
-    min-width: 300px !important;
+    width: 100% !important;
+    height: 100% !important;
+    /* Fill grid cell height */
     display: flex !important;
     flex-direction: column !important;
 }
 
-/* Cards */
+/* Card Styling - The visual white box */
 .company-info-row .company-details .card,
 .company-info-row .company-profile-section .card {
     flex: 1 1 auto !important;
-    /* grow shrink auto */
-    width: 100% !important;
-    height: 100% !important;
+    /* Grow to fill wrapper */
     display: flex !important;
     flex-direction: column !important;
+    width: 100% !important;
     background: var(--color-surface) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-sm) !important;
+    border: 1px solid var(--color-card-border) !important;
+    height: auto !important;
+    /* Let flex grow handle height */
+    min-height: 200px !important;
+    /* Minimum height for good visuals */
 }
 
 /* Card Body */
-.company-info-row .company-details .card__body,
-.company-info-row .company-profile-section .card__body {
+.company-info-row .card__body {
     flex: 1 1 auto !important;
+    /* Fill card */
     display: flex !important;
     flex-direction: column !important;
-    padding: var(--space-20) !important;
+    padding: 24px !important;
 }
 
 /* ============================================
-   Typography - Fixed Sizes
+   Typography - Strictly Enforced
    ============================================ */
 
 /* Headers */
 .company-info-row h3 {
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Inter', system-ui, sans-serif !important;
     font-size: 16px !important;
     font-weight: 600 !important;
     margin-top: 0 !important;
     margin-bottom: 16px !important;
     color: var(--color-text) !important;
+    line-height: 1.5 !important;
 }
 
-/* Info Rows */
+/* Content Text & Info Rows */
 .company-info-row .info-row {
     display: flex !important;
     justify-content: space-between !important;
-    padding: 8px 0 !important;
+    padding: 10px 0 !important;
     border-bottom: 1px solid var(--color-border) !important;
     font-size: 14px !important;
     color: var(--color-text) !important;
@@ -84,15 +93,18 @@
     font-weight: 600 !important;
     text-align: right !important;
     font-size: 14px !important;
+    color: var(--color-text) !important;
 }
 
-/* Description Text */
-.company-info-row .company-description-wrapper {
+/* About Section Text */
+.company-description-wrapper {
     position: relative !important;
     flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
-.company-info-row .company-description-text {
+.company-description-text {
     color: var(--color-text-secondary) !important;
     font-size: 14px !important;
     line-height: 1.6 !important;
@@ -111,23 +123,6 @@
     max-height: none !important;
 }
 
-/* Gradient fade effect when collapsed */
-.company-description-wrapper.has-overflow::after {
-    content: '' !important;
-    position: absolute !important;
-    bottom: 28px !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 40px !important;
-    background: linear-gradient(transparent, var(--color-surface)) !important;
-    pointer-events: none !important;
-    transition: opacity 0.3s ease !important;
-}
-
-.company-description-wrapper.expanded::after {
-    opacity: 0 !important;
-}
-
 /* Read more button */
 .read-more-btn {
     display: inline-flex !important;
@@ -137,10 +132,12 @@
     border: none !important;
     color: var(--color-primary) !important;
     font-size: 12px !important;
+    /* Keep button small/subtle */
     font-weight: 500 !important;
     cursor: pointer !important;
     padding: 8px 0 0 0 !important;
-    transition: color 0.2s ease !important;
+    margin-top: auto !important;
+    /* Push to bottom if flex */
 }
 
 .read-more-btn:hover {
@@ -151,11 +148,6 @@
 .read-more-btn svg {
     width: 14px !important;
     height: 14px !important;
-    transition: transform 0.2s ease !important;
-}
-
-.read-more-btn.expanded svg {
-    transform: rotate(180deg) !important;
 }
 
 /* ============================================
@@ -164,11 +156,7 @@
 
 @media (max-width: 768px) {
     .company-info-row {
-        flex-direction: column !important;
-    }
-
-    .company-info-row>div {
-        min-width: 100% !important;
-        margin-bottom: 16px !important;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
     }
 }
