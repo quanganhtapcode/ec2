@@ -3093,7 +3093,7 @@ def get_stock_history(symbol):
             from vnstock import Quote
             from datetime import datetime, timedelta
             
-            quote = Quote(symbol, source='VCI')
+            quote = Quote(symbol=symbol, source='VCI')
             
             # Get last 6 months of data
             end_date = datetime.now()
