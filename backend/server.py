@@ -9,8 +9,7 @@ from flask_compress import Compress
 import logging
 import time
 from datetime import datetime, timedelta
-from vnstock import Vnstock, Listing
-from vnstock.explorer.vci import Company
+from vnstock import Vnstock, Listing, Company
 from backend.models import ValuationModels
 import json
 import os
@@ -2977,9 +2976,9 @@ def rate_limit_download(f):
 
 @app.route('/api/company/profile/<symbol>')
 def get_company_profile(symbol):
-    """Get company overview/description from vnstock API
+    """Get company overview/description from vnstock API (VietCap source)
     
-    Uses company.overview() which is more reliable than profile()
+    Uses Company(symbol, source='VCI').overview() for detailed company info
     """
     try:
         # Validate symbol
@@ -2993,13 +2992,14 @@ def get_company_profile(symbol):
         
         symbol = result  # Use sanitized symbol
         
-        logger.info(f"Fetching company overview for {symbol}")
+        logger.info(f"Fetching company overview for {symbol} from VCI source")
         
         try:
-            company = Company(symbol)
+            # Use VCI source for company data
+            company = Company(symbol=symbol, source='VCI')
             overview_df = company.overview()
             
-            if overview_df is None or overview_df.empty:
+            if overview_df is None or (hasattr(overview_df, 'empty') and overview_df.empty):
                 logger.warning(f"No overview data found for {symbol}")
                 return jsonify({
                     'symbol': symbol,
@@ -3011,20 +3011,26 @@ def get_company_profile(symbol):
             # Extract overview data - handle DataFrame properly
             def safe_get(df, column, default=''):
                 try:
-                    if column in df.columns:
+                    if hasattr(df, 'columns') and column in df.columns:
                         val = df[column].iloc[0]
                         if pd.notna(val):
                             return str(val)
+                    elif hasattr(df, column):
+                        val = getattr(df, column)
+                        if pd.notna(val):
+                            return str(val)
                     return default
-                except:
+                except Exception as ex:
+                    logger.debug(f"safe_get error for {column}: {ex}")
                     return default
             
-            # Build company description from available fields
-            company_name = safe_get(overview_df, 'short_name', symbol)
-            industry = safe_get(overview_df, 'icb_name3', '')
+            # Try different field names based on VCI data structure
+            company_name = safe_get(overview_df, 'short_name', '') or safe_get(overview_df, 'company_name', symbol)
+            industry = safe_get(overview_df, 'icb_name3', '') or safe_get(overview_df, 'industry', '')
             established = safe_get(overview_df, 'established_year', '')
-            employees = safe_get(overview_df, 'no_employees', '')
+            employees = safe_get(overview_df, 'no_employees', '') or safe_get(overview_df, 'employees', '')
             website = safe_get(overview_df, 'website', '')
+            company_type = safe_get(overview_df, 'company_type', '')
             
             # Create a description from available data
             description_parts = []
@@ -3032,18 +3038,20 @@ def get_company_profile(symbol):
                 description_parts.append(f"{company_name}")
             if industry:
                 description_parts.append(f"hoạt động trong lĩnh vực {industry}")
+            if company_type:
+                description_parts.append(f"loại hình: {company_type}")
             if established:
                 description_parts.append(f"thành lập năm {established}")
             if employees:
                 description_parts.append(f"với {employees} nhân viên")
             
-            company_description = ', '.join(description_parts) + '.' if description_parts else ''
+            company_description = ', '.join(description_parts) + '.' if description_parts else f'{symbol} - Thông tin công ty'
             
-            logger.info(f"Successfully fetched overview for {symbol}")
+            logger.info(f"Successfully fetched overview for {symbol}: {company_name}")
             
             return jsonify({
                 'symbol': symbol,
-                'company_name': company_name,
+                'company_name': company_name if company_name else symbol,
                 'company_profile': company_description,
                 'industry': industry,
                 'established_year': established,
