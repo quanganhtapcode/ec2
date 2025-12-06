@@ -3730,3 +3730,23 @@ select.form-control {
    - css/company-profile.css
    - css/tradingview.css
 */
+
+/* Sticky Header Implementation */
+.app-header {
+  position: -webkit-sticky;
+  /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  /* Ensure it spans full width if not already */
+  width: 100%;
+}
+
+/* Ensure dark mode background matches surface or background */
+[data-theme="dark"] .app-header {
+  background-color: var(--color-background);
+  /* Or surface, but background is safer for full width header */
+  border-bottom-color: var(--color-border);
+}
