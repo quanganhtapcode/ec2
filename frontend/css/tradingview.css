@@ -51,6 +51,31 @@
     color: inherit;
 }
 
+/* Timeframe Buttons */
+.time-btn {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+}
+
+.time-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-text);
+    border-color: var(--color-text-secondary);
+}
+
+.time-btn.active {
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+}
+
 /* Placeholder state */
 .tradingview-widget-placeholder {
     display: flex;
@@ -80,5 +105,17 @@
 
     .tradingview-widget-placeholder {
         height: 300px;
+    }
+
+    .chart-header-row {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 8px;
+    }
+
+    .chart-controls {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
     }
 }

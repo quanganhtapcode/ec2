@@ -54,7 +54,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="js/toast.js?v=2"></script>
     <script src="js/company-profile.js?v=9"></script>
-    <script src="js/tradingview.js?v=4"></script>
+    <script src="js/tradingview.js?v=5"></script>
     <script src="app.js?v=13" defer></script>
 </head>
 
@@ -222,7 +222,17 @@
                     <div class="tradingview-widget-section mt-24">
                         <div class="card">
                             <div class="card__body">
-                                <h3 data-i18n="priceChart">Stock Price Chart</h3>
+                                <div class="chart-header-row"
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                                    <h3 style="margin: 0;" data-i18n="priceChart">Stock Price Chart</h3>
+                                    <div class="chart-controls" style="display: flex; gap: 4px;">
+                                        <button class="time-btn" data-range="1M">1M</button>
+                                        <button class="time-btn" data-range="3M">3M</button>
+                                        <button class="time-btn active" data-range="6M">6M</button>
+                                        <button class="time-btn" data-range="1Y">1Y</button>
+                                        <button class="time-btn" data-range="2Y">2Y</button>
+                                    </div>
+                                </div>
                                 <div id="tradingview-widget-container" class="tradingview-widget-container">
                                     <div id="tradingview-widget" style="height: 400px;"></div>
                                     <div class="tradingview-widget-copyright">

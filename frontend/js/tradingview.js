@@ -36,25 +36,51 @@ class StockChartManager {
      * Initialize chart for a symbol
      * @param {string} symbol - Stock symbol
      * @param {string} exchange - Exchange name (not used, kept for compatibility)
+     * @param {string} range - Time range (1M, 3M, 6M, 1Y, 2Y, ALL)
      */
-    async initWidget(symbol, exchange) {
+    async initWidget(symbol, exchange, range = '6M') {
         const container = document.getElementById('tradingview-widget');
         if (!container) return;
 
         this.currentSymbol = symbol;
+
+        // Setup button listeners
+        const buttons = document.querySelectorAll('.time-btn');
+        buttons.forEach(btn => {
+            // Check active state
+            if (btn.dataset.range === range) {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+
+            // Remove old listeners by cloning
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+
+            newBtn.addEventListener('click', (e) => {
+                const target = e.target;
+                // Visual update immediately
+                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+                target.classList.add('active');
+
+                // Fetch new data
+                const selectedRange = target.dataset.range;
+                this.initWidget(this.currentSymbol, null, selectedRange);
+            });
+        });
 
         // Show loading state
         container.innerHTML = `
             <div class="chart-loading" style="display: flex; align-items: center; justify-content: center; height: 400px; color: var(--color-text-secondary);">
                 <div style="text-align: center;">
                     <div class="loader" style="width: 40px; height: 40px; margin: 0 auto 12px;"></div>
-                    <span>Loading chart data...</span>
+                    <span>Loading ${range} chart data...</span>
                 </div>
             </div>
         `;
 
         try {
-            const response = await fetch(`${this.apiBaseUrl}/api/stock/history/${symbol}`);
+            const response = await fetch(`${this.apiBaseUrl}/api/stock/history/${symbol}?range=${range}`);
 
             if (!response.ok) {
                 const text = await response.text();
@@ -113,8 +139,8 @@ class StockChartManager {
                         borderColor: colors.line,
                         backgroundColor: colors.fill,
                         fill: true,
-                        tension: 0.3,
-                        pointRadius: 0,
+                        tension: 0.3, // Smooth curve
+                        pointRadius: range === '1M' ? 3 : 0, // Show points for short range only
                         pointHoverRadius: 5,
                         borderWidth: 2
                     }]
@@ -180,7 +206,7 @@ class StockChartManager {
                 }
             });
 
-            console.log(`Stock chart created for ${symbol} with ${data.data.length} data points`);
+            console.log(`Stock chart created for ${symbol} (${range}) with ${data.data.length} data points`);
 
         } catch (error) {
             console.error('Error loading chart data:', error);
@@ -217,7 +243,10 @@ class StockChartManager {
      */
     updateTheme() {
         if (this.currentSymbol) {
-            this.initWidget(this.currentSymbol, null);
+            // Refresh with current range? Ideally yes, but here we reset to default or need to store current range
+            const currentRangeBtn = document.querySelector('.time-btn.active');
+            const range = currentRangeBtn ? currentRangeBtn.dataset.range : '6M';
+            this.initWidget(this.currentSymbol, null, range);
         }
     }
 }

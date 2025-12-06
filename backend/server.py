@@ -3095,9 +3095,20 @@ def get_stock_history(symbol):
             
             quote = Quote(symbol=symbol, source='VCI')
             
-            # Get last 6 months of data
+            # Determine date range based on query parameter
+            range_param = request.args.get('range', '6M').upper()
+            days_map = {
+                '1M': 30,
+                '3M': 90,
+                '6M': 180,
+                '1Y': 365,
+                '2Y': 730,
+                'ALL': 1825 # 5 years
+            }
+            days_back = days_map.get(range_param, 180)
+            
             end_date = datetime.now()
-            start_date = end_date - timedelta(days=180)
+            start_date = end_date - timedelta(days=days_back)
             
             history_df = quote.history(
                 start=start_date.strftime('%Y-%m-%d'),
