@@ -1,104 +1,67 @@
 # Vietnam Stock Valuation Tool
 
-A comprehensive web application for valuing Vietnamese stocks using multiple financial models including FCFE, FCFF, Justified P/E, and Justified P/B ratios.
+Ứng dụng định giá cổ phiếu Việt Nam đơn giản và hiệu quả. Tự động tính toán các chỉ số FCFE, FCFF, P/E, P/B và đưa ra khuyến nghị đầu tư.
 
-## 🚀 Live Demo
+## 🚀 Tính năng chính
 
-Visit the live application: [https://valuation.quanganh.org]
+*   **Định giá tự động:** Nhập mã cổ phiếu (ví dụ: VCB, HPG), app tự tính giá trị thực.
+*   **Dữ liệu Real-time:** Kết nối trực tiếp với thị trường chứng khoán Việt Nam.
+*   **Biểu đồ trực quan:** Xem xu hướng tài chính và biến động giá.
+*   **Khuyến nghị:** Mua/Bán/Giữ dựa trên biên an toàn 15%.
 
-## 📋 Features
+## 🛠️ Hướng dẫn cài đặt & Chạy Local
 
-- **Smart Search**: Auto-loads stock data when typing (debounced)
-- **Reactive Valuation**: Automatically recalculates valuation models when data loads or assumptions change
-- **Real-time Stock Data**: Fetches live data from Vietnamese stock market
-- **Multiple Valuation Models**: 
-  - Free Cash Flow to Equity (FCFE)
-  - Free Cash Flow to Firm (FCFF) 
-  - Justified P/E Ratio
-  - Justified P/B Ratio
-- **Interactive Charts**: Historical trends and financial ratios visualization
-- **Investment Recommendations**: Buy/Hold/Sell recommendations based on 15% threshold
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
-- **Dark/Light Theme**: Toggle between themes
-- **PDF Export**: Generate valuation reports
+### 1. Backend (Python)
+Cài đặt thư viện và chạy server định giá:
 
-## 🛠️ Technologies Used
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Backend**: Python Flask
-- **Charts**: Chart.js
-- **Data Source**: vnstock API
-- **Styling**: Custom CSS with CSS Variables
-
-## 📦 Installation & Setup
-
-### Prerequisites
-- Python 3.8+
-- pip (Python package manager)
-
-### Backend Setup
-1. Clone the repository:
 ```bash
-git clone https://github.com/quanganhtapcode/ec2.git
-cd vietnam-stock-valuation
-```
+# Vào thư mục
+cd C:\Users\PC\Downloads\Valuation
 
-2. Install Python dependencies:
-```bash
+# Cài đặt thư viện (chỉ làm lần đầu)
 pip install flask flask-cors vnstock pandas numpy requests
+
+# Chạy server
+python backend/server.py
 ```
+*Server sẽ chạy tại: `http://localhost:5000`*
 
-3. Run the backend server:
-```bash
-python backend_server.py
+### 2. Frontend (Giao diện)
+Đơn giản là mở file `frontend/index.html` bằng trình duyệt (hoặc dùng Live Server trong VS Code).
+
+---
+
+## ☁️ Quản lý VPS & Deploy (Dành cho Admin)
+
+Chúng tôi cung cấp 2 công cụ (script) tự động hóa mọi việc. Bạn không cần nhớ lệnh phức tạp.
+
+### 1. Deploy Code Mới (`scripts/deploy.ps1`)
+Dùng khi bạn vừa sửa code backend/frontend xong và muốn đưa lên VPS.
+
+```powershell
+.\scripts\deploy.ps1
 ```
+*Script sẽ tự động:*
+*   Commit code lên GitHub.
+*   Upload file thay đổi lên VPS.
+*   Khởi động lại server.
 
-The server will start on `http://localhost:5000`
+### 2. Quản lý & Sửa Lỗi VPS (`scripts/manage_vps.ps1`)
+Dùng khi:
+*   Web bị lỗi 502, không vào được.
+*   Muốn xem server đang chạy thế nào.
+*   Cài đặt lại toàn bộ cấu hình server (Option "Fix Service").
 
-### Frontend Setup
-1. Open `index.html` in a web browser, or
-2. Use a local server like Live Server extension in VS Code
+```powershell
+.\scripts\manage_vps.ps1
+```
+*Chọn các số 1, 2, 3... tương ứng trên menu để thực hiện.*
 
-## 🌐 Deployment Options
+---
 
-### GitHub Pages (Static Frontend Only)
-1. Push your code to a GitHub repository
-2. Go to repository Settings > Pages
-3. Select source branch (usually `main`)
-4. Your site will be available at `https://quanganhtapcode.github.io/ec2`
+## 📚 Tài liệu chi tiết
+*   [Hướng dẫn Deploy chi tiết](docs/deploy-guide.md)
+*   [Update cấu hình VPS](docs/UPDATE_VPS.md)
 
-### Vercel (Recommended for Full Stack)
-1. Connect your GitHub repository to Vercel
-2. Configure build settings for Python backend
-3. Deploy with automatic SSL and CDN
-
-### Heroku (Full Stack)
-1. Add `requirements.txt` and `Procfile`
-2. Deploy via Heroku CLI or GitHub integration
-
-## 📊 API Endpoints
-
-- `GET /api/stock/<symbol>` - Get stock information
-- `POST /api/valuation` - Calculate stock valuation
-- `GET /api/historical/<symbol>` - Get historical chart data
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👨‍💻 Author
-
-Created by quanganhdeptrai
-
-## ⚠️ Disclaimer
-
-This tool is for educational and informational purposes only. It should not be considered as financial advice. Always do your own research and consult with financial professionals before making investment decisions.
-
+---
+© 2025 quanganhdeptrai.

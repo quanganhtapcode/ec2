@@ -274,11 +274,13 @@ class ValuationModels:
         """
         try:
             
-            # Get assumptions - use revenue_growth as fallback for short_term_growth
+            # Get assumptions
             short_term_growth = assumptions.get('short_term_growth', 
                                                assumptions.get('revenue_growth', 0.05))
             terminal_growth = assumptions.get('terminal_growth', 0.02)
-            wacc = assumptions.get('wacc', 0.10)
+            # FCFE must use Cost of Equity, NOT WACC
+            cost_of_equity = assumptions.get('cost_of_equity', 0.12)
+            
             tax_rate = assumptions.get('tax_rate', 0.20)
             forecast_years = assumptions.get('forecast_years', 5)
             data_frequency = assumptions.get('data_frequency', 'year')
@@ -334,22 +336,33 @@ class ValuationModels:
                 fcfe = net_income + depreciation + net_borrowing - working_capital_change - capex
                 
             
-            
-            # Project and discount
+            # Project and discount using Cost of Equity
             future_fcfes = [fcfe * ((1 + short_term_growth) ** year) for year in range(1, forecast_years + 1)]
-            terminal_value = future_fcfes[-1] * (1 + terminal_growth) / (wacc - terminal_growth)
-            pv_fcfes = [fcfe_val / ((1 + wacc) ** year) for year, fcfe_val in enumerate(future_fcfes, 1)]
-            pv_terminal = terminal_value / ((1 + wacc) ** forecast_years)
+            
+            # Terminal Value calculation
+            # If cost_of_equity <= terminal_growth, use a safe multiplier or cap
+            if cost_of_equity <= terminal_growth:
+                 # Fallback: assume constant multiple or force a spread
+                 adj_cost_of_equity = max(cost_of_equity, terminal_growth + 0.02)
+                 terminal_value = future_fcfes[-1] * (1 + terminal_growth) / (adj_cost_of_equity - terminal_growth)
+            else:
+                terminal_value = future_fcfes[-1] * (1 + terminal_growth) / (cost_of_equity - terminal_growth)
+
+            pv_fcfes = [fcfe_val / ((1 + cost_of_equity) ** year) for year, fcfe_val in enumerate(future_fcfes, 1)]
+            pv_terminal = terminal_value / ((1 + cost_of_equity) ** forecast_years)
             
             total_equity_value = sum(pv_fcfes) + pv_terminal
-            per_share_fcfe = total_equity_value / shares_outstanding
             
+            if shares_outstanding > 0:
+                per_share_fcfe = total_equity_value / shares_outstanding
+            else:
+                per_share_fcfe = 0
             
             return per_share_fcfe
 
         except Exception as e:
-            import traceback
-            traceback.print_exc()
+            # import traceback
+            # traceback.print_exc()
             return 0
     
     def calculate_fcff(self, assumptions):
@@ -369,15 +382,22 @@ class ValuationModels:
             
             shares_outstanding = self.get_shares_outstanding()
             
+            # Initialize Debt and Cash
+            total_debt = 0
+            cash = 0
+
             # Use stock data if available, otherwise use provided data
             if self.stock:
                 # Fetch financial data with caching
                 income_data = self.get_cached_income_data(period=data_frequency)
                 cash_flow_data = self.get_cached_cash_flow_data(period=data_frequency)
-                
+                balance_data = self.get_cached_balance_data(period=data_frequency)
+
                 # Process data frequency
                 actual_freq, processed_income = self.check_data_frequency(income_data.copy(), data_frequency)
                 _, processed_cash_flow = self.check_data_frequency(cash_flow_data.copy(), data_frequency)
+                _, processed_balance = self.check_data_frequency(balance_data.copy(), data_frequency)
+                
                 is_quarterly = actual_freq == 'quarter'
                 
                 
@@ -402,6 +422,17 @@ class ValuationModels:
                                                                    ['Purchase of fixed assets', 'Proceeds from disposal of fixed assets'], 
                                                                    is_quarterly)
                 
+                # Extract Debt and Cash for Equity Value Calculation
+                # Short-term debt
+                short_term_debt = self.find_financial_value(processed_balance, ['Short-term borrowings', 'Vay và nợ thuê tài chính ngắn hạn'], False) # Balance sheet items are stocks, not flows, so usually calculate from latest period
+                # Long-term debt
+                long_term_debt = self.find_financial_value(processed_balance, ['Long-term borrowings', 'Vay và nợ thuê tài chính dài hạn'], False)
+                total_debt = short_term_debt + long_term_debt
+
+                # Cash
+                cash = self.find_financial_value(processed_balance, ['Cash and cash equivalents', 'Tiền và các khoản tương đương tiền'], False)
+
+
                 # FCFF CALCULATION
                 fcff = net_income + non_cash_charges + interest_after_tax - working_capital_investment + fixed_capital_investment
                 
@@ -414,19 +445,35 @@ class ValuationModels:
                 capex = abs(self.stock_data.get('capex', 0))
                 working_capital_change = self.stock_data.get('working_capital_change', 0)
                 
+                total_debt = self.stock_data.get('total_debt', 0)
+                cash = self.stock_data.get('cash', 0)
+
                 fcff = net_income + depreciation + interest_after_tax - working_capital_change - capex
                 
             
-            
-            # Project and discount
+            # Project and discount FCFF using WACC
             future_fcffs = [fcff * ((1 + short_term_growth) ** year) for year in range(1, forecast_years + 1)]
-            terminal_value_fcff = future_fcffs[-1] * (1 + terminal_growth) / (wacc - terminal_growth)
+            
+            if wacc <= terminal_growth:
+                adj_wacc = max(wacc, terminal_growth + 0.02)
+                terminal_value_fcff = future_fcffs[-1] * (1 + terminal_growth) / (adj_wacc - terminal_growth)
+            else:
+                terminal_value_fcff = future_fcffs[-1] * (1 + terminal_growth) / (wacc - terminal_growth)
+
             pv_fcffs = [fcff_val / ((1 + wacc) ** year) for year, fcff_val in enumerate(future_fcffs, 1)]
             pv_terminal_fcff = terminal_value_fcff / ((1 + wacc) ** forecast_years)
             
-            total_firm_value = sum(pv_fcffs) + pv_terminal_fcff
-            per_share_fcff = total_firm_value / shares_outstanding
+            # This is ENTERPRISE VALUE (Firm Value)
+            enterprise_value = sum(pv_fcffs) + pv_terminal_fcff
             
+            # Calculate EQUITY VALUE
+            # Equity Value = Enterprise Value - Total Debt + Cash
+            equity_value = enterprise_value - total_debt + cash
+            
+            if shares_outstanding > 0:
+                per_share_fcff = equity_value / shares_outstanding
+            else:
+                per_share_fcff = 0
             
             return per_share_fcff
 
