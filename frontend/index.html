@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="css/header-fixed.css?v=1">
     <link rel="stylesheet" href="css/tradingview.css?v=3">
     <link rel="stylesheet" href="css/ticker-autocomplete.css?v=1">
+    <link rel="stylesheet" href="css/methodology-modal.css?v=1">
     <!-- Defer heavy library loading (~80KB) until after page load -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js" defer></script>
@@ -591,9 +592,10 @@
                         <div class="card">
                             <div class="card__body">
                                 <h3 data-i18n="selectValuationModels">Select Valuation Models</h3>
-                                <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--space-16);"
-                                    data-i18n="selectModelsDesc">
-                                    Choose models to include. Weights auto-distribute evenly.
+                                <p class="methodology-hint">
+                                    <span data-i18n="selectModelsDescWithLink">Choose models to include. Learn about our
+                                    </span><a href="#" id="methodology-btn" class="methodology-link"
+                                        data-i18n="methodologyLink">methodology here</a>.
                                 </p>
                                 <form id="weights-form" class="form-group">
                                     <div class="form-row">
@@ -959,6 +961,113 @@
             </div>
         </div>
     </footer>
+
+    <!-- Methodology Modal -->
+    <div id="methodology-modal" class="modal-overlay hidden">
+        <div class="modal-container methodology-modal">
+            <div class="modal-header">
+                <h2 data-i18n="valuationMethodology">Valuation Methodology</h2>
+                <button class="modal-close-btn" id="methodology-close-btn" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body methodology-content">
+                <p class="methodology-intro" data-i18n="methodologyIntro">
+                    This tool uses the following valuation methods to estimate the intrinsic value of stocks:
+                </p>
+
+                <div class="methodology-item">
+                    <strong>1. FCFE</strong> (<span data-i18n="fcfeFull">Free Cash Flow to Equity</span>)
+                    <p data-i18n="fcfeExplain">Cash available to shareholders after operating expenses, reinvestments,
+                        and debt payments. Discounted at the required return on equity.</p>
+                    <code>FCFE = Net Income + Depreciation − CapEx − ΔWorking Capital + Net Borrowing</code>
+                </div>
+
+                <div class="methodology-item">
+                    <strong>2. FCFF</strong> (<span data-i18n="fcffFull">Free Cash Flow to Firm</span>)
+                    <p data-i18n="fcffExplain">Cash available to all capital providers. Discounted at WACC to get
+                        enterprise value, then subtract net debt for equity value.</p>
+                    <code>FCFF = EBIT × (1 − Tax) + Depreciation − CapEx − ΔWorking Capital</code>
+                </div>
+
+                <div class="methodology-item">
+                    <strong>3. Justified P/E</strong> (<span data-i18n="peFull">Gordon Growth Model</span>)
+                    <p data-i18n="peExplain">Theoretical P/E ratio based on payout ratio, growth rate, and required
+                        return. Multiplied by EPS for intrinsic value.</p>
+                    <code>Justified P/E = (1 − b) × (1 + g) / (r − g)</code>
+                </div>
+
+                <div class="methodology-item">
+                    <strong>4. Justified P/B</strong> (<span data-i18n="pbFull">Residual Income Model</span>)
+                    <p data-i18n="pbExplain">Theoretical P/B ratio based on ROE, growth rate, and required return.
+                        Multiplied by book value per share for intrinsic value.</p>
+                    <code>Justified P/B = (ROE − g) / (r − g)</code>
+                </div>
+
+                <div class="methodology-item">
+                    <strong>5. <span data-i18n="weightedAverageMethod">Weighted Average</span></strong>
+                    <p data-i18n="weightedExplain">Final value is a weighted average of selected models. By default,
+                        equal weights are assigned to all selected models.</p>
+                </div>
+
+                <div class="methodology-disclaimer">
+                    <span data-i18n="methodologyDisclaimer">
+                        These valuations are based on historical data and user-defined assumptions. They should be used
+                        as one of many tools in investment analysis, not as sole decision-making criteria.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Methodology Modal Handler
+        document.addEventListener('DOMContentLoaded', function () {
+            const methodologyBtn = document.getElementById('methodology-btn');
+            const methodologyModal = document.getElementById('methodology-modal');
+            const methodologyCloseBtn = document.getElementById('methodology-close-btn');
+            let scrollPosition = 0;
+
+            function openModal() {
+                scrollPosition = window.pageYOffset;
+                document.body.classList.add('modal-open');
+                document.body.style.top = `-${scrollPosition}px`;
+                methodologyModal.classList.remove('hidden');
+            }
+
+            function closeModal() {
+                methodologyModal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+                document.body.style.top = '';
+                window.scrollTo(0, scrollPosition);
+            }
+
+            if (methodologyBtn && methodologyModal) {
+                methodologyBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openModal();
+                });
+
+                methodologyCloseBtn.addEventListener('click', closeModal);
+
+                methodologyModal.addEventListener('click', function (e) {
+                    if (e.target === methodologyModal) {
+                        closeModal();
+                    }
+                });
+
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && !methodologyModal.classList.contains('hidden')) {
+                        closeModal();
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 
