@@ -18,6 +18,23 @@ html.modal-open {
     overflow: hidden !important;
 }
 
+/* Ensure fixed header is not affected by modal stacking context */
+body.modal-open .app-header {
+    isolation: isolate;
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+}
+
+/* Ensure search container maintains full opacity */
+body.modal-open .search-container-v2 {
+    opacity: 1 !important;
+}
+
+body.modal-open .search-input-compact {
+    opacity: 1 !important;
+}
+
 /* Modal Overlay - Fixed to viewport, captures all scroll */
 .modal-overlay {
     position: fixed !important;
@@ -32,8 +49,9 @@ html.modal-open {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .modal-overlay.hidden {

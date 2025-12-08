@@ -127,9 +127,14 @@ class TickerAutocomplete {
                 break;
 
             case 'Enter':
+                // If an item is selected in the dropdown, use that
                 if (this.selectedIndex >= 0 && items[this.selectedIndex]) {
                     e.preventDefault();
                     this.selectItem(items[this.selectedIndex].dataset.symbol);
+                } else {
+                    // No item selected - just close the dropdown
+                    // Let the form submission happen naturally with the typed value
+                    this.close();
                 }
                 break;
 
