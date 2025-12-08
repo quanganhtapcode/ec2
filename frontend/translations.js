@@ -20,10 +20,14 @@ const translations = {
         // Tabs
         companyOverview: "Tổng quan",
         valuationAssumptions: "Định giá",
+        history: "Lịch sử giá",
         summaryReport: "Báo cáo",
 
         // Company Information
         companyInformation: "Thông tin công ty",
+        latestNews: "Tin tức mới nhất",
+        events: "Sự kiện",
+        priceHistory: "Lịch sử giá",
         symbol: "Mã:",
         name: "Tên:",
         industry: "Ngành:",
@@ -236,10 +240,14 @@ const translations = {
         // Tabs
         companyOverview: "Overview",
         valuationAssumptions: "Valuation",
+        history: "History",
         summaryReport: "Report",
 
         // Company Information
         companyInformation: "Company Information",
+        latestNews: "Latest News",
+        events: "Events",
+        priceHistory: "Price History",
         symbol: "Symbol:",
         name: "Name:",
         industry: "Industry:",

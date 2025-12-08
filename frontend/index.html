@@ -46,6 +46,7 @@
     <link rel="stylesheet" href="css/toast.css?v=2">
     <link rel="stylesheet" href="css/company-profile.css?v=10">
     <link rel="stylesheet" href="css/valuation.css?v=1">
+    <link rel="stylesheet" href="css/financials.css?v=1">
     <link rel="stylesheet" href="css/header-fixed.css?v=1">
     <link rel="stylesheet" href="css/tradingview.css?v=3">
     <!-- Defer heavy library loading (~80KB) until after page load -->
@@ -62,6 +63,9 @@
     <script src="js/api.js?v=1"></script>
     <script src="js/report-generator.js?v=1"></script>
     <script src="js/chart-manager.js?v=1"></script>
+    <script src="js/financials.js?v=1"></script>
+    <script src="js/news.js?v=1"></script>
+    <script src="js/history.js?v=1"></script>
     <script src="app.js?v=14" defer></script>
 </head>
 
@@ -152,6 +156,15 @@
                     </svg>
                     <span data-i18n="companyOverview">Overview</span>
                 </button>
+                <button class="tab-btn" data-tab="financials">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span data-i18n="financials">Financials</span>
+                </button>
                 <button class="tab-btn" data-tab="valuation">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                         class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -161,6 +174,14 @@
                         <line x1="6" y1="20" x2="6" y2="14"></line>
                     </svg>
                     <span data-i18n="valuationAssumptions">Valuation</span>
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    <span data-i18n="history">History</span>
                 </button>
                 <button class="tab-btn" data-tab="summary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -311,6 +332,10 @@
                                         <span class="info-value" id="eps">--</span>
                                     </div>
                                     <div class="info-row">
+                                        <span class="info-label" data-i18n="peRatio">P/E Ratio:</span>
+                                        <span class="info-value" id="overview-pe">--</span>
+                                    </div>
+                                    <div class="info-row">
                                         <span class="info-label" data-i18n="bookValuePerShare">Book Value per
                                             Share:</span>
                                         <span class="info-value" id="book-value-per-share">--</span>
@@ -323,6 +348,34 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <!-- 5. News & Events -->
+                    <div class="company-info-row mt-24">
+                        <div class="news-section" style="flex: 1;">
+                            <div class="card" style="height: 100%;">
+                                <div class="card__body">
+                                    <h3 data-i18n="latestNews">Latest News</h3>
+                                    <div id="news-list" class="news-list-container">
+                                        <!-- News items will be here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="events-section" style="flex: 1;">
+                            <div class="card" style="height: 100%;">
+                                <div class="card__body">
+                                    <h3 data-i18n="events">Events</h3>
+                                    <div id="events-list" class="events-list-container">
+                                        <!-- Events items will be here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="financials" class="tab-pane">
                     <div class="ratios-grid mt-24">
                         <div class="ratio-category">
                             <h4 class="ratio-category-title" data-i18n="valuationRatios">Valuation Ratios</h4>
@@ -430,6 +483,55 @@
                     </div>
                 </div>
 
+                <div id="history" class="tab-pane">
+                    <div class="card mt-24">
+                        <div class="card__body">
+                            <div class="history-header"
+                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 data-i18n="priceHistory">Price History</h3>
+                                <div class="history-controls" style="display: flex; gap: 12px; align-items: center;">
+                                    <div class="range-selector" style="display: flex; gap: 4px;">
+                                        <button class="time-btn" data-history-range="1M">1M</button>
+                                        <button class="time-btn" data-history-range="3M">3M</button>
+                                        <button class="time-btn" data-history-range="6M">6M</button>
+                                        <button class="time-btn active" data-history-range="1Y">1Y</button>
+                                        <button class="time-btn" data-history-range="2Y">2Y</button>
+                                        <button class="time-btn" data-history-range="5Y">5Y</button>
+                                    </div>
+                                    <button id="download-history-btn" class="btn btn--secondary btn--sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                        Download Excel
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="history-table" class="data-table"
+                                    style="width: 100%; border-collapse: collapse;">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Open</th>
+                                            <th>High</th>
+                                            <th>Low</th>
+                                            <th>Close</th>
+                                            <th>Volume</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Data rows -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="valuation" class="tab-pane">
                     <div class="form-grid">
                         <div class="card">
@@ -439,7 +541,8 @@
                                     <div class="form-row">
                                         <div class="form-group">
                                             <label for="revenue-growth" class="form-label"
-                                                data-i18n="revenueGrowth">Revenue Growth (%):</label>
+                                                data-i18n="revenueGrowth">Revenue
+                                                Growth (%):</label>
                                             <input type="number" id="revenue-growth" class="form-control" step="0.1"
                                                 value="8.0">
                                         </div>

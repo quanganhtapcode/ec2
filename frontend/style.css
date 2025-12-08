@@ -3518,3 +3518,173 @@ select.form-control {
   /* Or surface, but background is safer for full width header */
   border-bottom-color: var(--color-border);
 }
+
+/* =========================================
+   News & Events Section
+   ========================================= */
+.news-list-container,
+.events-list-container {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+  /* Space for scrollbar */
+}
+
+/* Scrollbar styling for lists */
+.news-list-container::-webkit-scrollbar,
+.events-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.news-list-container::-webkit-scrollbar-track,
+.events-list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.news-list-container::-webkit-scrollbar-thumb,
+.events-list-container::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 3px;
+}
+
+.news-item,
+.event-item {
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.news-item:last-child,
+.event-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.news-item:first-child,
+.event-item:first-child {
+  padding-top: 0;
+}
+
+.news-title {
+  font-weight: 500;
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 6px;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.event-title {
+  font-weight: 500;
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.news-title:hover {
+  color: var(--color-primary);
+}
+
+.news-meta,
+.event-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.news-source,
+.event-type {
+  background: var(--color-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* =========================================
+   History Data Table
+   ========================================= */
+.table-container,
+.table-responsive {
+  overflow-x: auto;
+  width: 100%;
+  border-radius: var(--radius-base);
+  border: 1px solid var(--color-border);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  text-align: right;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.data-table th:first-child,
+.data-table td:first-child {
+  text-align: left;
+}
+
+.data-table th {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: var(--color-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .data-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+
+/* =========================================
+   Time Range Selector
+   ========================================= */
+.time-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-btn:hover {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.time-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .time-btn {
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .time-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}

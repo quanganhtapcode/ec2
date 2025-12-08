@@ -1,0 +1,224 @@
+/* Financials Data Tab Styles */
+
+/* Metrics Grid - if reused here */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-16);
+}
+
+.metric-card {
+    background: var(--color-surface);
+    padding: var(--space-16);
+    border-radius: var(--radius-base);
+    border: 1px solid var(--color-card-border);
+    text-align: center;
+    transition: all var(--duration-fast) var(--ease-standard);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.metric-card:hover::before {
+    opacity: 1;
+}
+
+.metric-title {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+    font-weight: var(--font-weight-medium);
+}
+
+.metric-value {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+/* Key Ratios - Moved from style.css */
+.ratios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-28);
+    margin-top: var(--space-32);
+}
+
+.ratio-category {
+    background: var(--color-surface);
+    padding: var(--space-24);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-card-border);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--duration-normal) var(--ease-standard);
+    position: relative;
+    overflow: hidden;
+}
+
+.ratio-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-standard);
+}
+
+.ratio-category:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.ratio-category-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--space-16);
+    padding-bottom: var(--space-12);
+    border-bottom: 2px solid var(--color-card-border-inner);
+}
+
+.ratio-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+}
+
+.ratio-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-12) 0;
+    min-height: 44px;
+    border-bottom: 1px solid rgba(var(--color-border), 0.3);
+}
+
+.ratio-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.ratio-label {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
+}
+
+.ratio-value {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    min-width: 80px;
+    text-align: right;
+    line-height: var(--line-height-normal);
+}
+
+/* Historical Charts - Moved from style.css */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-28);
+    margin-top: var(--space-32);
+}
+
+.chart-container {
+    background: var(--color-surface);
+    padding: var(--space-20);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-card-border);
+    position: relative;
+    height: 320px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--duration-normal) var(--ease-standard);
+    overflow: hidden;
+}
+
+.chart-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-standard);
+}
+
+.chart-container:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.chart-container:hover::after {
+    opacity: 1;
+}
+
+.chart-container.full-width {
+    grid-column: 1 / -1;
+    height: 380px;
+}
+
+.chart-container.full-width canvas {
+    max-height: 310px !important;
+    height: 310px !important;
+}
+
+.chart-header {
+    margin-bottom: var(--space-16);
+    text-align: center;
+}
+
+.chart-header h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin: 0 0 var(--space-4) 0;
+}
+
+/* Historical Charts Section Wrapper */
+.historical-charts {
+    margin-top: var(--space-24);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-16);
+    }
+
+    .chart-container {
+        padding: var(--space-16);
+        height: 280px;
+    }
+
+    .chart-container canvas {
+        max-height: 220px !important;
+        height: 220px !important;
+    }
+
+    .ratio-category-title {
+        font-size: var(--font-size-base);
+    }
+}

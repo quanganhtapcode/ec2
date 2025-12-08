@@ -47,6 +47,9 @@ class StockValuationApp {
         this.companyProfileManager = new CompanyProfileManager(this.apiBaseUrl);
         this.tradingViewManager = new TradingViewManager(this.apiBaseUrl);
         this.chartManager = new ChartManager();
+        this.financialsManager = new FinancialsManager();
+        this.newsManager = new NewsManager(this.apiBaseUrl);
+        this.historyManager = new HistoryManager(this.apiBaseUrl);
 
         // Initialize API Client
         this.api = new ApiClient(this.apiBaseUrl);
@@ -401,6 +404,11 @@ class StockValuationApp {
             pane.classList.remove('active');
         });
         document.getElementById(tabName).classList.add('active');
+
+        // Lazy load history if selected
+        if (tabName === 'history' && this.currentStock) {
+            this.historyManager.updateHistory(this.currentStock);
+        }
     }
 
     loadDefaultAssumptions() {
@@ -1080,19 +1088,12 @@ class StockValuationApp {
         this.safeUpdateElement('roe', '--');
         this.safeUpdateElement('roa', '--');
         this.safeUpdateElement('debt-equity', '--');
+        this.safeUpdateElement('overview-pe', '--');
 
-        // Clear ratio metrics
-        this.safeUpdateElement('asset-turnover', '--');
-        this.safeUpdateElement('inventory-turnover', '--');
-        this.safeUpdateElement('fixed-asset-turnover', '--');
-        this.safeUpdateElement('current-ratio', '--');
-        this.safeUpdateElement('quick-ratio', '--');
-        this.safeUpdateElement('cash-ratio', '--');
-        this.safeUpdateElement('interest-coverage', '--');
-        this.safeUpdateElement('gross-profit-margin', '--');
-        this.safeUpdateElement('ebit-margin', '--');
-        this.safeUpdateElement('net-profit-margin', '--');
-        this.safeUpdateElement('ev-ebitda-ratio', '--');
+        // Clear financial ratios via manager
+        if (this.financialsManager) {
+            this.financialsManager.clear();
+        }
 
         // Clear valuation results
         this.safeUpdateElement('fcfe-result', '--');
@@ -1254,25 +1255,19 @@ class StockValuationApp {
         this.safeUpdateElement('book-value-per-share', AppUtils.formatCurrency(data.book_value_per_share));
         this.safeUpdateElement('ev-ebitda', AppUtils.formatNumber(data.ev_ebitda));
 
-        // Update financial metrics
+        // Update financial metrics (Key Metrics)
         this.safeUpdateElement('revenue', AppUtils.formatLargeNumber(data.revenue_ttm));
         this.safeUpdateElement('net-income', AppUtils.formatLargeNumber(data.net_income_ttm));
         this.safeUpdateElement('ebitda', AppUtils.formatLargeNumber(data.ebitda));
         this.safeUpdateElement('roe', AppUtils.formatPercent(data.roe));
         this.safeUpdateElement('roa', AppUtils.formatPercent(data.roa));
         this.safeUpdateElement('debt-equity', AppUtils.formatNumber(data.debt_to_equity));
+        this.safeUpdateElement('overview-pe', AppUtils.formatNumber(data.pe_ratio));
 
-        // Update ratio metrics
-        this.safeUpdateElement('asset-turnover', AppUtils.formatNumber(data.asset_turnover));
-        this.safeUpdateElement('inventory-turnover', AppUtils.formatNumber(data.inventory_turnover));
-        this.safeUpdateElement('fixed-asset-turnover', AppUtils.formatNumber(data.fixed_asset_turnover));
-        this.safeUpdateElement('current-ratio', AppUtils.formatNumber(data.current_ratio));
-        this.safeUpdateElement('quick-ratio', AppUtils.formatNumber(data.quick_ratio));
-        this.safeUpdateElement('cash-ratio', AppUtils.formatNumber(data.cash_ratio));
-        this.safeUpdateElement('interest-coverage', AppUtils.formatNumber(data.interest_coverage));
-        this.safeUpdateElement('gross-profit-margin', AppUtils.formatPercent(data.gross_profit_margin));
-        this.safeUpdateElement('ebit-margin', AppUtils.formatPercent(data.ebit_margin));
-        this.safeUpdateElement('net-profit-margin', AppUtils.formatPercent(data.net_profit_margin));
+        // Update detailed financial ratios via manager
+        if (this.financialsManager) {
+            this.financialsManager.updateDisplay(data);
+        }
 
         // Update summary tab
         this.safeUpdateElement('summary-symbol', data.symbol || '--');
@@ -1288,8 +1283,11 @@ class StockValuationApp {
         if (data.symbol) {
             this.fetchCompanyProfile(data.symbol);
             this.initTradingViewWidget(data.symbol, data.exchange);
+            this.newsManager.updateNews(data.symbol);
+            this.newsManager.updateEvents(data.symbol);
         }
     }
+
 
     updateModelDetails() {
         if (!this.valuationResults || !this.stockData) {

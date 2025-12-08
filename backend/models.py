@@ -267,104 +267,82 @@ class ValuationModels:
     # VALUATION MODELS
     # ===================================================
     
-    def _find_value_fuzzy(self, data, keywords, is_quarterly=False):
-        """Helper to find value with partial matching on column names"""
-        if data.empty:
-            return 0
-        
-        # Normalize keywords
-        keywords = [k.lower() for k in keywords]
-        
-        for col in data.columns:
-            col_lower = str(col).lower()
-            for kw in keywords:
-                if kw in col_lower:
-                    values = data[col]
-                    if values.notna().any():
-                        valid_values = values.dropna()
-                        if not valid_values.empty:
-                            if is_quarterly:
-                                return float(valid_values.sum())
-                            else:
-                                return float(valid_values.iloc[0])
-        return 0
-
     def calculate_fcfe(self, assumptions):
         """
-        Calculate FCFE (Free Cash Flow to Equity) Valuation - CORRECTED & NORMALIZED
+        Calculate FCFE (Free Cash Flow to Equity) Valuation - CORRECTED
         Returns: value per share in VND
         """
         try:
+            
             # Get assumptions
             short_term_growth = assumptions.get('short_term_growth', 
                                                assumptions.get('revenue_growth', 0.05))
             terminal_growth = assumptions.get('terminal_growth', 0.02)
+            # FCFE must use Cost of Equity, NOT WACC
             cost_of_equity = assumptions.get('cost_of_equity', 0.12)
+            
+            tax_rate = assumptions.get('tax_rate', 0.20)
             forecast_years = assumptions.get('forecast_years', 5)
             data_frequency = assumptions.get('data_frequency', 'year')
             
+            
             shares_outstanding = self.get_shares_outstanding()
             
-            fcfe_base = 0
-            net_income_base = 0
-
-            # Use stock data if available
+            # Use stock data if available, otherwise use provided data
             if self.stock:
+                # Fetch financial data with caching
                 income_data = self.get_cached_income_data(period=data_frequency)
                 cash_flow_data = self.get_cached_cash_flow_data(period=data_frequency)
                 
+                # Process data frequency
                 actual_freq, processed_income = self.check_data_frequency(income_data.copy(), data_frequency)
                 _, processed_cash_flow = self.check_data_frequency(cash_flow_data.copy(), data_frequency)
                 is_quarterly = actual_freq == 'quarter'
                 
+                
                 # Net Income
                 net_income = self.find_financial_value(processed_income, ['Net Profit For the Year'], is_quarterly)
-                net_income_base = net_income
-
-                # Components
+                
+                # Non-Cash Charges (Depreciation)
                 non_cash_charges = self.find_financial_value(processed_cash_flow, ['Depreciation and Amortisation'], is_quarterly)
                 
+                # Working Capital Investment
                 receivables_change = self.find_financial_value(processed_cash_flow, ['Increase/Decrease in receivables'], is_quarterly)
                 inventories_change = self.find_financial_value(processed_cash_flow, ['Increase/Decrease in inventories'], is_quarterly)
                 payables_change = self.find_financial_value(processed_cash_flow, ['Increase/Decrease in payables'], is_quarterly)
                 working_capital_investment = receivables_change + inventories_change - payables_change
                 
+                # Fixed Capital Investment
                 fixed_capital_investment = self.find_financial_value(processed_cash_flow, 
                                                                    ['Purchase of fixed assets', 'Proceeds from disposal of fixed assets'], 
                                                                    is_quarterly)
                 
+                # Net Borrowing
                 proceeds_borrowings = self.find_financial_value(processed_cash_flow, ['Proceeds from borrowings'], is_quarterly)
                 repayment_borrowings = self.find_financial_value(processed_cash_flow, ['Repayment of borrowings'], is_quarterly)
                 net_borrowing = proceeds_borrowings + repayment_borrowings
                 
                 # FCFE CALCULATION
-                fcfe_base = net_income + non_cash_charges + net_borrowing - working_capital_investment + fixed_capital_investment
+                fcfe = net_income + non_cash_charges + net_borrowing - working_capital_investment + fixed_capital_investment
                 
             else:
+                # Use provided stock data
                 net_income = self.stock_data.get('net_income_ttm', 0)
-                net_income_base = net_income
                 depreciation = self.stock_data.get('depreciation', 0)
                 capex = abs(self.stock_data.get('capex', 0))
                 net_borrowing = self.stock_data.get('net_borrowing', 0)
                 working_capital_change = self.stock_data.get('working_capital_change', 0)
                 
-                fcfe_base = net_income + depreciation + net_borrowing - working_capital_change - capex
+                fcfe = net_income + depreciation + net_borrowing - working_capital_change - capex
+                
             
-            # --- NORMALIZATION FOR PROJECTION ---
-            # If FCFE is negative or abnormally high (due to massive borrowing), use Net Income as sustainable proxy
-            # This is a common practice when current FCFE is volatile/distorted
-            fcfe_for_projection = fcfe_base
+            # Project and discount using Cost of Equity
+            future_fcfes = [fcfe * ((1 + short_term_growth) ** year) for year in range(1, forecast_years + 1)]
             
-            # Heuristic: If FCFE > 200% Net Income or FCFE < 0, fallback to Net Income
-            # This assumes that in the long run, FCFE converges to Net Income (borrowing funds growth)
-            if net_income_base > 0:
-                if fcfe_base < 0 or fcfe_base > 2 * net_income_base:
-                   fcfe_for_projection = net_income_base
-
-            # Project and discount
-            future_fcfes = [fcfe_for_projection * ((1 + short_term_growth) ** year) for year in range(1, forecast_years + 1)]
-            
+            # Terminal Value calculation
+            # If cost_of_equity <= terminal_growth, use a safe multiplier or cap
             if cost_of_equity <= terminal_growth:
+                 # Fallback: assume constant multiple or force a spread
                  adj_cost_of_equity = max(cost_of_equity, terminal_growth + 0.02)
                  terminal_value = future_fcfes[-1] * (1 + terminal_growth) / (adj_cost_of_equity - terminal_growth)
             else:
@@ -383,14 +361,17 @@ class ValuationModels:
             return per_share_fcfe
 
         except Exception as e:
+            # import traceback
+            # traceback.print_exc()
             return 0
     
     def calculate_fcff(self, assumptions):
         """
-        Calculate FCFF (Free Cash Flow to Firm) Valuation - CORRECTED & NORMALIZED
+        Calculate FCFF (Free Cash Flow to Firm) Valuation - CORRECTED
         Returns: value per share in VND
         """
         try:
+            
             # Get assumptions
             short_term_growth = assumptions.get('short_term_growth', 0.05)
             terminal_growth = assumptions.get('terminal_growth', 0.02)
@@ -401,78 +382,77 @@ class ValuationModels:
             
             shares_outstanding = self.get_shares_outstanding()
             
+            # Initialize Debt and Cash
             total_debt = 0
             cash = 0
-            fcff_base = 0
-            nopat_base = 0 # Net Operating Profit After Tax
 
-            # Use stock data if available
+            # Use stock data if available, otherwise use provided data
             if self.stock:
+                # Fetch financial data with caching
                 income_data = self.get_cached_income_data(period=data_frequency)
                 cash_flow_data = self.get_cached_cash_flow_data(period=data_frequency)
                 balance_data = self.get_cached_balance_data(period=data_frequency)
 
+                # Process data frequency
                 actual_freq, processed_income = self.check_data_frequency(income_data.copy(), data_frequency)
                 _, processed_cash_flow = self.check_data_frequency(cash_flow_data.copy(), data_frequency)
                 _, processed_balance = self.check_data_frequency(balance_data.copy(), data_frequency)
+                
                 is_quarterly = actual_freq == 'quarter'
                 
+                
+                # Net Income
                 net_income = self.find_financial_value(processed_income, ['Net Profit For the Year'], is_quarterly)
                 
+                # Non-Cash Charges (Depreciation)
                 non_cash_charges = self.find_financial_value(processed_cash_flow, ['Depreciation and Amortisation'], is_quarterly)
                 
-                # Correct Interest: Use ABS to ensure positive value added back
-                interest_expense = self.find_financial_value(processed_income, ['Interest Expenses', 'Chi phí lãi vay'], is_quarterly)
-                interest_after_tax = abs(interest_expense) * (1 - tax_rate)
+                # Interest Expense After Tax (FCFF specific)
+                interest_expense = self.find_financial_value(processed_income, ['Interest Expenses'], is_quarterly)
+                interest_after_tax = interest_expense * (1 - tax_rate)
                 
+                # Working Capital Investment
                 receivables_change = self.find_financial_value(processed_cash_flow, ['Increase/Decrease in receivables'], is_quarterly)
                 inventories_change = self.find_financial_value(processed_cash_flow, ['Increase/Decrease in inventories'], is_quarterly)
                 payables_change = self.find_financial_value(processed_cash_flow, ['Increase/Decrease in payables'], is_quarterly)
                 working_capital_investment = receivables_change + inventories_change - payables_change
                 
+                # Fixed Capital Investment
                 fixed_capital_investment = self.find_financial_value(processed_cash_flow, 
                                                                    ['Purchase of fixed assets', 'Proceeds from disposal of fixed assets'], 
                                                                    is_quarterly)
                 
-                # Retrieve Debt & Cash using FUZZY SEARCH
-                short_term_debt = self._find_value_fuzzy(processed_balance, 
-                    ['short-term borrowing', 'vay ngắn hạn', 'vay và nợ thuê tài chính ngắn hạn', 
-                     'vay & nợ thuê tài chính ngắn hạn', 'vay va no thue tai chinh ngan han'], False)
-                long_term_debt = self._find_value_fuzzy(processed_balance, 
-                    ['long-term borrowing', 'vay dài hạn', 'vay và nợ thuê tài chính dài hạn', 
-                     'vay & nợ thuê tài chính dài hạn', 'vay va no thue tai chinh dai han'], False)
+                # Extract Debt and Cash for Equity Value Calculation
+                # Short-term debt
+                short_term_debt = self.find_financial_value(processed_balance, ['Short-term borrowings', 'Vay và nợ thuê tài chính ngắn hạn'], False) # Balance sheet items are stocks, not flows, so usually calculate from latest period
+                # Long-term debt
+                long_term_debt = self.find_financial_value(processed_balance, ['Long-term borrowings', 'Vay và nợ thuê tài chính dài hạn'], False)
                 total_debt = short_term_debt + long_term_debt
-                
-                cash = self._find_value_fuzzy(processed_balance, 
-                    ['cash and cash equivalents', 'tiền và các khoản tương đương tiền', # Correct VN name
-                     'tiền và tương đương tiền', 'tien va cac khoan tuong duong tien'], False)
-                
-                # FCFF Base
-                fcff_base = net_income + non_cash_charges + interest_after_tax - working_capital_investment + fixed_capital_investment
-                nopat_base = net_income + interest_after_tax
 
+                # Cash
+                cash = self.find_financial_value(processed_balance, ['Cash and cash equivalents', 'Tiền và các khoản tương đương tiền'], False)
+
+
+                # FCFF CALCULATION
+                fcff = net_income + non_cash_charges + interest_after_tax - working_capital_investment + fixed_capital_investment
+                
             else:
+                # Use provided stock data
                 net_income = self.stock_data.get('net_income_ttm', 0)
                 depreciation = self.stock_data.get('depreciation', 0)
                 interest_expense = self.stock_data.get('interest_expense', 0)
-                interest_after_tax = abs(interest_expense) * (1 - tax_rate)
+                interest_after_tax = interest_expense * (1 - tax_rate)
                 capex = abs(self.stock_data.get('capex', 0))
                 working_capital_change = self.stock_data.get('working_capital_change', 0)
                 
                 total_debt = self.stock_data.get('total_debt', 0)
                 cash = self.stock_data.get('cash', 0)
 
-                fcff_base = net_income + depreciation + interest_after_tax - working_capital_change - capex
-                nopat_base = net_income + interest_after_tax
+                fcff = net_income + depreciation + interest_after_tax - working_capital_change - capex
+                
             
-            # --- NORMALIZATION FOR PROJECTION ---
-            # If FCFF is negative (due to heavy Capex), use NOPAT as proxy for sustainable FCF
-            fcff_for_projection = fcff_base
-            if fcff_base < 0 and nopat_base > 0:
-                fcff_for_projection = nopat_base
-
-            # Project and discount
-            future_fcffs = [fcff_for_projection * ((1 + short_term_growth) ** year) for year in range(1, forecast_years + 1)]
+            # Project and discount FCFF using WACC
+            future_fcffs = [fcff * ((1 + short_term_growth) ** year) for year in range(1, forecast_years + 1)]
             
             if wacc <= terminal_growth:
                 adj_wacc = max(wacc, terminal_growth + 0.02)
@@ -483,7 +463,11 @@ class ValuationModels:
             pv_fcffs = [fcff_val / ((1 + wacc) ** year) for year, fcff_val in enumerate(future_fcffs, 1)]
             pv_terminal_fcff = terminal_value_fcff / ((1 + wacc) ** forecast_years)
             
+            # This is ENTERPRISE VALUE (Firm Value)
             enterprise_value = sum(pv_fcffs) + pv_terminal_fcff
+            
+            # Calculate EQUITY VALUE
+            # Equity Value = Enterprise Value - Total Debt + Cash
             equity_value = enterprise_value - total_debt + cash
             
             if shares_outstanding > 0:

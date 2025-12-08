@@ -9,7 +9,7 @@ from flask_compress import Compress
 import logging
 import time
 from datetime import datetime, timedelta
-from vnstock import Vnstock, Listing, Company
+from vnstock import Vnstock, Listing, Company, Quote
 from backend.models import ValuationModels
 import json
 import os
@@ -3240,6 +3240,98 @@ def download_financial_data(ticker):
             'message': f'An error occurred while processing your download: {str(e)}',
             'ticker': ticker
         }), 500
+
+
+@app.route("/api/news/<symbol>")
+def api_news(symbol):
+    """Get news for a symbol"""
+    try:
+        # Use provider.vnstock.stock wrapper logic if possible, or direct vnstock creation
+        # Using direct creation to ensure clean state
+        stock = Vnstock().stock(symbol=symbol, source='TCBS')
+        news_df = stock.company.news()
+        
+        if news_df is not None and not news_df.empty:
+            # Convert to list of dicts
+            news_data = news_df.head(10).to_dict(orient='records')
+            return jsonify({
+                "success": True,
+                "data": news_data
+            })
+        else:
+            return jsonify({
+                "success": True,
+                "data": []
+            })
+    except Exception as exc:
+        logger.error(f"API /news error {symbol}: {exc}")
+        return jsonify({"success": False, "error": str(exc)}), 500
+
+@app.route("/api/events/<symbol>")
+def api_events(symbol):
+    """Get events for a symbol"""
+    try:
+        stock = Vnstock().stock(symbol=symbol, source='TCBS')
+        events_df = stock.company.events()
+        
+        if events_df is not None and not events_df.empty:
+            # Convert to list of dicts
+            events_data = events_df.head(10).to_dict(orient='records')
+            return jsonify({
+                "success": True,
+                "data": events_data
+            })
+        else:
+            return jsonify({
+                "success": True,
+                "data": []
+            })
+    except Exception as exc:
+        logger.error(f"API /events error {symbol}: {exc}")
+        return jsonify({"success": False, "error": str(exc)}), 500
+
+@app.route("/api/history/<symbol>")
+def api_history(symbol):
+    """Get historical price data for a symbol"""
+    try:
+        # Default to 1 year of data
+        end_date = datetime.now()
+        start_date = end_date - timedelta(days=365)
+        
+        start_str = request.args.get('start', start_date.strftime('%Y-%m-%d'))
+        end_str = request.args.get('end', end_date.strftime('%Y-%m-%d'))
+        
+        quote = Quote(symbol=symbol, source='VCI')
+        history_df = quote.history(start=start_str, end=end_str, interval='1D')
+        
+        if history_df is not None and not history_df.empty:
+            # Reset index to make 'time' or date a column if it's the index
+            if isinstance(history_df.index, pd.DatetimeIndex):
+                history_df = history_df.reset_index()
+                
+            # Convert to list of dicts
+            history_data = history_df.to_dict(orient='records')
+            
+            # Helper to serialize dates
+            def serialize_dates(data):
+                for item in data:
+                    for k, v in item.items():
+                        if isinstance(v, (datetime, pd.Timestamp)):
+                            item[k] = v.strftime('%Y-%m-%d')
+                return data
+
+            return jsonify({
+                "success": True,
+                "data": serialize_dates(history_data)
+            })
+        else:
+            return jsonify({
+                "success": True,
+                "data": []
+            })
+    except Exception as exc:
+        logger.error(f"API /history error {symbol}: {exc}")
+        return jsonify({"success": False, "error": str(exc)}), 500
 
 if __name__ == "__main__":
     logger.info("Vietnamese Stock Valuation Backend – running on http://0.0.0.0:5000")
