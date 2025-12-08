@@ -47,7 +47,8 @@ class StockChartManager {
         this.currentSymbol = symbol;
 
         // Setup button listeners
-        const buttons = document.querySelectorAll('.time-btn');
+        // Setup button listeners
+        const buttons = document.querySelectorAll('.chart-controls .time-btn');
         buttons.forEach(btn => {
             // Check active state
             if (btn.dataset.range === range) {
@@ -62,7 +63,7 @@ class StockChartManager {
             newBtn.addEventListener('click', (e) => {
                 const target = e.target;
                 // Visual update immediately
-                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.chart-controls .time-btn').forEach(b => b.classList.remove('active'));
                 target.classList.add('active');
 
                 // Fetch new data
