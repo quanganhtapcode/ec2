@@ -244,22 +244,17 @@ class TickerAutocomplete {
         this.input.value = symbol;
         this.close();
 
-        // Trigger input event for app to respond
-        this.input.dispatchEvent(new Event('input', { bubbles: true }));
-
         // Call optional callback
         if (this.options.onSelect) {
             const ticker = this.tickers.find(t => t.symbol === symbol);
             this.options.onSelect(ticker);
         }
 
-        // Trigger search (simulate Enter key)
-        setTimeout(() => {
-            const form = this.input.closest('form');
-            if (form) {
-                form.dispatchEvent(new Event('submit', { cancelable: true }));
-            }
-        }, 50);
+        // Trigger search immediately by clicking the search button
+        const searchBtn = document.getElementById('search-btn');
+        if (searchBtn) {
+            searchBtn.click();
+        }
     }
 
     open() {
