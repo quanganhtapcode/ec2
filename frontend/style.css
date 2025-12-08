@@ -3684,7 +3684,8 @@ select.form-control {
 /* =========================================
    Time Range Selector
    ========================================= */
-.time-btn {
+.time-btn,
+.history-btn {
   background: transparent;
   border: 1px solid var(--color-border);
   color: var(--color-text-secondary);
@@ -3696,21 +3697,25 @@ select.form-control {
   transition: all 0.2s ease;
 }
 
-.time-btn:hover {
+.time-btn:hover,
+.history-btn:hover {
   background: var(--color-secondary);
   color: var(--color-text);
 }
 
-.time-btn.active {
-  background: var(--color-success);
+.time-btn.active,
+.history-btn.active {
+  background: var(--color-primary);
   color: white;
-  border-color: var(--color-success);
+  border-color: var(--color-primary);
 }
 
-[data-theme="dark"] .time-btn {
+[data-theme="dark"] .time-btn,
+[data-theme="dark"] .history-btn {
   border-color: var(--color-border);
 }
 
-[data-theme="dark"] .time-btn:hover {
+[data-theme="dark"] .time-btn:hover,
+[data-theme="dark"] .history-btn:hover {
   background: rgba(255, 255, 255, 0.05);
 }

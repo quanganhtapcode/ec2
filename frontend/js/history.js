@@ -12,7 +12,7 @@ class HistoryManager {
         }
 
         // Setup range buttons
-        const rangeBtns = document.querySelectorAll('[data-history-range]');
+        const rangeBtns = document.querySelectorAll('.history-btn');
         rangeBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const range = e.currentTarget.dataset.historyRange;
@@ -27,7 +27,7 @@ class HistoryManager {
         this.currentRange = range;
 
         // Update UI
-        document.querySelectorAll('[data-history-range]').forEach(btn => {
+        document.querySelectorAll('.history-btn').forEach(btn => {
             if (btn.dataset.historyRange === range) {
                 btn.classList.add('active');
             } else {

@@ -52,7 +52,7 @@
     }
 
     /* Make range buttons flexible but equal */
-    .range-selector .time-btn {
+    .range-selector .history-btn {
         flex: 1;
         text-align: center;
         padding: 8px 0;
