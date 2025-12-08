@@ -1,0 +1,208 @@
+/**
+ * Ticker Autocomplete Dropdown Styles
+ */
+
+.ticker-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background: var(--color-surface, #fff);
+    border: 1px solid var(--color-border, #e0e0e0);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+    margin-top: 4px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Dark mode */
+[data-theme="dark"] .ticker-dropdown {
+    background: var(--color-surface, #1e1e1e);
+    border-color: var(--color-border, #333);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ticker-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    border-bottom: 1px solid var(--color-border-light, #f0f0f0);
+    gap: 16px;
+}
+
+[data-theme="dark"] .ticker-item {
+    border-bottom-color: var(--color-border, #333);
+}
+
+.ticker-item:last-child {
+    border-bottom: none;
+}
+
+.ticker-item:hover,
+.ticker-item.selected {
+    background-color: var(--color-primary-bg, #f0f7ff);
+}
+
+[data-theme="dark"] .ticker-item:hover,
+[data-theme="dark"] .ticker-item.selected {
+    background-color: rgba(99, 102, 241, 0.15);
+}
+
+.ticker-item-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.ticker-item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.ticker-symbol {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-text, #1a1a1a);
+    font-family: 'SF Mono', 'Menlo', monospace;
+}
+
+[data-theme="dark"] .ticker-symbol {
+    color: var(--color-text, #fff);
+}
+
+.ticker-symbol mark {
+    background-color: var(--color-primary-light, #bfdbfe);
+    color: var(--color-primary, #2563eb);
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+[data-theme="dark"] .ticker-symbol mark {
+    background-color: rgba(99, 102, 241, 0.3);
+    color: var(--color-primary, #818cf8);
+}
+
+.ticker-exchange {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: var(--color-secondary-bg, #e5e7eb);
+    color: var(--color-text-secondary, #6b7280);
+}
+
+[data-theme="dark"] .ticker-exchange {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-secondary, #9ca3af);
+}
+
+.ticker-name {
+    font-size: 13px;
+    color: var(--color-text-secondary, #4b5563);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+[data-theme="dark"] .ticker-name {
+    color: var(--color-text-secondary, #9ca3af);
+}
+
+.ticker-sector {
+    font-size: 11px;
+    color: var(--color-text-muted, #9ca3af);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin-top: 2px;
+}
+
+[data-theme="dark"] .ticker-sector {
+    color: var(--color-text-muted, #6b7280);
+}
+
+/* Custom scrollbar for dropdown */
+.ticker-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ticker-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ticker-dropdown::-webkit-scrollbar-thumb {
+    background: var(--color-border, #d1d5db);
+    border-radius: 3px;
+}
+
+.ticker-dropdown::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-secondary, #9ca3af);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .ticker-dropdown {
+        border-radius: 8px;
+        max-height: 60vh;
+    }
+
+    .ticker-item {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .ticker-item-left {
+        width: 100%;
+    }
+
+    .ticker-item-right {
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+
+    .ticker-symbol {
+        font-size: 14px;
+    }
+
+    .ticker-name {
+        font-size: 12px;
+    }
+
+    .ticker-sector {
+        font-size: 10px;
+    }
+}
+
+/* Smooth appear animation */
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ticker-dropdown[style*="block"] {
+    animation: dropdownFadeIn 0.15s ease-out;
+}
