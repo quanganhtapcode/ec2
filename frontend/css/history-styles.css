@@ -1,0 +1,99 @@
+/* =========================================
+   History Header Styles
+   ========================================= */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    /* Allow title and controls to stack on small screens */
+    gap: 12px;
+}
+
+.history-header h3 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.history-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* Keep buttons on one line */
+}
+
+.range-selector {
+    display: flex;
+    gap: 4px;
+}
+
+/* Tablet & Mobile Styles */
+@media (max-width: 768px) {
+
+    /* Stack Header: Title Top, Controls Bottom */
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .history-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .range-selector {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        /* Spread buttons */
+        gap: 4px;
+    }
+
+    /* Make range buttons flexible but equal */
+    .range-selector .time-btn {
+        flex: 1;
+        text-align: center;
+        padding: 8px 0;
+        font-size: 13px;
+        min-width: 0;
+        /* Allow shrinking */
+    }
+
+    /* Icon-only Download Button */
+    #download-history-btn {
+        font-size: 0 !important;
+        /* Hide text */
+        padding: 0;
+        width: 38px;
+        height: 38px;
+        min-width: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--color-border);
+        background: transparent;
+        color: var(--color-primary);
+        border-radius: var(--radius-sm);
+        flex-shrink: 0;
+        /* Don't shrink the icon button */
+    }
+
+    #download-history-btn svg {
+        width: 20px !important;
+        height: 20px !important;
+        margin: 0 !important;
+    }
+
+    #download-history-btn:hover {
+        background: var(--color-secondary);
+    }
+}
+
+/* Extra Small Mobile tweaks */
+@media (max-width: 400px) {
+    .range-selector {
+        gap: 2px;
+    }
+}

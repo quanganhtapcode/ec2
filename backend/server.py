@@ -3244,16 +3244,38 @@ def download_financial_data(ticker):
 
 @app.route("/api/news/<symbol>")
 def api_news(symbol):
-    """Get news for a symbol"""
+    """Get news for a symbol (VCI Source for Vietnamese)"""
     try:
-        # Use provider.vnstock.stock wrapper logic if possible, or direct vnstock creation
-        # Using direct creation to ensure clean state
-        stock = Vnstock().stock(symbol=symbol, source='TCBS')
+        # Use VCI source for Vietnamese news and working links
+        stock = Vnstock().stock(symbol=symbol, source='VCI')
         news_df = stock.company.news()
         
         if news_df is not None and not news_df.empty:
-            # Convert to list of dicts
-            news_data = news_df.head(10).to_dict(orient='records')
+            news_data = []
+            # Take top 15 news items
+            for _, row in news_df.head(15).iterrows():
+                # Parse date
+                pub_date = row.get('public_date') or row.get('created_at')
+                date_str = ""
+                if pd.notna(pub_date):
+                    try:
+                        # Handle int timestamp (ms) - VCI often returns ms timestamp
+                        val = float(pub_date)
+                        if val > 1e11: # rough check for ms timestamp
+                            dt = datetime.fromtimestamp(val / 1000)
+                            date_str = dt.isoformat()
+                        else:
+                            date_str = str(pub_date)
+                    except:
+                        date_str = str(pub_date)
+
+                news_data.append({
+                    "title": row.get('news_title', row.get('title', '')),
+                    "url": row.get('news_source_link', row.get('url', '#')),
+                    "source": "HSX" if "hsx.vn" in str(row.get('news_source_link', '')) else "VCI",
+                    "publish_date": date_str
+                })
+            
             return jsonify({
                 "success": True,
                 "data": news_data
@@ -3269,14 +3291,34 @@ def api_news(symbol):
 
 @app.route("/api/events/<symbol>")
 def api_events(symbol):
-    """Get events for a symbol"""
+    """Get events for a symbol (VCI Source for Vietnamese)"""
     try:
-        stock = Vnstock().stock(symbol=symbol, source='TCBS')
+        stock = Vnstock().stock(symbol=symbol, source='VCI')
         events_df = stock.company.events()
         
         if events_df is not None and not events_df.empty:
-            # Convert to list of dicts
-            events_data = events_df.head(10).to_dict(orient='records')
+            # Ensure sort by date descending
+            if 'public_date' in events_df.columns:
+                try:
+                    events_df['public_date'] = pd.to_datetime(events_df['public_date'])
+                    events_df = events_df.sort_values(by='public_date', ascending=False)
+                except:
+                    pass
+
+            events_data = []
+            for _, row in events_df.head(10).iterrows():
+                ev_date = row.get('public_date')
+                date_str = ""
+                if pd.notna(ev_date):
+                    date_str = str(ev_date).split(' ')[0] # YYYY-MM-DD
+
+                events_data.append({
+                    "event_name": row.get('event_title', row.get('event_name', '')),
+                    "event_code": row.get('event_list_name') or row.get('event_list_code', 'Event'),
+                    "notify_date": date_str,
+                    "url": row.get('source_url', '#')
+                })
+                
             return jsonify({
                 "success": True,
                 "data": events_data

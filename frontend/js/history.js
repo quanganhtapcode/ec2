@@ -49,9 +49,6 @@ class HistoryManager {
             case '1M':
                 start.setMonth(end.getMonth() - 1);
                 break;
-            case '3M':
-                start.setMonth(end.getMonth() - 3);
-                break;
             case '6M':
                 start.setMonth(end.getMonth() - 6);
                 break;

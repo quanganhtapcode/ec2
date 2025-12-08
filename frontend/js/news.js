@@ -62,7 +62,7 @@ class NewsManager {
 
             newsItem.innerHTML = `
                 <div class="news-content">
-                    <a href="${item.source || '#'}" target="_blank" class="news-title">${item.title}</a>
+                    <a href="${item.url || '#'}" target="_blank" class="news-title">${item.title}</a>
                     <div class="news-meta">
                         <span class="news-date">${dateStr}</span>
                         <span class="news-source">${item.source || 'N/A'}</span>
@@ -96,9 +96,13 @@ class NewsManager {
                 }
             }
 
+            const titleHtml = item.url && item.url !== '#'
+                ? `<a href="${item.url}" target="_blank" class="event-title-link">${item.event_desc || item.event_name}</a>`
+                : `<div class="event-title">${item.event_desc || item.event_name}</div>`;
+
             eventItem.innerHTML = `
                 <div class="event-content">
-                    <div class="event-title">${item.event_desc || item.event_name}</div>
+                    ${titleHtml}
                     <div class="event-meta">
                         <span class="event-date">${dateStr}</span>
                         <span class="event-type">${item.event_code || 'Event'}</span>
