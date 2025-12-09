@@ -125,7 +125,7 @@ class ReportGenerator {
                 return;
             }
 
-            this.showStatus('Generating Excel reports and downloading original data...', 'info');
+            // Removed: generating toast - process is quick, result is visible immediately
 
             const zip = new JSZip();
             const symbol = currentStock;

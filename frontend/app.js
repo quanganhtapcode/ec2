@@ -290,8 +290,7 @@ class StockValuationApp {
                     return;
                 }
 
-                // Show loading state
-                this.showStatus(`Preparing download for ${symbol}...`, 'loading');
+                // Download happens instantly - no need for loading toast
 
                 // Download from VPS backend with error handling
                 const fileUrl = this.api.getDownloadUrl(symbol);
@@ -560,7 +559,7 @@ class StockValuationApp {
         const requestSymbol = symbol;
 
         this.showLoading(true, `Loading ${symbol}...`);
-        this.showStatus('Loading data...', 'loading');
+        // Removed: showStatus loading toast - too noisy
         this.loadingState.stockData = true;
 
         // Create new abort controller for this request
@@ -601,7 +600,7 @@ class StockValuationApp {
 
             this.updateOverviewDisplay(stockData);
 
-            this.showStatus('Data loaded successfully', 'success');
+            // Removed: showStatus success toast - loading indicator already shows completion
 
             // Auto-calculate valuation when data is loaded (Preload)
             this.calculateValuation();
@@ -681,7 +680,7 @@ class StockValuationApp {
                         this.chartManager.setCache(symbol, chartData.data);
 
                         this.chartManager.updateCharts(this.historicalData, this.stockData);
-                        this.showStatus('Charts loaded', 'success');
+                        // Removed: showStatus charts loaded toast - unnecessary
                     } else {
                         console.log(`Chart data for ${symbol} loaded but user has moved to ${this.currentStock}`);
                     }
@@ -693,7 +692,7 @@ class StockValuationApp {
             } else {
                 console.error('Error loading chart data:', error);
                 if (this.currentStock === symbol) {
-                    this.showStatus('Charts could not be loaded', 'warning');
+                    // Charts failed silently - not critical for user
                 }
             }
         } finally {
@@ -728,7 +727,7 @@ class StockValuationApp {
             }
 
             // Load stock data first, then calculate valuation
-            this.showStatus('Loading stock data before valuation...', 'info');
+            // Removed: loading toast - showLoading indicator is sufficient
             const period = document.getElementById('period-select').value || 'year';
             await this.loadStockDataOnly(symbol, period);
 
@@ -750,12 +749,12 @@ class StockValuationApp {
             this.updateRecommendation();
             document.getElementById('export-report-btn').disabled = false;
             document.getElementById('export-excel-btn').disabled = false;
-            this.showStatus(`Valuation updated (${cacheTime.toFixed(0)}ms - cached)`, 'success');
+            // Removed: cached valuation toast - too noisy when adjusting weights
             return;
         }
 
         try {
-            this.showStatus('Calculating valuation models...', 'info');
+            // Removed: calculating toast - valuation is fast, no need to announce
 
             const requestData = {
                 revenueGrowth: this.assumptions.revenueGrowth,
@@ -823,7 +822,7 @@ class StockValuationApp {
             document.getElementById('export-report-btn').disabled = false;
             document.getElementById('export-excel-btn').disabled = false;
 
-            this.showStatus('Valuation completed successfully', 'success');
+            // Removed: success toast - results are visible, no need to announce
 
         } catch (error) {
             console.error('Error calculating valuation:', error);
