@@ -1,11 +1,44 @@
 /**
  * API Client for interacting with the backend
- * Handles all network requests and error parsing
+ * Handles all network requests, error parsing, and response caching
  */
 class ApiClient {
     constructor(baseUrl) {
         // Remove trailing slash if present to avoid double slashes
         this.baseUrl = baseUrl.replace(/\/$/, '');
+
+        // In-memory cache for API responses
+        this.cache = new Map();
+        this.cacheExpiry = 5 * 60 * 1000; // 5 minutes cache
+    }
+
+    /**
+     * Get cached data or null if expired/missing
+     */
+    getCached(key) {
+        const cached = this.cache.get(key);
+        if (cached && Date.now() - cached.timestamp < this.cacheExpiry) {
+            return cached.data;
+        }
+        return null;
+    }
+
+    /**
+     * Store data in cache
+     */
+    setCache(key, data) {
+        this.cache.set(key, { data, timestamp: Date.now() });
+    }
+
+    /**
+     * Clear cache for a specific key or all
+     */
+    clearCache(key = null) {
+        if (key) {
+            this.cache.delete(key);
+        } else {
+            this.cache.clear();
+        }
     }
 
     /**
@@ -44,6 +77,15 @@ class ApiClient {
      */
     async getAppData(symbol, period = 'year', fetchPrice = true, signal = null) {
         const cleanSymbol = symbol.trim().toUpperCase();
+        const cacheKey = `appData_${cleanSymbol}_${period}`;
+
+        // Return cached data if available and fresh
+        const cached = this.getCached(cacheKey);
+        if (cached) {
+            console.log(`📦 Using cached data for ${cleanSymbol}`);
+            return cached;
+        }
+
         const url = `${this.baseUrl}/api/app-data/${cleanSymbol}?period=${period}&fetch_price=${fetchPrice}`;
 
         try {
@@ -57,7 +99,12 @@ class ApiClient {
                 throw new Error(errorData.error || `Server error: ${response.status}`);
             }
 
-            return await response.json();
+            const data = await response.json();
+
+            // Cache successful response
+            this.setCache(cacheKey, data);
+
+            return data;
         } catch (error) {
             // Rethrow AbortError as is, wrap others
             if (error.name === 'AbortError') throw error;
@@ -74,12 +121,27 @@ class ApiClient {
      */
     async getHistoricalChart(symbol, signal = null) {
         const cleanSymbol = symbol.trim().toUpperCase();
+        const cacheKey = `chart_${cleanSymbol}`;
+
+        // Return cached data if available and fresh
+        const cached = this.getCached(cacheKey);
+        if (cached) {
+            console.log(`📊 Using cached chart data for ${cleanSymbol}`);
+            return cached;
+        }
+
         const url = `${this.baseUrl}/api/historical-chart-data/${cleanSymbol}`;
 
         try {
             const response = await fetch(url, { signal });
             if (!response.ok) throw new Error(`Chart load failed: ${response.status}`);
-            return await response.json();
+
+            const data = await response.json();
+
+            // Cache successful response
+            this.setCache(cacheKey, data);
+
+            return data;
         } catch (error) {
             if (error.name === 'AbortError') throw error;
             console.error('API Error (getHistoricalChart):', error);
