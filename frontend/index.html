@@ -1219,6 +1219,28 @@
         document.addEventListener('DOMContentLoaded', function () {
             let scrollPosition = 0;
 
+            // Self-contained function to apply translations (independent of app object)
+            function applyModalTranslations() {
+                // Get current language from localStorage or document lang
+                const lang = localStorage.getItem('language') || document.documentElement.lang || 'en';
+
+                // Check if translations object exists
+                if (typeof translations === 'undefined' || !translations[lang]) {
+                    console.warn('Translations not available for language:', lang);
+                    return;
+                }
+
+                const langData = translations[lang];
+
+                // Update all elements with data-i18n attribute
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (langData[key]) {
+                        element.textContent = langData[key];
+                    }
+                });
+            }
+
             // Generic modal open/close functions with scroll lock
             function openModal(modal) {
                 if (modal) {
@@ -1230,10 +1252,8 @@
                     document.body.classList.add('modal-open');
                     document.documentElement.classList.add('modal-open');
 
-                    // Re-apply translations to ensure modal content is in correct language
-                    if (typeof app !== 'undefined' && app.applyLanguage) {
-                        app.applyLanguage(app.currentLanguage);
-                    }
+                    // Apply translations to modal content
+                    applyModalTranslations();
 
                     modal.classList.remove('hidden');
                 }
