@@ -220,8 +220,14 @@ class StockValuationApp {
         const enFlag = languageToggle.querySelector('.en-flag');
         const viFlag = languageToggle.querySelector('.vi-flag');
 
-        // Get saved language or default to English
-        const savedLang = localStorage.getItem('language') || 'en';
+        // Get saved language, or auto-detect from browser, default to English
+        let savedLang = localStorage.getItem('language');
+        if (!savedLang) {
+            // Auto-detect browser language
+            const browserLang = navigator.language || navigator.userLanguage || 'en';
+            savedLang = browserLang.toLowerCase().startsWith('vi') ? 'vi' : 'en';
+            console.log(`🌐 Auto-detected language: ${savedLang} (browser: ${browserLang})`);
+        }
         this.currentLanguage = savedLang;
 
         // Show appropriate flag
@@ -258,7 +264,15 @@ class StockValuationApp {
 
     setupThemeToggle() {
         const themeToggle = document.getElementById('theme-toggle-btn');
-        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        // Get saved theme, or auto-detect from system preference
+        let currentTheme = localStorage.getItem('theme');
+        if (!currentTheme) {
+            // Auto-detect system dark mode preference
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            currentTheme = prefersDark ? 'dark' : 'light';
+            console.log(`🎨 Auto-detected theme: ${currentTheme}`);
+        }
         document.documentElement.setAttribute('data-theme', currentTheme);
 
         themeToggle.addEventListener('click', () => {

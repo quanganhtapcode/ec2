@@ -238,7 +238,67 @@ const translations = {
         sell: "BÁN",
         hold: "GIỮ",
         strongBuy: "MUA MẠNH",
-        strongSell: "BÁN MẠNH"
+        strongSell: "BÁN MẠNH",
+
+        // Footer links
+        contact: "Liên hệ",
+        disclaimer: "Tuyên bố",
+        privacyPolicy: "Chính sách",
+        termsOfUse: "Điều khoản",
+
+        // Contact Modal
+        getInTouch: "Liên hệ với chúng tôi",
+        contactIntro: "Nếu bạn có câu hỏi, góp ý hoặc phản hồi về công cụ định giá này, vui lòng liên hệ:",
+        contactNote: "Công cụ này được phát triển và duy trì như một dự án cá nhân. Thời gian phản hồi có thể khác nhau.",
+
+        // Disclaimer Modal
+        disclaimerTitle: "Tuyên bố Miễn trừ Trách nhiệm",
+        disclaimerP1: "Công cụ định giá cổ phiếu này chỉ nhằm mục đích cung cấp thông tin và giáo dục. Nó không cấu thành lời khuyên tài chính, đầu tư, thuế hoặc pháp lý.",
+        disclaimerP2: "Các tính toán và ước tính do công cụ này cung cấp dựa trên dữ liệu có sẵn công khai và các giả định do người dùng xác định. Chúng không được đảm bảo chính xác, đầy đủ hoặc phù hợp cho bất kỳ mục đích cụ thể nào.",
+        disclaimerP3: "Hiệu suất trong quá khứ không đảm bảo kết quả trong tương lai. Giá trị đầu tư có thể dao động và bạn có thể mất một phần hoặc toàn bộ số tiền đầu tư.",
+        disclaimerP4: "Luôn tham khảo ý kiến của chuyên gia tài chính có trình độ trước khi đưa ra quyết định đầu tư. Tác giả của công cụ này không chịu trách nhiệm về bất kỳ tổn thất hoặc thiệt hại nào phát sinh từ việc sử dụng nó.",
+
+        // Privacy Modal
+        privacyTitle: "Chính sách Bảo mật",
+        privacyP1: "Chúng tôi coi trọng quyền riêng tư của bạn. Công cụ này hoạt động hoàn toàn phía máy khách - không có dữ liệu cá nhân nào được thu thập, lưu trữ hoặc truyền đến máy chủ của chúng tôi.",
+        privacyP2: "Tất cả các tính toán định giá được thực hiện trực tiếp trong trình duyệt của bạn. Dữ liệu tài chính được lấy từ các nguồn công khai và không liên kết với danh tính cá nhân nào.",
+        privacyP3: "Chúng tôi sử dụng phân tích web cơ bản (Google Analytics) để hiểu các mẫu lưu lượng truy cập. Dữ liệu này được ẩn danh và không thể dùng để xác định danh tính cá nhân.",
+        privacyP4: "Các tùy chọn của bạn (ngôn ngữ, chủ đề) được lưu trong bộ nhớ cục bộ của trình duyệt và không bao giờ rời khỏi thiết bị của bạn.",
+
+        // Terms Modal
+        termsTitle: "Điều khoản Sử dụng",
+        termsP1: "Bằng cách sử dụng công cụ định giá cổ phiếu này, bạn đồng ý với các điều khoản sau:",
+        termsP2: "Công cụ này được cung cấp \"nguyên trạng\" mà không có bất kỳ bảo đảm nào. Chúng tôi không đảm bảo tính chính xác hoặc độ tin cậy của các tính toán.",
+        termsP3: "Bạn có trách nhiệm hoàn toàn đối với bất kỳ quyết định đầu tư nào được đưa ra. Các kết quả định giá không phải là khuyến nghị mua hoặc bán.",
+        termsP4: "Việc sử dụng cho mục đích thương mại đòi hỏi sự cho phép bằng văn bản. Sử dụng cá nhân và giáo dục được hoan nghênh.",
+        termsP5: "Chúng tôi có quyền sửa đổi các điều khoản này bất cứ lúc nào. Việc tiếp tục sử dụng công cụ sau khi thay đổi đồng nghĩa với việc chấp nhận các điều khoản mới.",
+
+        // Additional modal keys used in HTML
+        importantNotice: "Lưu ý Quan trọng",
+        noGuarantee: "Không Đảm bảo Chính xác",
+        investmentRisks: "Rủi ro Đầu tư",
+        professionalAdvice: "Tham khảo Chuyên gia",
+        disclaimerWarning: "⚠️ Sử dụng công cụ này theo rủi ro của bạn. Người tạo và bảo trì công cụ này không chịu trách nhiệm về bất kỳ tổn thất tài chính hoặc thiệt hại nào phát sinh từ việc sử dụng công cụ này.",
+
+        lastUpdated: "Cập nhật lần cuối: Tháng 12 năm 2024",
+        dataCollection: "Thu thập Dữ liệu",
+        whatWeCollect: "Chúng tôi có thể Thu thập",
+        privacyL1: "Mã cổ phiếu bạn tìm kiếm (xử lý cục bộ)",
+        privacyL2: "Cài đặt tùy chọn của bạn (giao diện, ngôn ngữ) được lưu trong bộ nhớ cục bộ trình duyệt",
+        privacyL3: "Phân tích sử dụng ẩn danh (nếu được bật)",
+        thirdPartyServices: "Dịch vụ Bên thứ ba",
+        localStorage: "Bộ nhớ Cục bộ",
+        contactUs: "Liên hệ với Chúng tôi",
+
+        acceptanceOfTerms: "Chấp nhận Điều khoản",
+        useOfService: "Sử dụng Dịch vụ",
+        termsL1: "Sử dụng công cụ này cho bất kỳ mục đích bất hợp pháp nào",
+        termsL2: "Cố gắng truy cập trái phép vào bất kỳ phần nào của dịch vụ",
+        termsL3: "Phân phối lại, bán hoặc khai thác thương mại công cụ mà không được phép",
+        termsL4: "Sử dụng hệ thống tự động để thu thập hoặc trích xuất dữ liệu",
+        intellectualProperty: "Sở hữu Trí tuệ",
+        limitationOfLiability: "Giới hạn Trách nhiệm",
+        changesToTerms: "Thay đổi Điều khoản"
     },
     en: {
         // Header
@@ -474,7 +534,67 @@ const translations = {
         sell: "SELL",
         hold: "HOLD",
         strongBuy: "STRONG BUY",
-        strongSell: "STRONG SELL"
+        strongSell: "STRONG SELL",
+
+        // Footer links
+        contact: "Contact",
+        disclaimer: "Disclaimer",
+        privacyPolicy: "Privacy",
+        termsOfUse: "Terms",
+
+        // Contact Modal
+        getInTouch: "Get in Touch",
+        contactIntro: "If you have any questions, suggestions, or feedback about this valuation tool, feel free to reach out:",
+        contactNote: "This tool is developed and maintained as a personal project. Response times may vary.",
+
+        // Disclaimer Modal
+        disclaimerTitle: "Disclaimer",
+        disclaimerP1: "This stock valuation tool is for informational and educational purposes only. It does not constitute financial, investment, tax, or legal advice.",
+        disclaimerP2: "The calculations and estimates provided by this tool are based on publicly available data and user-defined assumptions. They are not guaranteed to be accurate, complete, or suitable for any specific purpose.",
+        disclaimerP3: "Past performance does not guarantee future results. Investment values can fluctuate and you may lose some or all of your investment.",
+        disclaimerP4: "Always consult with a qualified financial advisor before making investment decisions. The author of this tool is not responsible for any losses or damages arising from its use.",
+
+        // Privacy Modal
+        privacyTitle: "Privacy Policy",
+        privacyP1: "We respect your privacy. This tool operates entirely client-side - no personal data is collected, stored, or transmitted to our servers.",
+        privacyP2: "All valuation calculations are performed directly in your browser. Financial data is fetched from public sources and is not linked to any personal identity.",
+        privacyP3: "We use basic web analytics (Google Analytics) to understand traffic patterns. This data is anonymized and cannot personally identify you.",
+        privacyP4: "Your preferences (language, theme) are stored in your browser's local storage and never leave your device.",
+
+        // Terms Modal
+        termsTitle: "Terms of Use",
+        termsP1: "By using this stock valuation tool, you agree to the following terms:",
+        termsP2: "This tool is provided \"as is\" without any warranties. We make no guarantees about the accuracy or reliability of calculations.",
+        termsP3: "You are solely responsible for any investment decisions you make. The valuation results are not recommendations to buy or sell.",
+        termsP4: "Commercial use requires written permission. Personal and educational use is welcome.",
+        termsP5: "We reserve the right to modify these terms at any time. Continued use of the tool after changes constitutes acceptance of the new terms.",
+
+        // Additional modal keys used in HTML
+        importantNotice: "Important Notice",
+        noGuarantee: "No Guarantee of Accuracy",
+        investmentRisks: "Investment Risks",
+        professionalAdvice: "Seek Professional Advice",
+        disclaimerWarning: "⚠️ Use this tool at your own risk. The creators and maintainers of this tool are not responsible for any financial losses or damages resulting from the use of this tool.",
+
+        lastUpdated: "Last Updated: December 2024",
+        dataCollection: "Data Collection",
+        whatWeCollect: "What We May Collect",
+        privacyL1: "Stock symbols you search for (processed locally)",
+        privacyL2: "Your preference settings (theme, language) stored in your browser's local storage",
+        privacyL3: "Anonymous usage analytics (if enabled)",
+        thirdPartyServices: "Third-Party Services",
+        localStorage: "Local Storage",
+        contactUs: "Contact Us",
+
+        acceptanceOfTerms: "Acceptance of Terms",
+        useOfService: "Use of Service",
+        termsL1: "Use this tool for any unlawful purpose",
+        termsL2: "Attempt to gain unauthorized access to any part of the service",
+        termsL3: "Redistribute, sell, or commercially exploit the tool without permission",
+        termsL4: "Use automated systems to scrape or extract data",
+        intellectualProperty: "Intellectual Property",
+        limitationOfLiability: "Limitation of Liability",
+        changesToTerms: "Changes to Terms"
     }
 };
 
