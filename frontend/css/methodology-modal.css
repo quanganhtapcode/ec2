@@ -251,14 +251,36 @@ body.modal-open .search-input-compact {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+
+    /* Add extra padding for mobile browser tab bars */
+    .modal-overlay {
+        padding-top: max(40px, env(safe-area-inset-top, 20px));
+        padding-bottom: max(20px, env(safe-area-inset-bottom, 10px));
+        align-items: flex-start;
+        /* Align to top so header is always visible */
+    }
+
     .modal-container {
-        margin: 20px auto;
+        margin: 10px auto;
         width: calc(100% - 24px);
         max-height: none !important;
     }
 
     .modal-header {
-        padding: 12px 14px;
+        padding: 14px 16px;
+        /* Make close button more prominent on mobile */
+        position: sticky;
+        top: 0;
+        background: inherit;
+        z-index: 1;
+    }
+
+    .modal-close-btn {
+        width: 32px;
+        height: 32px;
+        /* Larger tap target for mobile */
+        min-width: 44px;
+        min-height: 44px;
     }
 
     .modal-body.methodology-content {
@@ -274,5 +296,18 @@ body.modal-open .search-input-compact {
     .methodology-item code {
         font-size: 0.7rem;
         padding: 5px 8px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .modal-overlay {
+        padding: max(50px, env(safe-area-inset-top, 30px)) 10px 20px 10px;
+    }
+
+    .modal-container {
+        margin: 0 auto;
+        width: calc(100% - 20px);
+        border-radius: 12px;
     }
 }
