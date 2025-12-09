@@ -1421,11 +1421,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
     script.onload = () => {
-        new StockValuationApp();
+        window.app = new StockValuationApp();
     };
     script.onerror = () => {
         console.error('Failed to load Chart.js');
-        new StockValuationApp(); // Proceed without charts
+        window.app = new StockValuationApp(); // Proceed without charts
     };
     document.head.appendChild(script);
 
