@@ -238,6 +238,123 @@ body.modal-open .search-input-compact {
     color: var(--color-text-secondary, #9ca3af);
 }
 
+/* Formula Box - detailed explanation container */
+.methodology-formula-box {
+    background: var(--color-background, #f9fafb);
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 8px;
+}
+
+[data-theme="dark"] .methodology-formula-box {
+    background: var(--color-background, #1a1a1a);
+}
+
+.methodology-formula-box .formula-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text, #374151);
+    margin: 8px 0 4px 0;
+}
+
+.methodology-formula-box .formula-title:first-child {
+    margin-top: 0;
+}
+
+[data-theme="dark"] .methodology-formula-box .formula-title {
+    color: var(--color-text, #e5e7eb);
+}
+
+.methodology-formula-box code {
+    display: block;
+    font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin: 4px 0;
+    border-left: 2px solid #2563eb;
+}
+
+[data-theme="dark"] .methodology-formula-box code {
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+    border-left-color: #60a5fa;
+}
+
+.formula-components {
+    margin: 8px 0;
+    padding: 8px 0;
+    border-top: 1px dashed var(--color-border, #e5e7eb);
+}
+
+[data-theme="dark"] .formula-components {
+    border-top-color: var(--color-border, #333);
+}
+
+.formula-components .component {
+    font-size: 0.72rem;
+    color: var(--color-text-secondary, #6b7280);
+    margin: 4px 0;
+    padding-left: 8px;
+}
+
+.formula-components .component span {
+    font-weight: 600;
+    color: var(--color-text, #374151);
+}
+
+[data-theme="dark"] .formula-components .component span {
+    color: var(--color-text, #e5e7eb);
+}
+
+.formula-note {
+    font-size: 0.7rem;
+    color: var(--color-text-secondary, #6b7280);
+    background: rgba(107, 114, 128, 0.08);
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+[data-theme="dark"] .formula-note {
+    background: rgba(156, 163, 175, 0.1);
+}
+
+/* Data Sources Section */
+.methodology-item.data-sources {
+    background: var(--color-background, #f0f9ff);
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    margin-top: 16px;
+}
+
+[data-theme="dark"] .methodology-item.data-sources {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.data-source-list {
+    margin-top: 8px;
+}
+
+.data-source-list .source-item {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary, #6b7280);
+    margin: 4px 0;
+}
+
+.data-source-list .source-item strong {
+    color: var(--color-text, #374151);
+}
+
+[data-theme="dark"] .data-source-list .source-item strong {
+    color: var(--color-text, #e5e7eb);
+}
+
 /* Methodology Hint Text (in page) */
 .methodology-hint {
     color: var(--color-text-secondary, #6b7280);
