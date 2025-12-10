@@ -240,8 +240,35 @@
                         </div>
                     </section>
 
-                    <!-- 1 & 2: Company Info + Company Description (2 columns) -->
-                    <div class="company-info-row">
+                    <!-- 2. TradingView Stock Chart Widget - Right after price hero -->
+                    <div class="tradingview-widget-section mt-16">
+                        <div class="card">
+                            <div class="card__body">
+                                <div class="chart-header-row"
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                                    <h3 style="margin: 0;" data-i18n="priceChart">Stock Price Chart</h3>
+                                    <div class="chart-controls" style="display: flex; gap: 4px;">
+                                        <button class="time-btn" data-range="1M">1M</button>
+                                        <button class="time-btn" data-range="3M">3M</button>
+                                        <button class="time-btn active" data-range="6M">6M</button>
+                                        <button class="time-btn" data-range="1Y">1Y</button>
+                                        <button class="time-btn" data-range="2Y">2Y</button>
+                                    </div>
+                                </div>
+                                <div id="tradingview-widget-container" class="tradingview-widget-container">
+                                    <div id="tradingview-widget" style="height: 400px;"></div>
+                                    <div class="tradingview-widget-copyright" style="display: none;">
+                                        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                                            <span class="blue-text">Track all markets on TradingView</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 & 4: Company Info + Company Description (2 columns) -->
+                    <div class="company-info-row mt-24">
                         <!-- Left: Company Information -->
                         <div class="company-details">
                             <div class="card">
@@ -282,33 +309,6 @@
                                                 <polyline points="6 9 12 15 18 9"></polyline>
                                             </svg>
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. TradingView Stock Chart Widget -->
-                    <div class="tradingview-widget-section mt-24">
-                        <div class="card">
-                            <div class="card__body">
-                                <div class="chart-header-row"
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                                    <h3 style="margin: 0;" data-i18n="priceChart">Stock Price Chart</h3>
-                                    <div class="chart-controls" style="display: flex; gap: 4px;">
-                                        <button class="time-btn" data-range="1M">1M</button>
-                                        <button class="time-btn" data-range="3M">3M</button>
-                                        <button class="time-btn active" data-range="6M">6M</button>
-                                        <button class="time-btn" data-range="1Y">1Y</button>
-                                        <button class="time-btn" data-range="2Y">2Y</button>
-                                    </div>
-                                </div>
-                                <div id="tradingview-widget-container" class="tradingview-widget-container">
-                                    <div id="tradingview-widget" style="height: 400px;"></div>
-                                    <div class="tradingview-widget-copyright" style="display: none;">
-                                        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-                                            <span class="blue-text">Track all markets on TradingView</span>
-                                        </a>
                                     </div>
                                 </div>
                             </div>

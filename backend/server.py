@@ -624,17 +624,19 @@ class StockDataProvider:
                 # Process quarter data into the expected format
                 processed_data = self._process_quarter_data(quarter_data, symbol, company_info)
                 
-                # Fetch current price if requested
+                # Fetch current price with change if requested
                 if fetch_current_price:
-                    current_price = self.get_current_price(symbol)
-                    if current_price:
-                        processed_data['current_price'] = current_price
+                    price_data = self.get_current_price_with_change(symbol)
+                    if price_data:
+                        processed_data['current_price'] = price_data['current_price']
+                        processed_data['price_change'] = price_data['price_change']
+                        processed_data['price_change_percent'] = price_data['price_change_percent']
                         processed_data['price_last_updated'] = datetime.now().isoformat()
                         
                         # Calculate market cap only if not already set from vnstock ratios
                         shares = processed_data.get('shares_outstanding')
                         if pd.notna(shares) and shares > 0 and not processed_data.get('market_cap'):
-                            processed_data['market_cap'] = current_price * shares
+                            processed_data['market_cap'] = price_data['current_price'] * shares
                 
                 processed_data.update({
                     "symbol": symbol,
@@ -658,18 +660,20 @@ class StockDataProvider:
         if annual_data:
             logger.info(f"✓ Found {symbol} data in stock_data folder")
             
-            # Fetch current price if requested - ALWAYS override JSON price
+            # Fetch current price with change if requested - ALWAYS override JSON price
             if fetch_current_price:
-                current_price = self.get_current_price(symbol)
-                if current_price:
-                    annual_data['current_price'] = current_price
+                price_data = self.get_current_price_with_change(symbol)
+                if price_data:
+                    annual_data['current_price'] = price_data['current_price']
+                    annual_data['price_change'] = price_data['price_change']
+                    annual_data['price_change_percent'] = price_data['price_change_percent']
                     annual_data['price_last_updated'] = datetime.now().isoformat()
-                    logger.info(f"✓ Updated current price to {current_price:,.0f} VND")
+                    logger.info(f"✓ Updated current price to {price_data['current_price']:,.0f} VND")
                     
                     # Calculate market cap with new price
                     shares = annual_data.get('shares_outstanding')
                     if pd.notna(shares) and shares > 0:
-                        annual_data['market_cap'] = current_price * shares
+                        annual_data['market_cap'] = price_data['current_price'] * shares
                         logger.info(f"✓ Updated market cap to {annual_data['market_cap']:,.0f} VND")
             
             # Calculate missing ratios from available data
@@ -2120,6 +2124,71 @@ class StockDataProvider:
         except Exception as e:
             logger.error(f"Error fetching current price for {symbol}: {e}")
             return None
+
+    def get_current_price_with_change(self, symbol):
+        """Get real-time current price with price change data for a symbol
+        Returns: dict with current_price, price_change, price_change_percent
+        """
+        try:
+            logger.info(f"Fetching current price with change for {symbol}")
+            
+            # Use Quote API to get historical data for change calculation
+            quote = Quote(symbol=symbol, source='VCI')
+            end_date = datetime.now()
+            start_date = end_date - timedelta(days=5)
+            
+            history_df = quote.history(start=start_date.strftime('%Y-%m-%d'),
+                                       end=end_date.strftime('%Y-%m-%d'),
+                                       interval='1D')
+            
+            if history_df is not None and not history_df.empty:
+                latest = history_df.iloc[-1]
+                
+                # Get current price (vnstock returns in 1000 VND units)
+                current_price = None
+                for col in ['close', 'Close', 'match_price', 'last_price']:
+                    if col in latest.index and pd.notna(latest[col]):
+                        current_price = float(latest[col]) * 1000  # Convert to actual VND
+                        break
+                
+                # Calculate change vs previous day
+                price_change = None
+                price_change_percent = None
+                
+                if len(history_df) >= 2 and current_price:
+                    prev = history_df.iloc[-2]
+                    prev_close = None
+                    for col in ['close', 'Close']:
+                        if col in prev.index and pd.notna(prev[col]):
+                            prev_close = float(prev[col]) * 1000  # Convert to actual VND
+                            break
+                    
+                    if prev_close and prev_close > 0:
+                        price_change = current_price - prev_close
+                        price_change_percent = (price_change / prev_close) * 100
+                
+                if current_price:
+                    return {
+                        'current_price': current_price,
+                        'price_change': price_change,
+                        'price_change_percent': price_change_percent
+                    }
+            
+            # Fallback to regular get_current_price
+            current_price = self.get_current_price(symbol)
+            if current_price:
+                return {
+                    'current_price': current_price,
+                    'price_change': None,
+                    'price_change_percent': None
+                }
+            
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error fetching price with change for {symbol}: {e}")
+            return None
+
 
     def calculate_missing_ratios(self, stock_data):
         """Calculate missing financial ratios from available data"""
