@@ -1394,9 +1394,10 @@ class StockValuationApp {
             logoEl.textContent = (data.symbol || '--').substring(0, 2);
         }
 
-        // Company name and symbol
+        // Company name, symbol and industry
         this.safeUpdateElement('stock-hero-company-name', data.name || '--');
         this.safeUpdateElement('stock-hero-symbol', data.symbol || '--');
+        this.safeUpdateElement('stock-hero-industry', data.sector || data.industry || '--');
 
         // Price - THE MAIN ATTRACTION (integer format, no decimals)
         const priceEl = document.getElementById('stock-hero-price');
@@ -1456,6 +1457,7 @@ class StockValuationApp {
 
         this.safeUpdateElement('stock-hero-company-name', '--');
         this.safeUpdateElement('stock-hero-symbol', '--');
+        this.safeUpdateElement('stock-hero-industry', '--');
 
         const priceEl = document.getElementById('stock-hero-price');
         if (priceEl) priceEl.textContent = '--';

@@ -221,6 +221,7 @@
                             <h2 class="stock-hero-name">
                                 <span id="stock-hero-company-name">--</span>
                                 <span class="stock-hero-symbol" id="stock-hero-symbol">--</span>
+                                <span class="stock-hero-industry" id="stock-hero-industry">--</span>
                             </h2>
                             <div class="stock-hero-price-row">
                                 <span class="stock-hero-price" id="stock-hero-price">--</span>
@@ -267,49 +268,21 @@
                         </div>
                     </div>
 
-                    <!-- 3 & 4: Company Info + Company Description (2 columns) -->
-                    <div class="company-info-row mt-24">
-                        <!-- Left: Company Information -->
-                        <div class="company-details">
-                            <div class="card">
-                                <div class="card__body">
-                                    <h3 data-i18n="companyInformation">Company Information</h3>
-                                    <div class="info-row">
-                                        <span class="info-label" data-i18n="symbol">Symbol:</span>
-                                        <span class="info-value" id="company-symbol">--</span>
-                                    </div>
-                                    <div class="info-row">
-                                        <span class="info-label" data-i18n="name">Name:</span>
-                                        <span class="info-value" id="company-name">--</span>
-                                    </div>
-                                    <div class="info-row">
-                                        <span class="info-label" data-i18n="industry">Industry:</span>
-                                        <span class="info-value" id="company-sector">--</span>
-                                    </div>
-                                    <div class="info-row">
-                                        <span class="info-label" data-i18n="exchange">Exchange:</span>
-                                        <span class="info-value" id="company-exchange">--</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Right: About the Company -->
-                        <div class="company-profile-section">
-                            <div class="card">
-                                <div class="card__body">
-                                    <h3 data-i18n="companyDescription">About the Company</h3>
-                                    <div class="company-description-wrapper" id="company-description-wrapper">
-                                        <p id="company-description" class="company-description-text collapsed">--</p>
-                                        <button id="read-more-btn" class="read-more-btn" style="display: none;">
-                                            <span data-i18n="readMore">Xem thêm</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <polyline points="6 9 12 15 18 9"></polyline>
-                                            </svg>
-                                        </button>
-                                    </div>
+                    <!-- 3. About the Company (full width) -->
+                    <div class="company-description-section mt-24">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="companyDescription">About the Company</h3>
+                                <div class="company-description-wrapper" id="company-description-wrapper">
+                                    <p id="company-description" class="company-description-text collapsed">--</p>
+                                    <button id="read-more-btn" class="read-more-btn" style="display: none;">
+                                        <span data-i18n="readMore">Xem thêm</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                         </div>
