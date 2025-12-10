@@ -122,7 +122,7 @@ class ValuationModels:
                     temp_assumptions['terminal_growth'] = float(g)
                     
                     # Calculate FCFF with temp assumptions
-                    val_result = self.calculate_fcff(temp_assumptions)
+                    val_result = self.calculate_fcff(temp_assumptions, logging_enabled=False)
                     val = get_model_value(val_result)
                     row_values.append(int(val)) # Store integer value
                 sensitivity_matrix['values'].append(row_values)
@@ -224,9 +224,14 @@ class ValuationModels:
         
         for target_col in column_names:
             found = False
+            target_clean = target_col.lower().strip()
+            
             for data_col in data.columns:
-                # Check for exact match (case insensitive)
-                if target_col.lower() == data_col.lower():
+                # Normalize data_col: remove units like (Bn. VND) and case fold
+                data_col_clean = str(data_col).split('(')[0].strip().lower()
+                
+                # Check for match (clean match OR exact match)
+                if target_clean == data_col_clean or target_clean == str(data_col).lower().strip():
                     values = data[data_col]
                     if values.notna().any():
                         valid_values = values.dropna()
@@ -280,7 +285,7 @@ class ValuationModels:
     # VALUATION MODELS
     # ===================================================
     
-    def calculate_fcfe(self, assumptions):
+    def calculate_fcfe(self, assumptions, logging_enabled=True):
         """
         Calculate FCFE (Free Cash Flow to Equity) Valuation - CORRECTED
         Returns: value per share in VND
@@ -372,8 +377,8 @@ class ValuationModels:
                 per_share_fcfe = 0
             
             # Return detailed result for Excel export
-            # Return detailed result for Excel export
-            return {
+            # Prepare detailed result for Excel export
+            detailed_result = {
                 'shareValue': float(per_share_fcfe),
                 'baseFCFE': float(fcfe),
                 'projectedCashFlows': [float(x) for x in future_fcfes],
@@ -397,12 +402,34 @@ class ValuationModels:
                 }
             }
 
+            # LOG CALCULATION DETAILS
+            if logging_enabled:
+                try:
+                    print(f"\n{'='*60}")
+                    print(f"🧮 FCFE CALCULATION LOG: {self.stock_symbol or 'Custom Data'}")
+                    print(f"{'='*60}")
+                    inp = detailed_result['inputs']
+                    print(f" (+) Net Income:                {inp['netIncome']:20,.0f}")
+                    print(f" (+) Depreciation:              {inp['depreciation']:20,.0f}")
+                    print(f" (+) Net Borrowing:             {inp['netBorrowing']:20,.0f}")
+                    print(f" (-) Working Capital Inv:       {inp['workingCapitalInvestment']:20,.0f}")
+                    print(f" (+) Fixed Capital Inv (CapEx): {inp['fixedCapitalInvestment']:20,.0f} (Note: Negative means outflow)")
+                    print(f"{'-'*60}")
+                    print(f" (=) Base FCFE:                 {detailed_result['baseFCFE']:20,.0f}")
+                    print(f"Shares Outstanding:             {detailed_result['sharesOutstanding']:20,.0f}")
+                    print(f"Fair Value per Share:           {detailed_result['shareValue']:20,.0f} VND")
+                    print(f"{'='*60}\n")
+                except Exception as e:
+                    print(f"Error logging FCFE: {e}")
+
+            return detailed_result
+
         except Exception as e:
             import traceback
             traceback.print_exc()
             return {'shareValue': 0, 'error': str(e)}
     
-    def calculate_fcff(self, assumptions):
+    def calculate_fcff(self, assumptions, logging_enabled=True):
         """
         Calculate FCFF (Free Cash Flow to Firm) Valuation - CORRECTED
         Returns: value per share in VND
@@ -446,7 +473,8 @@ class ValuationModels:
                 
                 # Interest Expense After Tax (FCFF specific)
                 interest_expense = self.find_financial_value(processed_income, ['Interest Expenses'], is_quarterly)
-                interest_after_tax = interest_expense * (1 - tax_rate)
+                # Ensure positive interest expense for adding back
+                interest_after_tax = abs(interest_expense) * (1 - tax_rate)
                 
                 # Working Capital Investment
                 receivables_change = self.find_financial_value(processed_cash_flow, ['Increase/Decrease in receivables'], is_quarterly)
@@ -461,13 +489,21 @@ class ValuationModels:
                 
                 # Extract Debt and Cash for Equity Value Calculation
                 # Short-term debt
-                short_term_debt = self.find_financial_value(processed_balance, ['Short-term borrowings', 'Vay và nợ thuê tài chính ngắn hạn'], False) # Balance sheet items are stocks, not flows, so usually calculate from latest period
+                short_term_debt = self.find_financial_value(processed_balance, [
+                    'Short-term borrowings', 'Vay và nợ thuê tài chính ngắn hạn', 'Short-term debt', 'Vay ngắn hạn',
+                    'Vay ngắn hạn và nợ thuê tài chính ngắn hạn', 'Short-term borrowings and financial lease liabilities'
+                ], False)
                 # Long-term debt
-                long_term_debt = self.find_financial_value(processed_balance, ['Long-term borrowings', 'Vay và nợ thuê tài chính dài hạn'], False)
+                long_term_debt = self.find_financial_value(processed_balance, [
+                    'Long-term borrowings', 'Vay và nợ thuê tài chính dài hạn', 'Long-term debt', 'Vay dài hạn',
+                    'Vay dài hạn và nợ thuê tài chính dài hạn', 'Long-term borrowings and financial lease liabilities'
+                ], False)
                 total_debt = short_term_debt + long_term_debt
 
                 # Cash
-                cash = self.find_financial_value(processed_balance, ['Cash and cash equivalents', 'Tiền và các khoản tương đương tiền'], False)
+                cash = self.find_financial_value(processed_balance, [
+                    'Cash and cash equivalents', 'Tiền và các khoản tương đương tiền', 'Cash', 'Tiền'
+                ], False)
 
 
                 # FCFF CALCULATION
@@ -513,8 +549,8 @@ class ValuationModels:
                 per_share_fcff = 0
             
             # Return detailed result for Excel export
-            # Return detailed result for Excel export
-            return {
+            # Prepare detailed result for Excel export
+            detailed_result = {
                 'shareValue': float(per_share_fcff),
                 'baseFCFF': float(fcff),
                 'projectedCashFlows': [float(x) for x in future_fcffs],
@@ -542,6 +578,31 @@ class ValuationModels:
                     'taxRate': float(tax_rate)
                 }
             }
+
+            # LOG CALCULATION DETAILS
+            if logging_enabled:
+                try:
+                    print(f"\n{'='*60}")
+                    print(f"🏢 FCFF CALCULATION LOG: {self.stock_symbol or 'Custom Data'}")
+                    print(f"{'='*60}")
+                    inp = detailed_result['inputs']
+                    print(f" (+) Net Income:                {inp['netIncome']:20,.0f}")
+                    print(f" (+) Interest (After Tax):      {inp['interestAfterTax']:20,.0f} (Exp: {inp['interestExpense']:,.0f})")
+                    print(f" (+) Depreciation:              {inp['depreciation']:20,.0f}")
+                    print(f" (-) Working Capital Inv:       {inp['workingCapitalInvestment']:20,.0f}")
+                    print(f" (+) Fixed Capital Inv (CapEx): {inp['fixedCapitalInvestment']:20,.0f}")
+                    print(f"{'-'*60}")
+                    print(f" (=) Base FCFF:                 {detailed_result['baseFCFF']:20,.0f}")
+                    print(f"Enterprise Value:               {detailed_result['enterpriseValue']:20,.0f}")
+                    print(f" (-) Total Debt:                {detailed_result['totalDebt']:20,.0f}")
+                    print(f" (+) Cash:                      {detailed_result['cash']:20,.0f}")
+                    print(f"Equity Value:                   {detailed_result['equityValue']:20,.0f}")
+                    print(f"Fair Value per Share:           {detailed_result['shareValue']:20,.0f} VND")
+                    print(f"{'='*60}\n")
+                except Exception as e:
+                    print(f"Error logging FCFF: {e}")
+
+            return detailed_result
 
         except Exception as e:
             import traceback
