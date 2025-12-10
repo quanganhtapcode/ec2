@@ -358,12 +358,35 @@ class ValuationModels:
             else:
                 per_share_fcfe = 0
             
-            return per_share_fcfe
+            # Return detailed result for Excel export
+            return {
+                'shareValue': per_share_fcfe,
+                'baseFCFE': fcfe,
+                'projectedCashFlows': future_fcfes,
+                'presentValues': pv_fcfes,
+                'terminalValue': terminal_value,
+                'pvTerminal': pv_terminal,
+                'totalEquityValue': total_equity_value,
+                'sharesOutstanding': shares_outstanding,
+                'inputs': {
+                    'netIncome': net_income if self.stock else self.stock_data.get('net_income_ttm', 0),
+                    'depreciation': non_cash_charges if self.stock else self.stock_data.get('depreciation', 0),
+                    'netBorrowing': net_borrowing,
+                    'workingCapitalInvestment': working_capital_investment if self.stock else self.stock_data.get('working_capital_change', 0),
+                    'fixedCapitalInvestment': fixed_capital_investment if self.stock else -abs(self.stock_data.get('capex', 0)),
+                },
+                'assumptions': {
+                    'costOfEquity': cost_of_equity,
+                    'shortTermGrowth': short_term_growth,
+                    'terminalGrowth': terminal_growth,
+                    'forecastYears': forecast_years
+                }
+            }
 
         except Exception as e:
-            # import traceback
-            # traceback.print_exc()
-            return 0
+            import traceback
+            traceback.print_exc()
+            return {'shareValue': 0, 'error': str(e)}
     
     def calculate_fcff(self, assumptions):
         """
@@ -475,10 +498,40 @@ class ValuationModels:
             else:
                 per_share_fcff = 0
             
-            return per_share_fcff
+            # Return detailed result for Excel export
+            return {
+                'shareValue': per_share_fcff,
+                'baseFCFF': fcff,
+                'projectedCashFlows': future_fcffs,
+                'presentValues': pv_fcffs,
+                'terminalValue': terminal_value_fcff,
+                'pvTerminal': pv_terminal_fcff,
+                'enterpriseValue': enterprise_value,
+                'totalDebt': total_debt,
+                'cash': cash,
+                'equityValue': equity_value,
+                'sharesOutstanding': shares_outstanding,
+                'inputs': {
+                    'netIncome': net_income if self.stock else self.stock_data.get('net_income_ttm', 0),
+                    'depreciation': non_cash_charges if self.stock else self.stock_data.get('depreciation', 0),
+                    'interestExpense': interest_expense if self.stock else self.stock_data.get('interest_expense', 0),
+                    'interestAfterTax': interest_after_tax,
+                    'workingCapitalInvestment': working_capital_investment if self.stock else self.stock_data.get('working_capital_change', 0),
+                    'fixedCapitalInvestment': fixed_capital_investment if self.stock else -abs(self.stock_data.get('capex', 0)),
+                },
+                'assumptions': {
+                    'wacc': wacc,
+                    'shortTermGrowth': short_term_growth,
+                    'terminalGrowth': terminal_growth,
+                    'forecastYears': forecast_years,
+                    'taxRate': tax_rate
+                }
+            }
 
         except Exception as e:
-            return 0
+            import traceback
+            traceback.print_exc()
+            return {'shareValue': 0, 'error': str(e)}
     
     def calculate_dividend_discount(self, assumptions):
         """

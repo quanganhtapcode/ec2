@@ -2609,15 +2609,26 @@ def calculate_valuation(symbol):
                     'shares_outstanding': 0
                 }
         
+        # Extract share values from results (now they may be dicts with 'shareValue')
+        def get_share_value(result):
+            if isinstance(result, dict):
+                return float(result.get('shareValue', 0))
+            return float(result) if result else 0
+        
+        fcfe_result = results.get('fcfe', {})
+        fcff_result = results.get('fcff', {})
+        
         formatted_results = {
             'symbol': symbol.upper(),
             'valuations': {
-                'fcfe': float(results.get('fcfe', 0)) if results.get('fcfe') else 0,
-                'fcff': float(results.get('fcff', 0)) if results.get('fcff') else 0,
+                'fcfe': get_share_value(fcfe_result),
+                'fcff': get_share_value(fcff_result),
                 'justified_pe': float(results.get('justified_pe', 0)) if results.get('justified_pe') else 0,
                 'justified_pb': float(results.get('justified_pb', 0)) if results.get('justified_pb') else 0,
                 'weighted_average': float(results.get('weighted_average', 0)) if results.get('weighted_average') else 0
             },
+            'fcfe_details': fcfe_result if isinstance(fcfe_result, dict) else {},
+            'fcff_details': fcff_result if isinstance(fcff_result, dict) else {},
             'financial_data': financial_data,
             'summary': results.get('summary', {}),
             'sensitivity_analysis': results.get('sensitivity_analysis'),
