@@ -24,6 +24,11 @@ class StockValuationApp {
             stockData: false,
             chartData: false
         };
+
+        // Auto-refresh price interval (30 seconds)
+        this.priceRefreshInterval = null;
+        this.priceRefreshRate = 30000; // 30 seconds
+        this.lastPrice = null; // Track last price for change calculation
         this.assumptions = {
             revenueGrowth: 8.0,
             terminalGrowth: 3.0,
@@ -69,6 +74,9 @@ class StockValuationApp {
         this.setupDownloadModal();
         this.applyLanguage(this.currentLanguage);
         this.chartManager.init();
+
+        // Setup visibility change listener for auto-refresh
+        this.setupVisibilityListener();
     }
 
     setupEventListeners() {
@@ -403,6 +411,11 @@ class StockValuationApp {
             selectAllBtn.textContent = selectedCount === 4 ? langData.deselectAll : langData.selectAll;
         }
 
+        // Re-render Stock Price Hero with updated language for market cap formatting
+        if (this.stockData) {
+            this.updateStockPriceHero(this.stockData);
+        }
+
     }
 
 
@@ -619,6 +632,9 @@ class StockValuationApp {
             // Auto-calculate valuation when data is loaded (Preload)
             this.calculateValuation();
 
+            // Start auto-refreshing price every 30 seconds
+            this.startPriceRefresh();
+
             this.showLoading(false);
             this.loadingState.stockData = false;
 
@@ -633,6 +649,8 @@ class StockValuationApp {
                 this.stockData = null;
                 this.currentStock = null;
                 this.clearDisplay();
+                // Stop auto-refresh on error
+                this.stopPriceRefresh();
             }
 
             this.showLoading(false);
@@ -1380,11 +1398,11 @@ class StockValuationApp {
         this.safeUpdateElement('stock-hero-company-name', data.name || '--');
         this.safeUpdateElement('stock-hero-symbol', data.symbol || '--');
 
-        // Price - THE MAIN ATTRACTION
+        // Price - THE MAIN ATTRACTION (integer format, no decimals)
         const priceEl = document.getElementById('stock-hero-price');
         if (priceEl) {
             priceEl.textContent = data.current_price
-                ? AppUtils.formatNumber(data.current_price)
+                ? Math.round(data.current_price).toLocaleString('en-US')
                 : '--';
         }
 
@@ -1451,6 +1469,101 @@ class StockValuationApp {
         this.safeUpdateElement('stock-hero-change-percent', '--');
         this.safeUpdateElement('stock-hero-market-cap', '--');
         this.safeUpdateElement('stock-hero-exchange', '--');
+    }
+
+    /**
+     * Setup visibility change listener to pause/resume auto-refresh
+     */
+    setupVisibilityListener() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Page is hidden, pause refresh to save resources
+                this.stopPriceRefresh();
+            } else {
+                // Page is visible again, resume if we have a stock loaded
+                if (this.currentStock) {
+                    this.startPriceRefresh();
+                    // Immediately refresh price when becoming visible
+                    this.refreshPrice();
+                }
+            }
+        });
+    }
+
+    /**
+     * Start auto-refreshing stock price
+     */
+    startPriceRefresh() {
+        // Clear any existing interval first
+        this.stopPriceRefresh();
+
+        if (!this.currentStock) return;
+
+        console.log(`🔄 Starting price auto-refresh for ${this.currentStock} every ${this.priceRefreshRate / 1000}s`);
+
+        // Store current price for change calculation
+        if (this.stockData && this.stockData.current_price) {
+            this.lastPrice = this.stockData.current_price;
+        }
+
+        this.priceRefreshInterval = setInterval(() => {
+            this.refreshPrice();
+        }, this.priceRefreshRate);
+    }
+
+    /**
+     * Stop auto-refreshing stock price
+     */
+    stopPriceRefresh() {
+        if (this.priceRefreshInterval) {
+            console.log('⏹️ Stopping price auto-refresh');
+            clearInterval(this.priceRefreshInterval);
+            this.priceRefreshInterval = null;
+        }
+    }
+
+    /**
+     * Refresh current stock price (lightweight API call)
+     */
+    async refreshPrice() {
+        if (!this.currentStock || !this.stockData) return;
+
+        try {
+            const priceData = await this.api.getRealTimePrice(this.currentStock);
+
+            if (priceData && priceData.current_price) {
+                const oldPrice = this.stockData.current_price;
+                const newPrice = priceData.current_price;
+
+                // Calculate price change
+                const priceChange = newPrice - (this.lastPrice || oldPrice);
+                const priceChangePercent = this.lastPrice ? ((newPrice - this.lastPrice) / this.lastPrice) * 100 : 0;
+
+                // Update stockData with new price
+                this.stockData.current_price = newPrice;
+                this.stockData.price_change = priceChange;
+                this.stockData.price_change_percent = priceChangePercent;
+
+                // Add server-provided change data if available
+                if (priceData.price_change !== undefined) {
+                    this.stockData.price_change = priceData.price_change;
+                }
+                if (priceData.price_change_percent !== undefined) {
+                    this.stockData.price_change_percent = priceData.price_change_percent;
+                }
+
+                // Update the Stock Price Hero display
+                this.updateStockPriceHero(this.stockData);
+
+                // Log for debugging
+                if (newPrice !== oldPrice) {
+                    console.log(`📈 Price updated: ${oldPrice} → ${newPrice} (${priceChange >= 0 ? '+' : ''}${priceChange.toFixed(0)})`);
+                }
+            }
+        } catch (error) {
+            // Silently fail - don't interrupt user experience
+            console.warn('Price refresh failed:', error.message);
+        }
     }
 
     showLoading(show, message = 'Loading...') {

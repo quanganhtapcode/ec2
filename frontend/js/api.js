@@ -68,6 +68,34 @@ class ApiClient {
     }
 
     /**
+     * Fetch real-time price only (lightweight for auto-refresh)
+     * @param {string} symbol 
+     * @param {AbortSignal} signal Optional abort signal
+     * @returns {Promise<Object>} Price data { current_price, price_change, price_change_percent }
+     */
+    async getRealTimePrice(symbol, signal = null) {
+        const cleanSymbol = symbol.trim().toUpperCase();
+        const url = `${this.baseUrl}/api/price/${cleanSymbol}`;
+
+        try {
+            const response = await fetch(url, { signal });
+
+            if (!response.ok) {
+                // Fallback: price endpoint might not exist, return null
+                console.warn(`Price endpoint not available for ${cleanSymbol}`);
+                return null;
+            }
+
+            return await response.json();
+        } catch (error) {
+            if (error.name === 'AbortError') throw error;
+            console.warn('Price fetch failed:', error.message);
+            return null;
+        }
+    }
+
+
+    /**
      * Fetch full application data (Overview + Financials)
      * @param {string} symbol 
      * @param {string} period 'year' or 'quarter'

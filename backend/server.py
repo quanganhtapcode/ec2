@@ -3375,6 +3375,89 @@ def api_history(symbol):
         logger.error(f"API /history error {symbol}: {exc}")
         return jsonify({"success": False, "error": str(exc)}), 500
 
+
+@app.route("/api/price/<symbol>")
+def api_price(symbol):
+    """Get real-time price for a symbol (lightweight endpoint for auto-refresh)"""
+    try:
+        # Validate symbol
+        is_valid, clean_symbol = validate_stock_symbol(symbol)
+        if not is_valid:
+            return jsonify({"success": False, "error": clean_symbol}), 400
+        
+        symbol = clean_symbol
+        logger.info(f"Fetching real-time price for {symbol}")
+        
+        # Use Quote API for real-time price with price change
+        quote = Quote(symbol=symbol, source='VCI')
+        
+        # Get today's data
+        end_date = datetime.now()
+        start_date = end_date - timedelta(days=5)  # Get a few days for reference price
+        
+        history_df = quote.history(start=start_date.strftime('%Y-%m-%d'), 
+                                   end=end_date.strftime('%Y-%m-%d'), 
+                                   interval='1D')
+        
+        if history_df is not None and not history_df.empty:
+            # Get latest row
+            latest = history_df.iloc[-1]
+            
+            # Try to get current/close price
+            current_price = None
+            for col in ['close', 'Close', 'match_price', 'last_price']:
+                if col in latest.index and pd.notna(latest[col]):
+                    current_price = float(latest[col])
+                    break
+            
+            # Calculate change vs previous day
+            price_change = None
+            price_change_percent = None
+            
+            if len(history_df) >= 2 and current_price:
+                prev = history_df.iloc[-2]
+                prev_close = None
+                for col in ['close', 'Close']:
+                    if col in prev.index and pd.notna(prev[col]):
+                        prev_close = float(prev[col])
+                        break
+                
+                if prev_close and prev_close > 0:
+                    price_change = current_price - prev_close
+                    price_change_percent = (price_change / prev_close) * 100
+            
+            if current_price:
+                return jsonify({
+                    "success": True,
+                    "symbol": symbol,
+                    "current_price": current_price,
+                    "price_change": price_change,
+                    "price_change_percent": price_change_percent,
+                    "timestamp": datetime.now().isoformat()
+                })
+        
+        # Fallback: Use provider.get_current_price
+        current_price = provider.get_current_price(symbol)
+        if current_price:
+            return jsonify({
+                "success": True,
+                "symbol": symbol,
+                "current_price": current_price,
+                "price_change": None,
+                "price_change_percent": None,
+                "timestamp": datetime.now().isoformat()
+            })
+        
+        return jsonify({
+            "success": False,
+            "error": f"Could not fetch price for {symbol}"
+        }), 404
+        
+    except Exception as exc:
+        logger.error(f"API /price error {symbol}: {exc}")
+        return jsonify({"success": False, "error": str(exc)}), 500
+
+
 if __name__ == "__main__":
     logger.info("Vietnamese Stock Valuation Backend – running on http://0.0.0.0:5000")
     app.run(host="0.0.0.0", port=5000, debug=True)
