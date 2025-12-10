@@ -65,12 +65,18 @@ body.modal-open .search-input-compact {
     margin: 40px auto;
     background: var(--color-surface, #fff);
     border-radius: 8px;
-    max-width: 600px;
+    max-width: 650px;
     width: calc(100% - 32px);
-    max-height: none !important;
-    overflow: visible;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    height: auto !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Methodology Modal - wider for detailed formulas */
+.modal-container.methodology-modal {
+    max-width: 720px;
 }
 
 [data-theme="dark"] .modal-container {
@@ -140,8 +146,9 @@ body.modal-open .search-input-compact {
 /* Modal Body - Simple content */
 .modal-body.methodology-content {
     padding: 18px;
-    overflow-y: visible;
-    max-height: none !important;
+    overflow-y: auto;
+    flex: 1;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Intro text */
@@ -393,7 +400,7 @@ body.modal-open .search-input-compact {
     .modal-container {
         margin: 10px auto;
         width: calc(100% - 24px);
-        max-height: none !important;
+        max-height: calc(100vh - 80px);
     }
 
     .modal-header {
@@ -415,7 +422,6 @@ body.modal-open .search-input-compact {
 
     .modal-body.methodology-content {
         padding: 14px;
-        max-height: none !important;
     }
 
     .methodology-item {
