@@ -65,22 +65,35 @@ class ValuationModels:
             'fcfe': 0.25, 'fcff': 0.25, 'justified_pe': 0.25, 'justified_pb': 0.25
         })
         
-        valid_models = {k: v for k, v in results.items() 
-                       if k in model_weights and isinstance(v, (int, float)) and v > 0}
+        # Helper to extract numeric value from result
+        def get_model_value(res):
+            if isinstance(res, dict):
+                return float(res.get('shareValue', 0))
+            try:
+                return float(res) if res is not None else 0
+            except:
+                return 0
+
+        valid_models = {}
+        for k, v in results.items():
+            if k in model_weights:
+                val = get_model_value(v)
+                if val > 0:
+                     valid_models[k] = val
 
         if valid_models:
             total_weight = sum(model_weights[k] for k in valid_models.keys())
             if total_weight > 0:
-                results['weighted_average'] = sum(
+                results['weighted_average'] = float(sum(
                     valid_models[k] * model_weights[k] for k in valid_models.keys()
-                ) / total_weight
+                ) / total_weight)
                 
                 # Add summary statistics
                 values = list(valid_models.values())
                 results['summary'] = {
-                    'average': np.mean(values),
-                    'min': min(values),
-                    'max': max(values),
+                    'average': float(np.mean(values)),
+                    'min': float(min(values)),
+                    'max': float(max(values)),
                     'models_used': len(values),
                     'total_models': 4
                 }
@@ -91,13 +104,12 @@ class ValuationModels:
             base_growth = assumptions.get('terminal_growth', 0.02)
             
             # Ranges: +/- 1% with 0.5% steps
-            # Ensure proper rounding to avoid floating point weirdness
             wacc_range = [base_wacc - 0.01, base_wacc - 0.005, base_wacc, base_wacc + 0.005, base_wacc + 0.01]
             growth_range = [base_growth - 0.01, base_growth - 0.005, base_growth, base_growth + 0.005, base_growth + 0.01]
             
             sensitivity_matrix = {
-                'row_headers': [round(w * 100, 1) for w in wacc_range], # WACC rows (as %)
-                'col_headers': [round(g * 100, 1) for g in growth_range], # Growth cols (as %)
+                'row_headers': [float(round(w * 100, 1)) for w in wacc_range],
+                'col_headers': [float(round(g * 100, 1)) for g in growth_range],
                 'values': []
             }
             
@@ -106,11 +118,12 @@ class ValuationModels:
                 for g in growth_range:
                     # Create temp assumptions
                     temp_assumptions = assumptions.copy()
-                    temp_assumptions['wacc'] = w
-                    temp_assumptions['terminal_growth'] = g
+                    temp_assumptions['wacc'] = float(w)
+                    temp_assumptions['terminal_growth'] = float(g)
                     
                     # Calculate FCFF with temp assumptions
-                    val = self.calculate_fcff(temp_assumptions)
+                    val_result = self.calculate_fcff(temp_assumptions)
+                    val = get_model_value(val_result)
                     row_values.append(int(val)) # Store integer value
                 sensitivity_matrix['values'].append(row_values)
                 
@@ -359,27 +372,28 @@ class ValuationModels:
                 per_share_fcfe = 0
             
             # Return detailed result for Excel export
+            # Return detailed result for Excel export
             return {
-                'shareValue': per_share_fcfe,
-                'baseFCFE': fcfe,
-                'projectedCashFlows': future_fcfes,
-                'presentValues': pv_fcfes,
-                'terminalValue': terminal_value,
-                'pvTerminal': pv_terminal,
-                'totalEquityValue': total_equity_value,
-                'sharesOutstanding': shares_outstanding,
+                'shareValue': float(per_share_fcfe),
+                'baseFCFE': float(fcfe),
+                'projectedCashFlows': [float(x) for x in future_fcfes],
+                'presentValues': [float(x) for x in pv_fcfes],
+                'terminalValue': float(terminal_value),
+                'pvTerminal': float(pv_terminal),
+                'totalEquityValue': float(total_equity_value),
+                'sharesOutstanding': float(shares_outstanding),
                 'inputs': {
-                    'netIncome': net_income if self.stock else self.stock_data.get('net_income_ttm', 0),
-                    'depreciation': non_cash_charges if self.stock else self.stock_data.get('depreciation', 0),
-                    'netBorrowing': net_borrowing,
-                    'workingCapitalInvestment': working_capital_investment if self.stock else self.stock_data.get('working_capital_change', 0),
-                    'fixedCapitalInvestment': fixed_capital_investment if self.stock else -abs(self.stock_data.get('capex', 0)),
+                    'netIncome': float(net_income if self.stock else self.stock_data.get('net_income_ttm', 0)),
+                    'depreciation': float(non_cash_charges if self.stock else self.stock_data.get('depreciation', 0)),
+                    'netBorrowing': float(net_borrowing),
+                    'workingCapitalInvestment': float(working_capital_investment if self.stock else self.stock_data.get('working_capital_change', 0)),
+                    'fixedCapitalInvestment': float(fixed_capital_investment if self.stock else -abs(self.stock_data.get('capex', 0))),
                 },
                 'assumptions': {
-                    'costOfEquity': cost_of_equity,
-                    'shortTermGrowth': short_term_growth,
-                    'terminalGrowth': terminal_growth,
-                    'forecastYears': forecast_years
+                    'costOfEquity': float(cost_of_equity),
+                    'shortTermGrowth': float(short_term_growth),
+                    'terminalGrowth': float(terminal_growth),
+                    'forecastYears': int(forecast_years)
                 }
             }
 
@@ -499,32 +513,33 @@ class ValuationModels:
                 per_share_fcff = 0
             
             # Return detailed result for Excel export
+            # Return detailed result for Excel export
             return {
-                'shareValue': per_share_fcff,
-                'baseFCFF': fcff,
-                'projectedCashFlows': future_fcffs,
-                'presentValues': pv_fcffs,
-                'terminalValue': terminal_value_fcff,
-                'pvTerminal': pv_terminal_fcff,
-                'enterpriseValue': enterprise_value,
-                'totalDebt': total_debt,
-                'cash': cash,
-                'equityValue': equity_value,
-                'sharesOutstanding': shares_outstanding,
+                'shareValue': float(per_share_fcff),
+                'baseFCFF': float(fcff),
+                'projectedCashFlows': [float(x) for x in future_fcffs],
+                'presentValues': [float(x) for x in pv_fcffs],
+                'terminalValue': float(terminal_value_fcff),
+                'pvTerminal': float(pv_terminal_fcff),
+                'enterpriseValue': float(enterprise_value),
+                'totalDebt': float(total_debt),
+                'cash': float(cash),
+                'equityValue': float(equity_value),
+                'sharesOutstanding': float(shares_outstanding),
                 'inputs': {
-                    'netIncome': net_income if self.stock else self.stock_data.get('net_income_ttm', 0),
-                    'depreciation': non_cash_charges if self.stock else self.stock_data.get('depreciation', 0),
-                    'interestExpense': interest_expense if self.stock else self.stock_data.get('interest_expense', 0),
-                    'interestAfterTax': interest_after_tax,
-                    'workingCapitalInvestment': working_capital_investment if self.stock else self.stock_data.get('working_capital_change', 0),
-                    'fixedCapitalInvestment': fixed_capital_investment if self.stock else -abs(self.stock_data.get('capex', 0)),
+                    'netIncome': float(net_income if self.stock else self.stock_data.get('net_income_ttm', 0)),
+                    'depreciation': float(non_cash_charges if self.stock else self.stock_data.get('depreciation', 0)),
+                    'interestExpense': float(interest_expense if self.stock else self.stock_data.get('interest_expense', 0)),
+                    'interestAfterTax': float(interest_after_tax),
+                    'workingCapitalInvestment': float(working_capital_investment if self.stock else self.stock_data.get('working_capital_change', 0)),
+                    'fixedCapitalInvestment': float(fixed_capital_investment if self.stock else -abs(self.stock_data.get('capex', 0))),
                 },
                 'assumptions': {
-                    'wacc': wacc,
-                    'shortTermGrowth': short_term_growth,
-                    'terminalGrowth': terminal_growth,
-                    'forecastYears': forecast_years,
-                    'taxRate': tax_rate
+                    'wacc': float(wacc),
+                    'shortTermGrowth': float(short_term_growth),
+                    'terminalGrowth': float(terminal_growth),
+                    'forecastYears': int(forecast_years),
+                    'taxRate': float(tax_rate)
                 }
             }
 
