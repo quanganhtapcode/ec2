@@ -41,6 +41,7 @@ const AppUtils = {
 
     /**
      * Format large numbers (Trillion/Billion/Million) with suffixes
+     * Supports Vietnamese translations
      * @param {number} value 
      * @returns {string}
      */
@@ -48,16 +49,28 @@ const AppUtils = {
         if (!value && value !== 0) return '--';
         if (isNaN(value)) return '--';
 
+        // Get current language from window.app or default to 'en'
+        const lang = (window.app && window.app.currentLanguage) || 'en';
+
+        // Language-specific suffixes
+        const suffixes = {
+            en: { trillion: 'trillion', billion: 'billion', million: 'million' },
+            vi: { trillion: 'nghìn tỷ', billion: 'tỷ', million: 'triệu' }
+        };
+
+        const units = suffixes[lang] || suffixes.en;
+
         if (value >= 1e12) {
-            return `${(value / 1e12).toFixed(1)} trillion`;
+            return `${(value / 1e12).toFixed(1)} ${units.trillion}`;
         } else if (value >= 1e9) {
-            return `${(value / 1e9).toFixed(1)} billion`;
+            return `${(value / 1e9).toFixed(1)} ${units.billion}`;
         } else if (value >= 1e6) {
-            return `${(value / 1e6).toFixed(1)} million`;
+            return `${(value / 1e6).toFixed(1)} ${units.million}`;
         } else {
             return this.formatCurrency(value);
         }
     },
+
 
     /**
      * Format percentage

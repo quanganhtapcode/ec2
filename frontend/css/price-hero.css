@@ -1,6 +1,6 @@
 /**
  * Price Hero Section Styles
- * Prominently displays stock price as the first thing users see
+ * TradingView-inspired clean, professional design
  */
 
 /* ============================================
@@ -9,30 +9,29 @@
 
 .stock-price-hero {
     background: var(--color-surface);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--color-card-border);
-    padding: 24px 32px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    padding: 20px 24px;
     margin-bottom: 24px;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
 }
 
-/* Company Logo Placeholder */
+/* Company Logo - Clean Circle */
 .stock-hero-logo {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background: var(--color-secondary);
+    background: var(--color-text);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--color-primary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-surface);
     flex-shrink: 0;
-    border: 2px solid var(--color-card-border);
+    letter-spacing: 0.5px;
 }
 
 /* Main Content Area */
@@ -41,37 +40,38 @@
     min-width: 0;
 }
 
-/* Company Name */
+/* Company Name Row */
 .stock-hero-name {
-    font-size: var(--font-size-lg);
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
     color: var(--color-text);
-    margin: 0 0 4px 0;
+    margin: 0 0 6px 0;
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .stock-hero-symbol {
-    font-size: var(--font-size-sm);
+    font-size: 12px;
     font-weight: 500;
     color: var(--color-text-secondary);
     background: var(--color-secondary);
     padding: 2px 8px;
-    border-radius: var(--radius-full);
+    border-radius: 4px;
 }
 
-/* Price Display - THE STAR */
+/* Price Display */
 .stock-hero-price-row {
     display: flex;
     align-items: baseline;
-    gap: 16px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
 .stock-hero-price {
-    font-size: 42px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 600;
     color: var(--color-text);
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -79,48 +79,35 @@
 }
 
 .stock-hero-currency {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 400;
     color: var(--color-text-secondary);
-    margin-left: 4px;
 }
 
 /* Price Change */
 .stock-hero-change {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-}
-
-.stock-hero-change.positive {
-    color: var(--color-success);
-}
-
-.stock-hero-change.negative {
-    color: var(--color-error);
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .stock-hero-change.neutral {
     color: var(--color-text-secondary);
 }
 
+.stock-hero-change.positive {
+    color: #26a69a;
+}
+
+.stock-hero-change.negative {
+    color: #ef5350;
+}
+
 .stock-hero-change-percent {
-    background: rgba(var(--color-success-rgb), 0.15);
-    padding: 4px 10px;
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-base);
-}
-
-.stock-hero-change.positive .stock-hero-change-percent {
-    background: rgba(var(--color-success-rgb), 0.15);
-    color: var(--color-success);
-}
-
-.stock-hero-change.negative .stock-hero-change-percent {
-    background: rgba(var(--color-error-rgb), 0.15);
-    color: var(--color-error);
+    font-size: 14px;
+    font-weight: 500;
 }
 
 /* Market Info - Right Side */
@@ -128,79 +115,89 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 8px;
+    gap: 4px;
     flex-shrink: 0;
+    text-align: right;
 }
 
 .stock-hero-market-cap {
-    font-size: var(--font-size-xl);
+    font-size: 18px;
     font-weight: 600;
     color: var(--color-text);
+    line-height: 1.3;
 }
 
 .stock-hero-market-cap-label {
-    font-size: var(--font-size-sm);
+    font-size: 11px;
     color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
 }
 
 .stock-hero-exchange {
-    font-size: var(--font-size-sm);
+    font-size: 11px;
+    font-weight: 500;
     color: var(--color-text-secondary);
     background: var(--color-secondary);
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-top: 4px;
 }
 
 /* ============================================
-   Mobile Responsive
+   Responsive Design
    ============================================ */
 
 @media (max-width: 768px) {
     .stock-price-hero {
         flex-direction: column;
         align-items: flex-start;
-        padding: 20px;
-        gap: 16px;
+        padding: 16px;
+        gap: 12px;
     }
 
     .stock-hero-logo {
-        width: 48px;
-        height: 48px;
-        font-size: 18px;
+        width: 44px;
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .stock-hero-name {
+        font-size: 14px;
     }
 
     .stock-hero-price {
-        font-size: 32px;
-    }
-
-    .stock-hero-currency {
-        font-size: 14px;
+        font-size: 28px;
     }
 
     .stock-hero-info {
         flex-direction: row;
         align-items: center;
-        gap: 16px;
-        width: 100%;
         justify-content: space-between;
+        width: 100%;
+        padding-top: 12px;
+        border-top: 1px solid var(--color-border);
     }
 
-    .stock-hero-change {
-        font-size: var(--font-size-base);
+    .stock-hero-info>div {
+        text-align: left;
+    }
+
+    .stock-hero-market-cap {
+        font-size: 16px;
     }
 }
 
 @media (max-width: 480px) {
     .stock-hero-price {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .stock-hero-price-row {
-        gap: 12px;
+        gap: 8px;
     }
 
-    .stock-hero-change-percent {
-        font-size: var(--font-size-sm);
-        padding: 3px 8px;
+    .stock-hero-change {
+        font-size: 13px;
     }
 }
