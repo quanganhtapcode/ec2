@@ -1422,7 +1422,8 @@ class StockValuationApp {
 
             if (changeValueEl) {
                 const sign = change > 0 ? '+' : '';
-                changeValueEl.textContent = `${sign}${AppUtils.formatNumber(Math.abs(change))}`;
+                // Format as full integer with thousand separators
+                changeValueEl.textContent = `${sign}${Math.round(change).toLocaleString('en-US')}`;
             }
 
             if (changePercentEl) {

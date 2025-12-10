@@ -3404,10 +3404,11 @@ def api_price(symbol):
             latest = history_df.iloc[-1]
             
             # Try to get current/close price
+            # NOTE: vnstock Quote.history() returns prices in units of 1000 VND
             current_price = None
             for col in ['close', 'Close', 'match_price', 'last_price']:
                 if col in latest.index and pd.notna(latest[col]):
-                    current_price = float(latest[col])
+                    current_price = float(latest[col]) * 1000  # Convert to actual VND
                     break
             
             # Calculate change vs previous day
@@ -3419,7 +3420,7 @@ def api_price(symbol):
                 prev_close = None
                 for col in ['close', 'Close']:
                     if col in prev.index and pd.notna(prev[col]):
-                        prev_close = float(prev[col])
+                        prev_close = float(prev[col]) * 1000  # Convert to actual VND
                         break
                 
                 if prev_close and prev_close > 0:
