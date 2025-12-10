@@ -609,6 +609,18 @@ select.form-control {
   margin-top: var(--space-8);
 }
 
+.mt-16 {
+  margin-top: var(--space-16);
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
 .mb-8 {
   margin-bottom: var(--space-8);
 }
@@ -3513,4 +3525,70 @@ select.form-control {
 [data-theme="dark"] .time-btn:hover,
 [data-theme="dark"] .history-btn:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   Key Metrics Grid
+   ========================================= */
+.key-metrics-section {
+  margin-top: var(--space-24);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-16);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-12);
+  background: var(--color-secondary);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.metric-item:hover {
+  background: var(--color-background);
+  transform: translateY(-2px);
+}
+
+.metric-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-4);
+}
+
+.metric-value {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  font-feature-settings: "tnum" 1;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .metric-item {
+    padding: var(--space-8);
+  }
+
+  .metric-value {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

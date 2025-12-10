@@ -44,6 +44,7 @@ const translations = {
         evEbitda: "EV/EBITDA:",
 
         // Financial Metrics
+        keyMetrics: "Chỉ số chính",
         financialMetrics: "Chỉ số tài chính",
         revenue: "Doanh thu:",
         netIncome: "Lợi nhuận ròng:",
@@ -341,6 +342,7 @@ const translations = {
         evEbitda: "EV/EBITDA:",
 
         // Financial Metrics
+        keyMetrics: "Key Metrics",
         financialMetrics: "Financial Metrics",
         revenue: "Revenue:",
         netIncome: "Net Income:",
