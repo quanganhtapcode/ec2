@@ -1077,6 +1077,9 @@ class StockValuationApp {
 
 
     clearDisplay() {
+        // Clear Stock Price Hero
+        this.clearStockPriceHero();
+
         // Clear company info
         this.safeUpdateElement('company-name', '--');
         this.safeUpdateElement('company-symbol', '--');
@@ -1250,6 +1253,9 @@ class StockValuationApp {
             data.fixed_asset_turnover = data.fixed_asset_turnover ?? data['Fixed Asset Turnover'];
         }
 
+        // Update Stock Price Hero (prominent display at top)
+        this.updateStockPriceHero(data);
+
         // Update company info
         this.safeUpdateElement('company-name', data.name || '--');
         this.safeUpdateElement('company-symbol', data.symbol || '--');
@@ -1357,6 +1363,94 @@ class StockValuationApp {
         if (element) {
             element.textContent = value;
         }
+    }
+
+    /**
+     * Update Stock Price Hero section with prominent price display
+     * @param {Object} data - Stock data object
+     */
+    updateStockPriceHero(data) {
+        // Logo - show first 2 letters of symbol
+        const logoEl = document.getElementById('stock-hero-logo');
+        if (logoEl) {
+            logoEl.textContent = (data.symbol || '--').substring(0, 2);
+        }
+
+        // Company name and symbol
+        this.safeUpdateElement('stock-hero-company-name', data.name || '--');
+        this.safeUpdateElement('stock-hero-symbol', data.symbol || '--');
+
+        // Price - THE MAIN ATTRACTION
+        const priceEl = document.getElementById('stock-hero-price');
+        if (priceEl) {
+            priceEl.textContent = data.current_price
+                ? AppUtils.formatNumber(data.current_price)
+                : '--';
+        }
+
+        // Price change (if available)
+        const changeContainer = document.getElementById('stock-hero-change');
+        const changeValueEl = document.getElementById('stock-hero-change-value');
+        const changePercentEl = document.getElementById('stock-hero-change-percent');
+
+        if (data.price_change !== undefined && data.price_change !== null) {
+            const change = data.price_change;
+            const changePercent = data.price_change_percent || 0;
+
+            if (changeContainer) {
+                changeContainer.classList.remove('positive', 'negative', 'neutral');
+                changeContainer.classList.add(change > 0 ? 'positive' : change < 0 ? 'negative' : 'neutral');
+            }
+
+            if (changeValueEl) {
+                const sign = change > 0 ? '+' : '';
+                changeValueEl.textContent = `${sign}${AppUtils.formatNumber(Math.abs(change))}`;
+            }
+
+            if (changePercentEl) {
+                const sign = changePercent > 0 ? '+' : '';
+                changePercentEl.textContent = `${sign}${changePercent.toFixed(2)}%`;
+            }
+        } else {
+            // No change data available
+            if (changeContainer) {
+                changeContainer.classList.remove('positive', 'negative');
+                changeContainer.classList.add('neutral');
+            }
+            if (changeValueEl) changeValueEl.textContent = '--';
+            if (changePercentEl) changePercentEl.textContent = '--';
+        }
+
+        // Market Cap
+        this.safeUpdateElement('stock-hero-market-cap', AppUtils.formatLargeNumber(data.market_cap));
+
+        // Exchange
+        this.safeUpdateElement('stock-hero-exchange', data.exchange || '--');
+    }
+
+    /**
+     * Clear Stock Price Hero section
+     */
+    clearStockPriceHero() {
+        const logoEl = document.getElementById('stock-hero-logo');
+        if (logoEl) logoEl.textContent = '--';
+
+        this.safeUpdateElement('stock-hero-company-name', '--');
+        this.safeUpdateElement('stock-hero-symbol', '--');
+
+        const priceEl = document.getElementById('stock-hero-price');
+        if (priceEl) priceEl.textContent = '--';
+
+        const changeContainer = document.getElementById('stock-hero-change');
+        if (changeContainer) {
+            changeContainer.classList.remove('positive', 'negative');
+            changeContainer.classList.add('neutral');
+        }
+
+        this.safeUpdateElement('stock-hero-change-value', '--');
+        this.safeUpdateElement('stock-hero-change-percent', '--');
+        this.safeUpdateElement('stock-hero-market-cap', '--');
+        this.safeUpdateElement('stock-hero-exchange', '--');
     }
 
     showLoading(show, message = 'Loading...') {

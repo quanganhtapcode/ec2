@@ -1,0 +1,206 @@
+/**
+ * Price Hero Section Styles
+ * Prominently displays stock price as the first thing users see
+ */
+
+/* ============================================
+   Stock Price Hero - Main Container
+   ============================================ */
+
+.stock-price-hero {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-card-border);
+    padding: 24px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Company Logo Placeholder */
+.stock-hero-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary);
+    flex-shrink: 0;
+    border: 2px solid var(--color-card-border);
+}
+
+/* Main Content Area */
+.stock-hero-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Company Name */
+.stock-hero-name {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stock-hero-symbol {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    background: var(--color-secondary);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+}
+
+/* Price Display - THE STAR */
+.stock-hero-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.stock-hero-price {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-feature-settings: "tnum" 1;
+}
+
+.stock-hero-currency {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-left: 4px;
+}
+
+/* Price Change */
+.stock-hero-change {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+.stock-hero-change.positive {
+    color: var(--color-success);
+}
+
+.stock-hero-change.negative {
+    color: var(--color-error);
+}
+
+.stock-hero-change.neutral {
+    color: var(--color-text-secondary);
+}
+
+.stock-hero-change-percent {
+    background: rgba(var(--color-success-rgb), 0.15);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-base);
+}
+
+.stock-hero-change.positive .stock-hero-change-percent {
+    background: rgba(var(--color-success-rgb), 0.15);
+    color: var(--color-success);
+}
+
+.stock-hero-change.negative .stock-hero-change-percent {
+    background: rgba(var(--color-error-rgb), 0.15);
+    color: var(--color-error);
+}
+
+/* Market Info - Right Side */
+.stock-hero-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.stock-hero-market-cap {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.stock-hero-market-cap-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.stock-hero-exchange {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-secondary);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+}
+
+/* ============================================
+   Mobile Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+    .stock-price-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .stock-hero-logo {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+
+    .stock-hero-price {
+        font-size: 32px;
+    }
+
+    .stock-hero-currency {
+        font-size: 14px;
+    }
+
+    .stock-hero-info {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .stock-hero-change {
+        font-size: var(--font-size-base);
+    }
+}
+
+@media (max-width: 480px) {
+    .stock-hero-price {
+        font-size: 28px;
+    }
+
+    .stock-hero-price-row {
+        gap: 12px;
+    }
+
+    .stock-hero-change-percent {
+        font-size: var(--font-size-sm);
+        padding: 3px 8px;
+    }
+}

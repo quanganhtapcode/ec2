@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="style.css?v=14">
     <link rel="stylesheet" href="css/toast.css?v=2">
     <link rel="stylesheet" href="css/company-profile.css?v=10">
+    <link rel="stylesheet" href="css/price-hero.css?v=1">
     <link rel="stylesheet" href="css/valuation.css?v=1">
     <link rel="stylesheet" href="css/financials.css?v=1">
     <link rel="stylesheet" href="css/header-fixed.css?v=1">
@@ -213,6 +214,32 @@
 
             <div class="tab-content">
                 <div id="overview" class="tab-pane active">
+                    <!-- Stock Price Hero - First thing users see -->
+                    <section class="stock-price-hero">
+                        <div class="stock-hero-logo" id="stock-hero-logo">--</div>
+                        <div class="stock-hero-content">
+                            <h2 class="stock-hero-name">
+                                <span id="stock-hero-company-name">--</span>
+                                <span class="stock-hero-symbol" id="stock-hero-symbol">--</span>
+                            </h2>
+                            <div class="stock-hero-price-row">
+                                <span class="stock-hero-price" id="stock-hero-price">--</span>
+                                <span class="stock-hero-currency">VND</span>
+                                <div class="stock-hero-change neutral" id="stock-hero-change">
+                                    <span id="stock-hero-change-value">--</span>
+                                    <span class="stock-hero-change-percent" id="stock-hero-change-percent">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stock-hero-info">
+                            <div>
+                                <div class="stock-hero-market-cap" id="stock-hero-market-cap">--</div>
+                                <div class="stock-hero-market-cap-label" data-i18n="marketCap">Market Cap</div>
+                            </div>
+                            <span class="stock-hero-exchange" id="stock-hero-exchange">--</span>
+                        </div>
+                    </section>
+
                     <!-- 1 & 2: Company Info + Company Description (2 columns) -->
                     <div class="company-info-row">
                         <!-- Left: Company Information -->
