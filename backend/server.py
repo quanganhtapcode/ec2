@@ -2569,14 +2569,25 @@ def calculate_valuation(symbol):
         
         # Use financial data from request if available (MUCH faster!)
         financial_data = {}
+        
+        # Helper to safely convert to float, handling None and NaN
+        def safe_float(val, default=0):
+            if val is None:
+                return default
+            try:
+                result = float(val)
+                return result if not pd.isna(result) else default
+            except (TypeError, ValueError):
+                return default
+        
         if financial_data_from_request:
             logger.info(f"Using financial data from request (fast path)")
             financial_data = {
-                'eps': float(financial_data_from_request.get('eps', 0)),
-                'bvps': float(financial_data_from_request.get('bvps', 0)),
-                'net_income': float(financial_data_from_request.get('net_income', 0)),
-                'equity': float(financial_data_from_request.get('equity', 0)),
-                'shares_outstanding': float(financial_data_from_request.get('shares_outstanding', 0))
+                'eps': safe_float(financial_data_from_request.get('eps')),
+                'bvps': safe_float(financial_data_from_request.get('bvps')),
+                'net_income': safe_float(financial_data_from_request.get('net_income')),
+                'equity': safe_float(financial_data_from_request.get('equity')),
+                'shares_outstanding': safe_float(financial_data_from_request.get('shares_outstanding'))
             }
         else:
             # Fallback: fetch from vnstock (slow path)
