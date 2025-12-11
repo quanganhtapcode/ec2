@@ -2629,6 +2629,7 @@ def calculate_valuation(symbol):
             },
             'fcfe_details': fcfe_result if isinstance(fcfe_result, dict) else {},
             'fcff_details': fcff_result if isinstance(fcff_result, dict) else {},
+            'sector_peers': results.get('sector_peers'),  # NEW: Include sector peers for Excel export
             'financial_data': financial_data,
             'summary': results.get('summary', {}),
             'sensitivity_analysis': results.get('sensitivity_analysis'),

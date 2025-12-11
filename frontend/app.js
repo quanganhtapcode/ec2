@@ -837,7 +837,9 @@ class StockValuationApp {
                 sensitivity_analysis: result.sensitivity_analysis,
                 // Include detailed FCFE/FCFF data for Excel export
                 fcfe_details: result.fcfe_details || {},
-                fcff_details: result.fcff_details || {}
+                fcff_details: result.fcff_details || {},
+                // Include sector peers data for Excel export
+                sector_peers: result.sector_peers || {}
             };
 
             // Cache the valuation results
