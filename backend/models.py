@@ -134,6 +134,13 @@ class ValuationModels:
             # print(f"Sensitivity analysis error: {e}")
             results['sensitivity_analysis'] = None
 
+        # Add sector peers data for Excel export
+        try:
+            peer_data = self.get_sector_peers(num_peers=10)
+            results['sector_peers'] = peer_data
+        except Exception as e:
+            results['sector_peers'] = None
+
         return results
 
     # ===================================================
@@ -183,16 +190,19 @@ class ValuationModels:
             if current_sector in all_sectors:
                 sector_data = all_sectors[current_sector]
                 
-                # Get peers (excluding current stock)
-                peers = [p for p in sector_data.get('peers', []) if p.get('symbol') != current_symbol]
-                peer_symbols = [p['symbol'] for p in peers[:num_peers]]
+                # Get peers (excluding current stock) - return FULL details
+                all_peers = sector_data.get('peers', [])
+                peers_full = [p for p in all_peers if p.get('symbol') != current_symbol][:num_peers]
+                peer_symbols = [p['symbol'] for p in peers_full]
                 
                 result = {
                     'median_pe': sector_data.get('median_pe'),
                     'median_pb': sector_data.get('median_pb'),
-                    'peers': peer_symbols,
+                    'peers': peer_symbols,  # Keep for backward compatibility
+                    'peers_detail': peers_full,  # NEW: Full peer details for Excel export
                     'sector': current_sector,
-                    'peer_count': len(peer_symbols)
+                    'peer_count': len(peer_symbols),
+                    'total_in_sector': sector_data.get('total_in_sector', len(all_peers))
                 }
                 
                 # Log

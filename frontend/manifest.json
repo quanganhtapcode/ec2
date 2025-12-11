@@ -1,6 +1,6 @@
 {
-  "name": "Định Giá Cổ Phiếu Việt Nam - Quang Anh",
-  "short_name": "Định Giá CP",
+  "name": "Quang Anh - Stock Valuation Tool",
+  "short_name": "VN Valuation",
   "description": "Công cụ định giá và đánh giá cổ phiếu Việt Nam miễn phí. Phân tích DCF, P/E, P/B cho VN30, HOSE, HNX.",
   "start_url": "/",
   "display": "standalone",
