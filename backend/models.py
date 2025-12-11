@@ -393,6 +393,12 @@ class ValuationModels:
                     'netBorrowing': float(net_borrowing),
                     'workingCapitalInvestment': float(working_capital_investment if self.stock else self.stock_data.get('working_capital_change', 0)),
                     'fixedCapitalInvestment': float(fixed_capital_investment if self.stock else -abs(self.stock_data.get('capex', 0))),
+                    # Detailed breakdown for Excel
+                    'receivablesChange': float(receivables_change) if self.stock else 0,
+                    'inventoriesChange': float(inventories_change) if self.stock else 0,
+                    'payablesChange': float(payables_change) if self.stock else 0,
+                    'proceedsBorrowings': float(proceeds_borrowings) if self.stock else 0,
+                    'repaymentBorrowings': float(repayment_borrowings) if self.stock else 0,
                 },
                 'assumptions': {
                     'costOfEquity': float(cost_of_equity),
@@ -569,6 +575,12 @@ class ValuationModels:
                     'interestAfterTax': float(interest_after_tax),
                     'workingCapitalInvestment': float(working_capital_investment if self.stock else self.stock_data.get('working_capital_change', 0)),
                     'fixedCapitalInvestment': float(fixed_capital_investment if self.stock else -abs(self.stock_data.get('capex', 0))),
+                    # Detailed breakdown for Excel
+                    'receivablesChange': float(receivables_change) if self.stock else 0,
+                    'inventoriesChange': float(inventories_change) if self.stock else 0,
+                    'payablesChange': float(payables_change) if self.stock else 0,
+                    'shortTermDebt': float(short_term_debt) if self.stock else 0,
+                    'longTermDebt': float(long_term_debt) if self.stock else 0,
                 },
                 'assumptions': {
                     'wacc': float(wacc),
