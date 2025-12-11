@@ -44,7 +44,7 @@ class StockValuationApp {
             justified_pb: 25
         };
         this.valuationResults = null;
-        this.apiBaseUrl = 'https://api.quanganh.org'; // Production API endpoint
+        this.apiBaseUrl = 'https://api.quanganh.org'; // Local testing
         // this.apiBaseUrl = 'https://api.quanganh.org'; // Production API endpoint
         this.currentLanguage = 'en'; // Default to English
 
@@ -834,7 +834,10 @@ class StockValuationApp {
                 summary: result.summary,
                 market_comparison: result.market_comparison,
                 financial_data: result.financial_data,
-                sensitivity_analysis: result.sensitivity_analysis
+                sensitivity_analysis: result.sensitivity_analysis,
+                // Include detailed FCFE/FCFF data for Excel export
+                fcfe_details: result.fcfe_details || {},
+                fcff_details: result.fcff_details || {}
             };
 
             // Cache the valuation results

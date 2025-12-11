@@ -424,6 +424,14 @@ class ValuationModels:
                     print(f" (=) Base FCFE:                 {detailed_result['baseFCFE']:20,.0f}")
                     print(f"Shares Outstanding:             {detailed_result['sharesOutstanding']:20,.0f}")
                     print(f"Fair Value per Share:           {detailed_result['shareValue']:20,.0f} VND")
+                    print(f"{'='*60}")
+                    # Debug: Show detailed breakdown fields
+                    print(f"[DEBUG] Detailed inputs in response:")
+                    print(f"  receivablesChange: {inp.get('receivablesChange', 'NOT SET')}")
+                    print(f"  inventoriesChange: {inp.get('inventoriesChange', 'NOT SET')}")
+                    print(f"  payablesChange: {inp.get('payablesChange', 'NOT SET')}")
+                    print(f"  proceedsBorrowings: {inp.get('proceedsBorrowings', 'NOT SET')}")
+                    print(f"  repaymentBorrowings: {inp.get('repaymentBorrowings', 'NOT SET')}")
                     print(f"{'='*60}\n")
                 except Exception as e:
                     print(f"Error logging FCFE: {e}")
