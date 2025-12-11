@@ -1,7 +1,7 @@
 {
-  "name": "Vietnam Stock Valuation",
-  "short_name": "VN Valuation",
-  "description": "Professional Vietnamese stock valuation using DCF models",
+  "name": "Định Giá Cổ Phiếu Việt Nam - Quang Anh",
+  "short_name": "Định Giá CP",
+  "description": "Công cụ định giá và đánh giá cổ phiếu Việt Nam miễn phí. Phân tích DCF, P/E, P/B cho VN30, HOSE, HNX.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#F5F5F7",
@@ -21,7 +21,11 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["finance", "business", "productivity"],
-  "lang": "en-US",
+  "categories": [
+    "finance",
+    "business",
+    "productivity"
+  ],
+  "lang": "vi-VN",
   "dir": "ltr"
 }
