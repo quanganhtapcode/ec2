@@ -9,7 +9,8 @@ Procfile
 # Stock Data (VPS only - 694 JSON files)
 stock_data/
 
-# Deployment Scripts (local only)
+# Deployment Scripts (local only - contains VPS IP)
+scripts/
 deploy.ps1
 deploy-quick.ps1
 DEPLOY_README.md

@@ -44,7 +44,7 @@ class StockValuationApp {
             justified_pb: 25
         };
         this.valuationResults = null;
-        this.apiBaseUrl = 'https://api.quanganh.org'; // Local testing
+        this.apiBaseUrl = 'https://api.quanganh.org'; // Production API
         // this.apiBaseUrl = 'https://api.quanganh.org'; // Production API endpoint
         this.currentLanguage = 'en'; // Default to English
 

@@ -21,6 +21,7 @@ class ValuationModels:
         self._cash_flow_data_cache = {}
         self._balance_data_cache = {}
         self._shares_outstanding_cache = None
+        self._sector_peers_cache = None  # Cache for sector peers to avoid loading JSON files twice
 
     def calculate_all_models(self, assumptions):
         """Calculate all 4 valuation models with given assumptions"""
@@ -138,6 +139,88 @@ class ValuationModels:
     # ===================================================
     # HELPER FUNCTIONS
     # ===================================================
+    
+    def get_sector_peers(self, num_peers=10):
+        """
+        Find top stocks in the same sector by market cap
+        Reads from pre-generated sector_peers.json for fast lookup
+        Returns dict with median P/E, median P/B, and list of peer symbols
+        """
+        # Return cached result if available
+        if self._sector_peers_cache is not None:
+            return self._sector_peers_cache
+        
+        import os
+        import json
+        
+        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        current_symbol = self.stock_symbol.upper() if self.stock_symbol else None
+        
+        if not current_symbol:
+            return {'median_pe': None, 'median_pb': None, 'peers': [], 'error': 'No symbol specified'}
+        
+        # First, get the sector for current stock
+        current_sector = None
+        
+        # Try from stock JSON file first
+        stocks_folder = os.path.join(base_path, 'stocks')
+        current_stock_file = os.path.join(stocks_folder, f'{current_symbol}.json')
+        if os.path.exists(current_stock_file):
+            with open(current_stock_file, 'r', encoding='utf-8') as f:
+                current_data = json.load(f)
+                current_sector = current_data.get('sector')
+        
+        if not current_sector:
+            return {'median_pe': None, 'median_pb': None, 'peers': [], 'error': 'Could not determine sector'}
+        
+        # Read from pre-generated sector_peers.json (FAST)
+        sector_peers_file = os.path.join(base_path, 'sector_peers.json')
+        
+        if os.path.exists(sector_peers_file):
+            with open(sector_peers_file, 'r', encoding='utf-8') as f:
+                all_sectors = json.load(f)
+            
+            if current_sector in all_sectors:
+                sector_data = all_sectors[current_sector]
+                
+                # Get peers (excluding current stock)
+                peers = [p for p in sector_data.get('peers', []) if p.get('symbol') != current_symbol]
+                peer_symbols = [p['symbol'] for p in peers[:num_peers]]
+                
+                result = {
+                    'median_pe': sector_data.get('median_pe'),
+                    'median_pb': sector_data.get('median_pb'),
+                    'peers': peer_symbols,
+                    'sector': current_sector,
+                    'peer_count': len(peer_symbols)
+                }
+                
+                # Log
+                print(f"\n{'='*60}")
+                print(f"📊 SECTOR COMPARABLE (from cache): {current_symbol}")
+                print(f"{'='*60}")
+                print(f"Sector: {current_sector}")
+                print(f"Peers: {', '.join(peer_symbols[:5])}{'...' if len(peer_symbols) > 5 else ''}")
+                print(f"Median P/E: {result['median_pe']:.2f}" if result['median_pe'] else "Median P/E: N/A")
+                print(f"Median P/B: {result['median_pb']:.2f}" if result['median_pb'] else "Median P/B: N/A")
+                print(f"{'='*60}\n")
+                
+                # Cache and return
+                self._sector_peers_cache = result
+                return result
+        
+        # Fallback: sector_peers.json not found, use market defaults
+        print(f"⚠️ sector_peers.json not found, using market defaults")
+        result = {
+            'median_pe': 15.0,  # Market average
+            'median_pb': 1.5,   # Market average
+            'peers': [],
+            'sector': current_sector,
+            'peer_count': 0,
+            'error': 'sector_peers.json not found'
+        }
+        self._sector_peers_cache = result
+        return result
     
     def get_cached_income_data(self, period='year'):
         """Get income statement data with caching to avoid repeated API calls"""
@@ -662,17 +745,13 @@ class ValuationModels:
 
     def calculate_justified_pe(self, assumptions):
         """
-        Calculate Justified P/E Valuation
+        Calculate Comparable P/E Valuation
+        Method: Find median P/E of top 10 stocks in same sector (by market cap)
+        Fair Value = Median P/E × EPS
         Returns: value per share in VND
         """
         try:
-            
-            # Get assumptions
-            roe = assumptions.get('roe', 0.15)
-            payout_ratio = assumptions.get('payout_ratio', 0.40)
-            cost_of_equity = assumptions.get('cost_of_equity', 0.12)
             data_frequency = assumptions.get('data_frequency', 'year')
-            
             shares_outstanding = self.get_shares_outstanding()
             
             # Get current EPS
@@ -682,145 +761,108 @@ class ValuationModels:
                 is_quarterly = actual_freq == 'quarter'
                 
                 net_income = self.find_financial_value(processed_income, ['Net Profit For the Year'], is_quarterly)
-                current_eps = net_income / shares_outstanding
+                current_eps = net_income / shares_outstanding if shares_outstanding > 0 else 0
             else:
                 net_income = self.stock_data.get('net_income_ttm', 0)
-                current_eps = net_income / shares_outstanding
+                current_eps = self.stock_data.get('eps', 0) or (net_income / shares_outstanding if shares_outstanding > 0 else 0)
             
-            dividend_growth_rate = roe * (1 - payout_ratio)
+            if current_eps <= 0:
+                print(f"⚠️ P/E Valuation: EPS is {current_eps:.2f} (<=0), cannot calculate")
+                return 0
             
-            if cost_of_equity <= dividend_growth_rate:
-                justified_pe = 15  # Default fallback
-            else:
-                justified_pe = (payout_ratio * (1 + dividend_growth_rate)) / (cost_of_equity - dividend_growth_rate)
+            # Get sector peers and median P/E
+            peer_data = self.get_sector_peers(num_peers=10)
+            median_pe = peer_data.get('median_pe')
             
-            per_share_pe = justified_pe * current_eps
+            if median_pe is None or median_pe <= 0:
+                # Fallback to market average P/E (15x)
+                print(f"⚠️ No sector peers found, using market average P/E of 15x")
+                median_pe = 15.0
             
+            # Fair Value = Median P/E × EPS
+            per_share_pe = median_pe * current_eps
+            
+            print(f"📈 P/E Valuation: EPS={current_eps:,.0f} × Median PE={median_pe:.2f} = {per_share_pe:,.0f} VND")
             
             return per_share_pe
 
         except Exception as e:
+            print(f"❌ P/E Valuation error: {e}")
             return 0
 
     def calculate_justified_pb(self, assumptions):
         """
-        Calculate Justified P/B Valuation - IMPROVED
+        Calculate Comparable P/B Valuation
+        Method: Find median P/B of top 10 stocks in same sector (by market cap)
+        Fair Value = Median P/B × BVPS
         Returns: value per share in VND
         """
         try:
-            
-            # Get assumptions
-            roe = assumptions.get('roe', 0.15)
-            payout_ratio = assumptions.get('payout_ratio', 0.40)
-            cost_of_equity = assumptions.get('cost_of_equity', 0.12)
             data_frequency = assumptions.get('data_frequency', 'year')
-            
             shares_outstanding = self.get_shares_outstanding()
             
-            # Get balance sheet data
+            # Get Book Value per Share
             if self.stock:
                 balance_sheet = self.get_cached_balance_data(period=data_frequency)
                 _, processed_balance = self.check_data_frequency(balance_sheet.copy(), data_frequency)
-                is_quarterly = processed_balance is not None
                 
-                
-                # Try multiple equity column names (comprehensive search)
+                # Try multiple equity column names
                 equity_names = [
                     'Total Equity', 'Shareholders Equity', 'Total shareholders equity', 
-                    'Total Shareholders Equity', 'Stockholders Equity', 'Total Stockholders Equity',
-                    'Vốn chủ sở hữu', 'Tổng vốn chủ sở hữu', 'Total shareholders equity',
-                    'Equity', 'Total equity', 'shareholders equity', 'stockholders equity',
-                    'Owner Equity', 'Owners Equity', 'Total Owner Equity'
+                    'Total Shareholders Equity', 'Equity', 'Total equity',
+                    'Vốn chủ sở hữu', 'Tổng vốn chủ sở hữu'
                 ]
                 
                 total_equity = 0
-                equity_found = False
-                
-                # Search for equity with case-insensitive partial matching
                 for col in processed_balance.columns:
                     col_lower = str(col).lower()
                     for equity_name in equity_names:
-                        if equity_name.lower() in col_lower or col_lower in equity_name.lower():
+                        if equity_name.lower() in col_lower:
                             values = processed_balance[col]
                             if values.notna().any():
                                 valid_values = values.dropna()
                                 if not valid_values.empty:
-                                    if data_frequency == 'quarter':
-                                        total_equity = float(valid_values.sum())
-                                    else:
-                                        total_equity = float(valid_values.iloc[0])
-                                    equity_found = True
+                                    total_equity = float(valid_values.iloc[0])
                                     break
-                    if equity_found:
+                    if total_equity > 0:
                         break
                 
-                # If still zero, try calculating from assets - liabilities
+                # Fallback: assets - liabilities
                 if total_equity == 0:
-                    
-                    # Find total assets
-                    asset_names = ['Total Assets', 'Total assets', 'assets', 'Assets', 'Tổng tài sản']
-                    total_assets = 0
-                    for col in processed_balance.columns:
-                        col_lower = str(col).lower()
-                        for asset_name in asset_names:
-                            if asset_name.lower() in col_lower or col_lower in asset_name.lower():
-                                values = processed_balance[col]
-                                if values.notna().any():
-                                    valid_values = values.dropna()
-                                    if not valid_values.empty:
-                                        total_assets = float(valid_values.iloc[0])
-                                        break
-                        if total_assets > 0:
-                            break
-                    
-                    # Find total liabilities
-                    liability_names = ['Total Liabilities', 'Total liabilities', 'liabilities', 'Liabilities', 'Tổng nợ phải trả']
-                    total_liabilities = 0
-                    for col in processed_balance.columns:
-                        col_lower = str(col).lower()
-                        for liability_name in liability_names:
-                            if liability_name.lower() in col_lower or col_lower in liability_name.lower():
-                                values = processed_balance[col]
-                                if values.notna().any():
-                                    valid_values = values.dropna()
-                                    if not valid_values.empty:
-                                        total_liabilities = float(valid_values.iloc[0])
-                                        break
-                        if total_liabilities > 0:
-                            break
-                    
-                    if total_assets > 0 and total_liabilities >= 0:
+                    total_assets = self.find_financial_value(processed_balance, ['Total Assets', 'TOTAL ASSETS'], False)
+                    total_liabilities = self.find_financial_value(processed_balance, ['Total Liabilities', 'TOTAL LIABILITIES'], False)
+                    if total_assets > 0:
                         total_equity = total_assets - total_liabilities
-                        
+                
+                bvps = total_equity / shares_outstanding if shares_outstanding > 0 else 0
             else:
-                # Use provided data
-                total_equity = self.stock_data.get('total_equity', 0)
-                if total_equity == 0:
-                    total_assets = self.stock_data.get('total_assets', 0)
-                    total_liabilities = self.stock_data.get('total_liabilities', 0)
-                    total_equity = total_assets - total_liabilities
+                bvps = self.stock_data.get('bvps', 0) or self.stock_data.get('book_value_per_share', 0)
+                if bvps == 0:
+                    total_equity = self.stock_data.get('total_equity', 0)
+                    bvps = total_equity / shares_outstanding if shares_outstanding > 0 else 0
             
-            if total_equity > 0:
-                book_value_per_share = total_equity / shares_outstanding
-                dividend_growth_rate = roe * (1 - payout_ratio)
-                
-                
-                # Improved P/B calculation with better validation
-                if cost_of_equity <= dividend_growth_rate:
-                    justified_pb = 1.0  # Conservative default
-                elif roe <= dividend_growth_rate:
-                    justified_pb = 1.0  # Conservative default
-                else:
-                    justified_pb = (roe - dividend_growth_rate) / (cost_of_equity - dividend_growth_rate)
-                
-                per_share_pb = justified_pb * book_value_per_share
-                
-                
-                return per_share_pb
-            else:
+            if bvps <= 0:
+                print(f"⚠️ P/B Valuation: BVPS is {bvps:.2f} (<=0), cannot calculate")
                 return 0
-                
+            
+            # Get sector peers and median P/B (reuse cached data from P/E call)
+            peer_data = self.get_sector_peers(num_peers=10)
+            median_pb = peer_data.get('median_pb')
+            
+            if median_pb is None or median_pb <= 0:
+                # Fallback to market average P/B (1.5x)
+                print(f"⚠️ No sector peers found, using market average P/B of 1.5x")
+                median_pb = 1.5
+            
+            # Fair Value = Median P/B × BVPS
+            per_share_pb = median_pb * bvps
+            
+            print(f"📊 P/B Valuation: BVPS={bvps:,.0f} × Median PB={median_pb:.2f} = {per_share_pb:,.0f} VND")
+            
+            return per_share_pb
+
         except Exception as e:
+            print(f"❌ P/B Valuation error: {e}")
             return 0
 # Export the class
 if __name__ == "__main__":
