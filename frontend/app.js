@@ -619,13 +619,29 @@ class StockValuationApp {
             this.stockData = stockData;
             this.currentStock = symbol;
 
+            // If current_price is missing (common for UPCOM stocks), fetch it separately
+            if (!this.stockData.current_price) {
+                console.log(`⚠️ current_price missing for ${symbol}, fetching separately...`);
+                try {
+                    const priceData = await this.api.getRealTimePrice(symbol);
+                    if (priceData && priceData.current_price) {
+                        this.stockData.current_price = priceData.current_price;
+                        this.stockData.price_change = priceData.price_change;
+                        this.stockData.price_change_percent = priceData.price_change_percent;
+                        console.log(`✓ Fetched current_price for ${symbol}: ${priceData.current_price}`);
+                    }
+                } catch (priceError) {
+                    console.warn(`Could not fetch price for ${symbol}:`, priceError.message);
+                }
+            }
+
             // Enable download button when stock data is loaded
             const downloadBtn = document.getElementById('download-financials-btn');
             if (downloadBtn) {
                 downloadBtn.disabled = false;
             }
 
-            this.updateOverviewDisplay(stockData);
+            this.updateOverviewDisplay(this.stockData);
 
             // Removed: showStatus success toast - loading indicator already shows completion
 
