@@ -132,7 +132,33 @@ class StockDataProvider:
         # Use absolute path from script location or relative from working directory
         script_dir = os.path.dirname(os.path.abspath(__file__))
         self._stock_data_folder = os.path.join(os.path.dirname(script_dir), 'stocks')
+        self._ticker_data_cache = None # Cache for ticker_data.json
         logger.info(f"StockDataProvider initialized - using stocks folder: {self._stock_data_folder}")
+
+
+    def _get_sector_from_ticker_data(self, symbol: str) -> str:
+        """Get sector from frontend/ticker_data.json (Source of Truth)"""
+        try:
+            if self._ticker_data_cache is None:
+                base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                ticker_file = os.path.join(base_path, 'frontend', 'ticker_data.json')
+                if os.path.exists(ticker_file):
+                    with open(ticker_file, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        if isinstance(data, dict) and 'tickers' in data:
+                            self._ticker_data_cache = data['tickers']
+                        elif isinstance(data, list):
+                            self._ticker_data_cache = data
+                        else:
+                            self._ticker_data_cache = []
+            
+            if self._ticker_data_cache:
+                for t in self._ticker_data_cache:
+                    if t.get('symbol') == symbol:
+                        return t.get('sector') or t.get('industry')
+        except Exception as e:
+            logger.warning(f"Error reading ticker_data.json: {e}")
+        return None
 
     def _get_company_metadata_from_listing(self, symbol: str) -> dict:
         """Get company metadata (name, industry, exchange) from vnstock Listing API"""
@@ -641,7 +667,7 @@ class StockDataProvider:
                 processed_data.update({
                     "symbol": symbol,
                     "name": company_info.get('organ_name', symbol),
-                    "sector": company_info.get('industry', 'Unknown'),
+                    "sector": self._get_sector_from_ticker_data(symbol) or company_info.get('industry', 'Unknown'),
                     "exchange": company_info.get('exchange', 'Unknown'),
                     "data_period": period,
                     "success": True
@@ -698,7 +724,7 @@ class StockDataProvider:
             annual_data.update({
                 "symbol": symbol,
                 "name": annual_data.get('name', symbol),
-                "sector": annual_data.get('sector', annual_data.get('industry', 'Unknown')),
+                "sector": self._get_sector_from_ticker_data(symbol) or annual_data.get('sector', annual_data.get('industry', 'Unknown')),
                 "exchange": annual_data.get('exchange', 'Unknown'),
                 "data_period": period,
                 "success": True
@@ -729,7 +755,7 @@ class StockDataProvider:
                 result = {
                     "symbol": symbol,
                     "name": company_info['organ_name'],
-                    "sector": company_info['industry'],
+                    "sector": self._get_sector_from_ticker_data(symbol) or company_info['industry'],
                     "exchange": company_info['exchange'],
                     "data_period": period,
                     "data_source": "VCI",
