@@ -3585,6 +3585,28 @@ def api_price(symbol):
         return jsonify({"success": False, "error": str(exc)}), 500
 
 
+@app.route("/api/tickers")
+def api_tickers():
+    """Serve the latest ticker_data.json content"""
+    try:
+        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        # Path to ticker_data.json
+        ticker_file = os.path.join(base_path, 'frontend', 'ticker_data.json')
+        
+        if os.path.exists(ticker_file):
+            # Read and return JSON
+            with open(ticker_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            return jsonify(data)
+        else:
+             logger.warning(f"ticker_data.json not found at {ticker_file}")
+             return jsonify({"error": "Ticker data not found", "tickers": []}), 404
+
+    except Exception as e:
+        logger.error(f"Error serving ticker data: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     logger.info("Vietnamese Stock Valuation Backend – running on http://0.0.0.0:5000")
     app.run(host="0.0.0.0", port=5000, debug=True)

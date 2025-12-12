@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily Stock Ticker Update Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/root/apps/ec2
+ExecStart=/root/apps/ec2/.venv/bin/python3 /root/apps/ec2/update_tickers_daily.py
