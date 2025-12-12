@@ -821,7 +821,8 @@ class StockValuationApp {
                     bvps: this.stockData.book_value_per_share,
                     net_income: this.stockData.net_income_ttm,
                     equity: this.stockData.total_assets - this.stockData.total_debt,
-                    shares_outstanding: this.stockData.shares_outstanding
+                    shares_outstanding: this.stockData.shares_outstanding,
+                    sector: this.stockData.industry || this.stockData.sector // Send sector/industry info
                 }
             };
 

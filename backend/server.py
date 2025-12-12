@@ -2565,7 +2565,15 @@ def calculate_valuation(symbol):
         
         logger.info(f"Using assumptions: {assumptions}")
         valuation_model = ValuationModels(stock_symbol=symbol.upper())
-        results = valuation_model.calculate_all_models(assumptions)
+        
+        # Extract sector if available from request
+        known_sector = None
+        if financial_data_from_request:
+            known_sector = financial_data_from_request.get('sector')
+            if known_sector:
+                logger.info(f"Using sector from request: {known_sector}")
+        
+        results = valuation_model.calculate_all_models(assumptions, known_sector=known_sector)
         
         # Use financial data from request if available (MUCH faster!)
         financial_data = {}

@@ -23,7 +23,7 @@ class ValuationModels:
         self._shares_outstanding_cache = None
         self._sector_peers_cache = None  # Cache for sector peers to avoid loading JSON files twice
 
-    def calculate_all_models(self, assumptions):
+    def calculate_all_models(self, assumptions, known_sector=None):
         """Calculate all 4 valuation models with given assumptions"""
         if not self.stock_symbol and not self.stock_data:
             return {'error': 'No stock data or symbol available'}
@@ -46,14 +46,14 @@ class ValuationModels:
             
         # Calculate Justified P/E
         try:
-            pe_result = self.calculate_justified_pe(assumptions)
+            pe_result = self.calculate_justified_pe(assumptions, known_sector=known_sector)
             results['justified_pe'] = pe_result
         except Exception as e:
             results['justified_pe'] = 0
             
         # Calculate Justified P/B
         try:
-            pb_result = self.calculate_justified_pb(assumptions)
+            pb_result = self.calculate_justified_pb(assumptions, known_sector=known_sector)
             results['justified_pb'] = pb_result
         except Exception as e:
             results['justified_pb'] = 0
@@ -147,7 +147,7 @@ class ValuationModels:
     # HELPER FUNCTIONS
     # ===================================================
     
-    def get_sector_peers(self, num_peers=10):
+    def get_sector_peers(self, num_peers=10, known_sector=None):
         """
         Find top stocks in the same sector by market cap
         Reads from pre-generated sector_peers.json for fast lookup
@@ -166,16 +166,41 @@ class ValuationModels:
         if not current_symbol:
             return {'median_pe': None, 'median_pb': None, 'peers': [], 'error': 'No symbol specified'}
         
-        # First, get the sector for current stock
-        current_sector = None
+        # First, query the sector for current stock
+        current_sector = known_sector
         
-        # Try from stock JSON file first
-        stocks_folder = os.path.join(base_path, 'stocks')
-        current_stock_file = os.path.join(stocks_folder, f'{current_symbol}.json')
-        if os.path.exists(current_stock_file):
-            with open(current_stock_file, 'r', encoding='utf-8') as f:
-                current_data = json.load(f)
-                current_sector = current_data.get('sector')
+        # If not provided, try from frontend/ticker_data.json (Source of Truth)
+        if not current_sector:
+            ticker_data_file = os.path.join(base_path, 'frontend', 'ticker_data.json')
+            if os.path.exists(ticker_data_file):
+                try:
+                    with open(ticker_data_file, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        tickers = []
+                        if isinstance(data, dict) and 'tickers' in data:
+                            tickers = data['tickers']
+                        elif isinstance(data, list):
+                            tickers = data
+                            
+                        # Find current symbol
+                        for t in tickers:
+                            if t.get('symbol') == current_symbol:
+                                current_sector = t.get('sector') or t.get('industry')
+                                break
+                except Exception as e:
+                    print(f"⚠️ Error reading ticker_data.json: {e}")
+                    
+        # Fallback to local stock file if still not found
+        if not current_sector:
+            stocks_folder = os.path.join(base_path, 'stocks')
+            current_stock_file = os.path.join(stocks_folder, f'{current_symbol}.json')
+            if os.path.exists(current_stock_file):
+                try:
+                    with open(current_stock_file, 'r', encoding='utf-8') as f:
+                        current_data = json.load(f)
+                        current_sector = current_data.get('sector')
+                except:
+                    pass
         
         if not current_sector:
             return {'median_pe': None, 'median_pb': None, 'peers': [], 'error': 'Could not determine sector'}
@@ -811,7 +836,7 @@ class ValuationModels:
         except Exception as e:
             return 0
 
-    def calculate_justified_pe(self, assumptions):
+    def calculate_justified_pe(self, assumptions, known_sector=None):
         """
         Calculate Comparable P/E Valuation
         Method: Find median P/E of top 10 stocks in same sector (by market cap)
@@ -839,7 +864,7 @@ class ValuationModels:
                 return 0
             
             # Get sector peers and median P/E
-            peer_data = self.get_sector_peers(num_peers=10)
+            peer_data = self.get_sector_peers(num_peers=10, known_sector=known_sector)
             median_pe = peer_data.get('median_pe')
             
             if median_pe is None or median_pe <= 0:
@@ -858,7 +883,7 @@ class ValuationModels:
             print(f"❌ P/E Valuation error: {e}")
             return 0
 
-    def calculate_justified_pb(self, assumptions):
+    def calculate_justified_pb(self, assumptions, known_sector=None):
         """
         Calculate Comparable P/B Valuation
         Method: Find median P/B of top 10 stocks in same sector (by market cap)
@@ -914,7 +939,7 @@ class ValuationModels:
                 return 0
             
             # Get sector peers and median P/B (reuse cached data from P/E call)
-            peer_data = self.get_sector_peers(num_peers=10)
+            peer_data = self.get_sector_peers(num_peers=10, known_sector=known_sector)
             median_pb = peer_data.get('median_pb')
             
             if median_pb is None or median_pb <= 0:
