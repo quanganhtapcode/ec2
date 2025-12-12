@@ -9,6 +9,8 @@ import logging
 from datetime import datetime
 from vnstock import Listing
 
+import pandas as pd # Ensure pandas is imported
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -22,32 +24,38 @@ def update_ticker_data():
         logger.info("Starting ticker data update...")
         listing = Listing()
         
-        # Fetch all stocks with industry info
-        # symbols_by_industries returns DataFrame with columns like:
-        # symbol, organ_name, icb_name2, icb_name3, ...
-        logger.info("Fetching symbols from vnstock...")
-        df = listing.symbols_by_industries()
+        # 1. Fetch Industries (for Sector info)
+        logger.info("Fetching industries...")
+        df_industries = listing.symbols_by_industries()
         
-        if df is None or df.empty:
-            logger.error("Failed to fetch data or data is empty")
+        # 2. Fetch Exchanges (for Exchange info)
+        logger.info("Fetching exchanges...")
+        df_exchanges = listing.symbols_by_exchange()
+        
+        if df_industries is None or df_industries.empty:
+            logger.error("Failed to fetch industry data")
             return False
+
+        # 3. Merge Data
+        if df_exchanges is not None and not df_exchanges.empty:
+            logger.info("Merging industry and exchange data...")
+            # Keep only necessary columns from exchange df
+            df_ex_clean = df_exchanges[['symbol', 'exchange']]
+            # Merge left (keep all industries)
+            df = pd.merge(df_industries, df_ex_clean, on='symbol', how='left')
+        else:
+            logger.warning("Failed to fetch exchange data, using industry data only")
+            df = df_industries
             
-        logger.info(f"Fetched {len(df)} symbols")
-        
-        # Standardize column names
-        # We need: symbol, name, sector (icb_name2), exchange
-        
-        # Check available columns
-        cols = df.columns.tolist()
-        logger.info(f"Available columns: {cols}")
+        logger.info(f"Processed {len(df)} symbols")
         
         tickers = []
         for _, row in df.iterrows():
             # Sector: Prefer ICB Level 2 (Industry), fallback to Level 3 (Supersector)
             sector = row.get('icb_name2') or row.get('icb_name3') or 'Unknown'
             
-            # Exchange handling
-            exchange = row.get('com_group_code') or row.get('exchange') or 'Unknown'
+            # Exchange: Now available from merge, fallback to Unknown
+            exchange = row.get('exchange') or 'Unknown'
             
             ticker = {
                 "symbol": row.get('symbol'),

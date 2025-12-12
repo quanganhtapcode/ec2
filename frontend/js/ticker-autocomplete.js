@@ -51,21 +51,8 @@ class TickerAutocomplete {
 
     async loadTickerData() {
         try {
-            // Try fetching from backend API first (for latest data from VPS)
-            // Use relative path '/api/tickers' which is proxied mostly, 
-            // or absolute if AppConfig defined (handled by fetch usually if proxy set)
-            let response;
-            try {
-                response = await fetch('/api/tickers');
-            } catch (e) {
-                console.warn('API /api/tickers unreachable, falling back to static file');
-            }
-
-            // Fallback to static file if API failed or returned error
-            if (!response || !response.ok) {
-                console.log('Falling back to static ticker_data.json');
-                response = await fetch('ticker_data.json');
-            }
+            // Fetch from static file (served by Vercel CDN) to save VPS bandwidth
+            const response = await fetch('ticker_data.json');
 
             if (response.ok) {
                 const data = await response.json();

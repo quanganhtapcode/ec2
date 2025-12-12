@@ -1,9 +1,10 @@
 [Unit]
-Description=Daily Stock Ticker Update Service
+Description=Daily Stock Ticker and Sector Peers Update Service
 After=network.target
 
 [Service]
 Type=oneshot
 User=root
 WorkingDirectory=/root/apps/ec2
-ExecStart=/root/apps/ec2/.venv/bin/python3 /root/apps/ec2/update_tickers_daily.py
+# Run update_tickers first, if successful, run generate_sector_peers
+ExecStart=/bin/sh -c '/root/apps/ec2/.venv/bin/python3 /root/apps/ec2/update_tickers_daily.py && /root/apps/ec2/.venv/bin/python3 /root/apps/ec2/generate_sector_peers.py'
