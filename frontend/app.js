@@ -891,6 +891,7 @@ class StockValuationApp {
     recalculateWeightedAverage() {
         // Recalculate only the weighted average when weights change
         if (!this.valuationCache || !this.valuationCache.results) return;
+        if (!this.valuationResults) return;  // Safety check
 
         const results = this.valuationCache.results;
         const totalWeight = this.modelWeights.fcfe + this.modelWeights.fcff +
