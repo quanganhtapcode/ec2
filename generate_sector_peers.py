@@ -1,5 +1,5 @@
 """
-Script to generate sector_peers.json from vnstock Screener API
+Script to generate sector_peers.json from vnstock Screener API or local JSON files
 Gets real-time P/E, P/B, market cap for accurate sector comparable analysis
 Run this periodically (daily/weekly) to update the data
 """
@@ -11,20 +11,59 @@ from collections import defaultdict
 
 def generate_sector_peers_from_screener():
     """Generate sector peers data from vnstock Screener API (real-time)"""
-    from vnstock import Screener
     
-    print("Fetching data from Screener API...")
+    # Try multiple import methods for different vnstock versions
+    df = None
     
-    screener = Screener()
-    df = screener.stock(params={"exchangeName": "HOSE,HNX,UPCOM"}, limit=1700)
+    # Method 1: vnstock 3.3.0+ Screener
+    try:
+        from vnstock import Screener
+        print("Using vnstock Screener class...")
+        screener = Screener()
+        # Try different parameter formats
+        try:
+            df = screener.stock(params={"exchangeName": "HOSE,HNX,UPCOM"}, limit=1700)
+        except Exception as e1:
+            print(f"Method 1 failed: {e1}")
+            try:
+                # Try without params
+                df = screener.stock(limit=1700)
+            except Exception as e2:
+                print(f"Method 1b failed: {e2}")
+    except ImportError:
+        print("Screener class not found in vnstock")
+    
+    # Method 2: Try using vnstock.Explorer
+    if df is None:
+        try:
+            from vnstock import Vnstock
+            print("Using Vnstock.stock().listing approach...")
+            stock = Vnstock().stock(symbol='VNM', source='VCI')
+            # Get all symbols from listing
+            listing_df = stock.listing.symbols_by_industries()
+            if listing_df is not None and not listing_df.empty:
+                df = listing_df
+                print(f"Got {len(df)} stocks from listing")
+        except Exception as e:
+            print(f"Method 2 failed: {e}")
+    
+    # Method 3: Use stock screener with different approach
+    if df is None:
+        try:
+            from vnstock import MSNComponents
+            print("Using MSN Components...")
+            msn = MSNComponents()
+            df = msn.stock_screener()
+        except Exception as e:
+            print(f"Method 3 failed: {e}")
+    
+    if df is None or df.empty:
+        raise Exception("All API methods failed. Use --json flag to use local data.")
     
     print(f"Retrieved {len(df)} stocks")
     print(f"Columns: {list(df.columns)}")
     
-    # Map column names (Screener uses different names)
-    # Common mappings: ticker, industry, pe, pb, marketCap/mcap, eps
-    
-    # Try to identify correct column names
+    # Map column names (different sources use different names)
     symbol_col = None
     industry_col = None
     pe_col = None
@@ -32,16 +71,16 @@ def generate_sector_peers_from_screener():
     mcap_col = None
     
     for col in df.columns:
-        col_lower = col.lower()
-        if col_lower in ['ticker', 'symbol', 'code']:
+        col_lower = str(col).lower()
+        if col_lower in ['ticker', 'symbol', 'code', 'mã']:
             symbol_col = col
-        elif col_lower in ['industry', 'industryname', 'sector']:
+        elif col_lower in ['industry', 'industryname', 'sector', 'icb_name3', 'ngành']:
             industry_col = col
-        elif col_lower == 'pe':
+        elif col_lower in ['pe', 'p/e']:
             pe_col = col
-        elif col_lower == 'pb':
+        elif col_lower in ['pb', 'p/b']:
             pb_col = col
-        elif col_lower in ['marketcap', 'mcap', 'market_cap']:
+        elif col_lower in ['marketcap', 'mcap', 'market_cap', 'vốn hóa']:
             mcap_col = col
     
     print(f"\nColumn mapping found:")
@@ -54,6 +93,12 @@ def generate_sector_peers_from_screener():
     if not symbol_col or not industry_col:
         print("ERROR: Cannot find required columns (symbol, industry)")
         print("Available columns:", list(df.columns))
+        
+        # If we have listing data, try to enrich it with financial data
+        if symbol_col:
+            print("\nAttempting to build sector peers from listing + individual stock data...")
+            return generate_sector_peers_from_listing(df, symbol_col, industry_col)
+        
         return None
     
     # Group by industry
@@ -70,13 +115,21 @@ def generate_sector_peers_from_screener():
         pb = row.get(pb_col) if pb_col else None
         mcap = row.get(mcap_col) if mcap_col else 0
         
+        # Convert to float safely
+        try:
+            pe = float(pe) if pe and not np.isnan(float(pe)) else None
+            pb = float(pb) if pb and not np.isnan(float(pb)) else None
+            mcap = float(mcap) if mcap else 0
+        except:
+            continue
+        
         # Only include stocks with valid P/E and P/B
         if pe and pb and pe > 0 and pb > 0:
             sectors[industry].append({
                 'symbol': symbol,
-                'market_cap': float(mcap) if mcap else 0,
-                'pe_ratio': float(pe),
-                'pb_ratio': float(pb)
+                'market_cap': mcap,
+                'pe_ratio': pe,
+                'pb_ratio': pb
             })
     
     # Process each sector
@@ -124,6 +177,13 @@ def generate_sector_peers_from_screener():
     return sector_peers
 
 
+def generate_sector_peers_from_listing(df, symbol_col, industry_col=None):
+    """Build sector peers by fetching individual stock data"""
+    # This is a fallback that's slower but more reliable
+    print("This method requires fetching individual stock data - skipping for now")
+    return None
+
+
 def generate_sector_peers_from_json():
     """Generate sector peers data from local JSON files (offline)"""
     
@@ -139,11 +199,13 @@ def generate_sector_peers_from_json():
     
     print(f"Reading stock files from: {stocks_folder}")
     
+    file_count = 0
     for filename in os.listdir(stocks_folder):
         if not filename.endswith('.json'):
             continue
         
         symbol = filename.replace('.json', '')
+        file_count += 1
         
         try:
             filepath = os.path.join(stocks_folder, filename)
@@ -168,6 +230,8 @@ def generate_sector_peers_from_json():
                 })
         except Exception as e:
             continue
+    
+    print(f"Read {file_count} stock files")
     
     # Process each sector
     sector_peers = {}
@@ -235,7 +299,12 @@ if __name__ == "__main__":
     
     if use_api:
         print("=== Using Screener API (real-time) ===\n")
-        sector_peers = generate_sector_peers_from_screener()
+        try:
+            sector_peers = generate_sector_peers_from_screener()
+        except Exception as e:
+            print(f"API failed: {e}")
+            print("\nFalling back to JSON files...")
+            sector_peers = generate_sector_peers_from_json()
     elif use_json:
         print("=== Using local JSON files (offline) ===\n")
         sector_peers = generate_sector_peers_from_json()
@@ -261,3 +330,4 @@ if __name__ == "__main__":
             print(f"{sector[:35]:<35} {data['peer_count']:>6} {data['median_pe']:>10.2f} {data['median_pb']:>10.2f}")
     else:
         print("Failed to generate sector peers data")
+        sys.exit(1)

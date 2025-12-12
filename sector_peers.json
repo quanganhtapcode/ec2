@@ -1,1263 +1,1407 @@
 {
   "Hóa chất": {
-    "median_pe": 10.45,
-    "median_pb": 1.75,
-    "peer_count": 10,
-    "total_in_sector": 49,
-    "peers": [
-      {
-        "symbol": "GVR",
-        "market_cap": 107000.0,
-        "pe_ratio": 17.0,
-        "pb_ratio": 1.8
-      },
-      {
-        "symbol": "DGC",
-        "market_cap": 36079.0,
-        "pe_ratio": 11.5,
-        "pb_ratio": 2.3
-      },
-      {
-        "symbol": "DCM",
-        "market_cap": 17655.0,
-        "pe_ratio": 9.3,
-        "pb_ratio": 1.7
-      },
-      {
-        "symbol": "DPM",
-        "market_cap": 15400.0,
-        "pe_ratio": 18.7,
-        "pb_ratio": 1.4
-      },
-      {
-        "symbol": "PHR",
-        "market_cap": 7737.0,
-        "pe_ratio": 11.5,
-        "pb_ratio": 1.9
-      },
-      {
-        "symbol": "DDV",
-        "market_cap": 3636.0,
-        "pe_ratio": 6.6,
-        "pb_ratio": 1.7
-      },
-      {
-        "symbol": "AAA",
-        "market_cap": 3402.0,
-        "pe_ratio": 9.2,
-        "pb_ratio": 0.6
-      },
-      {
-        "symbol": "CSV",
-        "market_cap": 3271.0,
-        "pe_ratio": 14.5,
-        "pb_ratio": 2.1
-      },
-      {
-        "symbol": "DPR",
-        "market_cap": 3271.0,
-        "pe_ratio": 9.4,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "PAT",
-        "market_cap": 2729.0,
-        "pe_ratio": 7.7,
-        "pb_ratio": 3.6
-      }
-    ]
-  },
-  "Tài nguyên Cơ bản": {
-    "median_pe": 10.95,
-    "median_pb": 1.15,
-    "peer_count": 10,
-    "total_in_sector": 63,
-    "peers": [
-      {
-        "symbol": "HPG",
-        "market_cap": 204551.0,
-        "pe_ratio": 14.2,
-        "pb_ratio": 1.6
-      },
-      {
-        "symbol": "KSV",
-        "market_cap": 22100.0,
-        "pe_ratio": 11.6,
-        "pb_ratio": 4.8
-      },
-      {
-        "symbol": "HSG",
-        "market_cap": 10215.0,
-        "pe_ratio": 14.0,
-        "pb_ratio": 0.9
-      },
-      {
-        "symbol": "NKG",
-        "market_cap": 6982.0,
-        "pe_ratio": 31.0,
-        "pb_ratio": 0.9
-      },
-      {
-        "symbol": "VIF",
-        "market_cap": 5635.0,
-        "pe_ratio": 21.8,
-        "pb_ratio": 1.2
-      },
-      {
-        "symbol": "TVN",
-        "market_cap": 5172.0,
-        "pe_ratio": 7.8,
-        "pb_ratio": 0.6
-      },
-      {
-        "symbol": "PTB",
-        "market_cap": 3441.0,
-        "pe_ratio": 7.4,
-        "pb_ratio": 1.1
-      },
-      {
-        "symbol": "DHC",
-        "market_cap": 3168.0,
-        "pe_ratio": 10.3,
-        "pb_ratio": 1.5
-      },
-      {
-        "symbol": "HGM",
-        "market_cap": 3040.0,
-        "pe_ratio": 6.4,
-        "pb_ratio": 5.7
-      },
-      {
-        "symbol": "GDA",
-        "market_cap": 2566.0,
-        "pe_ratio": 10.0,
-        "pb_ratio": 0.7
-      }
-    ]
-  },
-  "Thực phẩm và đồ uống": {
-    "median_pe": 21.15,
-    "median_pb": 2.6,
-    "peer_count": 10,
-    "total_in_sector": 94,
-    "peers": [
-      {
-        "symbol": "MCH",
-        "market_cap": 226557.0,
-        "pe_ratio": 32.8,
-        "pb_ratio": 14.2
-      },
-      {
-        "symbol": "VNM",
-        "market_cap": 131876.0,
-        "pe_ratio": 15.2,
-        "pb_ratio": 3.9
-      },
-      {
-        "symbol": "MSN",
-        "market_cap": 111335.0,
-        "pe_ratio": 33.5,
-        "pb_ratio": 3.3
-      },
-      {
-        "symbol": "SAB",
-        "market_cap": 66052.0,
-        "pe_ratio": 15.3,
-        "pb_ratio": 2.9
-      },
-      {
-        "symbol": "HAG",
-        "market_cap": 22813.0,
-        "pe_ratio": 15.7,
-        "pb_ratio": 1.8
-      },
-      {
-        "symbol": "SBT",
-        "market_cap": 21164.0,
-        "pe_ratio": 26.6,
-        "pb_ratio": 1.9
-      },
-      {
-        "symbol": "QNS",
-        "market_cap": 16518.0,
-        "pe_ratio": 8.5,
-        "pb_ratio": 1.6
-      },
-      {
-        "symbol": "KDC",
-        "market_cap": 15157.0,
-        "pe_ratio": 186.6,
-        "pb_ratio": 2.3
-      },
-      {
-        "symbol": "VSF",
-        "market_cap": 12646.0,
-        "pe_ratio": 732.0,
-        "pb_ratio": 5.5
-      },
-      {
-        "symbol": "VHC",
-        "market_cap": 12480.0,
-        "pe_ratio": 8.0,
-        "pb_ratio": 1.3
-      }
-    ]
-  },
-  "Dịch vụ tài chính": {
-    "median_pe": 19.1,
-    "median_pb": 1.9,
+    "median_pe": 14.89,
+    "median_pb": 1.93,
     "peer_count": 10,
     "total_in_sector": 37,
     "peers": [
       {
-        "symbol": "SSI",
-        "market_cap": 72865.0,
-        "pe_ratio": 19.6,
-        "pb_ratio": 2.3
+        "symbol": "GVR",
+        "market_cap": 113600000000000.0,
+        "pe_ratio": 28.82,
+        "pb_ratio": 2.15,
+        "name": "Tập đoàn Công nghiệp Cao su Việt Nam - Công ty Cổ phần"
       },
       {
-        "symbol": "VIX",
-        "market_cap": 35223.0,
-        "pe_ratio": 8.3,
-        "pb_ratio": 1.7
+        "symbol": "DGC",
+        "market_cap": 37750061028400.0,
+        "pe_ratio": 13.45,
+        "pb_ratio": 2.83,
+        "name": "Công ty Cổ phần Tập đoàn Hóa chất Đức Giang"
       },
       {
-        "symbol": "VND",
-        "market_cap": 28315.0,
-        "pe_ratio": 14.7,
-        "pb_ratio": 1.4
+        "symbol": "DCM",
+        "market_cap": 18211360000000.0,
+        "pe_ratio": 14.56,
+        "pb_ratio": 1.8,
+        "name": "Công ty Cổ phần - Tổng Công ty Phân bón Dầu Khí Cà Mau"
       },
       {
-        "symbol": "HCM",
-        "market_cap": 24893.0,
-        "pe_ratio": 22.9,
-        "pb_ratio": 2.3
+        "symbol": "DPM",
+        "market_cap": 9334890000000.0,
+        "pe_ratio": 23.27,
+        "pb_ratio": 0.85,
+        "name": "Tổng Công ty Phân bón và Hóa chất Dầu khí - Công ty Cổ phần"
       },
       {
-        "symbol": "VCI",
-        "market_cap": 24785.0,
-        "pe_ratio": 22.2,
-        "pb_ratio": 2.0
+        "symbol": "PHR",
+        "market_cap": 7737004205800.0,
+        "pe_ratio": 18.34,
+        "pb_ratio": 2.07,
+        "name": "Công ty Cổ phần Cao su Phước Hòa"
       },
       {
-        "symbol": "SHS",
-        "market_cap": 19159.0,
-        "pe_ratio": 14.1,
-        "pb_ratio": 1.6
+        "symbol": "CSV",
+        "market_cap": 3519422133500.0,
+        "pe_ratio": 16.18,
+        "pb_ratio": 2.36,
+        "name": "Công ty Cổ phần Hóa chất Cơ bản miền Nam"
       },
       {
-        "symbol": "MBS",
-        "market_cap": 18378.0,
-        "pe_ratio": 18.6,
-        "pb_ratio": 2.6
+        "symbol": "DPR",
+        "market_cap": 3301665416000.0,
+        "pe_ratio": 15.22,
+        "pb_ratio": 1.33,
+        "name": "Công ty Cổ phần Cao su Đồng Phú"
       },
       {
-        "symbol": "FTS",
-        "market_cap": 11556.0,
-        "pe_ratio": 27.0,
-        "pb_ratio": 2.7
+        "symbol": "AAA",
+        "market_cap": 3019968518400.0,
+        "pe_ratio": 9.07,
+        "pb_ratio": 0.57,
+        "name": "Công ty Cổ phần Nhựa An Phát Xanh"
       },
       {
-        "symbol": "BSI",
-        "market_cap": 9618.0,
-        "pe_ratio": 19.6,
-        "pb_ratio": 1.8
+        "symbol": "BFC",
+        "market_cap": 2629727678000.0,
+        "pe_ratio": 8.05,
+        "pb_ratio": 2.09,
+        "name": "Công ty Cổ phần Phân bón Bình Điền"
       },
       {
-        "symbol": "EVF",
-        "market_cap": 9013.0,
-        "pe_ratio": 10.4,
-        "pb_ratio": 0.9
-      }
-    ]
-  },
-  "Hàng cá nhân & Gia dụng": {
-    "median_pe": 9.6,
-    "median_pb": 1.3,
-    "peer_count": 10,
-    "total_in_sector": 47,
-    "peers": [
-      {
-        "symbol": "PNJ",
-        "market_cap": 30055.0,
-        "pe_ratio": 12.8,
-        "pb_ratio": 2.5
-      },
-      {
-        "symbol": "VGT",
-        "market_cap": 6216.0,
-        "pe_ratio": 8.5,
-        "pb_ratio": 0.9
-      },
-      {
-        "symbol": "TLG",
-        "market_cap": 5397.0,
-        "pe_ratio": 11.6,
-        "pb_ratio": 1.9
-      },
-      {
-        "symbol": "MSH",
-        "market_cap": 3758.0,
-        "pe_ratio": 6.3,
-        "pb_ratio": 1.7
-      },
-      {
-        "symbol": "TCM",
-        "market_cap": 3047.0,
-        "pe_ratio": 10.7,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "TNG",
-        "market_cap": 2382.0,
-        "pe_ratio": 6.7,
-        "pb_ratio": 1.2
-      },
-      {
-        "symbol": "STK",
-        "market_cap": 2333.0,
-        "pe_ratio": 93.4,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "LIX",
-        "market_cap": 2249.0,
-        "pe_ratio": 11.1,
-        "pb_ratio": 2.3
-      },
-      {
-        "symbol": "RAL",
-        "market_cap": 2166.0,
-        "pe_ratio": 5.0,
-        "pb_ratio": 0.7
-      },
-      {
-        "symbol": "PPH",
-        "market_cap": 2073.0,
-        "pe_ratio": 4.8,
-        "pb_ratio": 1.0
-      }
-    ]
-  },
-  "Bất động sản": {
-    "median_pe": 29.35,
-    "median_pb": 2.6,
-    "peer_count": 10,
-    "total_in_sector": 85,
-    "peers": [
-      {
-        "symbol": "VIC",
-        "market_cap": 1146657.0,
-        "pe_ratio": 129.3,
-        "pb_ratio": 7.9
-      },
-      {
-        "symbol": "VHM",
-        "market_cap": 425117.0,
-        "pe_ratio": 16.0,
-        "pb_ratio": 2.0
-      },
-      {
-        "symbol": "BCM",
-        "market_cap": 68206.0,
-        "pe_ratio": 18.4,
-        "pb_ratio": 3.2
-      },
-      {
-        "symbol": "VRE",
-        "market_cap": 68170.0,
-        "pe_ratio": 14.0,
-        "pb_ratio": 1.5
-      },
-      {
-        "symbol": "KSF",
-        "market_cap": 66584.0,
-        "pe_ratio": 42.5,
-        "pb_ratio": 5.6
-      },
-      {
-        "symbol": "KDH",
-        "market_cap": 36472.0,
-        "pe_ratio": 38.2,
-        "pb_ratio": 2.0
-      },
-      {
-        "symbol": "KBC",
-        "market_cap": 31266.0,
-        "pe_ratio": 20.5,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "SSH",
-        "market_cap": 25762.0,
-        "pe_ratio": 149.4,
-        "pb_ratio": 4.6
-      },
-      {
-        "symbol": "VEF",
-        "market_cap": 21975.0,
-        "pe_ratio": 1.4,
-        "pb_ratio": 3.3
-      },
-      {
-        "symbol": "PDR",
-        "market_cap": 20968.0,
-        "pe_ratio": 103.4,
-        "pb_ratio": 1.8
-      }
-    ]
-  },
-  "Ngân hàng": {
-    "median_pe": 9.3,
-    "median_pb": 1.55,
-    "peer_count": 10,
-    "total_in_sector": 25,
-    "peers": [
-      {
-        "symbol": "VCB",
-        "market_cap": 486300.0,
-        "pe_ratio": 13.8,
-        "pb_ratio": 2.2
-      },
-      {
-        "symbol": "CTG",
-        "market_cap": 271185.0,
-        "pe_ratio": 8.1,
-        "pb_ratio": 1.6
-      },
-      {
-        "symbol": "BID",
-        "market_cap": 264705.0,
-        "pe_ratio": 10.0,
-        "pb_ratio": 1.6
-      },
-      {
-        "symbol": "TCB",
-        "market_cap": 238806.0,
-        "pe_ratio": 10.9,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "VPB",
-        "market_cap": 230084.0,
-        "pe_ratio": 11.1,
-        "pb_ratio": 1.4
-      },
-      {
-        "symbol": "MBB",
-        "market_cap": 202583.0,
-        "pe_ratio": 8.3,
-        "pb_ratio": 1.5
-      },
-      {
-        "symbol": "LPB",
-        "market_cap": 132038.0,
-        "pe_ratio": 12.7,
-        "pb_ratio": 3.0
-      },
-      {
-        "symbol": "HDB",
-        "market_cap": 124080.0,
-        "pe_ratio": 8.6,
-        "pb_ratio": 1.8
-      },
-      {
-        "symbol": "ACB",
-        "market_cap": 123793.0,
-        "pe_ratio": 7.1,
-        "pb_ratio": 1.4
-      },
-      {
-        "symbol": "STB",
-        "market_cap": 91621.0,
-        "pe_ratio": 7.5,
-        "pb_ratio": 1.5
-      }
-    ]
-  },
-  "Viễn thông": {
-    "median_pe": 14.2,
-    "median_pb": 1.6,
-    "peer_count": 5,
-    "total_in_sector": 5,
-    "peers": [
-      {
-        "symbol": "VGI",
-        "market_cap": 215167.0,
-        "pe_ratio": 23.2,
-        "pb_ratio": 5.7
-      },
-      {
-        "symbol": "FOX",
-        "market_cap": 46197.0,
-        "pe_ratio": 14.2,
-        "pb_ratio": 4.5
-      },
-      {
-        "symbol": "TTN",
-        "market_cap": 654.0,
-        "pe_ratio": 8.9,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "ABC",
-        "market_cap": 279.0,
-        "pe_ratio": 31.6,
-        "pb_ratio": 0.6
-      },
-      {
-        "symbol": "PIA",
-        "market_cap": 105.0,
-        "pe_ratio": 7.3,
-        "pb_ratio": 1.6
-      }
-    ]
-  },
-  "Bảo hiểm": {
-    "median_pe": 9.3,
-    "median_pb": 1.35,
-    "peer_count": 10,
-    "total_in_sector": 12,
-    "peers": [
-      {
-        "symbol": "BVH",
-        "market_cap": 40308.0,
-        "pe_ratio": 15.2,
-        "pb_ratio": 1.6
-      },
-      {
-        "symbol": "PVI",
-        "market_cap": 22206.0,
-        "pe_ratio": 18.4,
-        "pb_ratio": 2.5
-      },
-      {
-        "symbol": "PTI",
-        "market_cap": 4703.0,
-        "pe_ratio": 15.6,
-        "pb_ratio": 1.8
-      },
-      {
-        "symbol": "BIC",
-        "market_cap": 4435.0,
-        "pe_ratio": 7.8,
-        "pb_ratio": 1.4
-      },
-      {
-        "symbol": "VNR",
-        "market_cap": 4113.0,
-        "pe_ratio": 8.7,
-        "pb_ratio": 1.0
-      },
-      {
-        "symbol": "MIG",
-        "market_cap": 3617.0,
-        "pe_ratio": 9.3,
-        "pb_ratio": 1.4
-      },
-      {
-        "symbol": "BMI",
-        "market_cap": 2785.0,
-        "pe_ratio": 9.3,
-        "pb_ratio": 1.0
-      },
-      {
-        "symbol": "PRE",
-        "market_cap": 2265.0,
-        "pe_ratio": 8.6,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "PGI",
-        "market_cap": 2190.0,
-        "pe_ratio": 9.4,
-        "pb_ratio": 1.2
-      },
-      {
-        "symbol": "ABI",
-        "market_cap": 2011.0,
-        "pe_ratio": 7.3,
-        "pb_ratio": 1.2
+        "symbol": "VFG",
+        "market_cap": 2281789385800.0,
+        "pe_ratio": 5.33,
+        "pb_ratio": 1.47,
+        "name": "Công ty Cổ phần Khử trùng Việt Nam"
       }
     ]
   },
   "Hàng & Dịch vụ Công nghiệp": {
-    "median_pe": 17.8,
-    "median_pb": 2.35,
+    "median_pe": 18.49,
+    "median_pb": 1.93,
     "peer_count": 10,
-    "total_in_sector": 144,
+    "total_in_sector": 95,
     "peers": [
       {
-        "symbol": "ACV",
-        "market_cap": 190501.0,
-        "pe_ratio": 17.9,
-        "pb_ratio": 2.9
-      },
-      {
         "symbol": "GEE",
-        "market_cap": 74701.0,
-        "pe_ratio": 22.6,
-        "pb_ratio": 10.0
-      },
-      {
-        "symbol": "MVN",
-        "market_cap": 54562.0,
-        "pe_ratio": 31.6,
-        "pb_ratio": 4.0
-      },
-      {
-        "symbol": "VEA",
-        "market_cap": 45442.0,
-        "pe_ratio": 5.9,
-        "pb_ratio": 1.5
+        "market_cap": 52200000000000.0,
+        "pe_ratio": 32.87,
+        "pb_ratio": 8.16,
+        "name": "Công ty Cổ phần Điện lực Gelex"
       },
       {
         "symbol": "GEX",
-        "market_cap": 37450.0,
-        "pe_ratio": 17.9,
-        "pb_ratio": 2.3
+        "market_cap": 38760283664300.0,
+        "pe_ratio": 23.81,
+        "pb_ratio": 2.78,
+        "name": "Công ty Cổ phần Tập đoàn Gelex"
       },
       {
         "symbol": "GMD",
-        "market_cap": 24737.0,
-        "pe_ratio": 17.7,
-        "pb_ratio": 2.0
-      },
-      {
-        "symbol": "VTP",
-        "market_cap": 11776.0,
-        "pe_ratio": 30.8,
-        "pb_ratio": 6.7
-      },
-      {
-        "symbol": "PHP",
-        "market_cap": 10484.0,
-        "pe_ratio": 13.9,
-        "pb_ratio": 1.7
+        "market_cap": 25873913062500.0,
+        "pe_ratio": 19.03,
+        "pb_ratio": 2.09,
+        "name": "Công ty Cổ phần Gemadept"
       },
       {
         "symbol": "HAH",
-        "market_cap": 10013.0,
-        "pe_ratio": 8.5,
-        "pb_ratio": 2.4
+        "market_cap": 7887300915000.0,
+        "pe_ratio": 12.63,
+        "pb_ratio": 2.41,
+        "name": "Công ty Cổ phần Vận tải và Xếp dỡ Hải An"
+      },
+      {
+        "symbol": "TMS",
+        "market_cap": 7087211874900.0,
+        "pe_ratio": 34.99,
+        "pb_ratio": 1.76,
+        "name": "Công ty Cổ phần Transimex"
       },
       {
         "symbol": "PVT",
-        "market_cap": 8482.0,
-        "pe_ratio": 8.6,
-        "pb_ratio": 1.0
+        "market_cap": 6586233803000.0,
+        "pe_ratio": 6.2,
+        "pb_ratio": 0.85,
+        "name": "Tổng Công ty Cổ phần Vận tải Dầu khí"
+      },
+      {
+        "symbol": "VSC",
+        "market_cap": 6381229222750.0,
+        "pe_ratio": 20.64,
+        "pb_ratio": 1.41,
+        "name": "Công ty Cổ phần Container Việt Nam"
+      },
+      {
+        "symbol": "IPA",
+        "market_cap": 4169797612500.0,
+        "pe_ratio": 10.13,
+        "pb_ratio": 1.01,
+        "name": "Công ty Cổ phần Tập đoàn Đầu tư I.P.A"
+      },
+      {
+        "symbol": "PDN",
+        "market_cap": 3482127352000.0,
+        "pe_ratio": 10.61,
+        "pb_ratio": 2.81,
+        "name": "Công ty Cổ phần Cảng Đồng Nai"
+      },
+      {
+        "symbol": "STG",
+        "market_cap": 3438867495000.0,
+        "pe_ratio": 17.95,
+        "pb_ratio": 1.51,
+        "name": "Công ty Cổ phần Kho Vận Miền Nam"
       }
     ]
   },
-  "Xây dựng và Vật liệu": {
-    "median_pe": 12.3,
-    "median_pb": 2.4,
+  "Thực phẩm và đồ uống": {
+    "median_pe": 17.73,
+    "median_pb": 2.45,
     "peer_count": 10,
-    "total_in_sector": 175,
+    "total_in_sector": 46,
     "peers": [
       {
-        "symbol": "VGC",
-        "market_cap": 19077.0,
-        "pe_ratio": 13.8,
-        "pb_ratio": 2.1
+        "symbol": "VNM",
+        "market_cap": 131249201946000.0,
+        "pe_ratio": 13.97,
+        "pb_ratio": 4.07,
+        "name": "Công ty Cổ phần Sữa Việt Nam"
       },
       {
-        "symbol": "CII",
-        "market_cap": 15886.0,
-        "pe_ratio": 363.4,
-        "pb_ratio": 1.8
+        "symbol": "MSN",
+        "market_cap": 118008391800000.0,
+        "pe_ratio": 59.03,
+        "pb_ratio": 3.9,
+        "name": "Công ty Cổ phần Tập đoàn Masan"
       },
       {
-        "symbol": "VCG",
-        "market_cap": 15677.0,
-        "pe_ratio": 3.9,
-        "pb_ratio": 1.4
+        "symbol": "SAB",
+        "market_cap": 60408687721200.0,
+        "pe_ratio": 14.37,
+        "pb_ratio": 2.59,
+        "name": "Tổng Công ty Cổ phần Bia - Rượu - Nước Giải khát Sài Gòn"
       },
       {
-        "symbol": "LGC",
-        "market_cap": 13364.0,
-        "pe_ratio": 16.7,
-        "pb_ratio": 3.3
+        "symbol": "SBT",
+        "market_cap": 19243336231500.0,
+        "pe_ratio": 23.07,
+        "pb_ratio": 1.85,
+        "name": "Công ty Cổ phần Thành Thành Công - Biên Hòa"
       },
       {
-        "symbol": "BMP",
-        "market_cap": 12983.0,
-        "pe_ratio": 10.8,
-        "pb_ratio": 4.1
+        "symbol": "HAG",
+        "market_cap": 18664309264550.0,
+        "pe_ratio": 18.42,
+        "pb_ratio": 2.13,
+        "name": "Công ty Cổ phần Hoàng Anh Gia Lai"
       },
       {
-        "symbol": "CC1",
-        "market_cap": 11937.0,
-        "pe_ratio": 33.7,
-        "pb_ratio": 2.7
+        "symbol": "KDC",
+        "market_cap": 15272792853200.0,
+        "pe_ratio": 641.43,
+        "pb_ratio": 2.31,
+        "name": "Công ty Cổ phần Tập đoàn KIDO"
       },
       {
-        "symbol": "SNZ",
-        "market_cap": 11822.0,
-        "pe_ratio": 9.5,
-        "pb_ratio": 1.7
+        "symbol": "VHC",
+        "market_cap": 13152955117400.0,
+        "pe_ratio": 10.73,
+        "pb_ratio": 1.52,
+        "name": "Công ty Cổ phần Vĩnh Hoàn"
       },
       {
-        "symbol": "NTP",
-        "market_cap": 10878.0,
-        "pe_ratio": 10.8,
-        "pb_ratio": 2.7
+        "symbol": "DBC",
+        "market_cap": 8751598141750.0,
+        "pe_ratio": 15.38,
+        "pb_ratio": 1.29,
+        "name": "Công ty Cổ phần Tập đoàn Dabaco Việt Nam"
       },
       {
-        "symbol": "CTR",
-        "market_cap": 9608.0,
-        "pe_ratio": 16.4,
-        "pb_ratio": 4.5
+        "symbol": "BAF",
+        "market_cap": 7708447954500.0,
+        "pe_ratio": 24.31,
+        "pb_ratio": 2.63,
+        "name": "Công ty Cổ phần Nông nghiệp BAF Việt Nam"
       },
       {
-        "symbol": "SJG",
-        "market_cap": 8991.0,
-        "pe_ratio": 10.2,
-        "pb_ratio": 1.2
+        "symbol": "VCF",
+        "market_cap": 7609606350500.0,
+        "pe_ratio": 17.05,
+        "pb_ratio": 4.02,
+        "name": "Công ty Cổ phần VinaCafé Biên Hòa"
       }
     ]
   },
-  "Truyền thông": {
-    "median_pe": 14.05,
-    "median_pb": 1.15,
-    "peer_count": 10,
-    "total_in_sector": 23,
-    "peers": [
-      {
-        "symbol": "YEG",
-        "market_cap": 2455.0,
-        "pe_ratio": 18.2,
-        "pb_ratio": 1.2
-      },
-      {
-        "symbol": "VNB",
-        "market_cap": 1228.0,
-        "pe_ratio": 14.5,
-        "pb_ratio": 1.1
-      },
-      {
-        "symbol": "FOC",
-        "market_cap": 1186.0,
-        "pe_ratio": 8.1,
-        "pb_ratio": 1.6
-      },
-      {
-        "symbol": "FHS",
-        "market_cap": 510.0,
-        "pe_ratio": 8.5,
-        "pb_ratio": 2.4
-      },
-      {
-        "symbol": "STH",
-        "market_cap": 399.0,
-        "pe_ratio": 242.0,
-        "pb_ratio": 2.0
-      },
-      {
-        "symbol": "EID",
-        "market_cap": 350.0,
-        "pe_ratio": 6.6,
-        "pb_ratio": 0.7
-      },
-      {
-        "symbol": "DST",
-        "market_cap": 293.0,
-        "pe_ratio": 116.8,
-        "pb_ratio": 0.7
-      },
-      {
-        "symbol": "PNC",
-        "market_cap": 248.0,
-        "pe_ratio": 32.2,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "ADG",
-        "market_cap": 205.0,
-        "pe_ratio": 13.6,
-        "pb_ratio": 0.6
-      },
-      {
-        "symbol": "SED",
-        "market_cap": 186.0,
-        "pe_ratio": 3.3,
-        "pb_ratio": 0.5
-      }
-    ]
-  },
-  "Bán lẻ": {
-    "median_pe": 15.95,
-    "median_pb": 2.1,
-    "peer_count": 10,
-    "total_in_sector": 17,
-    "peers": [
-      {
-        "symbol": "MWG",
-        "market_cap": 122712.0,
-        "pe_ratio": 21.1,
-        "pb_ratio": 3.9
-      },
-      {
-        "symbol": "FRT",
-        "market_cap": 25477.0,
-        "pe_ratio": 41.3,
-        "pb_ratio": 8.3
-      },
-      {
-        "symbol": "DGW",
-        "market_cap": 9212.0,
-        "pe_ratio": 17.4,
-        "pb_ratio": 2.8
-      },
-      {
-        "symbol": "SAS",
-        "market_cap": 4269.0,
-        "pe_ratio": 9.2,
-        "pb_ratio": 2.6
-      },
-      {
-        "symbol": "PET",
-        "market_cap": 3741.0,
-        "pe_ratio": 16.7,
-        "pb_ratio": 1.6
-      },
-      {
-        "symbol": "AST",
-        "market_cap": 3465.0,
-        "pe_ratio": 15.2,
-        "pb_ratio": 5.4
-      },
-      {
-        "symbol": "PSD",
-        "market_cap": 871.0,
-        "pe_ratio": 7.6,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "BTT",
-        "market_cap": 506.0,
-        "pe_ratio": 9.4,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "AFX",
-        "market_cap": 452.0,
-        "pe_ratio": 15.1,
-        "pb_ratio": 0.9
-      },
-      {
-        "symbol": "COM",
-        "market_cap": 411.0,
-        "pe_ratio": 17.4,
-        "pb_ratio": 1.0
-      }
-    ]
-  },
-  "Y tế": {
-    "median_pe": 17.9,
-    "median_pb": 2.4,
-    "peer_count": 10,
-    "total_in_sector": 37,
-    "peers": [
-      {
-        "symbol": "DHG",
-        "market_cap": 13401.0,
-        "pe_ratio": 14.6,
-        "pb_ratio": 3.4
-      },
-      {
-        "symbol": "IMP",
-        "market_cap": 7500.0,
-        "pe_ratio": 20.7,
-        "pb_ratio": 3.4
-      },
-      {
-        "symbol": "DHT",
-        "market_cap": 6567.0,
-        "pe_ratio": 98.6,
-        "pb_ratio": 6.1
-      },
-      {
-        "symbol": "DVN",
-        "market_cap": 4815.0,
-        "pe_ratio": 15.1,
-        "pb_ratio": 1.5
-      },
-      {
-        "symbol": "DBD",
-        "market_cap": 4734.0,
-        "pe_ratio": 16.2,
-        "pb_ratio": 2.8
-      },
-      {
-        "symbol": "DCL",
-        "market_cap": 2929.0,
-        "pe_ratio": 84.2,
-        "pb_ratio": 2.0
-      },
-      {
-        "symbol": "TRA",
-        "market_cap": 2819.0,
-        "pe_ratio": 10.9,
-        "pb_ratio": 1.9
-      },
-      {
-        "symbol": "DMC",
-        "market_cap": 2014.0,
-        "pe_ratio": 11.0,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "FIT",
-        "market_cap": 1846.0,
-        "pe_ratio": 36.5,
-        "pb_ratio": 0.5
-      },
-      {
-        "symbol": "PMC",
-        "market_cap": 1652.0,
-        "pe_ratio": 19.6,
-        "pb_ratio": 7.0
-      }
-    ]
-  },
-  "Điện, nước & xăng dầu khí đốt": {
-    "median_pe": 13.0,
-    "median_pb": 1.75,
-    "peer_count": 10,
-    "total_in_sector": 113,
-    "peers": [
-      {
-        "symbol": "GAS",
-        "market_cap": 153222.0,
-        "pe_ratio": 12.7,
-        "pb_ratio": 2.4
-      },
-      {
-        "symbol": "POW",
-        "market_cap": 37735.0,
-        "pe_ratio": 19.8,
-        "pb_ratio": 1.1
-      },
-      {
-        "symbol": "REE",
-        "market_cap": 34287.0,
-        "pe_ratio": 13.3,
-        "pb_ratio": 1.7
-      },
-      {
-        "symbol": "DNH",
-        "market_cap": 22387.0,
-        "pe_ratio": 21.9,
-        "pb_ratio": 4.1
-      },
-      {
-        "symbol": "PGV",
-        "market_cap": 21627.0,
-        "pe_ratio": 30.2,
-        "pb_ratio": 1.4
-      },
-      {
-        "symbol": "VSH",
-        "market_cap": 10513.0,
-        "pe_ratio": 11.1,
-        "pb_ratio": 2.1
-      },
-      {
-        "symbol": "BWE",
-        "market_cap": 10029.0,
-        "pe_ratio": 11.7,
-        "pb_ratio": 1.8
-      },
-      {
-        "symbol": "DTK",
-        "market_cap": 8125.0,
-        "pe_ratio": 10.7,
-        "pb_ratio": 0.9
-      },
-      {
-        "symbol": "NT2",
-        "market_cap": 6794.0,
-        "pe_ratio": 10.4,
-        "pb_ratio": 1.5
-      },
-      {
-        "symbol": "TDM",
-        "market_cap": 6444.0,
-        "pe_ratio": 25.1,
-        "pb_ratio": 2.5
-      }
-    ]
-  },
-  "Du lịch và Giải trí": {
-    "median_pe": 30.85,
-    "median_pb": 2.05,
-    "peer_count": 10,
-    "total_in_sector": 23,
-    "peers": [
-      {
-        "symbol": "VJC",
-        "market_cap": 116311.0,
-        "pe_ratio": 72.1,
-        "pb_ratio": 4.8
-      },
-      {
-        "symbol": "HVN",
-        "market_cap": 88055.0,
-        "pe_ratio": 10.4,
-        "pb_ratio": 15.7
-      },
-      {
-        "symbol": "SCS",
-        "market_cap": 5257.0,
-        "pe_ratio": 7.2,
-        "pb_ratio": 3.2
-      },
-      {
-        "symbol": "TSJ",
-        "market_cap": 2281.0,
-        "pe_ratio": 23.2,
-        "pb_ratio": 2.6
-      },
-      {
-        "symbol": "BSG",
-        "market_cap": 1320.0,
-        "pe_ratio": 50.3,
-        "pb_ratio": 3.4
-      },
-      {
-        "symbol": "DSD",
-        "market_cap": 969.0,
-        "pe_ratio": 38.5,
-        "pb_ratio": 1.5
-      },
-      {
-        "symbol": "VTR",
-        "market_cap": 869.0,
-        "pe_ratio": 54.3,
-        "pb_ratio": 1.1
-      },
-      {
-        "symbol": "VNG",
-        "market_cap": 681.0,
-        "pe_ratio": 90.9,
-        "pb_ratio": 0.6
-      },
-      {
-        "symbol": "SKG",
-        "market_cap": 675.0,
-        "pe_ratio": 14.6,
-        "pb_ratio": 0.7
-      },
-      {
-        "symbol": "VNS",
-        "market_cap": 626.0,
-        "pe_ratio": 10.9,
-        "pb_ratio": 0.6
-      }
-    ]
-  },
-  "Dầu khí": {
-    "median_pe": 14.25,
-    "median_pb": 1.05,
-    "peer_count": 10,
-    "total_in_sector": 10,
-    "peers": [
-      {
-        "symbol": "BSR",
-        "market_cap": 72105.0,
-        "pe_ratio": 34.9,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "PLX",
-        "market_cap": 43962.0,
-        "pe_ratio": 16.6,
-        "pb_ratio": 1.7
-      },
-      {
-        "symbol": "PVS",
-        "market_cap": 16059.0,
-        "pe_ratio": 11.1,
-        "pb_ratio": 1.1
-      },
-      {
-        "symbol": "PVD",
-        "market_cap": 13702.0,
-        "pe_ratio": 15.4,
-        "pb_ratio": 0.8
-      },
-      {
-        "symbol": "OIL",
-        "market_cap": 10881.0,
-        "pe_ratio": 27.4,
-        "pb_ratio": 1.0
-      },
-      {
-        "symbol": "TOS",
-        "market_cap": 6395.0,
-        "pe_ratio": 6.8,
-        "pb_ratio": 3.4
-      },
-      {
-        "symbol": "PVC",
-        "market_cap": 861.0,
-        "pe_ratio": 43.1,
-        "pb_ratio": 0.9
-      },
-      {
-        "symbol": "POS",
-        "market_cap": 708.0,
-        "pe_ratio": 9.0,
-        "pb_ratio": 0.8
-      },
-      {
-        "symbol": "PVB",
-        "market_cap": 603.0,
-        "pe_ratio": 13.1,
-        "pb_ratio": 1.4
-      },
-      {
-        "symbol": "PVE",
-        "market_cap": 60.0,
-        "pe_ratio": 10.0,
-        "pb_ratio": 1.0
-      }
-    ]
-  },
-  "Công nghệ Thông tin": {
-    "median_pe": 20.25,
-    "median_pb": 1.2,
+  "Ngân hàng": {
+    "median_pe": 11.16,
+    "median_pb": 1.71,
     "peer_count": 10,
     "total_in_sector": 20,
     "peers": [
       {
+        "symbol": "VCB",
+        "market_cap": 335345478000000.0,
+        "pe_ratio": 10.78,
+        "pb_ratio": 1.71,
+        "name": "Ngân hàng Thương mại Cổ phần Ngoại thương Việt Nam"
+      },
+      {
+        "symbol": "BID",
+        "market_cap": 264519711755000.0,
+        "pe_ratio": 12.03,
+        "pb_ratio": 1.89,
+        "name": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam"
+      },
+      {
+        "symbol": "CTG",
+        "market_cap": 260713097035000.0,
+        "pe_ratio": 11.73,
+        "pb_ratio": 1.77,
+        "name": "Ngân hàng Thương mại Cổ phần Công thương Việt Nam"
+      },
+      {
+        "symbol": "TCB",
+        "market_cap": 247976294670000.0,
+        "pe_ratio": 11.54,
+        "pb_ratio": 1.71,
+        "name": "Ngân hàng Thương mại Cổ phần Kỹ thương Việt Nam"
+      },
+      {
+        "symbol": "VPB",
+        "market_cap": 220563076080000.0,
+        "pe_ratio": 13.98,
+        "pb_ratio": 1.55,
+        "name": "Ngân hàng Thương mại Cổ phần Việt Nam Thịnh Vượng"
+      },
+      {
+        "symbol": "LPB",
+        "market_cap": 127625058360000.0,
+        "pe_ratio": 13.27,
+        "pb_ratio": 2.94,
+        "name": "Ngân hàng Thương mại Cổ phần Lộc Phát Việt Nam"
+      },
+      {
+        "symbol": "MBB",
+        "market_cap": 124698616350000.0,
+        "pe_ratio": 5.98,
+        "pb_ratio": 1.11,
+        "name": "Ngân hàng Thương mại Cổ phần Quân đội"
+      },
+      {
+        "symbol": "ACB",
+        "market_cap": 111443114605000.0,
+        "pe_ratio": 6.68,
+        "pb_ratio": 1.34,
+        "name": "Ngân hàng Thương mại Cổ phần Á Châu"
+      },
+      {
+        "symbol": "HDB",
+        "market_cap": 104777747655000.0,
+        "pe_ratio": 8.22,
+        "pb_ratio": 1.92,
+        "name": "Ngân hàng Thương mại Cổ phần Phát Triển Thành phố Hồ Chí Minh"
+      },
+      {
+        "symbol": "STB",
+        "market_cap": 90584614385000.0,
+        "pe_ratio": 10.11,
+        "pb_ratio": 1.65,
+        "name": "Ngân hàng Thương mại Cổ phần Sài Gòn Thương Tín"
+      }
+    ]
+  },
+  "Xây dựng và Vật liệu": {
+    "median_pe": 19.84,
+    "median_pb": 2.13,
+    "peer_count": 10,
+    "total_in_sector": 111,
+    "peers": [
+      {
+        "symbol": "VGC",
+        "market_cap": 20870692500000.0,
+        "pe_ratio": 19.79,
+        "pb_ratio": 2.52,
+        "name": "Tổng Công ty Viglacera - Công ty Cổ phần"
+      },
+      {
+        "symbol": "VCG",
+        "market_cap": 14426102337800.0,
+        "pe_ratio": 15.57,
+        "pb_ratio": 1.79,
+        "name": "Tổng Công ty Cổ phần Xuất nhập khẩu và Xây dựng Việt Nam"
+      },
+      {
+        "symbol": "BMP",
+        "market_cap": 13990034304200.0,
+        "pe_ratio": 14.25,
+        "pb_ratio": 5.18,
+        "name": "Công ty Cổ phần Nhựa Bình Minh"
+      },
+      {
+        "symbol": "LGC",
+        "market_cap": 12342704960000.0,
+        "pe_ratio": 23.48,
+        "pb_ratio": 3.14,
+        "name": "Công ty Cổ phần Đầu tư Cầu đường CII"
+      },
+      {
+        "symbol": "CTR",
+        "market_cap": 10592132395400.0,
+        "pe_ratio": 26.13,
+        "pb_ratio": 5.68,
+        "name": "Tổng Công ty Cổ phần Công trình Viettel"
+      },
+      {
+        "symbol": "CTD",
+        "market_cap": 9119726968000.0,
+        "pe_ratio": 24.56,
+        "pb_ratio": 1.05,
+        "name": "Công ty Cổ phần Xây dựng Coteccons"
+      },
+      {
+        "symbol": "NTP",
+        "market_cap": 9093559719200.0,
+        "pe_ratio": 13.68,
+        "pb_ratio": 2.48,
+        "name": "Công ty Cổ phần Nhựa Thiếu niên Tiền Phong"
+      },
+      {
+        "symbol": "CII",
+        "market_cap": 8041773186950.0,
+        "pe_ratio": 34.1,
+        "pb_ratio": 1.33,
+        "name": "Công ty Cổ phần Đầu tư Hạ tầng Kỹ thuật Thành phố Hồ Chí Minh"
+      },
+      {
+        "symbol": "PC1",
+        "market_cap": 7886008768050.0,
+        "pe_ratio": 19.88,
+        "pb_ratio": 1.43,
+        "name": "Công ty Cổ phần Tập đoàn PC1"
+      },
+      {
+        "symbol": "VCS",
+        "market_cap": 7600000000000.0,
+        "pe_ratio": 9.9,
+        "pb_ratio": 1.49,
+        "name": "Công ty Cổ phần VICOSTONE"
+      }
+    ]
+  },
+  "Tài nguyên Cơ bản": {
+    "median_pe": 15.96,
+    "median_pb": 1.28,
+    "peer_count": 10,
+    "total_in_sector": 47,
+    "peers": [
+      {
+        "symbol": "HPG",
+        "market_cap": 172059130380000.0,
+        "pe_ratio": 14.62,
+        "pb_ratio": 1.5,
+        "name": "Công ty Cổ phần Tập đoàn Hòa Phát"
+      },
+      {
+        "symbol": "KSV",
+        "market_cap": 30820000000000.0,
+        "pe_ratio": 25.79,
+        "pb_ratio": 8.7,
+        "name": "Tổng Công ty Khoáng sản TKV - Công ty Cổ phần"
+      },
+      {
+        "symbol": "HSG",
+        "market_cap": 10587748368450.0,
+        "pe_ratio": 18.36,
+        "pb_ratio": 0.95,
+        "name": "Công ty Cổ phần Tập đoàn Hoa Sen"
+      },
+      {
+        "symbol": "VIF",
+        "market_cap": 5600000000000.0,
+        "pe_ratio": 17.29,
+        "pb_ratio": 1.14,
+        "name": "Tổng Công ty Lâm nghiệp Việt Nam - Công ty Cổ phần"
+      },
+      {
+        "symbol": "NKG",
+        "market_cap": 5386640224900.0,
+        "pe_ratio": 12.52,
+        "pb_ratio": 0.92,
+        "name": "Công ty Cổ phần Thép Nam Kim"
+      },
+      {
+        "symbol": "ACG",
+        "market_cap": 5368050877600.0,
+        "pe_ratio": 13.45,
+        "pb_ratio": 1.29,
+        "name": "Công ty Cổ phần Gỗ An Cường"
+      },
+      {
+        "symbol": "PTB",
+        "market_cap": 3413858553000.0,
+        "pe_ratio": 9.63,
+        "pb_ratio": 1.18,
+        "name": "Công ty Cổ phần Phú Tài"
+      },
+      {
+        "symbol": "HGM",
+        "market_cap": 3230640000000.0,
+        "pe_ratio": 18.66,
+        "pb_ratio": 9.41,
+        "name": "Công ty Cổ phần Cơ khí và Khoáng sản Hà Giang"
+      },
+      {
+        "symbol": "DHC",
+        "market_cap": 2720665022400.0,
+        "pe_ratio": 11.45,
+        "pb_ratio": 1.36,
+        "name": "Công ty Cổ phần Đông Hải Bến Tre"
+      },
+      {
+        "symbol": "SHI",
+        "market_cap": 2335340865600.0,
+        "pe_ratio": 30.24,
+        "pb_ratio": 1.28,
+        "name": "Công ty Cổ phần Quốc tế Sơn Hà"
+      }
+    ]
+  },
+  "Truyền thông": {
+    "median_pe": 10.36,
+    "median_pb": 0.83,
+    "peer_count": 10,
+    "total_in_sector": 16,
+    "peers": [
+      {
+        "symbol": "YEG",
+        "market_cap": 1657717593400.0,
+        "pe_ratio": 13.19,
+        "pb_ratio": 1.15,
+        "name": "Công ty Cổ phần Tập đoàn Yeah1"
+      },
+      {
+        "symbol": "EID",
+        "market_cap": 360000000000.0,
+        "pe_ratio": 5.26,
+        "pb_ratio": 0.79,
+        "name": "Công ty Cổ phần Đầu tư và Phát triển Giáo dục Hà Nội"
+      },
+      {
+        "symbol": "DST",
+        "market_cap": 290700000000.0,
+        "pe_ratio": 163.7,
+        "pb_ratio": 0.73,
+        "name": "Công ty Cổ phần Đầu tư Sao Thăng Long"
+      },
+      {
+        "symbol": "PNC",
+        "market_cap": 271589928600.0,
+        "pe_ratio": 26.59,
+        "pb_ratio": 1.45,
+        "name": "Công ty Cổ phần Văn hóa Phương Nam"
+      },
+      {
+        "symbol": "SED",
+        "market_cap": 211000000000.0,
+        "pe_ratio": 3.93,
+        "pb_ratio": 0.63,
+        "name": "Công ty Cổ phần Đầu tư và Phát triển Giáo dục Phương Nam"
+      },
+      {
+        "symbol": "ADG",
+        "market_cap": 192852299420.0,
+        "pe_ratio": 10.84,
+        "pb_ratio": 0.58,
+        "name": "Công ty Cổ phần Clever Group"
+      },
+      {
+        "symbol": "EBS",
+        "market_cap": 119567962800.0,
+        "pe_ratio": 12.79,
+        "pb_ratio": 0.87,
+        "name": "Công ty Cổ phần Sách Giáo dục tại Thành phố Hà Nội"
+      },
+      {
+        "symbol": "STC",
+        "market_cap": 96314010000.0,
+        "pe_ratio": 8.7,
+        "pb_ratio": 0.71,
+        "name": "Công ty Cổ phần Sách và Thiết bị trường học Thành phố Hồ Chí Minh"
+      },
+      {
+        "symbol": "QST",
+        "market_cap": 94932000000.0,
+        "pe_ratio": 9.88,
+        "pb_ratio": 1.91,
+        "name": "Công ty Cổ phần Sách và Thiết bị trường học Quảng Ninh"
+      },
+      {
+        "symbol": "DAD",
+        "market_cap": 90000000000.0,
+        "pe_ratio": 9.87,
+        "pb_ratio": 0.93,
+        "name": "Công ty Cổ phần Đầu tư và Phát triển Giáo dục Đà Nẵng"
+      }
+    ]
+  },
+  "Hàng cá nhân & Gia dụng": {
+    "median_pe": 11.68,
+    "median_pb": 1.49,
+    "peer_count": 10,
+    "total_in_sector": 28,
+    "peers": [
+      {
+        "symbol": "PNJ",
+        "market_cap": 30426729840000.0,
+        "pe_ratio": 15.16,
+        "pb_ratio": 2.7,
+        "name": "Công ty Cổ phần Vàng bạc Đá quý Phú Nhuận"
+      },
+      {
+        "symbol": "TLG",
+        "market_cap": 4478295185000.0,
+        "pe_ratio": 10.78,
+        "pb_ratio": 1.91,
+        "name": "Công ty Cổ phần Tập đoàn Thiên Long"
+      },
+      {
+        "symbol": "MSH",
+        "market_cap": 3019317525000.0,
+        "pe_ratio": 8.08,
+        "pb_ratio": 1.68,
+        "name": "Công ty Cổ phần May Sông Hồng"
+      },
+      {
+        "symbol": "TCM",
+        "market_cap": 2946513429800.0,
+        "pe_ratio": 12.57,
+        "pb_ratio": 1.3,
+        "name": "Công ty Cổ phần Dệt may - Đầu tư - Thương mại Thành Công"
+      },
+      {
+        "symbol": "TNG",
+        "market_cap": 2415243758200.0,
+        "pe_ratio": 9.63,
+        "pb_ratio": 1.28,
+        "name": "Công ty Cổ phần Đầu tư và Thương mại TNG"
+      },
+      {
+        "symbol": "LIX",
+        "market_cap": 2300400000000.0,
+        "pe_ratio": 12.68,
+        "pb_ratio": 2.46,
+        "name": "Công ty Cổ phần Bột Giặt LIX"
+      },
+      {
+        "symbol": "RAL",
+        "market_cap": 2178136257500.0,
+        "pe_ratio": 4.9,
+        "pb_ratio": 0.66,
+        "name": "Công ty Cổ phần Bóng đèn Phích nước Rạng Đông"
+      },
+      {
+        "symbol": "HTG",
+        "market_cap": 1688527005200.0,
+        "pe_ratio": 6.81,
+        "pb_ratio": 1.91,
+        "name": "Tổng Công ty Cổ phần Dệt may Hòa Thọ"
+      },
+      {
+        "symbol": "STK",
+        "market_cap": 1633164015600.0,
+        "pe_ratio": 131.68,
+        "pb_ratio": 0.96,
+        "name": "Công ty Cổ phần Sợi Thế Kỷ"
+      },
+      {
+        "symbol": "GIL",
+        "market_cap": 1574801023000.0,
+        "pe_ratio": 60.41,
+        "pb_ratio": 0.64,
+        "name": "Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khẩu Bình Thạnh"
+      }
+    ]
+  },
+  "Bất động sản": {
+    "median_pe": 40.73,
+    "median_pb": 2.4,
+    "peer_count": 10,
+    "total_in_sector": 64,
+    "peers": [
+      {
+        "symbol": "VIC",
+        "market_cap": 818381076300000.0,
+        "pe_ratio": 68.75,
+        "pb_ratio": 5.96,
+        "name": "Tập đoàn Vingroup - Công ty CP"
+      },
+      {
+        "symbol": "VHM",
+        "market_cap": 385685986800000.0,
+        "pe_ratio": 12.13,
+        "pb_ratio": 1.9,
+        "name": "Công ty Cổ phần Vinhomes"
+      },
+      {
+        "symbol": "VRE",
+        "market_cap": 74755070640000.0,
+        "pe_ratio": 18.25,
+        "pb_ratio": 1.78,
+        "name": "Công ty Cổ phần Vincom Retail"
+      },
+      {
+        "symbol": "BCM",
+        "market_cap": 69862500000000.0,
+        "pe_ratio": 33.69,
+        "pb_ratio": 3.57,
+        "name": "Tập đoàn Đầu tư và Phát triển Công nghiệp Becamex - CTCP"
+      },
+      {
+        "symbol": "KDH",
+        "market_cap": 35036089877250.0,
+        "pe_ratio": 45.51,
+        "pb_ratio": 2.01,
+        "name": "Công ty Cổ phần Đầu tư và Kinh doanh nhà Khang Điền"
+      },
+      {
+        "symbol": "KBC",
+        "market_cap": 25791519902400.0,
+        "pe_ratio": 67.53,
+        "pb_ratio": 1.39,
+        "name": "Tổng Công ty Phát triển Đô thị Kinh Bắc"
+      },
+      {
+        "symbol": "KSF",
+        "market_cap": 24420000000000.0,
+        "pe_ratio": 35.96,
+        "pb_ratio": 4.88,
+        "name": "Công ty Cổ phần Tập đoàn Sunshine"
+      },
+      {
+        "symbol": "CRV",
+        "market_cap": 21853540800000.0,
+        "pe_ratio": 28.88,
+        "pb_ratio": 2.78,
+        "name": "Công ty Cổ phần Tập đoàn Bất động sản CRV"
+      },
+      {
+        "symbol": "PDR",
+        "market_cap": 19383709842600.0,
+        "pe_ratio": 128.85,
+        "pb_ratio": 1.76,
+        "name": "Công ty Cổ phần Phát triển Bất động sản Phát Đạt"
+      },
+      {
+        "symbol": "VPI",
+        "market_cap": 17378692031100.0,
+        "pe_ratio": 52.91,
+        "pb_ratio": 3.58,
+        "name": "Công ty Cổ phần Phát triển Bất động sản Văn Phú"
+      }
+    ]
+  },
+  "Dịch vụ tài chính": {
+    "median_pe": 21.04,
+    "median_pb": 2.16,
+    "peer_count": 10,
+    "total_in_sector": 31,
+    "peers": [
+      {
+        "symbol": "TCX",
+        "market_cap": 86494305492000.0,
+        "pe_ratio": 22.47,
+        "pb_ratio": 3.29,
+        "name": "Công ty Cổ phần Chứng khoán Kỹ Thương"
+      },
+      {
+        "symbol": "SSI",
+        "market_cap": 68637043934100.0,
+        "pe_ratio": 25.38,
+        "pb_ratio": 2.57,
+        "name": "Công ty Cổ phần Chứng khoán SSI"
+      },
+      {
+        "symbol": "VIX",
+        "market_cap": 37629639863400.0,
+        "pe_ratio": 56.73,
+        "pb_ratio": 2.35,
+        "name": "Công ty Cổ phần Chứng khoán VIX"
+      },
+      {
+        "symbol": "VND",
+        "market_cap": 29913193192200.0,
+        "pe_ratio": 18.18,
+        "pb_ratio": 1.52,
+        "name": "Công ty Cổ phần Chứng khoán VNDIRECT"
+      },
+      {
+        "symbol": "VCI",
+        "market_cap": 25672056410000.0,
+        "pe_ratio": 28.19,
+        "pb_ratio": 1.98,
+        "name": "Công ty Cổ phần Chứng khoán Vietcap"
+      },
+      {
+        "symbol": "SHS",
+        "market_cap": 18377342504800.0,
+        "pe_ratio": 18.84,
+        "pb_ratio": 1.64,
+        "name": "Công ty Cổ phần Chứng khoán Sài Gòn - Hà Nội"
+      },
+      {
+        "symbol": "MBS",
+        "market_cap": 17241670728100.0,
+        "pe_ratio": 24.67,
+        "pb_ratio": 2.5,
+        "name": "Công ty Cổ phần Chứng khoán MB"
+      },
+      {
+        "symbol": "HCM",
+        "market_cap": 16290340623200.0,
+        "pe_ratio": 16.15,
+        "pb_ratio": 1.56,
+        "name": "Công ty Cổ phần Chứng khoán Thành phố Hồ Chí Minh"
+      },
+      {
+        "symbol": "FTS",
+        "market_cap": 10309482634200.0,
+        "pe_ratio": 19.61,
+        "pb_ratio": 2.5,
+        "name": "Công ty Cổ phần Chứng khoán FPT"
+      },
+      {
+        "symbol": "EVF",
+        "market_cap": 9316931050000.0,
+        "pe_ratio": 17.13,
+        "pb_ratio": 1.03,
+        "name": "Công ty Tài chính Tổng hợp Cổ phần Điện Lực"
+      }
+    ]
+  },
+  "Điện, nước & xăng dầu khí đốt": {
+    "median_pe": 22.38,
+    "median_pb": 1.66,
+    "peer_count": 10,
+    "total_in_sector": 51,
+    "peers": [
+      {
+        "symbol": "GAS",
+        "market_cap": 147119859313200.0,
+        "pe_ratio": 14.68,
+        "pb_ratio": 2.44,
+        "name": "Tổng Công ty Khí Việt Nam - Công ty Cổ phần"
+      },
+      {
+        "symbol": "POW",
+        "market_cap": 34893886840000.0,
+        "pe_ratio": 36.95,
+        "pb_ratio": 1.09,
+        "name": "Tổng Công ty Điện lực Dầu khí Việt Nam - CTCP"
+      },
+      {
+        "symbol": "REE",
+        "market_cap": 31275289760000.0,
+        "pe_ratio": 15.69,
+        "pb_ratio": 1.65,
+        "name": "Công ty Cổ phần Cơ điện Lạnh"
+      },
+      {
+        "symbol": "VSH",
+        "market_cap": 10725352568400.0,
+        "pe_ratio": 24.22,
+        "pb_ratio": 2.29,
+        "name": "Công ty Cổ phần Thủy điện Vĩnh Sơn - Sông Hinh"
+      },
+      {
+        "symbol": "BWE",
+        "market_cap": 10402624861200.0,
+        "pe_ratio": 18.49,
+        "pb_ratio": 1.95,
+        "name": "Công ty Cổ phần - Tổng công ty Nước - Môi trường Bình Dương"
+      },
+      {
+        "symbol": "DTK",
+        "market_cap": 7851825962500.0,
+        "pe_ratio": 12.6,
+        "pb_ratio": 0.92,
+        "name": "Tổng Công ty Điện lực TKV - Công ty Cổ phần"
+      },
+      {
+        "symbol": "NT2",
+        "market_cap": 6980993703250.0,
+        "pe_ratio": 84.22,
+        "pb_ratio": 1.67,
+        "name": "Công ty Cổ phần Điện lực Dầu khí Nhơn Trạch 2"
+      },
+      {
+        "symbol": "GEG",
+        "market_cap": 6379876402100.0,
+        "pe_ratio": 57.57,
+        "pb_ratio": 1.44,
+        "name": "Công ty Cổ phần Điện Gia Lai"
+      },
+      {
+        "symbol": "TDM",
+        "market_cap": 6215000021188.0,
+        "pe_ratio": 32.01,
+        "pb_ratio": 2.47,
+        "name": "Công ty Cổ phần Nước Thủ Dầu Một"
+      },
+      {
+        "symbol": "HNA",
+        "market_cap": 5175108627577.0,
+        "pe_ratio": 20.54,
+        "pb_ratio": 1.6,
+        "name": "Công ty Cổ phần Thủy điện Hủa Na"
+      }
+    ]
+  },
+  "Bán lẻ": {
+    "median_pe": 21.31,
+    "median_pb": 1.55,
+    "peer_count": 10,
+    "total_in_sector": 12,
+    "peers": [
+      {
+        "symbol": "MWG",
+        "market_cap": 119026676007800.0,
+        "pe_ratio": 31.98,
+        "pb_ratio": 4.29,
+        "name": "Công ty Cổ phần Đầu tư Thế Giới Di Động"
+      },
+      {
+        "symbol": "FRT",
+        "market_cap": 19891388794000.0,
+        "pe_ratio": 62.65,
+        "pb_ratio": 10.4,
+        "name": "Công ty Cổ phần Bán lẻ Kỹ thuật số FPT"
+      },
+      {
+        "symbol": "DGW",
+        "market_cap": 8761840751550.0,
+        "pe_ratio": 19.74,
+        "pb_ratio": 2.95,
+        "name": "Công ty Cổ phần Thế Giới Số"
+      },
+      {
+        "symbol": "PET",
+        "market_cap": 3515215715250.0,
+        "pe_ratio": 24.03,
+        "pb_ratio": 1.62,
+        "name": "Tổng Công ty Cổ phần Dịch vụ Tổng hợp Dầu khí"
+      },
+      {
+        "symbol": "AST",
+        "market_cap": 3312000000000.0,
+        "pe_ratio": 22.87,
+        "pb_ratio": 6.29,
+        "name": "Công ty Cổ phần Dịch vụ Hàng không Taseco"
+      },
+      {
+        "symbol": "PSD",
+        "market_cap": 849977461600.0,
+        "pe_ratio": 10.52,
+        "pb_ratio": 1.48,
+        "name": "Công ty Cổ phần Dịch vụ Phân phối Tổng hợp Dầu khí"
+      },
+      {
+        "symbol": "BTT",
+        "market_cap": 506250000000.0,
+        "pe_ratio": 10.8,
+        "pb_ratio": 1.32,
+        "name": "Công ty Cổ phần Thương mại - Dịch vụ Bến Thành"
+      },
+      {
+        "symbol": "COM",
+        "market_cap": 437739468000.0,
+        "pe_ratio": 27.14,
+        "pb_ratio": 1.01,
+        "name": "Công ty Cổ phần Vật tư Xăng dầu"
+      },
+      {
+        "symbol": "SVT",
+        "market_cap": 186958562400.0,
+        "pe_ratio": 6.8,
+        "pb_ratio": 0.79,
+        "name": "Công ty Cổ phần Công nghệ Sài Gòn Viễn Đông"
+      },
+      {
+        "symbol": "CMV",
+        "market_cap": 150693704400.0,
+        "pe_ratio": 13.15,
+        "pb_ratio": 0.62,
+        "name": "Công ty Cổ phần Thương nghiệp Cà Mau"
+      }
+    ]
+  },
+  "Du lịch và Giải trí": {
+    "median_pe": 29.92,
+    "median_pb": 1.23,
+    "peer_count": 10,
+    "total_in_sector": 14,
+    "peers": [
+      {
+        "symbol": "VPL",
+        "market_cap": 124071278400000.0,
+        "pe_ratio": 48.66,
+        "pb_ratio": 3.94,
+        "name": "Công ty Cổ phần Vinpearl"
+      },
+      {
+        "symbol": "VJC",
+        "market_cap": 95540239317600.0,
+        "pe_ratio": 68.09,
+        "pb_ratio": 5.59,
+        "name": "Công ty Cổ phần Hàng không Vietjet"
+      },
+      {
+        "symbol": "SCS",
+        "market_cap": 5614234010000.0,
+        "pe_ratio": 8.53,
+        "pb_ratio": 3.99,
+        "name": "Công ty Cổ phần Dịch vụ Hàng hóa Sài Gòn"
+      },
+      {
+        "symbol": "VNG",
+        "market_cap": 701364343680.0,
+        "pe_ratio": 292.8,
+        "pb_ratio": 0.63,
+        "name": "Công ty Cổ phần Du Lịch Thành Thành Công"
+      },
+      {
+        "symbol": "SKG",
+        "market_cap": 681601394250.0,
+        "pe_ratio": 20.06,
+        "pb_ratio": 0.77,
+        "name": "Công ty Cổ phần Tàu Cao tốc Superdong - Kiên Giang"
+      },
+      {
+        "symbol": "VNS",
+        "market_cap": 623625974480.0,
+        "pe_ratio": 7.42,
+        "pb_ratio": 0.54,
+        "name": "Công ty Cổ phần Ánh Dương Việt Nam"
+      },
+      {
+        "symbol": "DSN",
+        "market_cap": 531652396000.0,
+        "pe_ratio": 5.74,
+        "pb_ratio": 1.68,
+        "name": "Công ty Cổ phần Công viên nước Đầm Sen"
+      },
+      {
+        "symbol": "SGH",
+        "market_cap": 346194800000.0,
+        "pe_ratio": 36.19,
+        "pb_ratio": 2.49,
+        "name": "Công ty Cổ phần Khách sạn Sài Gòn"
+      },
+      {
+        "symbol": "DAH",
+        "market_cap": 312382000000.0,
+        "pe_ratio": 45.62,
+        "pb_ratio": 0.34,
+        "name": "Công ty Cổ phần Tập đoàn Khách sạn Đông Á"
+      },
+      {
+        "symbol": "TCT",
+        "market_cap": 255760000000.0,
+        "pe_ratio": 23.64,
+        "pb_ratio": 0.76,
+        "name": "Công ty Cổ phần Cáp treo Núi Bà Tây Ninh"
+      }
+    ]
+  },
+  "Bảo hiểm": {
+    "median_pe": 12.62,
+    "median_pb": 1.38,
+    "peer_count": 9,
+    "total_in_sector": 9,
+    "peers": [
+      {
+        "symbol": "BVH",
+        "market_cap": 41050448849200.0,
+        "pe_ratio": 19.85,
+        "pb_ratio": 1.82,
+        "name": "Tập đoàn Bảo Việt"
+      },
+      {
+        "symbol": "PVI",
+        "market_cap": 21081768030000.0,
+        "pe_ratio": 25.28,
+        "pb_ratio": 2.69,
+        "name": "Công ty Cổ phần PVI"
+      },
+      {
+        "symbol": "VNR",
+        "market_cap": 3739024827500.0,
+        "pe_ratio": 9.5,
+        "pb_ratio": 0.96,
+        "name": "Tổng Công ty Cổ phần Tái bảo hiểm Quốc gia Việt Nam"
+      },
+      {
+        "symbol": "PTI",
+        "market_cap": 3296224069000.0,
+        "pe_ratio": 10.56,
+        "pb_ratio": 1.38,
+        "name": "Tổng Công ty Cổ phần Bảo hiểm Bưu điện"
+      },
+      {
+        "symbol": "MIG",
+        "market_cap": 2978600625000.0,
+        "pe_ratio": 13.29,
+        "pb_ratio": 1.4,
+        "name": "Tổng Công ty Cổ phần Bảo hiểm Quân đội"
+      },
+      {
+        "symbol": "BIC",
+        "market_cap": 2808781635250.0,
+        "pe_ratio": 6.71,
+        "pb_ratio": 0.95,
+        "name": "Tổng Công ty Cổ phần Bảo hiểm Ngân hàng Đầu tư và Phát triển Việt Nam"
+      },
+      {
+        "symbol": "BMI",
+        "market_cap": 2553374246500.0,
+        "pe_ratio": 10.74,
+        "pb_ratio": 0.92,
+        "name": "Tổng Công ty Cổ phần Bảo Minh"
+      },
+      {
+        "symbol": "PRE",
+        "market_cap": 2338560000000.0,
+        "pe_ratio": 12.72,
+        "pb_ratio": 1.45,
+        "name": "Tổng Công ty Cổ phần Tái bảo hiểm Hà Nội"
+      },
+      {
+        "symbol": "PGI",
+        "market_cap": 2206846240400.0,
+        "pe_ratio": 12.62,
+        "pb_ratio": 1.16,
+        "name": "Tổng Công ty Cổ phần Bảo hiểm Petrolimex"
+      }
+    ]
+  },
+  "Dầu khí": {
+    "median_pe": 42.06,
+    "median_pb": 1.11,
+    "peer_count": 6,
+    "total_in_sector": 6,
+    "peers": [
+      {
+        "symbol": "BSR",
+        "market_cap": 49607993856000.0,
+        "pe_ratio": 124.04,
+        "pb_ratio": 0.89,
+        "name": "Công ty Cổ phần Lọc Hóa dầu Bình Sơn"
+      },
+      {
+        "symbol": "PLX",
+        "market_cap": 44638793794500.0,
+        "pe_ratio": 15.72,
+        "pb_ratio": 1.72,
+        "name": "Tập đoàn Xăng dầu Việt Nam"
+      },
+      {
+        "symbol": "PVS",
+        "market_cap": 16824413408000.0,
+        "pe_ratio": 22.98,
+        "pb_ratio": 1.24,
+        "name": "Tổng Công ty Cổ phần Dịch vụ Kỹ thuật Dầu khí Việt Nam"
+      },
+      {
+        "symbol": "PVD",
+        "market_cap": 14853103360200.0,
+        "pe_ratio": 21.28,
+        "pb_ratio": 0.94,
+        "name": "Tổng Công ty Cổ phần Khoan và Dịch vụ khoan Dầu khí"
+      },
+      {
+        "symbol": "PVC",
+        "market_cap": 917497431900.0,
+        "pe_ratio": 399.04,
+        "pb_ratio": 0.98,
+        "name": "Tổng Công ty Hóa chất và Dịch vụ Dầu khí - Công ty Cổ phần"
+      },
+      {
+        "symbol": "PVB",
+        "market_cap": 643679940400.0,
+        "pe_ratio": 61.15,
+        "pb_ratio": 1.69,
+        "name": "Công ty Cổ phần Bọc ống Dầu khí Việt Nam"
+      }
+    ]
+  },
+  "Công nghệ Thông tin": {
+    "median_pe": 24.92,
+    "median_pb": 1.26,
+    "peer_count": 10,
+    "total_in_sector": 17,
+    "peers": [
+      {
         "symbol": "FPT",
-        "market_cap": 162855.0,
-        "pe_ratio": 18.2,
-        "pb_ratio": 4.6
+        "market_cap": 147106918300000.0,
+        "pe_ratio": 18.72,
+        "pb_ratio": 4.94,
+        "name": "Công ty Cổ phần FPT"
       },
       {
         "symbol": "CMG",
-        "market_cap": 7739.0,
-        "pe_ratio": 20.0,
-        "pb_ratio": 2.5
+        "market_cap": 7254144597600.0,
+        "pe_ratio": 24.68,
+        "pb_ratio": 2.54,
+        "name": "Công ty Cổ phần Tập đoàn Công nghệ CMC"
       },
       {
         "symbol": "SAM",
-        "market_cap": 2721.0,
-        "pe_ratio": 41.6,
-        "pb_ratio": 0.7
-      },
-      {
-        "symbol": "VEC",
-        "market_cap": 2700.0,
-        "pe_ratio": 772.8,
-        "pb_ratio": 6.6
-      },
-      {
-        "symbol": "ELC",
-        "market_cap": 2527.0,
-        "pe_ratio": 18.9,
-        "pb_ratio": 2.0
+        "market_cap": 3035888158290.0,
+        "pe_ratio": 36.36,
+        "pb_ratio": 0.75,
+        "name": "Công ty Cổ phần SAM Holdings"
       },
       {
         "symbol": "SGT",
-        "market_cap": 2390.0,
-        "pe_ratio": 5.2,
-        "pb_ratio": 1.1
+        "market_cap": 2449458222900.0,
+        "pe_ratio": 18.83,
+        "pb_ratio": 1.35,
+        "name": "Công ty Cổ phần Công nghệ Viễn thông Sài Gòn"
+      },
+      {
+        "symbol": "ELC",
+        "market_cap": 1707446578500.0,
+        "pe_ratio": 18.88,
+        "pb_ratio": 1.62,
+        "name": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM"
       },
       {
         "symbol": "ICT",
-        "market_cap": 663.0,
-        "pe_ratio": 20.5,
-        "pb_ratio": 1.0
+        "market_cap": 708070000000.0,
+        "pe_ratio": 25.16,
+        "pb_ratio": 1.08,
+        "name": "Công ty Cổ phần Viễn thông - Tin học Bưu điện"
+      },
+      {
+        "symbol": "POT",
+        "market_cap": 386657119400.0,
+        "pe_ratio": 143.88,
+        "pb_ratio": 1.26,
+        "name": "Công ty Cổ phần Thiết bị Bưu điện"
       },
       {
         "symbol": "ITD",
-        "market_cap": 387.0,
-        "pe_ratio": 7.2,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "VTE",
-        "market_cap": 156.0,
-        "pe_ratio": 68.7,
-        "pb_ratio": 0.9
+        "market_cap": 327523439850.0,
+        "pe_ratio": 91.44,
+        "pb_ratio": 1.25,
+        "name": "Công ty Cổ phần Công nghệ ITD"
       },
       {
         "symbol": "ST8",
-        "market_cap": 141.0,
-        "pe_ratio": 20.7,
-        "pb_ratio": 0.5
+        "market_cap": 144037051200.0,
+        "pe_ratio": 6.51,
+        "pb_ratio": 0.51,
+        "name": "Công ty Cổ phần Tập đoàn ST8"
+      },
+      {
+        "symbol": "UNI",
+        "market_cap": 138996924800.0,
+        "pe_ratio": 103612.99,
+        "pb_ratio": 0.85,
+        "name": "Công ty Cổ phần Đầu tư và Phát triển Sao Mai Việt"
       }
     ]
   },
   "Ô tô và phụ tùng": {
-    "median_pe": 24.15,
-    "median_pb": 1.45,
+    "median_pe": 16.46,
+    "median_pb": 1.54,
     "peer_count": 10,
-    "total_in_sector": 11,
+    "total_in_sector": 10,
     "peers": [
       {
         "symbol": "HUT",
-        "market_cap": 17306.0,
-        "pe_ratio": 38.8,
-        "pb_ratio": 1.6
+        "market_cap": 16332968959500.0,
+        "pe_ratio": 104.53,
+        "pb_ratio": 1.9,
+        "name": "Công ty Cổ phần Tasco"
       },
       {
         "symbol": "HHS",
-        "market_cap": 5940.0,
-        "pe_ratio": 1.6,
-        "pb_ratio": 0.7
-      },
-      {
-        "symbol": "SVC",
-        "market_cap": 2453.0,
-        "pe_ratio": 4.9,
-        "pb_ratio": 1.3
-      },
-      {
-        "symbol": "DRC",
-        "market_cap": 2355.0,
-        "pe_ratio": 16.7,
-        "pb_ratio": 1.2
+        "market_cap": 5446192326400.0,
+        "pe_ratio": 14.83,
+        "pb_ratio": 1.14,
+        "name": "Công ty Cổ phần Đầu tư Dịch vụ Hoàng Huy"
       },
       {
         "symbol": "CTF",
-        "market_cap": 1884.0,
-        "pe_ratio": 53.0,
-        "pb_ratio": 1.8
+        "market_cap": 1927425258850.0,
+        "pe_ratio": 41.51,
+        "pb_ratio": 1.86,
+        "name": "Công ty Cổ phần City Auto"
+      },
+      {
+        "symbol": "DRC",
+        "market_cap": 1865043898500.0,
+        "pe_ratio": 8.95,
+        "pb_ratio": 0.97,
+        "name": "Công ty Cổ phần Cao su Đà Nẵng"
+      },
+      {
+        "symbol": "SVC",
+        "market_cap": 1812351340800.0,
+        "pe_ratio": 18.09,
+        "pb_ratio": 1.23,
+        "name": "Công ty Cổ phần Dịch vụ tổng hợp Sài Gòn"
       },
       {
         "symbol": "SRC",
-        "market_cap": 1347.0,
-        "pe_ratio": 29.2,
-        "pb_ratio": 2.4
+        "market_cap": 1470646086000.0,
+        "pe_ratio": 10.78,
+        "pb_ratio": 2.56,
+        "name": "Công ty Cổ phần Cao su Sao Vàng"
       },
       {
         "symbol": "CSM",
-        "market_cap": 1342.0,
-        "pe_ratio": 19.1,
-        "pb_ratio": 1.0
-      },
-      {
-        "symbol": "VVS",
-        "market_cap": 1315.0,
-        "pe_ratio": 7.5,
-        "pb_ratio": 2.6
+        "market_cap": 1445589214650.0,
+        "pe_ratio": 22.29,
+        "pb_ratio": 1.06,
+        "name": "Công ty Cổ phần Công nghiệp Cao su Miền Nam"
       },
       {
         "symbol": "HAX",
-        "market_cap": 1150.0,
-        "pe_ratio": 183.7,
-        "pb_ratio": 1.1
+        "market_cap": 1160348554800.0,
+        "pe_ratio": 9.28,
+        "pb_ratio": 0.96,
+        "name": "Công ty Cổ phần Dịch vụ Ô tô Hàng Xanh"
       },
       {
         "symbol": "GMA",
-        "market_cap": 820.0,
-        "pe_ratio": 100.4,
-        "pb_ratio": 2.7
+        "market_cap": 633999968300.0,
+        "pe_ratio": 44.51,
+        "pb_ratio": 1.95,
+        "name": "Công ty Cổ phần G-Automobile"
+      },
+      {
+        "symbol": "HTL",
+        "market_cap": 334800000000.0,
+        "pe_ratio": 14.46,
+        "pb_ratio": 1.86,
+        "name": "Công ty Cổ phần Kỹ thuật và Ô tô Trường Long"
+      }
+    ]
+  },
+  "Y tế": {
+    "median_pe": 22.2,
+    "median_pb": 2.44,
+    "peer_count": 10,
+    "total_in_sector": 24,
+    "peers": [
+      {
+        "symbol": "DHG",
+        "market_cap": 13558367562700.0,
+        "pe_ratio": 17.47,
+        "pb_ratio": 3.31,
+        "name": "Công ty Cổ phần Dược Hậu Giang"
+      },
+      {
+        "symbol": "IMP",
+        "market_cap": 7501882509400.0,
+        "pe_ratio": 27.19,
+        "pb_ratio": 3.44,
+        "name": "Công ty Cổ phần Dược phẩm IMEXPHARM"
+      },
+      {
+        "symbol": "DHT",
+        "market_cap": 6175632975000.0,
+        "pe_ratio": 86.05,
+        "pb_ratio": 6.0,
+        "name": "Công ty Cổ phần Dược phẩm Hà Tây"
+      },
+      {
+        "symbol": "DBD",
+        "market_cap": 4820083120500.0,
+        "pe_ratio": 19.46,
+        "pb_ratio": 2.91,
+        "name": "Công ty Cổ phần Dược - Trang thiết bị y tế Bình Định (BIDIPHAR)"
+      },
+      {
+        "symbol": "TRA",
+        "market_cap": 2789832192900.0,
+        "pe_ratio": 12.97,
+        "pb_ratio": 1.97,
+        "name": "Công ty Cổ phần Traphaco"
+      },
+      {
+        "symbol": "DCL",
+        "market_cap": 2629477080000.0,
+        "pe_ratio": 49.08,
+        "pb_ratio": 1.77,
+        "name": "Công ty Cổ phần Dược phẩm Cửu Long"
+      },
+      {
+        "symbol": "DMC",
+        "market_cap": 2066284167500.0,
+        "pe_ratio": 11.99,
+        "pb_ratio": 1.28,
+        "name": "Công ty Cổ phần Xuất nhập khẩu Y tế DOMESCO"
+      },
+      {
+        "symbol": "TNH",
+        "market_cap": 1780638684500.0,
+        "pe_ratio": 39.32,
+        "pb_ratio": 0.99,
+        "name": "Công ty Cổ phần Tập đoàn Bệnh viện TNH"
+      },
+      {
+        "symbol": "FIT",
+        "market_cap": 1577289277760.0,
+        "pe_ratio": 13.23,
+        "pb_ratio": 0.41,
+        "name": "Công ty Cổ phần Tập đoàn F.I.T"
+      },
+      {
+        "symbol": "PMC",
+        "market_cap": 1558539691000.0,
+        "pe_ratio": 24.93,
+        "pb_ratio": 5.38,
+        "name": "Công ty Cổ phần Dược phẩm Dược liệu Pharmedic"
+      }
+    ]
+  },
+  "Viễn thông": {
+    "median_pe": 11.34,
+    "median_pb": 1.4,
+    "peer_count": 1,
+    "total_in_sector": 1,
+    "peers": [
+      {
+        "symbol": "PIA",
+        "market_cap": 101790000000.0,
+        "pe_ratio": 11.34,
+        "pb_ratio": 1.4,
+        "name": "Công ty Cổ phần Tin học Viễn thông Petrolimex"
+      }
+    ]
+  },
+  "Unknown": {
+    "median_pe": 44.7,
+    "median_pb": 4.89,
+    "peer_count": 2,
+    "total_in_sector": 2,
+    "peers": [
+      {
+        "symbol": "VTP",
+        "market_cap": 12945537364600.0,
+        "pe_ratio": 51.83,
+        "pb_ratio": 8.15,
+        "name": "VTP"
+      },
+      {
+        "symbol": "QTC",
+        "market_cap": 65340000000.0,
+        "pe_ratio": 37.56,
+        "pb_ratio": 1.63,
+        "name": "QTC"
       }
     ]
   }

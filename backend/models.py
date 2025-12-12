@@ -187,8 +187,66 @@ class ValuationModels:
             with open(sector_peers_file, 'r', encoding='utf-8') as f:
                 all_sectors = json.load(f)
             
-            if current_sector in all_sectors:
-                sector_data = all_sectors[current_sector]
+            # Sector name mapping (ICB level 3 → ICB level 2)
+            # VCI API sometimes returns different names than local JSON files
+            sector_mapping = {
+                # Thực phẩm
+                'Sản xuất thực phẩm': 'Thực phẩm và đồ uống',
+                'Đồ uống': 'Thực phẩm và đồ uống',
+                'Thuốc lá': 'Thực phẩm và đồ uống',
+                # Ngân hàng & Tài chính  
+                'Ngân hàng thương mại': 'Ngân hàng',
+                'Chứng khoán': 'Dịch vụ tài chính',
+                'Tài chính tiêu dùng': 'Dịch vụ tài chính',
+                'Đầu tư tài chính': 'Dịch vụ tài chính',
+                # Bất động sản
+                'Phát triển Bất động sản': 'Bất động sản',
+                'Dịch vụ Bất động sản': 'Bất động sản',
+                # Xây dựng
+                'Xây dựng': 'Xây dựng và Vật liệu',
+                'Vật liệu xây dựng': 'Xây dựng và Vật liệu',
+                # Công nghiệp
+                'Vận tải': 'Hàng & Dịch vụ Công nghiệp',
+                'Logistics': 'Hàng & Dịch vụ Công nghiệp',
+                'Dịch vụ công nghiệp': 'Hàng & Dịch vụ Công nghiệp',
+                # Hóa chất
+                'Nhựa & Bao bì': 'Hóa chất',
+                'Phân bón & Hóa chất nông nghiệp': 'Hóa chất',
+                # Y tế
+                'Dược phẩm': 'Y tế',
+                'Thiết bị y tế': 'Y tế',
+                # Điện
+                'Sản xuất điện': 'Điện, nước & xăng dầu khí đốt',
+                'Điện': 'Điện, nước & xăng dầu khí đốt',
+                # Bán lẻ
+                'Bán lẻ thực phẩm': 'Bán lẻ',
+                'Bán lẻ chuyên biệt': 'Bán lẻ',
+                # Công nghệ
+                'Phần mềm': 'Công nghệ Thông tin',
+                'Dịch vụ CNTT': 'Công nghệ Thông tin',
+                # Khác
+                'Khai thác': 'Tài nguyên Cơ bản',
+                'Thép': 'Tài nguyên Cơ bản',
+                'Kim loại': 'Tài nguyên Cơ bản',
+            }
+            
+            # Try to find matching sector
+            matched_sector = current_sector
+            if current_sector not in all_sectors:
+                # Try mapping
+                matched_sector = sector_mapping.get(current_sector)
+                if matched_sector:
+                    print(f"📋 Sector mapped: '{current_sector}' → '{matched_sector}'")
+                else:
+                    # Try partial match
+                    for sector_key in all_sectors.keys():
+                        if current_sector in sector_key or sector_key in current_sector:
+                            matched_sector = sector_key
+                            print(f"📋 Sector partial match: '{current_sector}' → '{matched_sector}'")
+                            break
+            
+            if matched_sector and matched_sector in all_sectors:
+                sector_data = all_sectors[matched_sector]
                 
                 # Get peers (excluding current stock) - return FULL details
                 all_peers = sector_data.get('peers', [])
