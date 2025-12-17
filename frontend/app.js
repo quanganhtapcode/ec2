@@ -783,7 +783,6 @@ class StockValuationApp {
             this.updateValuationDisplay();
             this.updateWeightedResults();
             this.updateRecommendation();
-            document.getElementById('export-report-btn').disabled = false;
             document.getElementById('export-excel-btn').disabled = false;
             // Removed: cached valuation toast - too noisy when adjusting weights
             return;
@@ -861,7 +860,6 @@ class StockValuationApp {
                 this.renderSensitivityMatrix(this.valuationResults.sensitivity_analysis);
             }
 
-            document.getElementById('export-report-btn').disabled = false;
             document.getElementById('export-excel-btn').disabled = false;
 
             // Removed: success toast - results are visible, no need to announce
@@ -1193,8 +1191,8 @@ class StockValuationApp {
         this.safeUpdateElement('confidence-level', '--');
 
         // Disable export button
-        document.getElementById('export-report-btn').disabled = true;
-        document.getElementById('export-excel-btn').disabled = true;
+        const exportExcelBtn = document.getElementById('export-excel-btn');
+        if (exportExcelBtn) exportExcelBtn.disabled = true;
 
         // Clear valuation results
         this.valuationResults = null;
