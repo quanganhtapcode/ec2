@@ -192,7 +192,6 @@ const translations = {
         confidenceLevel: "Mức độ tin cậy:",
         recommendation: "Khuyến nghị",
         exportReports: "Xuất báo cáo",
-        exportPDFReport: "📄 Xuất PDF",
         exportExcelReport: "📊 Xuất Excel",
         exportHint: "Hoàn tất tính toán định giá để xuất báo cáo",
 
@@ -490,7 +489,6 @@ const translations = {
         confidenceLevel: "Confidence Level:",
         recommendation: "Recommendation",
         exportReports: "Export Reports",
-        exportPDFReport: "📄 Export PDF",
         exportExcelReport: "📊 Export Excel",
         exportHint: "Complete valuation calculations to enable exports",
 

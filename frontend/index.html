@@ -61,8 +61,7 @@
     <link rel="stylesheet" href="css/ticker-autocomplete.css?v=1">
     <link rel="stylesheet" href="css/methodology-modal.css?v=1">
     <link rel="stylesheet" href="css/footer-modal.css?v=1">
-    <!-- Defer heavy library loading (~80KB) until after page load -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <!-- Defer heavy library loading until after page load -->
     <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
@@ -892,9 +891,6 @@
                                     <div class="export-actions">
                                         <button id="export-excel-btn" class="btn btn--primary" disabled>
                                             <span data-i18n="exportExcelReport">📊 Export Excel Report</span>
-                                        </button>
-                                        <button id="export-report-btn" class="btn btn--secondary" disabled>
-                                            <span data-i18n="exportPDFReport">📄 Export PDF Report</span>
                                         </button>
                                     </div>
                                     <p class="export-hint" data-i18n="exportHint">Complete valuation calculations to

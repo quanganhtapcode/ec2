@@ -2,7 +2,7 @@
  * Vietnamese Stock Valuation - Client-side application logic
  * Uses vanilla JavaScript for state management and DOM manipulation
  * Integrates with Chart.js for historical trend visualization
- * Generates PDF reports using jsPDF
+ * Exports Excel reports using ExcelJS
  */
 
 // Application State
@@ -200,15 +200,8 @@ class StockValuationApp {
         document.getElementById('pb-enabled').addEventListener('change', () => this.updateModelSelection());
         document.getElementById('select-all-btn').addEventListener('click', () => this.toggleSelectAll());
 
-        // Export functionality
-        const exportReportBtn = document.getElementById('export-report-btn');
+        // Export functionality (Excel only - PDF removed)
         const exportExcelBtn = document.getElementById('export-excel-btn');
-
-        if (exportReportBtn) {
-            exportReportBtn.addEventListener('click', () => this.exportReport());
-        } else {
-            console.error('Export PDF button not found');
-        }
 
         if (exportExcelBtn) {
             exportExcelBtn.addEventListener('click', () => {
@@ -392,11 +385,6 @@ class StockValuationApp {
         const resetBtn = document.getElementById('reset-assumptions-btn');
         if (resetBtn) {
             resetBtn.textContent = langData.resetAssumptions;
-        }
-
-        const exportBtn = document.getElementById('export-report-btn');
-        if (exportBtn) {
-            exportBtn.textContent = langData.exportPDFReport;
         }
 
         // Update select all button
