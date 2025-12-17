@@ -916,6 +916,8 @@ class StockValuationApp {
 
 
     updateValuationDisplay() {
+        if (!this.valuationResults) return; // Guard clause
+
         const currentPrice = this.stockData.current_price;
 
         // FCFE Results

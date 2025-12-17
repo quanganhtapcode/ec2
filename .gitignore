@@ -1,86 +1,37 @@
 # ========================================
-# BACKEND FILES (VPS ONLY - NOT FOR GITHUB)
+# BACKEND & AUTOMATION (Stay on VPS/Local)
 # ========================================
-backend_server.py
-valuation_models.py
-requirements.txt
-Procfile
-
-# Stock Data (VPS only - 694 JSON files)
-stock_data/
-
-# Deployment Scripts (local only - contains VPS IP)
+backend/
+automation/
+jobs/
 scripts/
-deploy.ps1
-deploy-quick.ps1
-DEPLOY_README.md
 
-# SSH Keys
+# Data Folders (Too large or sensitive)
+stocks/
+data/
+backups/
+
+# Specific Files
+sector_peers.json
+stock_list.json
+
+# SSH Keys & Secrets
 *.pem
-
-# VietCap Downloader (contains sensitive Bearer token)
-download_vietcap_financials.py
-# vietcap_financial_statements/  # Commented out - uploading Excel files to GitHub
-download_progress.json
+.env
+.env.*
 
 # ========================================
-# STANDARD PYTHON IGNORES
+# STANDARD IGNORES
 # ========================================
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual Environment
 venv/
 env/
-ENV/
-
-# ========================================
-# IDE & OS
-# ========================================
+node_modules/
 .vscode/
 .idea/
-*.swp
-*.swo
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# ========================================
-# LOGS & ENVIRONMENT
-# ========================================
 *.log
-logs/
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Backup files (too large for GitHub - 100MB+)
-backup*.zip
-*.backup
+*.zip
 *.bak
 
-# ========================================
-# NODE MODULES
-# ========================================
-node_modules/
