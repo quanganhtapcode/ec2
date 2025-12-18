@@ -544,6 +544,7 @@ class StockValuationApp {
         // Clear old data immediately to prevent showing stale data
         this.clearDisplay();
         this.chartManager.resetState();
+        this.chartsLoaded = false; // CRITICAL: Reset app's chartsLoaded flag too!
         this.historicalData = null;
 
         // IMPORTANT: Clear chart cache for the new symbol to force fresh data fetch
