@@ -546,6 +546,15 @@ class StockValuationApp {
         this.chartManager.resetState();
         this.historicalData = null;
 
+        // IMPORTANT: Clear chart cache for the new symbol to force fresh data fetch
+        // This ensures charts are always updated with the latest data from API
+        console.log(`🗑️ Clearing cache for ${symbol}, period: ${period}`);
+        this.chartManager.clearCacheForSymbol(symbol);
+
+        // Also clear API cache for this symbol to ensure fresh data
+        this.api.clearCache(`chart_${symbol}`);
+        this.api.clearCache(`appData_${symbol}_${period}`);
+
         // Fast loading: Load stock data immediately without waiting for charts
         await this.loadStockDataOnly(symbol, period);
 
@@ -670,17 +679,22 @@ class StockValuationApp {
     async loadChartsInBackground(symbol, period) {
         // Cancel previous chart request if still running
         if (this.abortControllers.chartData) {
-            console.log('Cancelling previous chart request');
+            console.log('⚠️ Cancelling previous chart request');
             this.abortControllers.chartData.abort();
         }
 
+        console.log(`📊 Loading charts for ${symbol}...`);
+
         // Check if we have cached chart data for this symbol
         if (this.chartManager.hasCache(symbol)) {
+            console.log(`📦 Using cached chart data for ${symbol}`);
             this.historicalData = this.chartManager.getCache(symbol);
             this.chartsLoaded = true;
             this.chartManager.updateCharts(this.historicalData, this.stockData);
             return;
         }
+
+        console.log(`🔄 No cache found for ${symbol}, fetching from API...`);
 
         // Only load charts if we don't have them cached
         if (this.chartsLoaded && this.currentStock === symbol) {
@@ -765,6 +779,13 @@ class StockValuationApp {
             // Load stock data first, then calculate valuation
             // Removed: loading toast - showLoading indicator is sufficient
             const period = document.getElementById('period-select').value || 'year';
+
+            // IMPORTANT: Clear cache for new symbol to ensure fresh data
+            console.log(`🗑️ Clearing cache for ${symbol} (from calculateValuation)`);
+            this.chartManager.clearCacheForSymbol(symbol);
+            this.api.clearCache(`chart_${symbol}`);
+            this.api.clearCache(`appData_${symbol}_${period}`);
+
             await this.loadStockDataOnly(symbol, period);
 
             if (!this.currentStock) {

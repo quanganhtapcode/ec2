@@ -460,6 +460,22 @@ class ChartManager {
         // Don't clear cache, just reset loaded flag for current flow
     }
 
+    // Clear all chart cache
+    clearCache() {
+        this.chartCache.clear();
+        this.chartsLoaded = false;
+        console.log('🗑️ Chart cache cleared');
+    }
+
+    // Clear cache for a specific symbol
+    clearCacheForSymbol(symbol) {
+        if (this.chartCache.has(symbol)) {
+            this.chartCache.delete(symbol);
+            console.log(`🗑️ Chart cache cleared for ${symbol}`);
+        }
+        this.chartsLoaded = false;
+    }
+
     // Cache management helpers
     hasCache(symbol) {
         return this.chartCache.has(symbol);
