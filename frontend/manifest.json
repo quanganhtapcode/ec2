@@ -1,12 +1,14 @@
 {
-  "name": "Quang Anh - Stock Valuation Tool",
+  "name": "Vietnam Stock Valuation Tool - Định Giá Cổ Phiếu",
   "short_name": "VN Valuation",
-  "description": "Công cụ định giá và đánh giá cổ phiếu Việt Nam miễn phí. Phân tích DCF, P/E, P/B cho VN30, HOSE, HNX.",
+  "description": "Free Vietnam stock valuation tool. Analyze Vietnamese stocks with DCF (FCFE, FCFF), P/E, P/B models. Công cụ định giá cổ phiếu Việt Nam miễn phí cho VN30, HOSE, HNX.",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
   "background_color": "#F5F5F7",
   "theme_color": "#0066CC",
   "orientation": "portrait-primary",
+  "scope": "/",
   "icons": [
     {
       "src": "favicon-192x192.png",
@@ -21,11 +23,22 @@
       "purpose": "any maskable"
     }
   ],
+  "screenshots": [
+    {
+      "src": "og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "Vietnam Stock Valuation Dashboard"
+    }
+  ],
   "categories": [
     "finance",
     "business",
-    "productivity"
+    "productivity",
+    "utilities"
   ],
   "lang": "vi-VN",
-  "dir": "ltr"
+  "dir": "ltr",
+  "related_applications": [],
+  "prefer_related_applications": false
 }

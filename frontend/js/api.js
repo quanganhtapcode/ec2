@@ -7,9 +7,9 @@ class ApiClient {
         // Remove trailing slash if present to avoid double slashes
         this.baseUrl = baseUrl.replace(/\/$/, '');
 
-        // In-memory cache for API responses
+        // In-memory cache for API responses (stored in USER's browser memory)
         this.cache = new Map();
-        this.cacheExpiry = 5 * 60 * 1000; // 5 minutes cache
+        this.cacheExpiry = 4 * 60 * 60 * 1000; // 4 hours cache
     }
 
     /**

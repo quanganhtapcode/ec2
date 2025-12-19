@@ -1,10 +1,33 @@
-# Sitemap cho SEO
+# robots.txt for Vietnam Stock Valuation Tool
+# https://valuation.quanganh.org
+
+# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Disallow admin/backend paths
+# Allow Google to crawl everything important
+User-agent: Googlebot
+Allow: /
+Allow: /?symbol=*
+
+# Allow Bing
+User-agent: Bingbot
+Allow: /
+
+# Disallow backend/API paths (not useful for SEO)
 Disallow: /api/
 Disallow: /backend/
+Disallow: /js/
+Disallow: /css/
+Disallow: /*.json$
+
+# Allow favicon and images for rich results
+Allow: /favicon*
+Allow: /og-image.png
+Allow: /apple-touch-icon.png
+
+# Crawl-delay to be nice to the server
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://valuation.quanganh.org/sitemap.xml

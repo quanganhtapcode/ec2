@@ -75,12 +75,14 @@ def add_security_headers(response):
     return response
 
 # Chart data cache - stores chart data to avoid repeated API calls
+# Cache is stored in SERVER MEMORY - shared between all users
 chart_cache = {}
-CHART_CACHE_DURATION = 3600  # Cache for 1 hour (in seconds)
+CHART_CACHE_DURATION = 14400  # Cache for 4 hours (in seconds)
 
 # Valuation cache - stores valuation results to avoid recalculation
+# Cache is stored in SERVER MEMORY - shared between all users
 valuation_cache = {}
-VALUATION_CACHE_DURATION = 600  # Cache for 10 minutes (in seconds)
+VALUATION_CACHE_DURATION = 14400  # Cache for 4 hours (in seconds)
 
 # Download rate limiting - track downloads per IP
 download_tracker = defaultdict(list)

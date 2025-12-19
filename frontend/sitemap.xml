@@ -1,9 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main Page -->
   <url>
     <loc>https://valuation.quanganh.org/</loc>
-    <lastmod>2025-12-02</lastmod>
+    <lastmod>2025-12-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://valuation.quanganh.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://valuation.quanganh.org/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://valuation.quanganh.org/"/>
+    <image:image>
+      <image:loc>https://valuation.quanganh.org/og-image.png</image:loc>
+      <image:title>Vietnam Stock Valuation Tool - DCF Calculator</image:title>
+      <image:caption>Free stock valuation tool for Vietnamese stocks with DCF, P/E, P/B analysis</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Popular Stock Symbols - VN30 Top Stocks -->
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=VCB</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=HPG</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=FPT</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=VNM</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=MBB</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=TCB</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=VIC</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=VHM</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=VPB</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=MWG</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=ACB</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=STB</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=SAB</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valuation.quanganh.org/?symbol=GVR</loc>
+    <lastmod>2025-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
