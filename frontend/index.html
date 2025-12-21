@@ -142,7 +142,7 @@
     <link rel="stylesheet" href="css/footer-modal.css?v=1">
     <!-- ExcelJS, FileSaver, JSZip are lazy-loaded when Export is clicked (saves ~500KB initial load) -->
     <!-- Critical scripts - load immediately -->
-    <script src="translations.js?v=10"></script>
+    <script src="translations.js?v=11"></script>
     <script src="js/toast.js?v=2"></script>
     <script src="js/utils.js?v=1"></script>
     <script src="js/api.js?v=1"></script>
@@ -161,7 +161,7 @@
     <script src="js/ticker-autocomplete.js?v=1" defer></script>
 
     <!-- Main app - loads after all dependencies -->
-    <script src="app.js?v=20" defer></script>
+    <script src="app.js?v=21" defer></script>
 </head>
 
 <body class="app-container">
@@ -752,12 +752,13 @@
                     </div>
 
                     <!-- Bank Valuation Note -->
+                    <!-- Bank Valuation Note -->
                     <div id="bank-valuation-note" class="alert alert-info mt-3"
                         style="display: none; background-color: #e3f2fd; color: #0d47a1; padding: 10px; border-radius: 5px; margin-top: 15px; font-size: 0.9em;">
-                        <i class="fas fa-info-circle"></i> <strong>Note for Banking Sector:</strong> Traditional DCF
-                        models (FCFE/FCFF) are not suitable for banks due to their unique capital structure. Valuation
-                        is based primarily on <strong>P/E</strong> and <strong>P/B</strong> methods using sector
-                        comparisons.
+                        <i class="fas fa-info-circle"></i> <strong data-i18n="bankNoteTitle">Note for Banking
+                            Sector:</strong> <span data-i18n="bankNoteContent">Traditional DCF models (FCFE/FCFF) are
+                            not suitable for banks due to their unique capital structure. Valuation is based primarily
+                            on P/E and P/B methods using sector comparisons.</span>
                     </div>
 
                     <div class="recommendation-box">

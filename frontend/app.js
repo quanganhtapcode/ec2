@@ -68,6 +68,13 @@ class StockValuationApp {
     }
 
     init() {
+        // Suppress console logs in production to hide data/code
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            const noop = () => { };
+            console.log = noop;
+            console.info = noop;
+        }
+
         this.setupEventListeners();
         this.loadDefaultAssumptions();
         this.setupThemeToggle();
@@ -1377,7 +1384,7 @@ class StockValuationApp {
             isBank = sector.includes('bank') || sector.includes('ngân hàng');
         }
 
-        console.log('Valuation Check - Symbol:', this.stockData?.symbol, 'Is Bank Detected:', isBank, 'Sector:', this.stockData?.sector);
+
 
         const resultsGrid = document.querySelector('.results-grid');
         const fcfeCheckboxDir = document.getElementById('fcfe-enabled')?.closest('.form-group');
@@ -1387,7 +1394,6 @@ class StockValuationApp {
             // Add class for CSS handling (hides cards and fixes layout)
             if (resultsGrid) {
                 resultsGrid.classList.add('bank-mode');
-                console.log('Added bank-mode class to results-grid');
 
                 // FORCE INJECT CSS to bypass any cache issues
                 if (!document.getElementById('bank-override-css')) {
@@ -1406,7 +1412,6 @@ class StockValuationApp {
                         }
                     `;
                     document.head.appendChild(style);
-                    console.log('Injected Bank CSS Override');
                 }
             }
 

@@ -158,6 +158,11 @@ const translations = {
         potentialReturn: "Lợi nhuận tiềm năng:",
         waitingForData: "Đang chờ dữ liệu",
 
+        // Bank Note
+        bankNoteTitle: "Lưu ý cho ngành Ngân hàng:",
+        bankNoteContent: "Các mô hình DCF truyền thống (FCFE/FCFF) không phù hợp với ngân hàng do cấu trúc vốn đặc thù. Định giá dựa chủ yếu vào phương pháp P/E và P/B so sánh ngành.",
+
+
         // Summary
         valuationSummary: "Tổng kết định giá",
         marketIndicators: "Chỉ số thị trường",
@@ -455,6 +460,10 @@ const translations = {
         investmentRecommendation: "Investment Recommendation",
         potentialReturn: "Potential Return:",
         waitingForData: "Waiting for data",
+
+        // Bank Note
+        bankNoteTitle: "Note for Banking Sector:",
+        bankNoteContent: "Traditional DCF models (FCFE/FCFF) are not suitable for banks due to their unique capital structure. Valuation is based primarily on P/E and P/B methods using sector comparisons.",
 
         // Summary
         valuationSummary: "Valuation Summary",
