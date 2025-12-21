@@ -1370,8 +1370,14 @@ class StockValuationApp {
         let bvps = this.stockData.book_value_per_share || 0;
 
         // FCFE Details
-        const isBank = this.valuationResults.is_bank;
-        console.log('Valuation Check - Symbol:', this.stockData.symbol, 'Is Bank:', isBank);
+        // Fix: robust bank detection checking both result flag and sector name
+        let isBank = this.valuationResults.is_bank;
+        if (!isBank && this.stockData && this.stockData.sector) {
+            const sector = this.stockData.sector.toLowerCase();
+            isBank = sector.includes('bank') || sector.includes('ngân hàng');
+        }
+
+        console.log('Valuation Check - Symbol:', this.stockData?.symbol, 'Is Bank Detected:', isBank, 'Sector:', this.stockData?.sector);
 
         const resultsGrid = document.querySelector('.results-grid');
         const fcfeCheckboxDir = document.getElementById('fcfe-enabled')?.closest('.form-group');
