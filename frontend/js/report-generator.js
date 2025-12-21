@@ -1202,107 +1202,93 @@ class ReportGenerator {
         let row = 1;
 
         sheet.mergeCells('A1:E1');
-        sheet.getCell('A1').value = 'P/E RATIO ANALYSIS';
+        sheet.getCell('A1').value = 'SECTOR COMPARABLE P/E VALUATION';
         sheet.getCell('A1').font = { bold: true, size: 14, color: { argb: 'FFFFFF' } };
         sheet.getCell('A1').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC107' } };
         sheet.getCell('A1').alignment = { horizontal: 'center' };
         row += 2;
 
-        // Inputs
-        sheet.getCell(`A${row}`).value = 'INPUTS';
+        // Method description
+        sheet.getCell(`A${row}`).value = 'METHODOLOGY';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
 
+        sheet.getCell(`A${row}`).value = 'Fair Value = Median P/E (Sector) × Current EPS';
+        sheet.getCell(`A${row}`).font = { italic: true, color: { argb: '6B7280' } };
+        row++;
+
+        sheet.getCell(`A${row}`).value = 'We use the median P/E ratio of the top 10 companies by market cap in the same sector';
+        sheet.getCell(`A${row}`).font = { italic: true, color: { argb: '6B7280' } };
+        row += 2;
+
+        // Inputs
+        sheet.getCell(`A${row}`).value = 'VALUATION INPUTS';
+        sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
+        row++;
+
+        const sectorPeers = valuationResults.sector_peers || {};
+        const medianPE = sectorPeers.median_pe || valuationResults.justified_pe?.median_pe || 0;
+        const eps = stockData.eps || 0;
+        const fairValue = valuationResults.justified_pe?.shareValue || (medianPE * eps);
+
         sheet.getCell(`A${row}`).value = 'Current EPS';
-        sheet.getCell(`B${row}`).value = stockData.eps || 0;
+        sheet.getCell(`B${row}`).value = eps;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
-        sheet.getCell(`B${row}`).name = 'CurrentEPS';
+        sheet.getCell(`C${row}`).value = 'VND';
         row++;
 
-        sheet.getCell(`A${row}`).value = 'ROE (%)';
-        sheet.getCell(`B${row}`).value = (stockData.roe || 0) / 100;
-        sheet.getCell(`B${row}`).numFmt = '0.00%';
-        sheet.getCell(`B${row}`).name = 'ROE';
+        sheet.getCell(`A${row}`).value = 'Sector';
+        sheet.getCell(`B${row}`).value = sectorPeers.sector || stockData.sector || 'N/A';
+        sheet.getCell(`B${row}`).font = { bold: true };
         row++;
 
-        sheet.getCell(`A${row}`).value = 'Payout Ratio (%)';
-        sheet.getCell(`B${row}`).value = (assumptions.payoutRatio || 50) / 100;
-        sheet.getCell(`B${row}`).numFmt = '0.00%';
-        sheet.getCell(`B${row}`).name = 'PayoutRatio';
-        row++;
-
-        sheet.getCell(`A${row}`).value = 'Required Return (%)';
-        sheet.getCell(`B${row}`).value = assumptions.requiredReturn / 100;
-        sheet.getCell(`B${row}`).numFmt = '0.00%';
-        sheet.getCell(`B${row}`).name = 'RequiredReturn_PE';
+        sheet.getCell(`A${row}`).value = 'Median P/E (Top 10 by Market Cap)';
+        sheet.getCell(`B${row}`).value = medianPE;
+        sheet.getCell(`B${row}`).numFmt = '0.00';
+        sheet.getCell(`B${row}`).font = { bold: true, color: { argb: '28A745' } };
+        sheet.getCell(`C${row}`).value = 'From sector_peers.json';
+        sheet.getCell(`C${row}`).font = { italic: true, color: { argb: '6B7280' } };
         row += 2;
 
         // Calculation
-        sheet.getCell(`A${row}`).value = 'CALCULATION';
+        sheet.getCell(`A${row}`).value = 'VALUATION RESULT';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
 
-        sheet.getCell(`A${row}`).value = 'Growth Rate (g)';
-        sheet.getCell(`B${row}`).value = { formula: 'ROE*(1-PayoutRatio)' };
-        sheet.getCell(`B${row}`).numFmt = '0.00%';
-        sheet.getCell(`B${row}`).name = 'GrowthRate_PE';
-        sheet.getCell(`C${row}`).value = 'g = ROE × (1 - Payout Ratio)';
-        sheet.getCell(`C${row}`).font = { italic: true };
+        sheet.getCell(`A${row}`).value = 'Formula: Fair Value = Median P/E × EPS';
+        sheet.getCell(`A${row}`).font = { italic: true, color: { argb: '6B7280' } };
         row++;
 
-        sheet.getCell(`A${row}`).value = 'Justified P/E Ratio';
-        sheet.getCell(`B${row}`).value = { formula: 'PayoutRatio/(RequiredReturn_PE-GrowthRate_PE)' };
-        sheet.getCell(`B${row}`).numFmt = '0.00';
-        sheet.getCell(`B${row}`).name = 'JustifiedPE';
-        sheet.getCell(`C${row}`).value = 'P/E = Payout / (r - g)';
-        sheet.getCell(`C${row}`).font = { italic: true };
+        sheet.getCell(`A${row}`).value = `Calculation: ${medianPE.toFixed(2)} × ${eps.toLocaleString()} = ${fairValue.toLocaleString()} VND`;
+        sheet.getCell(`A${row}`).font = { color: { argb: '6B7280' } };
         row++;
 
         sheet.getCell(`A${row}`).value = 'Fair Value per Share';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
-        sheet.getCell(`B${row}`).value = { formula: 'JustifiedPE*CurrentEPS' };
+        sheet.getCell(`B${row}`).value = fairValue;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).font = { bold: true, size: 12, color: { argb: 'FFC107' } };
-        sheet.getCell(`C${row}`).value = 'Fair Value = Justified P/E × EPS';
-        sheet.getCell(`C${row}`).font = { italic: true };
+        sheet.getCell(`C${row}`).value = 'VND';
         row += 2;
 
         sheet.getCell(`A${row}`).value = 'Current Market Price';
-        sheet.getCell(`B${row}`).value = stockData.current_price;
+        sheet.getCell(`B${row}`).value = stockData.current_price || 0;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
+        sheet.getCell(`C${row}`).value = 'VND';
         row++;
 
+        const upside = stockData.current_price ? ((fairValue - stockData.current_price) / stockData.current_price) : 0;
         sheet.getCell(`A${row}`).value = 'Upside/Downside';
-        sheet.getCell(`B${row}`).value = { formula: `(B${row - 3}-B${row - 1})/B${row - 1}` };
-        sheet.getCell(`B${row}`).numFmt = '0.00%';
+        sheet.getCell(`B${row}`).value = upside;
+        sheet.getCell(`B${row}`).numFmt = '+0.00%;-0.00%';
+        sheet.getCell(`B${row}`).font = { bold: true, color: { argb: upside >= 0 ? '28A745' : 'DC3545' } };
         row += 2;
 
-        // ===== SECTOR COMPARABLE SECTION =====
-        const sectorPeers = valuationResults.sector_peers || {};
+        // ===== PEER COMPARISON TABLE =====
         if (sectorPeers.peers_detail && sectorPeers.peers_detail.length > 0) {
-            sheet.getCell(`A${row}`).value = 'SECTOR COMPARABLE P/E';
-            sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
-            sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'E8F5E9' } };
-            row++;
-
-            sheet.getCell(`A${row}`).value = 'Sector';
-            sheet.getCell(`B${row}`).value = sectorPeers.sector || stockData.sector || 'N/A';
-            sheet.getCell(`B${row}`).font = { bold: true };
-            row++;
-
-            sheet.getCell(`A${row}`).value = 'Median P/E (Top 10 by Market Cap)';
-            sheet.getCell(`B${row}`).value = sectorPeers.median_pe || 'N/A';
-            sheet.getCell(`B${row}`).numFmt = '0.00';
-            sheet.getCell(`B${row}`).font = { bold: true, color: { argb: '28A745' } };
-            row++;
-
-            sheet.getCell(`A${row}`).value = 'Total Companies in Sector';
-            sheet.getCell(`B${row}`).value = sectorPeers.total_in_sector || sectorPeers.peer_count || 'N/A';
-            row += 2;
-
-            // Peers table header
-            sheet.getCell(`A${row}`).value = 'PEER COMPARISON';
+            sheet.getCell(`A${row}`).value = 'PEER COMPARISON (Top 10 by Market Cap)';
             sheet.getCell(`A${row}`).font = { bold: true, size: 11 };
+            sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'E8F5E9' } };
             row++;
 
             ['Symbol', 'Market Cap (Bn)', 'P/E', 'P/B'].forEach((h, i) => {
@@ -1336,9 +1322,9 @@ class ReportGenerator {
             sheet.getCell(`D${row}`).font = { bold: true, color: { argb: '28A745' } };
         }
 
-        sheet.getColumn(1).width = 30;
+        sheet.getColumn(1).width = 40;
         sheet.getColumn(2).width = 20;
-        sheet.getColumn(3).width = 35;
+        sheet.getColumn(3).width = 12;
         sheet.getColumn(4).width = 12;
     }
 
@@ -1346,93 +1332,93 @@ class ReportGenerator {
         let row = 1;
 
         sheet.mergeCells('A1:E1');
-        sheet.getCell('A1').value = 'P/B RATIO ANALYSIS';
+        sheet.getCell('A1').value = 'SECTOR COMPARABLE P/B VALUATION';
         sheet.getCell('A1').font = { bold: true, size: 14, color: { argb: 'FFFFFF' } };
         sheet.getCell('A1').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'DC3545' } };
         sheet.getCell('A1').alignment = { horizontal: 'center' };
         row += 2;
 
-        // Inputs
-        sheet.getCell(`A${row}`).value = 'INPUTS';
+        // Method description
+        sheet.getCell(`A${row}`).value = 'METHODOLOGY';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
 
-        sheet.getCell(`A${row}`).value = 'Book Value per Share';
-        sheet.getCell(`B${row}`).value = stockData.book_value_per_share || 0;
+        sheet.getCell(`A${row}`).value = 'Fair Value = Median P/B (Sector) × Current BVPS';
+        sheet.getCell(`A${row}`).font = { italic: true, color: { argb: '6B7280' } };
+        row++;
+
+        sheet.getCell(`A${row}`).value = 'We use the median P/B ratio of the top 10 companies by market cap in the same sector';
+        sheet.getCell(`A${row}`).font = { italic: true, color: { argb: '6B7280' } };
+        row += 2;
+
+        // Inputs
+        sheet.getCell(`A${row}`).value = 'VALUATION INPUTS';
+        sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
+        row++;
+
+        const sectorPeers = valuationResults.sector_peers || {};
+        const medianPB = sectorPeers.median_pb || valuationResults.justified_pb?.median_pb || 0;
+        const bvps = stockData.book_value_per_share || stockData.bvps || 0;
+        const fairValue = valuationResults.justified_pb?.shareValue || (medianPB * bvps);
+
+        sheet.getCell(`A${row}`).value = 'Book Value per Share (BVPS)';
+        sheet.getCell(`B${row}`).value = bvps;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
-        sheet.getCell(`B${row}`).name = 'BVPS';
+        sheet.getCell(`C${row}`).value = 'VND';
         row++;
 
-        sheet.getCell(`A${row}`).value = 'ROE (%)';
-        sheet.getCell(`B${row}`).value = (stockData.roe || 0) / 100;
-        sheet.getCell(`B${row}`).numFmt = '0.00%';
-        sheet.getCell(`B${row}`).name = 'ROE_PB';
+        sheet.getCell(`A${row}`).value = 'Sector';
+        sheet.getCell(`B${row}`).value = sectorPeers.sector || stockData.sector || 'N/A';
+        sheet.getCell(`B${row}`).font = { bold: true };
         row++;
 
-        sheet.getCell(`A${row}`).value = 'Required Return (%)';
-        sheet.getCell(`B${row}`).value = assumptions.requiredReturn / 100;
-        sheet.getCell(`B${row}`).numFmt = '0.00%';
-        sheet.getCell(`B${row}`).name = 'RequiredReturn_PB';
+        sheet.getCell(`A${row}`).value = 'Median P/B (Top 10 by Market Cap)';
+        sheet.getCell(`B${row}`).value = medianPB;
+        sheet.getCell(`B${row}`).numFmt = '0.00';
+        sheet.getCell(`B${row}`).font = { bold: true, color: { argb: 'DC3545' } };
+        sheet.getCell(`C${row}`).value = 'From sector_peers.json';
+        sheet.getCell(`C${row}`).font = { italic: true, color: { argb: '6B7280' } };
         row += 2;
 
         // Calculation
-        sheet.getCell(`A${row}`).value = 'CALCULATION';
+        sheet.getCell(`A${row}`).value = 'VALUATION RESULT';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
         row++;
 
-        sheet.getCell(`A${row}`).value = 'Justified P/B Ratio';
-        sheet.getCell(`B${row}`).value = { formula: 'ROE_PB/RequiredReturn_PB' };
-        sheet.getCell(`B${row}`).numFmt = '0.00';
-        sheet.getCell(`B${row}`).name = 'JustifiedPB';
-        sheet.getCell(`C${row}`).value = 'P/B = ROE / r';
-        sheet.getCell(`C${row}`).font = { italic: true };
+        sheet.getCell(`A${row}`).value = 'Formula: Fair Value = Median P/B × BVPS';
+        sheet.getCell(`A${row}`).font = { italic: true, color: { argb: '6B7280' } };
+        row++;
+
+        sheet.getCell(`A${row}`).value = `Calculation: ${medianPB.toFixed(2)} × ${bvps.toLocaleString()} = ${fairValue.toLocaleString()} VND`;
+        sheet.getCell(`A${row}`).font = { color: { argb: '6B7280' } };
         row++;
 
         sheet.getCell(`A${row}`).value = 'Fair Value per Share';
         sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
-        sheet.getCell(`B${row}`).value = { formula: 'JustifiedPB*BVPS' };
+        sheet.getCell(`B${row}`).value = fairValue;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
         sheet.getCell(`B${row}`).font = { bold: true, size: 12, color: { argb: 'DC3545' } };
-        sheet.getCell(`C${row}`).value = 'Fair Value = Justified P/B × BVPS';
-        sheet.getCell(`C${row}`).font = { italic: true };
+        sheet.getCell(`C${row}`).value = 'VND';
         row += 2;
 
         sheet.getCell(`A${row}`).value = 'Current Market Price';
-        sheet.getCell(`B${row}`).value = stockData.current_price;
+        sheet.getCell(`B${row}`).value = stockData.current_price || 0;
         sheet.getCell(`B${row}`).numFmt = '#,##0';
+        sheet.getCell(`C${row}`).value = 'VND';
         row++;
 
+        const upside = stockData.current_price ? ((fairValue - stockData.current_price) / stockData.current_price) : 0;
         sheet.getCell(`A${row}`).value = 'Upside/Downside';
-        sheet.getCell(`B${row}`).value = { formula: `(B${row - 3}-B${row - 1})/B${row - 1}` };
-        sheet.getCell(`B${row}`).numFmt = '0.00%';
+        sheet.getCell(`B${row}`).value = upside;
+        sheet.getCell(`B${row}`).numFmt = '+0.00%;-0.00%';
+        sheet.getCell(`B${row}`).font = { bold: true, color: { argb: upside >= 0 ? '28A745' : 'DC3545' } };
         row += 2;
 
-        // ===== SECTOR COMPARABLE SECTION =====
-        const sectorPeers = valuationResults.sector_peers || {};
+        // ===== PEER COMPARISON TABLE =====
         if (sectorPeers.peers_detail && sectorPeers.peers_detail.length > 0) {
-            sheet.getCell(`A${row}`).value = 'SECTOR COMPARABLE P/B';
-            sheet.getCell(`A${row}`).font = { bold: true, size: 12 };
-            sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEBEE' } };
-            row++;
-
-            sheet.getCell(`A${row}`).value = 'Sector';
-            sheet.getCell(`B${row}`).value = sectorPeers.sector || stockData.sector || 'N/A';
-            sheet.getCell(`B${row}`).font = { bold: true };
-            row++;
-
-            sheet.getCell(`A${row}`).value = 'Median P/B (Top 10 by Market Cap)';
-            sheet.getCell(`B${row}`).value = sectorPeers.median_pb || 'N/A';
-            sheet.getCell(`B${row}`).numFmt = '0.00';
-            sheet.getCell(`B${row}`).font = { bold: true, color: { argb: 'DC3545' } };
-            row++;
-
-            sheet.getCell(`A${row}`).value = 'Total Companies in Sector';
-            sheet.getCell(`B${row}`).value = sectorPeers.total_in_sector || sectorPeers.peer_count || 'N/A';
-            row += 2;
-
-            // Peers table header
-            sheet.getCell(`A${row}`).value = 'PEER COMPARISON';
+            sheet.getCell(`A${row}`).value = 'PEER COMPARISON (Top 10 by Market Cap)';
             sheet.getCell(`A${row}`).font = { bold: true, size: 11 };
+            sheet.getCell(`A${row}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEBEE' } };
             row++;
 
             ['Symbol', 'Market Cap (Bn)', 'P/E', 'P/B'].forEach((h, i) => {
@@ -1465,9 +1451,9 @@ class ReportGenerator {
             sheet.getCell(`D${row}`).font = { bold: true, color: { argb: 'DC3545' } };
         }
 
-        sheet.getColumn(1).width = 30;
+        sheet.getColumn(1).width = 40;
         sheet.getColumn(2).width = 20;
-        sheet.getColumn(3).width = 35;
+        sheet.getColumn(3).width = 12;
         sheet.getColumn(4).width = 12;
     }
 
