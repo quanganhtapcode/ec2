@@ -1388,6 +1388,26 @@ class StockValuationApp {
             if (resultsGrid) {
                 resultsGrid.classList.add('bank-mode');
                 console.log('Added bank-mode class to results-grid');
+
+                // FORCE INJECT CSS to bypass any cache issues
+                if (!document.getElementById('bank-override-css')) {
+                    const style = document.createElement('style');
+                    style.id = 'bank-override-css';
+                    style.innerHTML = `
+                        .results-grid.bank-mode #fcfe-card, 
+                        .results-grid.bank-mode #fcff-card { 
+                            display: none !important; 
+                        }
+                        .results-grid.bank-mode { 
+                            grid-template-columns: repeat(2, 1fr) !important; 
+                        }
+                        #bank-valuation-note {
+                            display: block !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    console.log('Injected Bank CSS Override');
+                }
             }
 
             // Hide input options
@@ -1407,6 +1427,9 @@ class StockValuationApp {
             // Remove class
             if (resultsGrid) {
                 resultsGrid.classList.remove('bank-mode');
+                // Remove injected CSS if exists
+                const overrideCss = document.getElementById('bank-override-css');
+                if (overrideCss) overrideCss.remove();
             }
 
             // Show input options
