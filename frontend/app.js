@@ -1421,6 +1421,34 @@ class StockValuationApp {
 
         // Update recommendation for page 3
         this.updateRecommendation();
+
+        // Show/Hide Bank Note
+        let bankNote = document.getElementById('bank-valuation-note');
+        if (!bankNote) {
+            // Create note element if it doesn't exist
+            const summaryTab = document.getElementById('summary');
+            if (summaryTab) {
+                bankNote = document.createElement('div');
+                bankNote.id = 'bank-valuation-note';
+                bankNote.className = 'alert alert-info mt-3';
+                bankNote.style.backgroundColor = '#e3f2fd';
+                bankNote.style.color = '#0d47a1';
+                bankNote.style.padding = '10px';
+                bankNote.style.borderRadius = '5px';
+                bankNote.style.marginTop = '15px';
+                bankNote.style.fontSize = '0.9em';
+                summaryTab.appendChild(bankNote);
+            }
+        }
+
+        if (bankNote) {
+            if (this.valuationResults.is_bank) {
+                bankNote.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Note for Banking Sector:</strong> Traditional DCF models (FCFE/FCFF) are not suitable for banks due to their unique capital structure. Valuation is based primarily on <strong>P/E</strong> and <strong>P/B</strong> methods using sector comparisons.';
+                bankNote.style.display = 'block';
+            } else {
+                bankNote.style.display = 'none';
+            }
+        }
     }
 
     safeUpdateElement(id, value) {
