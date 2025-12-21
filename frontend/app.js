@@ -1477,6 +1477,9 @@ class StockValuationApp {
         // Market Cap
         this.safeUpdateElement('stock-hero-market-cap', AppUtils.formatLargeNumber(data.market_cap));
 
+        // Shares Outstanding
+        this.safeUpdateElement('stock-hero-shares', AppUtils.formatLargeNumber(data.shares_outstanding));
+
         // Exchange
         this.safeUpdateElement('stock-hero-exchange', data.exchange || '--');
     }
@@ -1504,6 +1507,7 @@ class StockValuationApp {
         this.safeUpdateElement('stock-hero-change-value', '--');
         this.safeUpdateElement('stock-hero-change-percent', '--');
         this.safeUpdateElement('stock-hero-market-cap', '--');
+        this.safeUpdateElement('stock-hero-shares', '--');
         this.safeUpdateElement('stock-hero-exchange', '--');
     }
 

@@ -316,9 +316,18 @@
                             </div>
                         </div>
                         <div class="stock-hero-info">
-                            <div class="stock-hero-market-cap-row">
-                                <span class="stock-hero-market-cap" id="stock-hero-market-cap">--</span>
-                                <span class="stock-hero-market-cap-label" data-i18n="marketCapShort">Market Cap</span>
+                            <div class="stock-hero-market-cap-row"
+                                style="display: flex; gap: 16px; align-items: center;">
+                                <div style="display: flex; align-items: baseline; gap: 4px;">
+                                    <span class="stock-hero-market-cap" id="stock-hero-market-cap">--</span>
+                                    <span class="stock-hero-market-cap-label" data-i18n="marketCapShort">Market
+                                        Cap</span>
+                                </div>
+                                <span style="color: var(--color-text-muted);">|</span>
+                                <div style="display: flex; align-items: baseline; gap: 4px;">
+                                    <span class="stock-hero-market-cap" id="stock-hero-shares">--</span>
+                                    <span class="stock-hero-market-cap-label" data-i18n="sharesShort">Shares</span>
+                                </div>
                             </div>
                             <span class="stock-hero-exchange" id="stock-hero-exchange">--</span>
                         </div>
@@ -380,10 +389,6 @@
                                     <div class="metric-item">
                                         <span class="metric-label" data-i18n="roa">ROA</span>
                                         <span class="metric-value" id="roa">--</span>
-                                    </div>
-                                    <div class="metric-item">
-                                        <span class="metric-label" data-i18n="sharesOutstanding">Shares</span>
-                                        <span class="metric-value" id="shares-outstanding">--</span>
                                     </div>
                                 </div>
                             </div>
