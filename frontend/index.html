@@ -161,7 +161,7 @@
     <script src="js/ticker-autocomplete.js?v=1" defer></script>
 
     <!-- Main app - loads after all dependencies -->
-    <script src="app.js?v=16" defer></script>
+    <script src="app.js?v=17" defer></script>
 </head>
 
 <body class="app-container">
@@ -750,6 +750,16 @@
                             <span class="result-diff" id="weighted-diff">--</span>
                         </div>
                     </div>
+
+                    <!-- Bank Valuation Note -->
+                    <div id="bank-valuation-note" class="alert alert-info mt-3"
+                        style="display: none; background-color: #e3f2fd; color: #0d47a1; padding: 10px; border-radius: 5px; margin-top: 15px; font-size: 0.9em;">
+                        <i class="fas fa-info-circle"></i> <strong>Note for Banking Sector:</strong> Traditional DCF
+                        models (FCFE/FCFF) are not suitable for banks due to their unique capital structure. Valuation
+                        is based primarily on <strong>P/E</strong> and <strong>P/B</strong> methods using sector
+                        comparisons.
+                    </div>
+
                     <div class="recommendation-box">
                         <h4 data-i18n="investmentRecommendation">Investment Recommendation</h4>
                         <div class="recommendation" id="recommendation"><span data-i18n="waitingForData">Waiting for
