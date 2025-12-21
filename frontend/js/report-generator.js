@@ -2,6 +2,62 @@
  * Report Generator Module
  * Handles generation of Excel and CSV reports
  */
+
+// Lazy loading state
+let librariesLoaded = false;
+let librariesLoading = false;
+
+/**
+ * Dynamically load a script and return a promise
+ */
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        // Check if already loaded
+        if (document.querySelector(`script[src="${src}"]`)) {
+            resolve();
+            return;
+        }
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+/**
+ * Lazy load ExcelJS, FileSaver, and JSZip libraries
+ * Only loads once, subsequent calls return immediately
+ */
+async function loadExportLibraries() {
+    if (librariesLoaded) return true;
+    if (librariesLoading) {
+        // Wait for existing load to complete
+        while (librariesLoading) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+        return librariesLoaded;
+    }
+
+    librariesLoading = true;
+    try {
+        console.log('📦 Loading export libraries (ExcelJS, FileSaver, JSZip)...');
+        await Promise.all([
+            loadScript('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js'),
+            loadScript('https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js'),
+            loadScript('https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js')
+        ]);
+        librariesLoaded = true;
+        console.log('✅ Export libraries loaded successfully');
+        return true;
+    } catch (error) {
+        console.error('❌ Failed to load export libraries:', error);
+        return false;
+    } finally {
+        librariesLoading = false;
+    }
+}
+
 class ReportGenerator {
     constructor(api, toastManager) {
         this.api = api;
@@ -86,17 +142,17 @@ class ReportGenerator {
         }
 
         try {
-            if (typeof ExcelJS === 'undefined') {
-                this.showStatus('ExcelJS library not loaded yet, please try again', 'warning');
-                return;
+            // Lazy load libraries if not already loaded
+            if (typeof ExcelJS === 'undefined' || typeof JSZip === 'undefined') {
+                this.showStatus('Loading export libraries...', 'info');
+                const loaded = await loadExportLibraries();
+                if (!loaded) {
+                    this.showStatus('Failed to load export libraries. Please try again.', 'error');
+                    return;
+                }
             }
 
-            if (typeof JSZip === 'undefined') {
-                this.showStatus('JSZip library not loaded yet, please try again', 'warning');
-                return;
-            }
-
-            // Removed: generating toast - process is quick, result is visible immediately
+            // Libraries are now loaded, proceed with export
 
             const zip = new JSZip();
             const symbol = currentStock;
