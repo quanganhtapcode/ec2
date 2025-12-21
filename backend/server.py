@@ -59,15 +59,28 @@ def check_origin():
     if request.method == 'OPTIONS':
         return None
     
-    # Get Origin or Referer header
+    # Get headers
     origin = request.headers.get('Origin', '')
     referer = request.headers.get('Referer', '')
+    user_agent = request.headers.get('User-Agent', '').lower()
     
-    # If request has Origin or Referer header, validate it
-    if origin or referer:
+    # Detect if request is from a browser
+    browser_signatures = ['mozilla', 'chrome', 'safari', 'firefox', 'edge', 'opera']
+    is_browser = any(sig in user_agent for sig in browser_signatures)
+    
+    # If it's a browser request, require valid Origin or Referer
+    if is_browser:
         source = origin or referer
         
-        # Check if request is from allowed origin
+        if not source:
+            # Browser request without Origin/Referer = direct URL access
+            logger.warning(f"Blocked direct browser API access: {request.path}")
+            return jsonify({
+                'error': 'Access denied',
+                'message': 'Direct API access is not allowed. Please use valuation.quanganh.org'
+            }), 403
+        
+        # Check if source is from allowed origin
         allowed = False
         for allowed_origin in ALLOWED_ORIGINS:
             if source.startswith(allowed_origin):
@@ -86,7 +99,7 @@ def check_origin():
                 'message': 'API access is only allowed from valuation.quanganh.org'
             }), 403
     
-    # Allow requests without Origin/Referer (server-to-server, curl, etc.)
+    # Allow non-browser requests (curl, Python requests, etc.)
     return None
 
 # Security headers middleware
