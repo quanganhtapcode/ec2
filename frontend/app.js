@@ -1371,17 +1371,18 @@ class StockValuationApp {
 
         // FCFE Details
         const isBank = this.valuationResults.is_bank;
-        const fcfeCard = document.getElementById('fcfe-card');
-        const fcffCard = document.getElementById('fcff-card');
+        console.log('Valuation Check - Symbol:', this.stockData.symbol, 'Is Bank:', isBank);
 
-        // Input checkboxes
+        const resultsGrid = document.querySelector('.results-grid');
         const fcfeCheckboxDir = document.getElementById('fcfe-enabled')?.closest('.form-group');
         const fcffCheckboxDir = document.getElementById('fcff-enabled')?.closest('.form-group');
 
         if (isBank) {
-            // Hide result cards
-            if (fcfeCard) fcfeCard.style.display = 'none';
-            if (fcffCard) fcffCard.style.display = 'none';
+            // Add class for CSS handling (hides cards and fixes layout)
+            if (resultsGrid) {
+                resultsGrid.classList.add('bank-mode');
+                console.log('Added bank-mode class to results-grid');
+            }
 
             // Hide input options
             if (fcfeCheckboxDir) fcfeCheckboxDir.style.display = 'none';
@@ -1397,9 +1398,10 @@ class StockValuationApp {
             this.safeUpdateElement('fcff-share-value', '--');
             this.safeUpdateElement('fcff-market-diff', '--');
         } else {
-            // Show result cards
-            if (fcfeCard) fcfeCard.style.display = 'flex';
-            if (fcffCard) fcffCard.style.display = 'flex';
+            // Remove class
+            if (resultsGrid) {
+                resultsGrid.classList.remove('bank-mode');
+            }
 
             // Show input options
             if (fcfeCheckboxDir) fcfeCheckboxDir.style.display = 'block';
