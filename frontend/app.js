@@ -1371,8 +1371,22 @@ class StockValuationApp {
 
         // FCFE Details
         const isBank = this.valuationResults.is_bank;
+        const fcfeCard = document.getElementById('fcfe-card');
+        const fcffCard = document.getElementById('fcff-card');
+
+        // Input checkboxes
+        const fcfeCheckboxDir = document.getElementById('fcfe-enabled')?.closest('.form-group');
+        const fcffCheckboxDir = document.getElementById('fcff-enabled')?.closest('.form-group');
 
         if (isBank) {
+            // Hide result cards
+            if (fcfeCard) fcfeCard.style.display = 'none';
+            if (fcffCard) fcffCard.style.display = 'none';
+
+            // Hide input options
+            if (fcfeCheckboxDir) fcfeCheckboxDir.style.display = 'none';
+            if (fcffCheckboxDir) fcffCheckboxDir.style.display = 'none';
+
             this.safeUpdateElement('fcfe-equity', 'N/A (Bank)');
             this.safeUpdateElement('fcfe-share-value', '--');
             this.safeUpdateElement('fcfe-market-diff', '--');
@@ -1383,6 +1397,14 @@ class StockValuationApp {
             this.safeUpdateElement('fcff-share-value', '--');
             this.safeUpdateElement('fcff-market-diff', '--');
         } else {
+            // Show result cards
+            if (fcfeCard) fcfeCard.style.display = 'flex';
+            if (fcffCard) fcffCard.style.display = 'flex';
+
+            // Show input options
+            if (fcfeCheckboxDir) fcfeCheckboxDir.style.display = 'block';
+            if (fcffCheckboxDir) fcffCheckboxDir.style.display = 'block';
+
             const fcfeEquityValue = this.valuationResults.fcfe.equityValue;
             this.safeUpdateElement('fcfe-equity', AppUtils.formatCurrency(fcfeEquityValue));
             this.safeUpdateElement('fcfe-share-value', AppUtils.formatCurrency(this.valuationResults.fcfe.shareValue));
