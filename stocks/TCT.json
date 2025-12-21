@@ -2,7 +2,7 @@
   "symbol": "TCT",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T17:17:50.139944",
+  "last_updated": "2025-12-21T02:58:19.688936",
   "name": "Công ty Cổ phần Cáp treo Núi Bà Tây Ninh",
   "exchange": "HSX",
   "sector": "Du lịch và Giải trí",
@@ -22,7 +22,6 @@
   "accounts_receivable": 306099246892.0,
   "fixed_assets": 10586009791.0,
   "ppe": 10586009791.0,
-  "depreciation": 1870521398.0,
   "roe": 3.24397379,
   "roa": 3.06982691,
   "roic": -2.3077982,
@@ -30,7 +29,6 @@
   "net_margin": 39.900478919986334,
   "gross_profit_margin": -6.672213297657965,
   "gross_margin": -6.672213297657965,
-  "ebit_margin": -28.57388524263215,
   "pe_ratio": 23.6449655716,
   "pb_ratio": 0.7619830809,
   "ps_ratio": 9.4344545035,
@@ -51,6 +49,6 @@
   "asset_turnover": 0.0769370944,
   "inventory_turnover": 3.300093353,
   "fixed_asset_turnover": 2.4099782771,
-  "current_price": 19850.0,
+  "current_price": 20000.0,
   "working_capital": 323122733153.0
 }

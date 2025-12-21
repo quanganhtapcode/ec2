@@ -2,7 +2,7 @@
   "symbol": "S99",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:46:32.196021",
+  "last_updated": "2025-12-12T23:10:34.109078",
   "name": "Công ty Cổ phần SCI",
   "exchange": "HNX",
   "sector": "Xây dựng và Vật liệu",
@@ -22,7 +22,6 @@
   "accounts_receivable": 749214647570.0,
   "fixed_assets": 2516314544341.0,
   "ppe": 2516314544341.0,
-  "depreciation": 293280861389.0,
   "roe": 2.9387818400000003,
   "roa": 0.9490353599999999,
   "roic": 2.84344003,
@@ -30,7 +29,6 @@
   "net_margin": 2.8507843177336367,
   "gross_profit_margin": 13.625180732238078,
   "gross_margin": 13.625180732238078,
-  "ebit_margin": 7.630888449189473,
   "pe_ratio": 23.3057050051,
   "pb_ratio": 0.6789993251,
   "ps_ratio": 0.6643953834,
@@ -51,6 +49,6 @@
   "asset_turnover": 0.3329032478,
   "inventory_turnover": 2.4867725137,
   "fixed_asset_turnover": 0.6257077442,
-  "current_price": 9500.0,
+  "current_price": 9400.0,
   "working_capital": 393387734163.0
 }

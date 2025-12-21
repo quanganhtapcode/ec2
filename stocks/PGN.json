@@ -2,7 +2,7 @@
   "symbol": "PGN",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:30:40.629065",
+  "last_updated": "2025-12-21T02:19:33.707700",
   "name": "Công ty Cổ phần Phụ Gia Nhựa",
   "exchange": "HNX",
   "sector": "Hóa chất",
@@ -22,7 +22,6 @@
   "accounts_receivable": 67862984534.0,
   "fixed_assets": 24610491591.0,
   "ppe": 24610491591.0,
-  "depreciation": 4408371105.0,
   "roe": 0.70327643,
   "roa": 0.37545713000000003,
   "roic": 4.57140548,
@@ -30,7 +29,6 @@
   "net_margin": 0.3418010728639084,
   "gross_profit_margin": 5.658014467956732,
   "gross_margin": 5.658014467956732,
-  "ebit_margin": 3.5049025757638743,
   "pe_ratio": 78.938149777,
   "pb_ratio": 0.5532081115,
   "ps_ratio": 0.2698114428,
@@ -51,6 +49,6 @@
   "asset_turnover": 1.0984667924,
   "inventory_turnover": 2.8689881833,
   "fixed_asset_turnover": 8.2570366367,
-  "current_price": 6400.0,
+  "current_price": 6300.0,
   "working_capital": 80566827119.0
 }

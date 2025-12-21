@@ -847,17 +847,37 @@ class ValuationModels:
             data_frequency = assumptions.get('data_frequency', 'year')
             shares_outstanding = self.get_shares_outstanding()
             
-            # Get current EPS
-            if self.stock:
+            # Get current EPS - prioritize EPS from ratio API or stock_data
+            current_eps = 0
+            
+            # First try to get EPS from stock_data (pre-calculated from ratio API)
+            if self.stock_data:
+                current_eps = self.stock_data.get('eps', 0) or self.stock_data.get('eps_ttm', 0) or self.stock_data.get('earnings_per_share', 0)
+            
+            # If no EPS from stock_data, try vnstock ratio
+            if current_eps == 0 and self.stock:
+                try:
+                    ratio_data = self.stock.finance.ratio(period=data_frequency, lang='en', dropna=True)
+                    if not ratio_data.empty:
+                        # Look for EPS column (could be named differently)
+                        eps_columns = [col for col in ratio_data.columns if 'earn_per_share' in str(col).lower() or 'eps' in str(col).lower()]
+                        if eps_columns:
+                            latest_eps = ratio_data[eps_columns[0]].dropna().iloc[0] if not ratio_data[eps_columns[0]].dropna().empty else 0
+                            current_eps = float(latest_eps) if pd.notna(latest_eps) else 0
+                except Exception as e:
+                    print(f"⚠️ Failed to get EPS from ratio: {e}")
+            
+            # Final fallback: calculate from net_income / shares
+            if current_eps == 0 and self.stock:
                 income_data = self.get_cached_income_data(period=data_frequency)
                 actual_freq, processed_income = self.check_data_frequency(income_data.copy(), data_frequency)
                 is_quarterly = actual_freq == 'quarter'
-                
                 net_income = self.find_financial_value(processed_income, ['Net Profit For the Year'], is_quarterly)
                 current_eps = net_income / shares_outstanding if shares_outstanding > 0 else 0
-            else:
+                print(f"⚠️ Using calculated EPS: {net_income:,.0f} / {shares_outstanding:,.0f} = {current_eps:,.2f}")
+            elif current_eps == 0:
                 net_income = self.stock_data.get('net_income_ttm', 0)
-                current_eps = self.stock_data.get('eps', 0) or (net_income / shares_outstanding if shares_outstanding > 0 else 0)
+                current_eps = net_income / shares_outstanding if shares_outstanding > 0 else 0
             
             if current_eps <= 0:
                 print(f"⚠️ P/E Valuation: EPS is {current_eps:.2f} (<=0), cannot calculate")
@@ -894,8 +914,28 @@ class ValuationModels:
             data_frequency = assumptions.get('data_frequency', 'year')
             shares_outstanding = self.get_shares_outstanding()
             
-            # Get Book Value per Share
-            if self.stock:
+            # Get Book Value per Share - prioritize BVPS from stock_data or ratio API
+            bvps = 0
+            
+            # First try to get BVPS from stock_data (pre-calculated from ratio API)
+            if self.stock_data:
+                bvps = self.stock_data.get('bvps', 0) or self.stock_data.get('book_value_per_share', 0)
+            
+            # If no BVPS from stock_data, try vnstock ratio
+            if bvps == 0 and self.stock:
+                try:
+                    ratio_data = self.stock.finance.ratio(period=data_frequency, lang='en', dropna=True)
+                    if not ratio_data.empty:
+                        # Look for BVPS column
+                        bvps_columns = [col for col in ratio_data.columns if 'book_value_per_share' in str(col).lower() or 'bvps' in str(col).lower()]
+                        if bvps_columns:
+                            latest_bvps = ratio_data[bvps_columns[0]].dropna().iloc[0] if not ratio_data[bvps_columns[0]].dropna().empty else 0
+                            bvps = float(latest_bvps) if pd.notna(latest_bvps) else 0
+                except Exception as e:
+                    print(f"⚠️ Failed to get BVPS from ratio: {e}")
+            
+            # Final fallback: calculate from equity / shares
+            if bvps == 0 and self.stock:
                 balance_sheet = self.get_cached_balance_data(period=data_frequency)
                 _, processed_balance = self.check_data_frequency(balance_sheet.copy(), data_frequency)
                 
@@ -928,11 +968,10 @@ class ValuationModels:
                         total_equity = total_assets - total_liabilities
                 
                 bvps = total_equity / shares_outstanding if shares_outstanding > 0 else 0
-            else:
-                bvps = self.stock_data.get('bvps', 0) or self.stock_data.get('book_value_per_share', 0)
-                if bvps == 0:
-                    total_equity = self.stock_data.get('total_equity', 0)
-                    bvps = total_equity / shares_outstanding if shares_outstanding > 0 else 0
+                print(f"⚠️ Using calculated BVPS: {total_equity:,.0f} / {shares_outstanding:,.0f} = {bvps:,.2f}")
+            elif bvps == 0:
+                total_equity = self.stock_data.get('total_equity', 0)
+                bvps = total_equity / shares_outstanding if shares_outstanding > 0 else 0
             
             if bvps <= 0:
                 print(f"⚠️ P/B Valuation: BVPS is {bvps:.2f} (<=0), cannot calculate")

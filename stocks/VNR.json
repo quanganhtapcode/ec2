@@ -2,7 +2,7 @@
   "symbol": "VNR",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T15:22:23.589058",
+  "last_updated": "2025-12-21T03:27:24.271597",
   "name": "Tổng Công ty Cổ phần Tái bảo hiểm Quốc gia Việt Nam",
   "exchange": "HNX",
   "sector": "Bảo hiểm",
@@ -27,7 +27,6 @@
   "roic": -3.1263224899999997,
   "net_profit_margin": 26.140018649796403,
   "net_margin": 26.140018649796403,
-  "ebit_margin": -7.960739194468931,
   "pe_ratio": 9.5043282749,
   "pb_ratio": 0.9560378491,
   "ev_ebitda": -30.6896843529,
@@ -44,6 +43,6 @@
   "quick_ratio": 0.1886342243,
   "cash_ratio": 0.0301370189,
   "asset_turnover": 0.226869693,
-  "current_price": 20400.0,
+  "current_price": 20500.0,
   "working_capital": 635166358453.0
 }

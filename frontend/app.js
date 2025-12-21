@@ -45,7 +45,7 @@ class StockValuationApp {
         };
         this.valuationResults = null;
         this.apiBaseUrl = 'https://api.quanganh.org'; // Production API
-        // this.apiBaseUrl = 'https://api.quanganh.org'; // Production API endpoint
+        // this.apiBaseUrl = 'http://localhost:5000'; // Local testing
         this.currentLanguage = 'en'; // Default to English
 
         // Initialize modular managers

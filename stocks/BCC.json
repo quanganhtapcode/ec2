@@ -2,7 +2,7 @@
   "symbol": "BCC",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T13:31:50.331207",
+  "last_updated": "2025-12-21T00:34:22.193017",
   "name": "Công ty Cổ phần Xi măng Bỉm Sơn",
   "exchange": "HNX",
   "sector": "Xây dựng và Vật liệu",
@@ -22,7 +22,6 @@
   "accounts_receivable": 61117412886.0,
   "fixed_assets": 2597590850642.0,
   "ppe": 2597590850642.0,
-  "depreciation": 321758210919.0,
   "roe": -0.34244854999999996,
   "roa": -0.17602667,
   "roic": 0.29985831,
@@ -30,7 +29,6 @@
   "net_margin": -0.17837660563938948,
   "gross_profit_margin": 8.611646034021563,
   "gross_margin": 8.611646034021563,
-  "ebit_margin": 0.20592573890222568,
   "pe_ratio": -152.4840186522,
   "pb_ratio": 0.5230749483,
   "ps_ratio": 0.2719958166,
@@ -51,6 +49,6 @@
   "asset_turnover": 0.9868259968,
   "inventory_turnover": 7.6560837294,
   "fixed_asset_turnover": 1.2682406835,
-  "current_price": 8000.0,
+  "current_price": 7700.0,
   "working_capital": -939428738698.0
 }

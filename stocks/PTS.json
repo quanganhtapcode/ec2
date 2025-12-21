@@ -2,7 +2,7 @@
   "symbol": "PTS",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:40:49.565740",
+  "last_updated": "2025-12-21T02:30:29.370872",
   "name": "Công ty Cổ phần Vận tải và Dịch vụ Petrolimex Hải Phòng",
   "exchange": "HNX",
   "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -22,7 +22,6 @@
   "accounts_receivable": 16047168513.0,
   "fixed_assets": 156772225228.0,
   "ppe": 156772225228.0,
-  "depreciation": 25379349378.0,
   "roe": 3.96277028,
   "roa": 1.5812696599999998,
   "roic": 7.60717857,
@@ -30,7 +29,6 @@
   "net_margin": 1.0004436734001114,
   "gross_profit_margin": 11.354225265523041,
   "gross_margin": 11.354225265523041,
-  "ebit_margin": 3.2490093622072704,
   "pe_ratio": 20.9196503034,
   "pb_ratio": 0.6053841648,
   "ps_ratio": 0.1545203077,
@@ -51,6 +49,6 @@
   "asset_turnover": 1.5805684004,
   "inventory_turnover": 16.5415719102,
   "fixed_asset_turnover": 2.4320376548,
-  "current_price": 10500.0,
+  "current_price": 10600.0,
   "working_capital": -38857663933.0
 }

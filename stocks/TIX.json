@@ -2,7 +2,7 @@
   "symbol": "TIX",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T17:21:13.686045",
+  "last_updated": "2025-12-21T03:03:30.180641",
   "name": "Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khẩu Dịch vụ và Đầu tư Tân Bình",
   "exchange": "HSX",
   "sector": "Bất động sản",
@@ -22,7 +22,6 @@
   "accounts_receivable": 23025409023.0,
   "fixed_assets": 33723470836.0,
   "ppe": 33723470836.0,
-  "depreciation": 0.0,
   "roe": 12.830334500000001,
   "roa": 8.974198849999999,
   "roic": 10.38978941,
@@ -30,7 +29,6 @@
   "net_margin": 48.09771906690745,
   "gross_profit_margin": 71.14499200608893,
   "gross_margin": 71.14499200608893,
-  "ebit_margin": 38.989361383406134,
   "pe_ratio": 13.2065798085,
   "pb_ratio": 1.6926823462,
   "ps_ratio": 6.3520636546,
@@ -51,6 +49,6 @@
   "asset_turnover": 0.1865826286,
   "inventory_turnover": 37.9991158989,
   "fixed_asset_turnover": 9.2465899007,
-  "current_price": 47500.0,
+  "current_price": 47000.0,
   "working_capital": 426168062381.0
 }

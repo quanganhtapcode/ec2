@@ -2591,8 +2591,19 @@ def calculate_valuation(symbol):
         # Get financial data from request (faster) or fetch if needed
         financial_data_from_request = request_data.get('financialData')
         
+        # Load stock_data from JSON file for EPS/BVPS
+        stock_data_from_file = {}
+        try:
+            stock_file_path = os.path.join(os.path.dirname(__file__), '..', 'stocks', f'{symbol.upper()}.json')
+            if os.path.exists(stock_file_path):
+                with open(stock_file_path, 'r', encoding='utf-8') as f:
+                    stock_data_from_file = json.load(f)
+                logger.info(f"Loaded stock data from {stock_file_path}: EPS={stock_data_from_file.get('eps', 0)}, BVPS={stock_data_from_file.get('bvps', 0)}")
+        except Exception as e:
+            logger.warning(f"Failed to load stock data from file: {e}")
+        
         logger.info(f"Using assumptions: {assumptions}")
-        valuation_model = ValuationModels(stock_symbol=symbol.upper())
+        valuation_model = ValuationModels(stock_data=stock_data_from_file, stock_symbol=symbol.upper())
         
         # Extract sector if available from request
         known_sector = None

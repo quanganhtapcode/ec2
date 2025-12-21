@@ -2,7 +2,7 @@
   "symbol": "PPT",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:36:40.508484",
+  "last_updated": "2025-12-21T02:27:12.060701",
   "name": "Công ty cổ phần Petro Times",
   "exchange": "HNX",
   "sector": "Điện, nước & xăng dầu khí đốt",
@@ -22,7 +22,6 @@
   "accounts_receivable": 88163882854.0,
   "fixed_assets": 64915821433.0,
   "ppe": 64915821433.0,
-  "depreciation": 1689744581.0,
   "roe": 4.80695787,
   "roa": 1.84413782,
   "roic": 3.34851458,
@@ -30,7 +29,6 @@
   "net_margin": 0.22414982170993716,
   "gross_profit_margin": 0.8748673100557677,
   "gross_margin": 0.8748673100557677,
-  "ebit_margin": 0.3714728269866827,
   "pe_ratio": 30.5296977271,
   "pb_ratio": 1.4016830176,
   "ps_ratio": 0.068432263,
@@ -51,6 +49,6 @@
   "asset_turnover": 8.2272553697,
   "inventory_turnover": 30.647099511,
   "fixed_asset_turnover": 61.5131351941,
-  "current_price": 15100.0,
+  "current_price": 15200.0,
   "working_capital": 30117187989.0
 }

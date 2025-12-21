@@ -2,7 +2,7 @@
   "symbol": "NSH",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:27:02.248219",
+  "last_updated": "2025-12-21T02:11:05.766295",
   "name": "Công ty Cổ phần Tập đoàn Nhôm Sông Hồng Shalumi",
   "exchange": "HNX",
   "sector": "Tài nguyên Cơ bản",
@@ -22,7 +22,6 @@
   "accounts_receivable": 177243540732.0,
   "fixed_assets": 118950395539.0,
   "ppe": 118950395539.0,
-  "depreciation": 14463461796.0,
   "roe": 0.7902933900000001,
   "roa": 0.20653964,
   "roic": 4.9657506,
@@ -30,7 +29,6 @@
   "net_margin": 0.1850351761578173,
   "gross_profit_margin": 4.618781279396554,
   "gross_margin": 4.618781279396554,
-  "ebit_margin": 3.5746639474335735,
   "pe_ratio": 48.5762544483,
   "pb_ratio": 0.3823839501,
   "ps_ratio": 0.089883158,
@@ -51,6 +49,6 @@
   "asset_turnover": 1.1162182576,
   "inventory_turnover": 1.5813308498,
   "fixed_asset_turnover": 8.0737420488,
-  "current_price": 4500.0,
+  "current_price": 4400.0,
   "working_capital": 111031158875.0
 }

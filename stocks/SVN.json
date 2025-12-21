@@ -2,7 +2,7 @@
   "symbol": "SVN",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:58:35.540251",
+  "last_updated": "2025-12-21T02:53:27.616887",
   "name": "Công ty Cổ phần Tập đoàn Vexilla Việt Nam",
   "exchange": "HNX",
   "sector": "Xây dựng và Vật liệu",
@@ -22,7 +22,6 @@
   "accounts_receivable": 49996423759.0,
   "fixed_assets": 91131826.0,
   "ppe": 91131826.0,
-  "depreciation": 36452724.0,
   "roe": 0.20611010000000002,
   "roa": 0.19651788,
   "roic": -0.23469335,
@@ -30,7 +29,6 @@
   "net_margin": 0.5364239602864925,
   "gross_profit_margin": 1.5820100289536196,
   "gross_margin": 1.5820100289536196,
-  "ebit_margin": -0.6307203457348846,
   "pe_ratio": 122.8228922098,
   "pb_ratio": 0.2523627675,
   "ps_ratio": 0.6588514225,
@@ -51,6 +49,6 @@
   "asset_turnover": 0.3663480568,
   "inventory_turnover": 0.0,
   "fixed_asset_turnover": 786.9447915505,
-  "current_price": 2800.0,
+  "current_price": 2700.0,
   "working_capital": 45091104211.0
 }

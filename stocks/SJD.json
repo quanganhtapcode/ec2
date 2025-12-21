@@ -2,7 +2,7 @@
   "symbol": "SJD",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T17:06:33.704550",
+  "last_updated": "2025-12-21T02:46:31.863784",
   "name": "Công ty Cổ phần Thủy điện Cần Đơn",
   "exchange": "HSX",
   "sector": "Điện, nước & xăng dầu khí đốt",
@@ -22,7 +22,6 @@
   "accounts_receivable": 781042501454.0,
   "fixed_assets": 254220536602.0,
   "ppe": 254220536602.0,
-  "depreciation": 80958180416.0,
   "roe": 14.088844570000001,
   "roa": 10.535289409999999,
   "roic": 15.63951485,
@@ -30,7 +29,6 @@
   "net_margin": 33.71590981849376,
   "gross_profit_margin": 51.97093786261166,
   "gross_margin": 51.97093786261166,
-  "ebit_margin": 45.653496115158575,
   "pe_ratio": 6.8289212937,
   "pb_ratio": 0.9581142658,
   "ps_ratio": 2.3024329449,
@@ -51,6 +49,6 @@
   "asset_turnover": 0.3124723452,
   "inventory_turnover": 109.1576705766,
   "fixed_asset_turnover": 1.4340773818,
-  "current_price": 14200.0,
+  "current_price": 14100.0,
   "working_capital": 937457822356.0
 }

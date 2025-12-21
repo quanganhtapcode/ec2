@@ -2,7 +2,7 @@
   "symbol": "HMC",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T16:17:50.949892",
+  "last_updated": "2025-12-21T01:34:14.096922",
   "name": "Công ty Cổ phần Kim khí Thành phố Hồ Chí Minh - VNSTEEL",
   "exchange": "HSX",
   "sector": "Tài nguyên Cơ bản",
@@ -22,7 +22,6 @@
   "accounts_receivable": 443661953202.0,
   "fixed_assets": 24708596886.0,
   "ppe": 24708596886.0,
-  "depreciation": 8034158432.0,
   "roe": 6.329332379999999,
   "roa": 1.93743106,
   "roic": 1.8082160100000002,
@@ -30,7 +29,6 @@
   "net_margin": 0.6036749841448377,
   "gross_profit_margin": 2.180314725751795,
   "gross_margin": 2.180314725751795,
-  "ebit_margin": 0.4879238224829904,
   "pe_ratio": 14.6340971783,
   "pb_ratio": 0.7867632106,
   "ps_ratio": 0.0750910262,
@@ -51,6 +49,6 @@
   "asset_turnover": 3.2093943123,
   "inventory_turnover": 8.8819022798,
   "fixed_asset_turnover": 157.2829292917,
-  "current_price": 11700.0,
+  "current_price": 11650.0,
   "working_capital": 322673651870.0
 }

@@ -2,7 +2,7 @@
   "symbol": "PBP",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:28:33.785087",
+  "last_updated": "2025-12-21T02:15:36.616759",
   "name": "Công ty Cổ phần Bao bì Dầu khí Việt Nam",
   "exchange": "HNX",
   "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -22,7 +22,6 @@
   "accounts_receivable": 7658818917.0,
   "fixed_assets": 43575223891.0,
   "ppe": 43575223891.0,
-  "depreciation": 6322153463.0,
   "roe": 11.98826243,
   "roa": 5.86865075,
   "roic": 11.70158205,
@@ -30,7 +29,6 @@
   "net_margin": 2.198468239496242,
   "gross_profit_margin": 8.234636639217955,
   "gross_margin": 8.234636639217955,
-  "ebit_margin": 2.5614783137712127,
   "pe_ratio": 9.4346403311,
   "pb_ratio": 0.8936533253,
   "ps_ratio": 0.1659340569,
@@ -51,6 +49,6 @@
   "asset_turnover": 2.6694271251,
   "inventory_turnover": 7.8009905372,
   "fixed_asset_turnover": 9.513253481,
-  "current_price": 12700.0,
+  "current_price": 12800.0,
   "working_capital": 30394247290.0
 }

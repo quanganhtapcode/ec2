@@ -2,7 +2,7 @@
   "symbol": "SAF",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:46:41.790160",
+  "last_updated": "2025-12-21T02:34:42.263723",
   "name": "Công ty Cổ phần Lương thực Thực phẩm SAFOCO",
   "exchange": "HNX",
   "sector": "Thực phẩm và đồ uống",
@@ -22,7 +22,6 @@
   "accounts_receivable": 43041400462.0,
   "fixed_assets": 24085896947.0,
   "ppe": 24085896947.0,
-  "depreciation": 0.0,
   "roe": 26.75418196,
   "roa": 18.412060190000002,
   "roic": 29.8989428,
@@ -30,7 +29,6 @@
   "net_margin": 6.576583927474077,
   "gross_profit_margin": 19.050839585499656,
   "gross_margin": 19.050839585499656,
-  "ebit_margin": 7.389511688399872,
   "pe_ratio": 16.5767575706,
   "pb_ratio": 3.5288242705,
   "ps_ratio": 0.8721474993,
@@ -50,6 +48,6 @@
   "asset_turnover": 2.7996388998,
   "inventory_turnover": 7.6165805919,
   "fixed_asset_turnover": 28.7743532206,
-  "current_price": 52300.0,
+  "current_price": 52400.0,
   "working_capital": 154587485275.0
 }

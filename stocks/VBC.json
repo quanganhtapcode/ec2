@@ -2,7 +2,7 @@
   "symbol": "VBC",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T15:12:21.607905",
+  "last_updated": "2025-12-21T03:15:33.570531",
   "name": "Công ty Cổ phần Nhựa, Bao bì Vinh",
   "exchange": "HNX",
   "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -22,7 +22,6 @@
   "accounts_receivable": 222310041237.0,
   "fixed_assets": 69435961344.0,
   "ppe": 69435961344.0,
-  "depreciation": 0.0,
   "roe": 17.21656013,
   "roa": 7.08083642,
   "roic": 13.89504907,
@@ -30,7 +29,6 @@
   "net_margin": 3.3950936537547745,
   "gross_profit_margin": 9.164561318005452,
   "gross_margin": 9.164561318005452,
-  "ebit_margin": 4.59039895564892,
   "pe_ratio": 6.9553660759,
   "pb_ratio": 0.9240275797,
   "ps_ratio": 0.1870423978,
@@ -51,6 +49,6 @@
   "asset_turnover": 2.0856085702,
   "inventory_turnover": 9.0198898861,
   "fixed_asset_turnover": 11.4207557017,
-  "current_price": 20200.0,
+  "current_price": 20500.0,
   "working_capital": 93517619680.0
 }

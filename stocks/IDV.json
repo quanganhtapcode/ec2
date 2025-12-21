@@ -2,7 +2,7 @@
   "symbol": "IDV",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:09:45.987693",
+  "last_updated": "2025-12-21T01:41:40.230226",
   "name": "Công ty Cổ phần Phát triển Hạ tầng Vĩnh Phúc",
   "exchange": "HNX",
   "sector": "Bất động sản",
@@ -22,7 +22,6 @@
   "accounts_receivable": 163827289154.0,
   "fixed_assets": 106173005428.0,
   "ppe": 106173005428.0,
-  "depreciation": 17763214360.0,
   "roe": 15.212871550000001,
   "roa": 6.6854128799999994,
   "roic": 5.7677419500000005,
@@ -30,7 +29,6 @@
   "net_margin": 1.0493613923674525,
   "gross_profit_margin": 65.4724685893571,
   "gross_margin": 65.4724685893571,
-  "ebit_margin": 45.11039857548276,
   "pe_ratio": 7.7080262071,
   "pb_ratio": 1.126626799,
   "ps_ratio": 7.9163853958,
@@ -51,6 +49,6 @@
   "asset_turnover": 0.0637093467,
   "inventory_turnover": 8.0187121449,
   "fixed_asset_turnover": 1.0812016635,
-  "current_price": 26500.0,
+  "current_price": 26400.0,
   "working_capital": 259107703542.0
 }

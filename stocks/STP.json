@@ -2,7 +2,7 @@
   "symbol": "STP",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T14:58:25.330356",
+  "last_updated": "2025-12-21T02:53:05.530970",
   "name": "Công ty Cổ phần Công nghiệp Thương mại Sông Đà",
   "exchange": "HNX",
   "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -22,7 +22,6 @@
   "accounts_receivable": 77070011240.0,
   "fixed_assets": 7203004231.0,
   "ppe": 7203004231.0,
-  "depreciation": 2683066808.0,
   "roe": 4.33295038,
   "roa": 3.45013892,
   "roic": 5.31462916,
@@ -30,7 +29,6 @@
   "net_margin": 3.1375645003838324,
   "gross_profit_margin": 12.189254767731642,
   "gross_margin": 12.189254767731642,
-  "ebit_margin": 4.078021638997686,
   "pe_ratio": 11.416758185,
   "pb_ratio": 0.4675132423,
   "ps_ratio": 0.335725612,
@@ -51,6 +49,6 @@
   "asset_turnover": 1.0996232652,
   "inventory_turnover": 5.2612740771,
   "fixed_asset_turnover": 21.1720752225,
-  "current_price": 8400.0,
+  "current_price": 8200.0,
   "working_capital": 105364006609.0
 }

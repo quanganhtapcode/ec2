@@ -2,7 +2,7 @@
   "symbol": "TDW",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T17:20:22.432455",
+  "last_updated": "2025-12-21T02:59:35.282012",
   "name": "Công ty Cổ phần Cấp nước Thủ Đức",
   "exchange": "HSX",
   "sector": "Điện, nước & xăng dầu khí đốt",
@@ -22,7 +22,6 @@
   "accounts_receivable": 18497351851.0,
   "fixed_assets": 332854292760.0,
   "ppe": 332854292760.0,
-  "depreciation": 71257538526.0,
   "roe": 23.63453452,
   "roa": 10.88491106,
   "roic": 20.63577004,
@@ -30,7 +29,6 @@
   "net_margin": 4.254739279359656,
   "gross_profit_margin": 34.97878049162989,
   "gross_margin": 34.97878049162989,
-  "ebit_margin": 4.536436749494601,
   "pe_ratio": 10.7134453736,
   "pb_ratio": 1.6831078341,
   "ps_ratio": 0.3095294529,
@@ -51,6 +49,6 @@
   "asset_turnover": 2.5583027185,
   "inventory_turnover": 13.8039927121,
   "fixed_asset_turnover": 4.4021268073,
-  "current_price": 50900.0,
+  "current_price": 48000.0,
   "working_capital": -113776149238.0
 }

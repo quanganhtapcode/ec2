@@ -2,7 +2,7 @@
   "symbol": "SAV",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T16:59:44.911230",
+  "last_updated": "2025-12-21T02:36:06.370282",
   "name": "Công ty Cổ phần Hợp tác Kinh tế và Xuất nhập khẩu Savimex",
   "exchange": "HSX",
   "sector": "Tài nguyên Cơ bản",
@@ -22,7 +22,6 @@
   "accounts_receivable": 65142982655.0,
   "fixed_assets": 92785402684.0,
   "ppe": 92785402684.0,
-  "depreciation": 16674234587.0,
   "roe": 15.22360391,
   "roa": 7.933934870000001,
   "roic": 10.948941719999999,
@@ -30,7 +29,6 @@
   "net_margin": 5.061800461299646,
   "gross_profit_margin": 15.225901246429196,
   "gross_margin": 15.225901246429196,
-  "ebit_margin": 4.739198937943337,
   "pe_ratio": 8.0309926953,
   "pb_ratio": 0.9218939099,
   "ps_ratio": 0.3252102602,
@@ -51,6 +49,6 @@
   "asset_turnover": 1.5674135968,
   "inventory_turnover": 6.7134873491,
   "fixed_asset_turnover": 11.8845136078,
-  "current_price": 13700.0,
+  "current_price": 13800.0,
   "working_capital": 88057211578.0
 }

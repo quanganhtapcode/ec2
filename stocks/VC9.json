@@ -2,7 +2,7 @@
   "symbol": "VC9",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-11-17T15:14:24.167593",
+  "last_updated": "2025-12-12T23:58:12.488968",
   "name": "Công ty Cổ phần Xây dựng số 9 - VC9",
   "exchange": "HNX",
   "sector": "Xây dựng và Vật liệu",
@@ -22,7 +22,6 @@
   "accounts_receivable": 379563582083.0,
   "fixed_assets": 3034506781.0,
   "ppe": 3034506781.0,
-  "depreciation": 2076242004.0,
   "roe": 1.25215079,
   "roa": 0.08624228,
   "roic": 5.8328441699999996,
@@ -30,7 +29,6 @@
   "net_margin": 0.3377276112690589,
   "gross_profit_margin": 9.379399042965316,
   "gross_margin": 9.379399042965316,
-  "ebit_margin": 3.9548572578972103,
   "pe_ratio": 81.845352932,
   "pb_ratio": 1.0184509603,
   "ps_ratio": 0.2764143554,
@@ -51,6 +49,6 @@
   "asset_turnover": 0.2553604588,
   "inventory_turnover": 1.0550630741,
   "fixed_asset_turnover": 58.7893795033,
-  "current_price": 3700.0,
+  "current_price": 3600.0,
   "working_capital": 55713436237.0
 }

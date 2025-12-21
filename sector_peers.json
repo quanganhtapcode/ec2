@@ -1,503 +1,639 @@
 {
   "Hóa chất": {
-    "median_pe": 15.22,
-    "median_pb": 1.02,
+    "median_pe": 14.23,
+    "median_pb": 1.0,
     "peer_count": 10,
-    "total_in_sector": 35,
+    "total_in_sector": 37,
     "peers": [
       {
         "symbol": "GVR",
-        "market_cap": 113600000000000.0,
-        "pe_ratio": 28.82,
-        "pb_ratio": 2.15
+        "market_cap": 105800000000000.0,
+        "pe_ratio": 26.84,
+        "pb_ratio": 2.0
       },
       {
         "symbol": "DGC",
-        "market_cap": 37750061028400.0,
-        "pe_ratio": 13.45,
-        "pb_ratio": 2.83
+        "market_cap": 26660505877200.0,
+        "pe_ratio": 9.5,
+        "pb_ratio": 2.0
       },
       {
         "symbol": "DCM",
-        "market_cap": 18211360000000.0,
-        "pe_ratio": 14.56,
-        "pb_ratio": 1.8
+        "market_cap": 16887860000000.0,
+        "pe_ratio": 13.5,
+        "pb_ratio": 1.66
       },
       {
         "symbol": "DPM",
-        "market_cap": 9334890000000.0,
-        "pe_ratio": 23.27,
-        "pb_ratio": 0.85
+        "market_cap": 8806500000000.0,
+        "pe_ratio": 21.95,
+        "pb_ratio": 0.8
       },
       {
         "symbol": "PHR",
-        "market_cap": 7737004205800.0,
-        "pe_ratio": 18.34,
-        "pb_ratio": 2.07
-      },
-      {
-        "symbol": "CSV",
-        "market_cap": 3519422133500.0,
-        "pe_ratio": 16.18,
-        "pb_ratio": 2.36
+        "market_cap": 7831853644400.0,
+        "pe_ratio": 18.57,
+        "pb_ratio": 2.09
       },
       {
         "symbol": "DPR",
-        "market_cap": 3301665416000.0,
-        "pe_ratio": 15.22,
-        "pb_ratio": 1.33
+        "market_cap": 3197402297600.0,
+        "pe_ratio": 14.74,
+        "pb_ratio": 1.29
+      },
+      {
+        "symbol": "CSV",
+        "market_cap": 3093997480000.0,
+        "pe_ratio": 14.23,
+        "pb_ratio": 2.07
       },
       {
         "symbol": "AAA",
-        "market_cap": 3019968518400.0,
-        "pe_ratio": 9.07,
+        "market_cap": 3065841457920.0,
+        "pe_ratio": 9.21,
         "pb_ratio": 0.57
       },
       {
         "symbol": "BFC",
-        "market_cap": 2629727678000.0,
-        "pe_ratio": 8.05,
-        "pb_ratio": 2.09
+        "market_cap": 2443931700750.0,
+        "pe_ratio": 7.48,
+        "pb_ratio": 1.94
       },
       {
-        "symbol": "VFG",
-        "market_cap": 2281789385800.0,
-        "pe_ratio": 5.33,
-        "pb_ratio": 1.47
-      }
-    ]
-  },
-  "Dịch vụ tài chính": {
-    "median_pe": 18.86,
-    "median_pb": 1.33,
-    "peer_count": 10,
-    "total_in_sector": 31,
-    "peers": [
-      {
-        "symbol": "TCX",
-        "market_cap": 86494305492000.0,
-        "pe_ratio": 22.47,
-        "pb_ratio": 3.29
-      },
-      {
-        "symbol": "SSI",
-        "market_cap": 68637043934100.0,
-        "pe_ratio": 25.38,
-        "pb_ratio": 2.57
-      },
-      {
-        "symbol": "VIX",
-        "market_cap": 37629639863400.0,
-        "pe_ratio": 56.73,
-        "pb_ratio": 2.35
-      },
-      {
-        "symbol": "VND",
-        "market_cap": 29913193192200.0,
-        "pe_ratio": 18.18,
-        "pb_ratio": 1.52
-      },
-      {
-        "symbol": "VCI",
-        "market_cap": 25672056410000.0,
-        "pe_ratio": 28.19,
-        "pb_ratio": 1.98
-      },
-      {
-        "symbol": "SHS",
-        "market_cap": 18377342504800.0,
-        "pe_ratio": 18.84,
-        "pb_ratio": 1.64
-      },
-      {
-        "symbol": "MBS",
-        "market_cap": 17241670728100.0,
-        "pe_ratio": 24.67,
-        "pb_ratio": 2.5
-      },
-      {
-        "symbol": "HCM",
-        "market_cap": 16290340623200.0,
-        "pe_ratio": 16.15,
-        "pb_ratio": 1.56
-      },
-      {
-        "symbol": "FTS",
-        "market_cap": 10309482634200.0,
-        "pe_ratio": 19.61,
-        "pb_ratio": 2.5
-      },
-      {
-        "symbol": "EVF",
-        "market_cap": 9316931050000.0,
-        "pe_ratio": 17.13,
-        "pb_ratio": 1.03
-      }
-    ]
-  },
-  "Truyền thông": {
-    "median_pe": 9.88,
-    "median_pb": 0.84,
-    "peer_count": 10,
-    "total_in_sector": 15,
-    "peers": [
-      {
-        "symbol": "YEG",
-        "market_cap": 1657717593400.0,
-        "pe_ratio": 13.19,
-        "pb_ratio": 1.15
-      },
-      {
-        "symbol": "EID",
-        "market_cap": 360000000000.0,
-        "pe_ratio": 5.26,
-        "pb_ratio": 0.79
-      },
-      {
-        "symbol": "PNC",
-        "market_cap": 271589928600.0,
-        "pe_ratio": 26.59,
-        "pb_ratio": 1.45
-      },
-      {
-        "symbol": "SED",
-        "market_cap": 211000000000.0,
-        "pe_ratio": 3.93,
-        "pb_ratio": 0.63
-      },
-      {
-        "symbol": "ADG",
-        "market_cap": 192852299420.0,
-        "pe_ratio": 10.84,
-        "pb_ratio": 0.58
-      },
-      {
-        "symbol": "EBS",
-        "market_cap": 119567962800.0,
-        "pe_ratio": 12.79,
-        "pb_ratio": 0.87
-      },
-      {
-        "symbol": "STC",
-        "market_cap": 96314010000.0,
-        "pe_ratio": 8.7,
-        "pb_ratio": 0.71
-      },
-      {
-        "symbol": "QST",
-        "market_cap": 94932000000.0,
-        "pe_ratio": 9.88,
-        "pb_ratio": 1.91
-      },
-      {
-        "symbol": "DAD",
-        "market_cap": 90000000000.0,
-        "pe_ratio": 9.87,
-        "pb_ratio": 0.93
-      },
-      {
-        "symbol": "ALT",
-        "market_cap": 80860051300.0,
-        "pe_ratio": 25.55,
-        "pb_ratio": 0.38
+        "symbol": "TRC",
+        "market_cap": 2328000000000.0,
+        "pe_ratio": 11.89,
+        "pb_ratio": 1.24
       }
     ]
   },
   "Hàng & Dịch vụ Công nghiệp": {
-    "median_pe": 12.01,
-    "median_pb": 0.99,
+    "median_pe": 11.82,
+    "median_pb": 0.97,
     "peer_count": 10,
-    "total_in_sector": 90,
+    "total_in_sector": 97,
     "peers": [
       {
         "symbol": "GEE",
-        "market_cap": 52200000000000.0,
-        "pe_ratio": 32.87,
-        "pb_ratio": 8.16
+        "market_cap": 55200000000000.0,
+        "pe_ratio": 34.76,
+        "pb_ratio": 8.63
       },
       {
         "symbol": "GEX",
-        "market_cap": 38760283664300.0,
-        "pe_ratio": 23.81,
-        "pb_ratio": 2.78
+        "market_cap": 36353880243900.0,
+        "pe_ratio": 22.33,
+        "pb_ratio": 2.6
       },
       {
         "symbol": "GMD",
-        "market_cap": 25873913062500.0,
-        "pe_ratio": 19.03,
-        "pb_ratio": 2.09
+        "market_cap": 24631965235500.0,
+        "pe_ratio": 18.12,
+        "pb_ratio": 1.99
       },
       {
         "symbol": "VTP",
-        "market_cap": 12945537364600.0,
-        "pe_ratio": 51.83,
-        "pb_ratio": 8.15
+        "market_cap": 12007807941200.0,
+        "pe_ratio": 48.08,
+        "pb_ratio": 7.56
       },
       {
         "symbol": "HAH",
-        "market_cap": 7887300915000.0,
-        "pe_ratio": 12.63,
-        "pb_ratio": 2.41
+        "market_cap": 6977227732500.0,
+        "pe_ratio": 11.17,
+        "pb_ratio": 2.13
       },
       {
         "symbol": "TMS",
-        "market_cap": 7087211874900.0,
-        "pe_ratio": 34.99,
-        "pb_ratio": 1.76
+        "market_cap": 6807787750800.0,
+        "pe_ratio": 33.61,
+        "pb_ratio": 1.69
       },
       {
         "symbol": "PVT",
-        "market_cap": 6586233803000.0,
-        "pe_ratio": 6.2,
-        "pb_ratio": 0.85
+        "market_cap": 6497230643500.0,
+        "pe_ratio": 6.12,
+        "pb_ratio": 0.84
       },
       {
         "symbol": "VSC",
-        "market_cap": 6381229222750.0,
-        "pe_ratio": 20.64,
-        "pb_ratio": 1.41
+        "market_cap": 5735936380000.0,
+        "pe_ratio": 18.55,
+        "pb_ratio": 1.27
       },
       {
         "symbol": "IPA",
-        "market_cap": 4169797612500.0,
-        "pe_ratio": 10.13,
-        "pb_ratio": 1.01
+        "market_cap": 4062879725000.0,
+        "pe_ratio": 9.87,
+        "pb_ratio": 0.98
       },
       {
         "symbol": "PDN",
-        "market_cap": 3482127352000.0,
-        "pe_ratio": 10.61,
-        "pb_ratio": 2.81
+        "market_cap": 3667346892000.0,
+        "pe_ratio": 11.18,
+        "pb_ratio": 2.96
+      }
+    ]
+  },
+  "Bán lẻ": {
+    "median_pe": 22.75,
+    "median_pb": 1.24,
+    "peer_count": 10,
+    "total_in_sector": 13,
+    "peers": [
+      {
+        "symbol": "MWG",
+        "market_cap": 121220042273300.0,
+        "pe_ratio": 32.57,
+        "pb_ratio": 4.37
+      },
+      {
+        "symbol": "FRT",
+        "market_cap": 19618904016000.0,
+        "pe_ratio": 61.79,
+        "pb_ratio": 10.26
+      },
+      {
+        "symbol": "DGW",
+        "market_cap": 8805704785350.0,
+        "pe_ratio": 19.84,
+        "pb_ratio": 2.96
+      },
+      {
+        "symbol": "AST",
+        "market_cap": 3465000000000.0,
+        "pe_ratio": 23.93,
+        "pb_ratio": 6.58
+      },
+      {
+        "symbol": "PET",
+        "market_cap": 3327379761000.0,
+        "pe_ratio": 22.75,
+        "pb_ratio": 1.53
+      },
+      {
+        "symbol": "PSD",
+        "market_cap": 798149567600.0,
+        "pe_ratio": 9.88,
+        "pb_ratio": 1.39
+      },
+      {
+        "symbol": "BTT",
+        "market_cap": 475200000000.0,
+        "pe_ratio": 10.14,
+        "pb_ratio": 1.24
+      },
+      {
+        "symbol": "AFX",
+        "market_cap": 428750000000.0,
+        "pe_ratio": 16.11,
+        "pb_ratio": 0.9
+      },
+      {
+        "symbol": "COM",
+        "market_cap": 420794714400.0,
+        "pe_ratio": 26.09,
+        "pb_ratio": 0.97
+      },
+      {
+        "symbol": "SVT",
+        "market_cap": 190420758000.0,
+        "pe_ratio": 6.93,
+        "pb_ratio": 0.81
+      }
+    ]
+  },
+  "Dịch vụ tài chính": {
+    "median_pe": 18.36,
+    "median_pb": 1.46,
+    "peer_count": 10,
+    "total_in_sector": 33,
+    "peers": [
+      {
+        "symbol": "TCX",
+        "market_cap": 93555065124000.0,
+        "pe_ratio": 24.3,
+        "pb_ratio": 3.56
+      },
+      {
+        "symbol": "SSI",
+        "market_cap": 60487008674400.0,
+        "pe_ratio": 22.37,
+        "pb_ratio": 2.27
+      },
+      {
+        "symbol": "VPX",
+        "market_cap": 43800000000000.0,
+        "pe_ratio": 44.89,
+        "pb_ratio": 2.52
+      },
+      {
+        "symbol": "VIX",
+        "market_cap": 32524843757900.0,
+        "pe_ratio": 49.03,
+        "pb_ratio": 2.03
+      },
+      {
+        "symbol": "VND",
+        "market_cap": 30217653173800.0,
+        "pe_ratio": 18.36,
+        "pb_ratio": 1.53
+      },
+      {
+        "symbol": "VCK",
+        "market_cap": 29982299820000.0,
+        "pe_ratio": 11.9,
+        "pb_ratio": 2.64
+      },
+      {
+        "symbol": "VCI",
+        "market_cap": 24953956930000.0,
+        "pe_ratio": 27.4,
+        "pb_ratio": 1.93
+      },
+      {
+        "symbol": "SHS",
+        "market_cap": 17320238732400.0,
+        "pe_ratio": 17.75,
+        "pb_ratio": 1.54
+      },
+      {
+        "symbol": "HCM",
+        "market_cap": 16650746389200.0,
+        "pe_ratio": 16.51,
+        "pb_ratio": 1.59
+      },
+      {
+        "symbol": "MBS",
+        "market_cap": 15122262698400.0,
+        "pe_ratio": 21.64,
+        "pb_ratio": 2.19
+      }
+    ]
+  },
+  "Truyền thông": {
+    "median_pe": 10.41,
+    "median_pb": 0.73,
+    "peer_count": 10,
+    "total_in_sector": 16,
+    "peers": [
+      {
+        "symbol": "YEG",
+        "market_cap": 1822119338200.0,
+        "pe_ratio": 14.49,
+        "pb_ratio": 1.26
+      },
+      {
+        "symbol": "EID",
+        "market_cap": 331500000000.0,
+        "pe_ratio": 4.85,
+        "pb_ratio": 0.72
+      },
+      {
+        "symbol": "DST",
+        "market_cap": 293930000000.0,
+        "pe_ratio": 165.52,
+        "pb_ratio": 0.74
+      },
+      {
+        "symbol": "PNC",
+        "market_cap": 234053109200.0,
+        "pe_ratio": 22.92,
+        "pb_ratio": 1.25
+      },
+      {
+        "symbol": "SED",
+        "market_cap": 195000000000.0,
+        "pe_ratio": 3.63,
+        "pb_ratio": 0.58
+      },
+      {
+        "symbol": "ADG",
+        "market_cap": 192424689000.0,
+        "pe_ratio": 10.81,
+        "pb_ratio": 0.57
+      },
+      {
+        "symbol": "EBS",
+        "market_cap": 127743550000.0,
+        "pe_ratio": 13.67,
+        "pb_ratio": 0.93
+      },
+      {
+        "symbol": "STC",
+        "market_cap": 95180904000.0,
+        "pe_ratio": 8.59,
+        "pb_ratio": 0.7
+      },
+      {
+        "symbol": "QST",
+        "market_cap": 93960000000.0,
+        "pe_ratio": 9.78,
+        "pb_ratio": 1.89
+      },
+      {
+        "symbol": "DAD",
+        "market_cap": 89500000000.0,
+        "pe_ratio": 9.81,
+        "pb_ratio": 0.92
       }
     ]
   },
   "Thực phẩm và đồ uống": {
-    "median_pe": 13.59,
-    "median_pb": 1.22,
+    "median_pe": 13.47,
+    "median_pb": 1.18,
     "peer_count": 10,
-    "total_in_sector": 43,
+    "total_in_sector": 48,
     "peers": [
       {
         "symbol": "VNM",
-        "market_cap": 131249201946000.0,
-        "pe_ratio": 13.97,
-        "pb_ratio": 4.07
+        "market_cap": 133757148480000.0,
+        "pe_ratio": 14.24,
+        "pb_ratio": 4.14
       },
       {
         "symbol": "MSN",
-        "market_cap": 118008391800000.0,
-        "pe_ratio": 59.03,
-        "pb_ratio": 3.9
+        "market_cap": 114679949980000.0,
+        "pe_ratio": 57.37,
+        "pb_ratio": 3.79
       },
       {
         "symbol": "SAB",
-        "market_cap": 60408687721200.0,
-        "pe_ratio": 14.37,
-        "pb_ratio": 2.59
-      },
-      {
-        "symbol": "SBT",
-        "market_cap": 19243336231500.0,
-        "pe_ratio": 23.07,
-        "pb_ratio": 1.85
+        "market_cap": 63743349888400.0,
+        "pe_ratio": 15.17,
+        "pb_ratio": 2.74
       },
       {
         "symbol": "HAG",
-        "market_cap": 18664309264550.0,
-        "pe_ratio": 18.42,
-        "pb_ratio": 2.13
+        "market_cap": 19087296443350.0,
+        "pe_ratio": 18.83,
+        "pb_ratio": 2.18
+      },
+      {
+        "symbol": "SBT",
+        "market_cap": 18862280068500.0,
+        "pe_ratio": 24.31,
+        "pb_ratio": 1.82
+      },
+      {
+        "symbol": "KDC",
+        "market_cap": 15301773484800.0,
+        "pe_ratio": 642.64,
+        "pb_ratio": 2.31
       },
       {
         "symbol": "VHC",
-        "market_cap": 13152955117400.0,
-        "pe_ratio": 10.73,
-        "pb_ratio": 1.52
+        "market_cap": 12232697165500.0,
+        "pe_ratio": 9.98,
+        "pb_ratio": 1.41
       },
       {
         "symbol": "DBC",
-        "market_cap": 8751598141750.0,
-        "pe_ratio": 15.38,
-        "pb_ratio": 1.29
+        "market_cap": 9337269145500.0,
+        "pe_ratio": 16.41,
+        "pb_ratio": 1.38
       },
       {
         "symbol": "BAF",
-        "market_cap": 7708447954500.0,
-        "pe_ratio": 24.31,
-        "pb_ratio": 2.63
+        "market_cap": 8389659634200.0,
+        "pe_ratio": 26.46,
+        "pb_ratio": 2.87
       },
       {
         "symbol": "VCF",
-        "market_cap": 7609606350500.0,
-        "pe_ratio": 17.05,
-        "pb_ratio": 4.02
+        "market_cap": 7575053475000.0,
+        "pe_ratio": 16.97,
+        "pb_ratio": 4.0
+      }
+    ]
+  },
+  "Du lịch và Giải trí": {
+    "median_pe": 22.62,
+    "median_pb": 1.91,
+    "peer_count": 10,
+    "total_in_sector": 14,
+    "peers": [
+      {
+        "symbol": "VPL",
+        "market_cap": 161637304360000.0,
+        "pe_ratio": 63.39,
+        "pb_ratio": 5.13
       },
       {
-        "symbol": "BHN",
-        "market_cap": 7301700000000.0,
-        "pe_ratio": 19.7,
-        "pb_ratio": 1.59
+        "symbol": "VJC",
+        "market_cap": 108268105666600.0,
+        "pe_ratio": 77.16,
+        "pb_ratio": 6.33
+      },
+      {
+        "symbol": "SCS",
+        "market_cap": 5328418460400.0,
+        "pe_ratio": 8.1,
+        "pb_ratio": 3.79
+      },
+      {
+        "symbol": "VNG",
+        "market_cap": 686772852480.0,
+        "pe_ratio": 286.71,
+        "pb_ratio": 0.61
+      },
+      {
+        "symbol": "SKG",
+        "market_cap": 671626739700.0,
+        "pe_ratio": 19.77,
+        "pb_ratio": 0.76
+      },
+      {
+        "symbol": "VNS",
+        "market_cap": 624304566400.0,
+        "pe_ratio": 7.43,
+        "pb_ratio": 0.54
+      },
+      {
+        "symbol": "DSN",
+        "market_cap": 526819192400.0,
+        "pe_ratio": 5.68,
+        "pb_ratio": 1.67
+      },
+      {
+        "symbol": "SGH",
+        "market_cap": 333830700000.0,
+        "pe_ratio": 34.89,
+        "pb_ratio": 2.4
+      },
+      {
+        "symbol": "DAH",
+        "market_cap": 314066000000.0,
+        "pe_ratio": 45.86,
+        "pb_ratio": 0.34
+      },
+      {
+        "symbol": "TCT",
+        "market_cap": 255760000000.0,
+        "pe_ratio": 23.64,
+        "pb_ratio": 0.76
       }
     ]
   },
   "Ngân hàng": {
-    "median_pe": 9.88,
-    "median_pb": 1.36,
+    "median_pe": 8.87,
+    "median_pb": 1.27,
     "peer_count": 10,
     "total_in_sector": 20,
     "peers": [
       {
         "symbol": "VCB",
-        "market_cap": 335345478000000.0,
-        "pe_ratio": 10.78,
-        "pb_ratio": 1.71
+        "market_cap": 321372749750000.0,
+        "pe_ratio": 10.33,
+        "pb_ratio": 1.64
       },
       {
         "symbol": "BID",
-        "market_cap": 264519711755000.0,
-        "pe_ratio": 12.03,
-        "pb_ratio": 1.89
-      },
-      {
-        "symbol": "CTG",
-        "market_cap": 260713097035000.0,
-        "pe_ratio": 11.73,
-        "pb_ratio": 1.77
+        "market_cap": 260036326810000.0,
+        "pe_ratio": 11.83,
+        "pb_ratio": 1.86
       },
       {
         "symbol": "TCB",
-        "market_cap": 247976294670000.0,
-        "pe_ratio": 11.54,
-        "pb_ratio": 1.71
+        "market_cap": 237379017120000.0,
+        "pe_ratio": 11.05,
+        "pb_ratio": 1.63
       },
       {
         "symbol": "VPB",
-        "market_cap": 220563076080000.0,
-        "pe_ratio": 13.98,
-        "pb_ratio": 1.55
+        "market_cap": 225720126420000.0,
+        "pe_ratio": 14.31,
+        "pb_ratio": 1.59
       },
       {
-        "symbol": "LPB",
-        "market_cap": 127625058360000.0,
-        "pe_ratio": 13.27,
-        "pb_ratio": 2.94
+        "symbol": "CTG",
+        "market_cap": 184996214065000.0,
+        "pe_ratio": 8.32,
+        "pb_ratio": 1.25
       },
       {
         "symbol": "MBB",
-        "market_cap": 124698616350000.0,
-        "pe_ratio": 5.98,
-        "pb_ratio": 1.11
+        "market_cap": 131066205270000.0,
+        "pe_ratio": 6.28,
+        "pb_ratio": 1.17
+      },
+      {
+        "symbol": "LPB",
+        "market_cap": 111256313400000.0,
+        "pe_ratio": 11.56,
+        "pb_ratio": 2.57
       },
       {
         "symbol": "ACB",
-        "market_cap": 111443114605000.0,
-        "pe_ratio": 6.68,
-        "pb_ratio": 1.34
-      },
-      {
-        "symbol": "HDB",
-        "market_cap": 104777747655000.0,
-        "pe_ratio": 8.22,
-        "pb_ratio": 1.92
+        "market_cap": 106753123810000.0,
+        "pe_ratio": 6.4,
+        "pb_ratio": 1.28
       },
       {
         "symbol": "STB",
-        "market_cap": 90584614385000.0,
-        "pe_ratio": 10.11,
-        "pb_ratio": 1.65
+        "market_cap": 92375569300000.0,
+        "pe_ratio": 10.31,
+        "pb_ratio": 1.68
+      },
+      {
+        "symbol": "HDB",
+        "market_cap": 91088192685000.0,
+        "pe_ratio": 7.15,
+        "pb_ratio": 1.67
       }
     ]
   },
   "Điện, nước & xăng dầu khí đốt": {
-    "median_pe": 14.21,
-    "median_pb": 1.65,
+    "median_pe": 13.94,
+    "median_pb": 1.59,
     "peer_count": 10,
     "total_in_sector": 51,
     "peers": [
       {
         "symbol": "GAS",
-        "market_cap": 147119859313200.0,
-        "pe_ratio": 14.68,
-        "pb_ratio": 2.44
-      },
-      {
-        "symbol": "POW",
-        "market_cap": 34893886840000.0,
-        "pe_ratio": 36.95,
-        "pb_ratio": 1.09
+        "market_cap": 149931066816000.0,
+        "pe_ratio": 14.96,
+        "pb_ratio": 2.49
       },
       {
         "symbol": "REE",
-        "market_cap": 31275289760000.0,
-        "pe_ratio": 15.69,
-        "pb_ratio": 1.65
+        "market_cap": 29155729460000.0,
+        "pe_ratio": 14.63,
+        "pb_ratio": 1.54
+      },
+      {
+        "symbol": "POW",
+        "market_cap": 28570833520000.0,
+        "pe_ratio": 30.25,
+        "pb_ratio": 0.89
       },
       {
         "symbol": "VSH",
-        "market_cap": 10725352568400.0,
-        "pe_ratio": 24.22,
-        "pb_ratio": 2.29
+        "market_cap": 10394614824000.0,
+        "pe_ratio": 23.47,
+        "pb_ratio": 2.22
       },
       {
         "symbol": "BWE",
-        "market_cap": 10402624861200.0,
-        "pe_ratio": 18.49,
-        "pb_ratio": 1.95
+        "market_cap": 9676860336000.0,
+        "pe_ratio": 17.2,
+        "pb_ratio": 1.81
       },
       {
         "symbol": "DTK",
-        "market_cap": 7851825962500.0,
-        "pe_ratio": 12.6,
-        "pb_ratio": 0.92
+        "market_cap": 8124932952500.0,
+        "pe_ratio": 13.04,
+        "pb_ratio": 0.95
       },
       {
         "symbol": "NT2",
-        "market_cap": 6980993703250.0,
-        "pe_ratio": 84.22,
-        "pb_ratio": 1.67
-      },
-      {
-        "symbol": "GEG",
-        "market_cap": 6379876402100.0,
-        "pe_ratio": 57.57,
-        "pb_ratio": 1.44
+        "market_cap": 6793874284400.0,
+        "pe_ratio": 81.96,
+        "pb_ratio": 1.62
       },
       {
         "symbol": "TDM",
-        "market_cap": 6215000021188.0,
-        "pe_ratio": 32.01,
-        "pb_ratio": 2.47
+        "market_cap": 6369000021713.0,
+        "pe_ratio": 32.8,
+        "pb_ratio": 2.53
+      },
+      {
+        "symbol": "GEG",
+        "market_cap": 5999618868200.0,
+        "pe_ratio": 54.14,
+        "pb_ratio": 1.36
       },
       {
         "symbol": "HNA",
-        "market_cap": 5175108627577.0,
-        "pe_ratio": 20.54,
-        "pb_ratio": 1.6
+        "market_cap": 5163347017060.0,
+        "pe_ratio": 20.5,
+        "pb_ratio": 1.59
       }
     ]
   },
   "Tài nguyên Cơ bản": {
-    "median_pe": 13.65,
-    "median_pb": 0.89,
+    "median_pe": 13.57,
+    "median_pb": 0.8,
     "peer_count": 10,
-    "total_in_sector": 44,
+    "total_in_sector": 48,
     "peers": [
       {
         "symbol": "HPG",
-        "market_cap": 172059130380000.0,
-        "pe_ratio": 14.62,
-        "pb_ratio": 1.5
+        "market_cap": 170779880340000.0,
+        "pe_ratio": 14.51,
+        "pb_ratio": 1.49
       },
       {
         "symbol": "KSV",
-        "market_cap": 30820000000000.0,
-        "pe_ratio": 25.79,
-        "pb_ratio": 8.7
+        "market_cap": 18460000000000.0,
+        "pe_ratio": 15.45,
+        "pb_ratio": 5.21
       },
       {
         "symbol": "HSG",
-        "market_cap": 10587748368450.0,
-        "pe_ratio": 18.36,
-        "pb_ratio": 0.95
+        "market_cap": 9873618713100.0,
+        "pe_ratio": 17.12,
+        "pb_ratio": 0.89
       },
       {
         "symbol": "VIF",
@@ -506,598 +642,512 @@
         "pb_ratio": 1.14
       },
       {
-        "symbol": "NKG",
-        "market_cap": 5386640224900.0,
-        "pe_ratio": 12.52,
-        "pb_ratio": 0.92
-      },
-      {
         "symbol": "ACG",
-        "market_cap": 5368050877600.0,
-        "pe_ratio": 13.45,
-        "pb_ratio": 1.29
+        "market_cap": 5420826658700.0,
+        "pe_ratio": 13.59,
+        "pb_ratio": 1.3
       },
       {
-        "symbol": "PTB",
-        "market_cap": 3413858553000.0,
-        "pe_ratio": 9.63,
-        "pb_ratio": 1.18
+        "symbol": "NKG",
+        "market_cap": 4738979670000.0,
+        "pe_ratio": 11.01,
+        "pb_ratio": 0.81
       },
       {
         "symbol": "HGM",
-        "market_cap": 3230640000000.0,
-        "pe_ratio": 18.66,
-        "pb_ratio": 9.41
+        "market_cap": 3011400000000.0,
+        "pe_ratio": 17.39,
+        "pb_ratio": 8.78
+      },
+      {
+        "symbol": "PTB",
+        "market_cap": 2945289732000.0,
+        "pe_ratio": 8.31,
+        "pb_ratio": 1.01
       },
       {
         "symbol": "DHC",
-        "market_cap": 2720665022400.0,
-        "pe_ratio": 11.45,
-        "pb_ratio": 1.36
+        "market_cap": 2744812936800.0,
+        "pe_ratio": 11.55,
+        "pb_ratio": 1.37
       },
       {
         "symbol": "SHI",
-        "market_cap": 2335340865600.0,
-        "pe_ratio": 30.24,
-        "pb_ratio": 1.28
+        "market_cap": 2740781988100.0,
+        "pe_ratio": 35.49,
+        "pb_ratio": 1.51
       }
     ]
   },
   "Bất động sản": {
-    "median_pe": 21.55,
-    "median_pb": 1.32,
+    "median_pe": 25.42,
+    "median_pb": 1.18,
     "peer_count": 10,
-    "total_in_sector": 52,
+    "total_in_sector": 65,
     "peers": [
       {
         "symbol": "VIC",
-        "market_cap": 818381076300000.0,
-        "pe_ratio": 68.75,
-        "pb_ratio": 5.96
+        "market_cap": 575969620050000.0,
+        "pe_ratio": 48.39,
+        "pb_ratio": 4.19
       },
       {
         "symbol": "VHM",
-        "market_cap": 385685986800000.0,
-        "pe_ratio": 12.13,
-        "pb_ratio": 1.9
+        "market_cap": 416902318000000.0,
+        "pe_ratio": 13.11,
+        "pb_ratio": 2.06
       },
       {
         "symbol": "VRE",
-        "market_cap": 74755070640000.0,
-        "pe_ratio": 18.25,
-        "pb_ratio": 1.78
+        "market_cap": 73823543280000.0,
+        "pe_ratio": 18.02,
+        "pb_ratio": 1.76
       },
       {
         "symbol": "BCM",
-        "market_cap": 69862500000000.0,
-        "pe_ratio": 33.69,
-        "pb_ratio": 3.57
+        "market_cap": 63445500000000.0,
+        "pe_ratio": 30.59,
+        "pb_ratio": 3.24
       },
       {
         "symbol": "KDH",
-        "market_cap": 35036089877250.0,
-        "pe_ratio": 45.51,
-        "pb_ratio": 2.01
+        "market_cap": 33013804747250.0,
+        "pe_ratio": 42.88,
+        "pb_ratio": 1.9
       },
       {
         "symbol": "KBC",
-        "market_cap": 25791519902400.0,
-        "pe_ratio": 67.53,
-        "pb_ratio": 1.39
+        "market_cap": 26328843233700.0,
+        "pe_ratio": 68.94,
+        "pb_ratio": 1.42
       },
       {
         "symbol": "KSF",
-        "market_cap": 24420000000000.0,
-        "pe_ratio": 35.96,
-        "pb_ratio": 4.88
+        "market_cap": 21780000000000.0,
+        "pe_ratio": 32.07,
+        "pb_ratio": 4.35
       },
       {
         "symbol": "CRV",
-        "market_cap": 21853540800000.0,
-        "pe_ratio": 28.88,
-        "pb_ratio": 2.78
+        "market_cap": 20071636704000.0,
+        "pe_ratio": 26.53,
+        "pb_ratio": 2.56
       },
       {
         "symbol": "VPI",
-        "market_cap": 17378692031100.0,
-        "pe_ratio": 52.91,
-        "pb_ratio": 3.58
+        "market_cap": 19042949831500.0,
+        "pe_ratio": 57.97,
+        "pb_ratio": 3.92
       },
       {
-        "symbol": "NLG",
-        "market_cap": 14313721921200.0,
-        "pe_ratio": 28.92,
-        "pb_ratio": 1.48
+        "symbol": "PDR",
+        "market_cap": 16851603601900.0,
+        "pe_ratio": 112.02,
+        "pb_ratio": 1.53
       }
     ]
   },
   "Xây dựng và Vật liệu": {
-    "median_pe": 17.32,
-    "median_pb": 0.98,
+    "median_pe": 20.19,
+    "median_pb": 0.96,
     "peer_count": 10,
-    "total_in_sector": 94,
+    "total_in_sector": 113,
     "peers": [
       {
         "symbol": "VGC",
-        "market_cap": 20870692500000.0,
-        "pe_ratio": 19.79,
-        "pb_ratio": 2.52
+        "market_cap": 18158175000000.0,
+        "pe_ratio": 17.22,
+        "pb_ratio": 2.19
       },
       {
         "symbol": "VCG",
-        "market_cap": 14426102337800.0,
-        "pe_ratio": 15.57,
-        "pb_ratio": 1.79
+        "market_cap": 14276453973300.0,
+        "pe_ratio": 15.41,
+        "pb_ratio": 1.77
       },
       {
         "symbol": "BMP",
-        "market_cap": 13990034304200.0,
-        "pe_ratio": 14.25,
-        "pb_ratio": 5.18
+        "market_cap": 14243803212000.0,
+        "pe_ratio": 14.51,
+        "pb_ratio": 5.27
       },
       {
         "symbol": "LGC",
-        "market_cap": 12342704960000.0,
-        "pe_ratio": 23.48,
-        "pb_ratio": 3.14
+        "market_cap": 12265563054000.0,
+        "pe_ratio": 23.33,
+        "pb_ratio": 3.12
       },
       {
         "symbol": "CTR",
-        "market_cap": 10592132395400.0,
-        "pe_ratio": 26.13,
-        "pb_ratio": 5.68
-      },
-      {
-        "symbol": "CTD",
-        "market_cap": 9119726968000.0,
-        "pe_ratio": 24.56,
-        "pb_ratio": 1.05
+        "market_cap": 9574098072300.0,
+        "pe_ratio": 23.62,
+        "pb_ratio": 5.13
       },
       {
         "symbol": "NTP",
-        "market_cap": 9093559719200.0,
-        "pe_ratio": 13.68,
-        "pb_ratio": 2.48
+        "market_cap": 9122066176000.0,
+        "pe_ratio": 13.73,
+        "pb_ratio": 2.49
       },
       {
-        "symbol": "CII",
-        "market_cap": 8041773186950.0,
-        "pe_ratio": 34.1,
-        "pb_ratio": 1.33
+        "symbol": "CTD",
+        "market_cap": 8218117597300.0,
+        "pe_ratio": 22.13,
+        "pb_ratio": 0.95
       },
       {
         "symbol": "PC1",
-        "market_cap": 7886008768050.0,
-        "pe_ratio": 19.88,
-        "pb_ratio": 1.43
+        "market_cap": 7689305601500.0,
+        "pe_ratio": 19.39,
+        "pb_ratio": 1.39
+      },
+      {
+        "symbol": "CII",
+        "market_cap": 7498194084850.0,
+        "pe_ratio": 31.8,
+        "pb_ratio": 1.24
       },
       {
         "symbol": "VCS",
-        "market_cap": 7600000000000.0,
-        "pe_ratio": 9.9,
-        "pb_ratio": 1.49
+        "market_cap": 6880000000000.0,
+        "pe_ratio": 8.96,
+        "pb_ratio": 1.35
       }
     ]
   },
   "Y tế": {
-    "median_pe": 17.39,
-    "median_pb": 1.36,
+    "median_pe": 17.08,
+    "median_pb": 1.25,
     "peer_count": 10,
     "total_in_sector": 25,
     "peers": [
       {
         "symbol": "DHG",
-        "market_cap": 13558367562700.0,
-        "pe_ratio": 17.47,
-        "pb_ratio": 3.31
+        "market_cap": 13257651599400.0,
+        "pe_ratio": 17.08,
+        "pb_ratio": 3.24
       },
       {
         "symbol": "IMP",
-        "market_cap": 7501882509400.0,
-        "pe_ratio": 27.19,
-        "pb_ratio": 3.44
+        "market_cap": 7686733823800.0,
+        "pe_ratio": 27.86,
+        "pb_ratio": 3.52
       },
       {
         "symbol": "DHT",
-        "market_cap": 6175632975000.0,
-        "pe_ratio": 86.05,
-        "pb_ratio": 6.0
+        "market_cap": 5994481074400.0,
+        "pe_ratio": 83.52,
+        "pb_ratio": 5.82
       },
       {
         "symbol": "DBD",
-        "market_cap": 4820083120500.0,
-        "pe_ratio": 19.46,
-        "pb_ratio": 2.91
+        "market_cap": 4539301579500.0,
+        "pe_ratio": 18.33,
+        "pb_ratio": 2.74
       },
       {
         "symbol": "TRA",
-        "market_cap": 2789832192900.0,
-        "pe_ratio": 12.97,
-        "pb_ratio": 1.97
+        "market_cap": 3080007903900.0,
+        "pe_ratio": 14.32,
+        "pb_ratio": 2.17
       },
       {
         "symbol": "DCL",
-        "market_cap": 2629477080000.0,
-        "pe_ratio": 49.08,
-        "pb_ratio": 1.77
+        "market_cap": 2947205560500.0,
+        "pe_ratio": 55.01,
+        "pb_ratio": 1.99
       },
       {
         "symbol": "DMC",
-        "market_cap": 2066284167500.0,
-        "pe_ratio": 11.99,
-        "pb_ratio": 1.28
+        "market_cap": 2014192970000.0,
+        "pe_ratio": 11.69,
+        "pb_ratio": 1.25
       },
       {
         "symbol": "TNH",
-        "market_cap": 1780638684500.0,
-        "pe_ratio": 39.32,
-        "pb_ratio": 0.99
+        "market_cap": 1672502732000.0,
+        "pe_ratio": 36.94,
+        "pb_ratio": 0.93
       },
       {
         "symbol": "FIT",
-        "market_cap": 1577289277760.0,
-        "pe_ratio": 13.23,
-        "pb_ratio": 0.41
+        "market_cap": 1658873205920.0,
+        "pe_ratio": 13.91,
+        "pb_ratio": 0.43
       },
       {
         "symbol": "PMC",
-        "market_cap": 1558539691000.0,
-        "pe_ratio": 24.93,
-        "pb_ratio": 5.38
-      }
-    ]
-  },
-  "Du lịch và Giải trí": {
-    "median_pe": 20.38,
-    "median_pb": 2.09,
-    "peer_count": 10,
-    "total_in_sector": 12,
-    "peers": [
-      {
-        "symbol": "VPL",
-        "market_cap": 124071278400000.0,
-        "pe_ratio": 48.66,
-        "pb_ratio": 3.94
-      },
-      {
-        "symbol": "VJC",
-        "market_cap": 95540239317600.0,
-        "pe_ratio": 68.09,
-        "pb_ratio": 5.59
-      },
-      {
-        "symbol": "SCS",
-        "market_cap": 5614234010000.0,
-        "pe_ratio": 8.53,
-        "pb_ratio": 3.99
-      },
-      {
-        "symbol": "SKG",
-        "market_cap": 681601394250.0,
-        "pe_ratio": 20.06,
-        "pb_ratio": 0.77
-      },
-      {
-        "symbol": "VNS",
-        "market_cap": 623625974480.0,
-        "pe_ratio": 7.42,
-        "pb_ratio": 0.54
-      },
-      {
-        "symbol": "DSN",
-        "market_cap": 531652396000.0,
-        "pe_ratio": 5.74,
-        "pb_ratio": 1.68
-      },
-      {
-        "symbol": "SGH",
-        "market_cap": 346194800000.0,
-        "pe_ratio": 36.19,
-        "pb_ratio": 2.49
-      },
-      {
-        "symbol": "DAH",
-        "market_cap": 312382000000.0,
-        "pe_ratio": 45.62,
-        "pb_ratio": 0.34
-      },
-      {
-        "symbol": "TCT",
-        "market_cap": 255760000000.0,
-        "pe_ratio": 23.64,
-        "pb_ratio": 0.76
-      },
-      {
-        "symbol": "TTT",
-        "market_cap": 152187993000.0,
-        "pe_ratio": 7.25,
-        "pb_ratio": 0.54
+        "market_cap": 1586537410000.0,
+        "pe_ratio": 25.38,
+        "pb_ratio": 5.48
       }
     ]
   },
   "Ô tô và phụ tùng": {
-    "median_pe": 14.83,
-    "median_pb": 1.23,
-    "peer_count": 9,
-    "total_in_sector": 9,
-    "peers": [
-      {
-        "symbol": "HHS",
-        "market_cap": 5446192326400.0,
-        "pe_ratio": 14.83,
-        "pb_ratio": 1.14
-      },
-      {
-        "symbol": "CTF",
-        "market_cap": 1927425258850.0,
-        "pe_ratio": 41.51,
-        "pb_ratio": 1.86
-      },
-      {
-        "symbol": "DRC",
-        "market_cap": 1865043898500.0,
-        "pe_ratio": 8.95,
-        "pb_ratio": 0.97
-      },
-      {
-        "symbol": "SVC",
-        "market_cap": 1812351340800.0,
-        "pe_ratio": 18.09,
-        "pb_ratio": 1.23
-      },
-      {
-        "symbol": "SRC",
-        "market_cap": 1470646086000.0,
-        "pe_ratio": 10.78,
-        "pb_ratio": 2.56
-      },
-      {
-        "symbol": "CSM",
-        "market_cap": 1445589214650.0,
-        "pe_ratio": 22.29,
-        "pb_ratio": 1.06
-      },
-      {
-        "symbol": "HAX",
-        "market_cap": 1160348554800.0,
-        "pe_ratio": 9.28,
-        "pb_ratio": 0.96
-      },
-      {
-        "symbol": "GMA",
-        "market_cap": 633999968300.0,
-        "pe_ratio": 44.51,
-        "pb_ratio": 1.95
-      },
-      {
-        "symbol": "HTL",
-        "market_cap": 334800000000.0,
-        "pe_ratio": 14.46,
-        "pb_ratio": 1.86
-      }
-    ]
-  },
-  "Bán lẻ": {
-    "median_pe": 22.87,
-    "median_pb": 1.32,
+    "median_pe": 15.29,
+    "median_pb": 1.52,
     "peer_count": 10,
     "total_in_sector": 11,
     "peers": [
       {
-        "symbol": "MWG",
-        "market_cap": 119026676007800.0,
-        "pe_ratio": 31.98,
-        "pb_ratio": 4.29
+        "symbol": "HUT",
+        "market_cap": 15172703405000.0,
+        "pe_ratio": 97.1,
+        "pb_ratio": 1.77
       },
       {
-        "symbol": "DGW",
-        "market_cap": 8761840751550.0,
-        "pe_ratio": 19.74,
+        "symbol": "HHS",
+        "market_cap": 4912612672800.0,
+        "pe_ratio": 13.38,
+        "pb_ratio": 1.03
+      },
+      {
+        "symbol": "CTF",
+        "market_cap": 1870032943450.0,
+        "pe_ratio": 40.28,
+        "pb_ratio": 1.8
+      },
+      {
+        "symbol": "DRC",
+        "market_cap": 1770009814500.0,
+        "pe_ratio": 8.49,
+        "pb_ratio": 0.92
+      },
+      {
+        "symbol": "SVC",
+        "market_cap": 1532502972000.0,
+        "pe_ratio": 15.29,
+        "pb_ratio": 1.04
+      },
+      {
+        "symbol": "SRC",
+        "market_cap": 1387852079250.0,
+        "pe_ratio": 10.17,
+        "pb_ratio": 2.41
+      },
+      {
+        "symbol": "CSM",
+        "market_cap": 1331600100950.0,
+        "pe_ratio": 20.53,
+        "pb_ratio": 0.98
+      },
+      {
+        "symbol": "VVS",
+        "market_cap": 1246297500000.0,
+        "pe_ratio": 18.21,
+        "pb_ratio": 3.54
+      },
+      {
+        "symbol": "HAX",
+        "market_cap": 1138860618600.0,
+        "pe_ratio": 9.11,
+        "pb_ratio": 0.95
+      },
+      {
+        "symbol": "GMA",
+        "market_cap": 959999952000.0,
+        "pe_ratio": 67.39,
         "pb_ratio": 2.95
+      }
+    ]
+  },
+  "Dầu khí": {
+    "median_pe": 39.63,
+    "median_pb": 1.05,
+    "peer_count": 6,
+    "total_in_sector": 6,
+    "peers": [
+      {
+        "symbol": "BSR",
+        "market_cap": 49452968875200.0,
+        "pe_ratio": 123.65,
+        "pb_ratio": 0.89
       },
       {
-        "symbol": "PET",
-        "market_cap": 3515215715250.0,
-        "pe_ratio": 24.03,
-        "pb_ratio": 1.62
+        "symbol": "PLX",
+        "market_cap": 45091651122850.0,
+        "pe_ratio": 15.88,
+        "pb_ratio": 1.73
       },
       {
-        "symbol": "AST",
-        "market_cap": 3312000000000.0,
-        "pe_ratio": 22.87,
-        "pb_ratio": 6.29
+        "symbol": "PVS",
+        "market_cap": 15438311167000.0,
+        "pe_ratio": 21.09,
+        "pb_ratio": 1.14
       },
       {
-        "symbol": "PSD",
-        "market_cap": 849977461600.0,
-        "pe_ratio": 10.52,
-        "pb_ratio": 1.48
+        "symbol": "PVD",
+        "market_cap": 15353769765600.0,
+        "pe_ratio": 22.0,
+        "pb_ratio": 0.97
       },
       {
-        "symbol": "BTT",
-        "market_cap": 506250000000.0,
-        "pe_ratio": 10.8,
-        "pb_ratio": 1.32
+        "symbol": "PVC",
+        "market_cap": 868780754100.0,
+        "pe_ratio": 377.85,
+        "pb_ratio": 0.93
       },
       {
-        "symbol": "COM",
-        "market_cap": 437739468000.0,
-        "pe_ratio": 27.14,
-        "pb_ratio": 1.01
-      },
-      {
-        "symbol": "SVT",
-        "market_cap": 186958562400.0,
-        "pe_ratio": 6.8,
-        "pb_ratio": 0.79
-      },
-      {
-        "symbol": "CMV",
-        "market_cap": 150693704400.0,
-        "pe_ratio": 13.15,
-        "pb_ratio": 0.62
-      },
-      {
-        "symbol": "PIT",
-        "market_cap": 98795742500.0,
-        "pe_ratio": 34.65,
-        "pb_ratio": 0.88
+        "symbol": "PVB",
+        "market_cap": 602639944200.0,
+        "pe_ratio": 57.25,
+        "pb_ratio": 1.58
       }
     ]
   },
   "Công nghệ Thông tin": {
-    "median_pe": 22.78,
-    "median_pb": 1.02,
+    "median_pe": 26.64,
+    "median_pb": 1.01,
     "peer_count": 10,
-    "total_in_sector": 14,
+    "total_in_sector": 16,
     "peers": [
       {
         "symbol": "FPT",
-        "market_cap": 147106918300000.0,
-        "pe_ratio": 18.72,
-        "pb_ratio": 4.94
+        "market_cap": 138133396283700.0,
+        "pe_ratio": 17.58,
+        "pb_ratio": 4.64
       },
       {
         "symbol": "CMG",
-        "market_cap": 7254144597600.0,
-        "pe_ratio": 24.68,
-        "pb_ratio": 2.54
+        "market_cap": 6701991859200.0,
+        "pe_ratio": 22.81,
+        "pb_ratio": 2.35
       },
       {
         "symbol": "SAM",
-        "market_cap": 3035888158290.0,
-        "pe_ratio": 36.36,
-        "pb_ratio": 0.75
+        "market_cap": 2728119771780.0,
+        "pe_ratio": 32.67,
+        "pb_ratio": 0.68
       },
       {
         "symbol": "SGT",
-        "market_cap": 2449458222900.0,
-        "pe_ratio": 18.83,
-        "pb_ratio": 1.35
+        "market_cap": 2545660509600.0,
+        "pe_ratio": 19.57,
+        "pb_ratio": 1.4
       },
       {
         "symbol": "ELC",
-        "market_cap": 1707446578500.0,
-        "pe_ratio": 18.88,
-        "pb_ratio": 1.62
+        "market_cap": 1990632840300.0,
+        "pe_ratio": 22.01,
+        "pb_ratio": 1.88
       },
       {
         "symbol": "ICT",
-        "market_cap": 708070000000.0,
-        "pe_ratio": 25.16,
-        "pb_ratio": 1.08
+        "market_cap": 579330000000.0,
+        "pe_ratio": 20.59,
+        "pb_ratio": 0.88
+      },
+      {
+        "symbol": "POT",
+        "market_cap": 446890138000.0,
+        "pe_ratio": 166.29,
+        "pb_ratio": 1.46
       },
       {
         "symbol": "ITD",
-        "market_cap": 327523439850.0,
-        "pe_ratio": 91.44,
-        "pb_ratio": 1.25
+        "market_cap": 419524406100.0,
+        "pe_ratio": 117.12,
+        "pb_ratio": 1.6
       },
       {
         "symbol": "ST8",
-        "market_cap": 144037051200.0,
-        "pe_ratio": 6.51,
-        "pb_ratio": 0.51
+        "market_cap": 140950542960.0,
+        "pe_ratio": 6.37,
+        "pb_ratio": 0.5
       },
       {
-        "symbol": "KST",
-        "market_cap": 79693866000.0,
-        "pe_ratio": 8.22,
-        "pb_ratio": 1.03
-      },
-      {
-        "symbol": "SMT",
-        "market_cap": 69983129600.0,
-        "pe_ratio": 58.56,
-        "pb_ratio": 1.01
+        "symbol": "UNI",
+        "market_cap": 138996924800.0,
+        "pe_ratio": 103612.99,
+        "pb_ratio": 0.85
       }
     ]
   },
   "Hàng cá nhân & Gia dụng": {
-    "median_pe": 12.56,
-    "median_pb": 1.28,
+    "median_pe": 11.87,
+    "median_pb": 0.95,
     "peer_count": 10,
-    "total_in_sector": 25,
+    "total_in_sector": 28,
     "peers": [
       {
         "symbol": "PNJ",
-        "market_cap": 30426729840000.0,
-        "pe_ratio": 15.16,
-        "pb_ratio": 2.7
+        "market_cap": 31271916780000.0,
+        "pe_ratio": 15.58,
+        "pb_ratio": 2.78
       },
       {
         "symbol": "TLG",
-        "market_cap": 4478295185000.0,
-        "pe_ratio": 10.78,
-        "pb_ratio": 1.91
-      },
-      {
-        "symbol": "MSH",
-        "market_cap": 3019317525000.0,
-        "pe_ratio": 8.08,
-        "pb_ratio": 1.68
+        "market_cap": 4383196252500.0,
+        "pe_ratio": 10.55,
+        "pb_ratio": 1.87
       },
       {
         "symbol": "TCM",
-        "market_cap": 2946513429800.0,
-        "pe_ratio": 12.57,
-        "pb_ratio": 1.3
+        "market_cap": 2727309143500.0,
+        "pe_ratio": 11.64,
+        "pb_ratio": 1.21
       },
       {
-        "symbol": "TNG",
-        "market_cap": 2415243758200.0,
-        "pe_ratio": 9.63,
-        "pb_ratio": 1.28
+        "symbol": "MSH",
+        "market_cap": 2512972350000.0,
+        "pe_ratio": 6.72,
+        "pb_ratio": 1.4
       },
       {
         "symbol": "LIX",
-        "market_cap": 2300400000000.0,
-        "pe_ratio": 12.68,
-        "pb_ratio": 2.46
+        "market_cap": 2261520000000.0,
+        "pe_ratio": 12.47,
+        "pb_ratio": 2.41
+      },
+      {
+        "symbol": "TNG",
+        "market_cap": 2219081828600.0,
+        "pe_ratio": 8.85,
+        "pb_ratio": 1.17
       },
       {
         "symbol": "RAL",
-        "market_cap": 2178136257500.0,
-        "pe_ratio": 4.9,
+        "market_cap": 2166362548000.0,
+        "pe_ratio": 4.87,
         "pb_ratio": 0.66
       },
       {
-        "symbol": "HTG",
-        "market_cap": 1688527005200.0,
-        "pe_ratio": 6.81,
-        "pb_ratio": 1.91
+        "symbol": "STK",
+        "market_cap": 1618668477000.0,
+        "pe_ratio": 130.51,
+        "pb_ratio": 0.95
       },
       {
-        "symbol": "GIL",
-        "market_cap": 1574801023000.0,
-        "pe_ratio": 60.41,
-        "pb_ratio": 0.64
+        "symbol": "HTG",
+        "market_cap": 1548116444000.0,
+        "pe_ratio": 6.24,
+        "pb_ratio": 1.75
       },
       {
         "symbol": "NET",
-        "market_cap": 1534288619000.0,
-        "pe_ratio": 7.43,
-        "pb_ratio": 2.9
+        "market_cap": 1514130082400.0,
+        "pe_ratio": 7.33,
+        "pb_ratio": 2.86
       }
     ]
   },
   "Bảo hiểm": {
-    "median_pe": 12.62,
-    "median_pb": 1.38,
+    "median_pe": 12.04,
+    "median_pb": 1.31,
     "peer_count": 9,
     "total_in_sector": 9,
     "peers": [
       {
         "symbol": "BVH",
-        "market_cap": 41050448849200.0,
-        "pe_ratio": 19.85,
-        "pb_ratio": 1.82
+        "market_cap": 40085429256000.0,
+        "pe_ratio": 19.38,
+        "pb_ratio": 1.77
       },
       {
         "symbol": "PVI",
-        "market_cap": 21081768030000.0,
-        "pe_ratio": 25.28,
-        "pb_ratio": 2.69
+        "market_cap": 21667372697500.0,
+        "pe_ratio": 25.98,
+        "pb_ratio": 2.77
       },
       {
         "symbol": "VNR",
@@ -1107,85 +1157,53 @@
       },
       {
         "symbol": "PTI",
-        "market_cap": 3296224069000.0,
-        "pe_ratio": 10.56,
-        "pb_ratio": 1.38
+        "market_cap": 3127393080100.0,
+        "pe_ratio": 10.02,
+        "pb_ratio": 1.31
       },
       {
         "symbol": "MIG",
-        "market_cap": 2978600625000.0,
-        "pe_ratio": 13.29,
-        "pb_ratio": 1.4
+        "market_cap": 2952699750000.0,
+        "pe_ratio": 13.17,
+        "pb_ratio": 1.39
       },
       {
         "symbol": "BIC",
-        "market_cap": 2808781635250.0,
-        "pe_ratio": 6.71,
-        "pb_ratio": 0.95
-      },
-      {
-        "symbol": "BMI",
-        "market_cap": 2553374246500.0,
-        "pe_ratio": 10.74,
-        "pb_ratio": 0.92
-      },
-      {
-        "symbol": "PRE",
-        "market_cap": 2338560000000.0,
-        "pe_ratio": 12.72,
-        "pb_ratio": 1.45
+        "market_cap": 2550772466250.0,
+        "pe_ratio": 6.09,
+        "pb_ratio": 0.87
       },
       {
         "symbol": "PGI",
-        "market_cap": 2206846240400.0,
-        "pe_ratio": 12.62,
-        "pb_ratio": 1.16
-      }
-    ]
-  },
-  "Dầu khí": {
-    "median_pe": 22.13,
-    "median_pb": 1.46,
-    "peer_count": 4,
-    "total_in_sector": 4,
-    "peers": [
-      {
-        "symbol": "PLX",
-        "market_cap": 44638793794500.0,
-        "pe_ratio": 15.72,
-        "pb_ratio": 1.72
+        "market_cap": 2439729512000.0,
+        "pe_ratio": 13.95,
+        "pb_ratio": 1.28
       },
       {
-        "symbol": "PVS",
-        "market_cap": 16824413408000.0,
-        "pe_ratio": 22.98,
-        "pb_ratio": 1.24
+        "symbol": "BMI",
+        "market_cap": 2361042160400.0,
+        "pe_ratio": 9.93,
+        "pb_ratio": 0.85
       },
       {
-        "symbol": "PVD",
-        "market_cap": 14853103360200.0,
-        "pe_ratio": 21.28,
-        "pb_ratio": 0.94
-      },
-      {
-        "symbol": "PVB",
-        "market_cap": 643679940400.0,
-        "pe_ratio": 61.15,
-        "pb_ratio": 1.69
+        "symbol": "PRE",
+        "market_cap": 2213280000000.0,
+        "pe_ratio": 12.04,
+        "pb_ratio": 1.37
       }
     ]
   },
   "Viễn thông": {
-    "median_pe": 11.34,
-    "median_pb": 1.4,
+    "median_pe": 11.51,
+    "median_pb": 1.42,
     "peer_count": 1,
     "total_in_sector": 1,
     "peers": [
       {
         "symbol": "PIA",
-        "market_cap": 101790000000.0,
-        "pe_ratio": 11.34,
-        "pb_ratio": 1.4
+        "market_cap": 103350000000.0,
+        "pe_ratio": 11.51,
+        "pb_ratio": 1.42
       }
     ]
   }
