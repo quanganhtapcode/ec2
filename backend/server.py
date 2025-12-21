@@ -48,6 +48,47 @@ CORS(
     }}
 )
 
+# Block direct API access - only allow requests from frontend
+@app.before_request
+def check_origin():
+    # Skip for non-API routes
+    if not request.path.startswith('/api/'):
+        return None
+    
+    # Skip OPTIONS requests (CORS preflight)
+    if request.method == 'OPTIONS':
+        return None
+    
+    # Get Origin or Referer header
+    origin = request.headers.get('Origin', '')
+    referer = request.headers.get('Referer', '')
+    
+    # If request has Origin or Referer header, validate it
+    if origin or referer:
+        source = origin or referer
+        
+        # Check if request is from allowed origin
+        allowed = False
+        for allowed_origin in ALLOWED_ORIGINS:
+            if source.startswith(allowed_origin):
+                allowed = True
+                break
+        
+        # Also allow file:// protocol (local testing)
+        if source.startswith('file://'):
+            allowed = True
+        
+        # Block if not from allowed origin
+        if not allowed:
+            logger.warning(f"Blocked API request from unauthorized origin: {source}")
+            return jsonify({
+                'error': 'Access denied',
+                'message': 'API access is only allowed from valuation.quanganh.org'
+            }), 403
+    
+    # Allow requests without Origin/Referer (server-to-server, curl, etc.)
+    return None
+
 # Security headers middleware
 @app.after_request
 def add_security_headers(response):
