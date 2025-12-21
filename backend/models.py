@@ -61,10 +61,32 @@ class ValuationModels:
         results['weighted_average'] = 0
         results['summary'] = {}
 
+        # Determine sector if not provided
+        if not known_sector and self.stock_data and 'sector' in self.stock_data:
+            known_sector = self.stock_data.get('sector')
+            
+        is_bank = False
+        if known_sector and ('Ngân hàng' in known_sector or 'Bank' in known_sector):
+             is_bank = True
+
         # Calculate weighted average of valid models
-        model_weights = assumptions.get('model_weights', {
+        default_weights = {
             'fcfe': 0.25, 'fcff': 0.25, 'justified_pe': 0.25, 'justified_pb': 0.25
-        })
+        }
+        
+        # Override weights for Banks: FCFE=0, FCFF=0, P/E=0.5, P/B=0.5
+        if is_bank:
+            default_weights = {
+                'fcfe': 0, 'fcff': 0, 'justified_pe': 0.5, 'justified_pb': 0.5
+            }
+            # Add flag to results
+            results['is_bank'] = True
+
+        model_weights = assumptions.get('model_weights', default_weights)
+        
+        # If user didn't provide specific weights (using defaults), ensure bank logic is applied
+        if is_bank and model_weights.get('fcfe') == 0.25 and model_weights.get('fcff') == 0.25:
+             model_weights = default_weights
         
         # Helper to extract numeric value from result
         def get_model_value(res):

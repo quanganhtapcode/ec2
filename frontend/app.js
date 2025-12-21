@@ -1370,20 +1370,34 @@ class StockValuationApp {
         let bvps = this.stockData.book_value_per_share || 0;
 
         // FCFE Details
-        const fcfeEquityValue = this.valuationResults.fcfe.equityValue;
-        this.safeUpdateElement('fcfe-equity', AppUtils.formatCurrency(fcfeEquityValue));
-        this.safeUpdateElement('fcfe-share-value', AppUtils.formatCurrency(this.valuationResults.fcfe.shareValue));
-        const fcfeDiff = ((this.valuationResults.fcfe.shareValue - currentPrice) / currentPrice) * 100;
-        this.safeUpdateElement('fcfe-market-diff', `${fcfeDiff > 0 ? '+' : ''}${fcfeDiff.toFixed(1)}%`);
+        const isBank = this.valuationResults.is_bank;
 
-        // FCFF Details
-        const fcffEquityValue = this.valuationResults.fcff.equityValue;
-        const fcffEV = fcffEquityValue + (this.stockData.total_debt || 0);
-        this.safeUpdateElement('fcff-ev', AppUtils.formatCurrency(fcffEV));
-        this.safeUpdateElement('fcff-equity', AppUtils.formatCurrency(fcffEquityValue));
-        this.safeUpdateElement('fcff-share-value', AppUtils.formatCurrency(this.valuationResults.fcff.shareValue));
-        const fcffDiff = ((this.valuationResults.fcff.shareValue - currentPrice) / currentPrice) * 100;
-        this.safeUpdateElement('fcff-market-diff', `${fcffDiff > 0 ? '+' : ''}${fcffDiff.toFixed(1)}%`);
+        if (isBank) {
+            this.safeUpdateElement('fcfe-equity', 'N/A (Bank)');
+            this.safeUpdateElement('fcfe-share-value', '--');
+            this.safeUpdateElement('fcfe-market-diff', '--');
+
+            // FCFF Details
+            this.safeUpdateElement('fcff-ev', 'N/A (Bank)');
+            this.safeUpdateElement('fcff-equity', 'N/A (Bank)');
+            this.safeUpdateElement('fcff-share-value', '--');
+            this.safeUpdateElement('fcff-market-diff', '--');
+        } else {
+            const fcfeEquityValue = this.valuationResults.fcfe.equityValue;
+            this.safeUpdateElement('fcfe-equity', AppUtils.formatCurrency(fcfeEquityValue));
+            this.safeUpdateElement('fcfe-share-value', AppUtils.formatCurrency(this.valuationResults.fcfe.shareValue));
+            const fcfeDiff = ((this.valuationResults.fcfe.shareValue - currentPrice) / currentPrice) * 100;
+            this.safeUpdateElement('fcfe-market-diff', `${fcfeDiff > 0 ? '+' : ''}${fcfeDiff.toFixed(1)}%`);
+
+            // FCFF Details
+            const fcffEquityValue = this.valuationResults.fcff.equityValue;
+            const fcffEV = fcffEquityValue + (this.stockData.total_debt || 0);
+            this.safeUpdateElement('fcff-ev', AppUtils.formatCurrency(fcffEV));
+            this.safeUpdateElement('fcff-equity', AppUtils.formatCurrency(fcffEquityValue));
+            this.safeUpdateElement('fcff-share-value', AppUtils.formatCurrency(this.valuationResults.fcff.shareValue));
+            const fcffDiff = ((this.valuationResults.fcff.shareValue - currentPrice) / currentPrice) * 100;
+            this.safeUpdateElement('fcff-market-diff', `${fcffDiff > 0 ? '+' : ''}${fcffDiff.toFixed(1)}%`);
+        }
 
         // Justified P/E Details
         const justifiedPE = eps > 0 ? Math.abs(this.valuationResults.justified_pe.shareValue / eps) : 0;
