@@ -19,7 +19,7 @@ class FinancialsManager {
         this.safeUpdateElement('pe-ratio', AppUtils.formatNumber(data.pe_ratio));
         this.safeUpdateElement('pb-ratio', AppUtils.formatNumber(data.pb_ratio));
         this.safeUpdateElement('ps-ratio', AppUtils.formatNumber(data.ps_ratio));
-        this.safeUpdateElement('pcf-ratio', AppUtils.formatNumber(data.pcf_ratio));
+
 
         // Efficiency Ratios
         this.safeUpdateElement('asset-turnover', AppUtils.formatNumber(data.asset_turnover));
@@ -46,7 +46,7 @@ class FinancialsManager {
         this.safeUpdateElement('pe-ratio', '--');
         this.safeUpdateElement('pb-ratio', '--');
         this.safeUpdateElement('ps-ratio', '--');
-        this.safeUpdateElement('pcf-ratio', '--');
+
 
         // Efficiency Ratios
         this.safeUpdateElement('asset-turnover', '--');

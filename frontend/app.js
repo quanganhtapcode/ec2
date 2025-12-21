@@ -1320,7 +1320,7 @@ class StockValuationApp {
         this.safeUpdateElement('pe-ratio', AppUtils.formatNumber(data.pe_ratio));
         this.safeUpdateElement('pb-ratio', AppUtils.formatNumber(data.pb_ratio));
         this.safeUpdateElement('ps-ratio', AppUtils.formatNumber(data.ps_ratio));
-        this.safeUpdateElement('pcf-ratio', AppUtils.formatNumber(data.pcf_ratio));
+
         this.safeUpdateElement('eps', AppUtils.formatCurrency(data.eps));
         this.safeUpdateElement('book-value-per-share', AppUtils.formatCurrency(data.book_value_per_share));
         this.safeUpdateElement('ev-ebitda', AppUtils.formatNumber(data.ev_ebitda));
