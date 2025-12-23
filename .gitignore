@@ -3,6 +3,7 @@
 # ========================================
 backend/
 automation/
+!automation/deploy.ps1
 jobs/
 scripts/
 
