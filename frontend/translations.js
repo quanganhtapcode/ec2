@@ -52,6 +52,7 @@ const translations = {
         ebitda: "EBITDA:",
         roe: "ROE (%):",
         roa: "ROA (%):",
+        profitGrowth: "Tăng trưởng LN:",
         debtEquity: "Nợ/Vốn CSH:",
 
         // Valuation Ratios
@@ -355,6 +356,7 @@ const translations = {
         ebitda: "EBITDA:",
         roe: "ROE (%):",
         roa: "ROA (%):",
+        profitGrowth: "Profit Growth:",
         debtEquity: "Debt/Equity:",
 
         // Valuation Ratios

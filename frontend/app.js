@@ -833,8 +833,8 @@ class StockValuationApp {
                 currentPrice: this.stockData.current_price, // Pass current price to avoid backend fetch
                 // Pass financial data to avoid backend refetch
                 financialData: {
-                    eps: this.stockData.earnings_per_share,
-                    bvps: this.stockData.book_value_per_share,
+                    eps: this.stockData.eps_ttm || this.stockData.earnings_per_share,
+                    bvps: this.stockData.bvps || this.stockData.book_value_per_share,
                     net_income: this.stockData.net_income_ttm,
                     equity: this.stockData.total_assets - this.stockData.total_debt,
                     shares_outstanding: this.stockData.shares_outstanding,
@@ -1328,8 +1328,8 @@ class StockValuationApp {
         this.safeUpdateElement('pb-ratio', AppUtils.formatNumber(data.pb_ratio));
         this.safeUpdateElement('ps-ratio', AppUtils.formatNumber(data.ps_ratio));
 
-        this.safeUpdateElement('eps', AppUtils.formatCurrency(data.eps));
-        this.safeUpdateElement('book-value-per-share', AppUtils.formatCurrency(data.book_value_per_share));
+        this.safeUpdateElement('eps', AppUtils.formatCurrency(data.eps_ttm || data.eps));
+        this.safeUpdateElement('book-value-per-share', AppUtils.formatCurrency(data.bvps || data.book_value_per_share));
         this.safeUpdateElement('ev-ebitda', AppUtils.formatNumber(data.ev_ebitda));
 
         // Update financial metrics (Key Metrics)
@@ -1340,6 +1340,8 @@ class StockValuationApp {
         this.safeUpdateElement('roa', AppUtils.formatPercent(data.roa));
         this.safeUpdateElement('debt-equity', AppUtils.formatNumber(data.debt_to_equity));
         this.safeUpdateElement('overview-pe', AppUtils.formatNumber(data.pe_ratio));
+        this.safeUpdateElement('overview-pb', AppUtils.formatNumber(data.pb_ratio));
+        this.safeUpdateElement('profit-growth', AppUtils.formatPercent(data.net_profit_growth));
 
         // Update detailed financial ratios via manager
         if (this.financialsManager) {
@@ -1373,8 +1375,8 @@ class StockValuationApp {
 
         const currentPrice = this.stockData.current_price;
 
-        let eps = this.valuationResults.financial_data.eps || this.stockData.eps || 0;
-        let bvps = this.stockData.book_value_per_share || 0;
+        let eps = this.valuationResults.financial_data.eps_ttm || this.valuationResults.financial_data.eps || this.stockData.eps_ttm || this.stockData.eps || 0;
+        let bvps = this.stockData.bvps || this.stockData.book_value_per_share || 0;
 
         // FCFE Details
         // Fix: robust bank detection checking both result flag and sector name

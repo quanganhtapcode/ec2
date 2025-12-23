@@ -315,8 +315,8 @@ class ReportGenerator {
         csv.push(`${t.currentPrice || 'Current Price'}${SEP}${currentPrice.toLocaleString('vi-VN')}${SEP}VND`);
         csv.push(`${t.marketCap || 'Market Cap'}${SEP}${(stockData.market_cap / 1e9).toFixed(2)}${SEP}Billion VND`);
         csv.push(`${t.sharesOutstanding || 'Shares Outstanding'}${SEP}${(stockData.shares_outstanding / 1e6).toFixed(2)}${SEP}Million shares`);
-        csv.push(`${t.eps || 'EPS'}${SEP}${stockData.eps?.toLocaleString('vi-VN') || '--'}${SEP}VND`);
-        csv.push(`${t.bookValuePerShare || 'Book Value/Share'}${SEP}${stockData.book_value_per_share?.toLocaleString('vi-VN') || '--'}${SEP}VND`);
+        csv.push(`${t.eps || 'EPS'}${SEP}${(stockData.eps_ttm || stockData.eps)?.toLocaleString('vi-VN') || '--'}${SEP}VND`);
+        csv.push(`${t.bookValuePerShare || 'Book Value/Share'}${SEP}${(stockData.bvps || stockData.book_value_per_share)?.toLocaleString('vi-VN') || '--'}${SEP}VND`);
         csv.push(`${t.peRatio || 'P/E Ratio'}${SEP}${stockData.pe_ratio?.toFixed(2) || '--'}${SEP}x`);
         csv.push(`${t.pbRatio || 'P/B Ratio'}${SEP}${stockData.pb_ratio?.toFixed(2) || '--'}${SEP}x`);
         csv.push('');
@@ -387,7 +387,7 @@ class ReportGenerator {
         // 4.3 P/E
         csv.push('4.3 Justified P/E Valuation');
         csv.push(`Description${SEP}Value`);
-        csv.push(`Current EPS${SEP}${stockData.eps?.toLocaleString('vi-VN')} VND`);
+        csv.push(`Current EPS${SEP}${(stockData.eps_ttm || stockData.eps)?.toLocaleString('vi-VN')} VND`);
         csv.push(`Justified P/E Ratio${SEP}${pe.ratio?.toFixed(2)}x`);
         csv.push(`= Fair Value per Share${SEP}${pe.shareValue.toLocaleString('vi-VN')} VND`);
         csv.push(`Formula${SEP}Justified P/E = Payout × (1+g) / (r-g)`);
@@ -399,7 +399,7 @@ class ReportGenerator {
         // 4.4 P/B
         csv.push('4.4 Justified P/B Valuation');
         csv.push(`Description${SEP}Value`);
-        csv.push(`Book Value per Share${SEP}${stockData.book_value_per_share?.toLocaleString('vi-VN')} VND`);
+        csv.push(`Book Value per Share${SEP}${(stockData.bvps || stockData.book_value_per_share)?.toLocaleString('vi-VN')} VND`);
         csv.push(`Justified P/B Ratio${SEP}${pb.ratio?.toFixed(2)}x`);
         csv.push(`= Fair Value per Share${SEP}${pb.shareValue.toLocaleString('vi-VN')} VND`);
         csv.push(`Formula${SEP}Justified P/B = ROE × Payout × (1+g) / (r-g)`);
@@ -1228,7 +1228,7 @@ class ReportGenerator {
 
         const sectorPeers = valuationResults.sector_peers || {};
         const medianPE = sectorPeers.median_pe || valuationResults.justified_pe?.median_pe || 0;
-        const eps = stockData.eps || 0;
+        const eps = stockData.eps_ttm || stockData.eps || 0;
         const fairValue = valuationResults.justified_pe?.shareValue || (medianPE * eps);
 
         sheet.getCell(`A${row}`).value = 'Current EPS';
@@ -1673,8 +1673,8 @@ class ReportGenerator {
             ['Current Price', stockData.current_price],
             ['Market Cap', stockData.market_cap],
             ['Shares Outstanding', stockData.shares_outstanding],
-            ['EPS', stockData.eps],
-            ['Book Value/Share', stockData.book_value_per_share],
+            ['EPS (TTM)', stockData.eps_ttm || stockData.eps],
+            ['Book Value/Share', stockData.bvps || stockData.book_value_per_share],
             ['P/E Ratio', stockData.pe_ratio],
             ['P/B Ratio', stockData.pb_ratio],
             ['', ''],
