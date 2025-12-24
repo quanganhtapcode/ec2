@@ -1341,7 +1341,11 @@ class StockValuationApp {
         this.safeUpdateElement('debt-equity', AppUtils.formatNumber(data.debt_to_equity));
         this.safeUpdateElement('overview-pe', AppUtils.formatNumber(data.pe_ratio));
         this.safeUpdateElement('overview-pb', AppUtils.formatNumber(data.pb_ratio));
-        this.safeUpdateElement('profit-growth', AppUtils.formatPercent(data.net_profit_growth));
+        this.safeUpdateElement('profit-growth', data.net_profit_growth ? AppUtils.formatPercent(data.net_profit_growth) : '--');
+        this.safeUpdateElement('overview-de', data.debt_to_equity ? data.debt_to_equity.toFixed(2) : '--');
+
+        // Net Profit Margin (from ratio_summary)
+        this.safeUpdateElement('overview-npm', data.net_profit_margin ? AppUtils.formatPercent(data.net_profit_margin) : '--');
 
         // Update detailed financial ratios via manager
         if (this.financialsManager) {

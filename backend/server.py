@@ -2345,18 +2345,13 @@ class StockDataProvider:
                 stock_data['equity_multiplier'] = total_assets / total_equity
                 stock_data['financial_leverage'] = stock_data['equity_multiplier']  # Alias
             
-            # Calculate missing valuation ratios
-            if shares_outstanding > 0:
-                # EPS calculation
-                if not stock_data.get('eps') and net_income:
-                    stock_data['eps'] = net_income / shares_outstanding
-                    stock_data['eps_ttm'] = stock_data['eps']
+            # EPS calculation - only as fallback if eps_ttm doesn't exist
+                if not stock_data.get('eps_ttm') and net_income:
+                    stock_data['eps_ttm'] = net_income / shares_outstanding
                 
-                # Book value per share
-                if not stock_data.get('book_value_per_share') and not stock_data.get('bvps') and total_equity > 0:
-                    bvps = total_equity / shares_outstanding
-                    stock_data['book_value_per_share'] = bvps
-                    stock_data['bvps'] = bvps
+                # Book value per share - only if missing
+                if not stock_data.get('bvps') and total_equity > 0:
+                    stock_data['bvps'] = total_equity / shares_outstanding
                 
                 # Market cap
                 if not stock_data.get('market_cap') and current_price > 0:
@@ -2364,13 +2359,13 @@ class StockDataProvider:
                 
                 # P/E ratio
                 if not stock_data.get('pe_ratio') and current_price > 0:
-                    eps = stock_data.get('eps')
-                    if eps and eps > 0:
-                        stock_data['pe_ratio'] = current_price / eps
+                    eps_ttm = stock_data.get('eps_ttm')
+                    if eps_ttm and eps_ttm > 0:
+                        stock_data['pe_ratio'] = current_price / eps_ttm
                 
                 # P/B ratio
                 if not stock_data.get('pb_ratio') and current_price > 0:
-                    bvps = stock_data.get('book_value_per_share') or stock_data.get('bvps')
+                    bvps = stock_data.get('bvps')
                     if bvps and bvps > 0:
                         stock_data['pb_ratio'] = current_price / bvps
                 
@@ -2482,14 +2477,9 @@ def api_app(symbol):
                 if pd.notna(total_assets) and pd.notna(total_liabilities)
                 else np.nan
             )
+            # Use eps_ttm if available, don't calculate from net_income/shares
             if pd.isna(data.get("earnings_per_share", np.nan)):
-                data["earnings_per_share"] = (
-                    net_income / shp
-                    if pd.notna(net_income) and pd.notna(shp) and shp > 0
-                    else data.get("eps", np.nan)
-                )
-            else:
-                data["earnings_per_share"] = data.get("eps", np.nan)
+                data["earnings_per_share"] = data.get("eps_ttm", np.nan)
             if pd.isna(data.get("book_value_per_share", np.nan)):
                 data["book_value_per_share"] = (
                     equity / shp

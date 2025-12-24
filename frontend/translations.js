@@ -53,7 +53,9 @@ const translations = {
         roe: "ROE (%):",
         roa: "ROA (%):",
         profitGrowth: "Tăng trưởng LN:",
+        netProfitMargin: "Biên LN ròng:",
         debtEquity: "Nợ/Vốn CSH:",
+        metricsNote: "* Dữ liệu từ quý gần nhất",
 
         // Valuation Ratios
         valuationRatios: "Tỷ lệ định giá",
@@ -357,7 +359,9 @@ const translations = {
         roe: "ROE (%):",
         roa: "ROA (%):",
         profitGrowth: "Profit Growth:",
+        netProfitMargin: "Net Margin:",
         debtEquity: "Debt/Equity:",
+        metricsNote: "* Data from most recent quarter",
 
         // Valuation Ratios
         valuationRatios: "Valuation Ratios",

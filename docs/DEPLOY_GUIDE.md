@@ -12,7 +12,7 @@ Dùng để **cập nhật tính năng mới** hàng ngày.
 **Cách dùng:**
 ```powershell
 # Chạy script
-.\scripts\deploy.ps1
+.\automation\deploy.ps1
 
 # Hoặc kèm tin nhắn commit
 .\scripts\deploy.ps1 -CommitMessage "Sửa lỗi hiển thị biểu đồ"
