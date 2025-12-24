@@ -2,7 +2,7 @@
   "symbol": "TD6",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T01:23:12.867490",
+  "last_updated": "2025-12-23T22:29:41.359266",
   "name": "Công ty Cổ Phần Than Đèo Nai - Cọc Sáu - TKV",
   "exchange": "HNX",
   "sector": "Tài nguyên Cơ bản",
@@ -26,11 +26,8 @@
   "pb_ratio": 0.6210628888,
   "ps_ratio": 0.0779715467,
   "ev_ebitda": 3.9927791931,
-  "eps": 134.6491082890147,
-  "earnings_per_share": 134.6491082890147,
   "eps_ttm": 1074.7594116993,
   "bvps": 11593.0288692366,
-  "book_value_per_share": 11593.0288692366,
   "dividend_per_share": 0.0416666667,
   "roe": 9.20185827,
   "roa": 2.3471382,
@@ -50,6 +47,6 @@
   "fixed_asset_turnover": 6.4866747356,
   "market_cap": 445933454400.0,
   "ebitda": 324029991050.0,
-  "current_price": 7200.0,
+  "current_price": 7100.0,
   "working_capital": -921532099.0
 }

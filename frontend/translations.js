@@ -82,6 +82,7 @@ const translations = {
         grossProfitMargin: "Biên lợi nhuận gộp:",
         ebitMargin: "Biên EBIT:",
         netProfitMargin: "Biên lợi nhuận ròng:",
+        roic: "ROIC:",
 
         // Company Description & Price Chart
         companyDescription: "Giới thiệu công ty",
@@ -271,7 +272,7 @@ const translations = {
         // Privacy Modal
         privacyTitle: "Chính sách Bảo mật",
         privacyP1: "Chúng tôi coi trọng quyền riêng tư của bạn. Công cụ này hoạt động hoàn toàn phía máy khách - không có dữ liệu cá nhân nào được thu thập, lưu trữ hoặc truyền đến máy chủ của chúng tôi.",
-        privacyP2: "Tất cả các tính toán định giá được thực hiện trực tiếp trong trình duyệt của bạn. Dữ liệu tài chính được lấy từ các nguồn công khai và không liên kết với danh tính cá nhân nào.",
+        privacyP2: "Tất cả các tính toán định giá được thực hiện trực tiếp trong trình trình duyệt của bạn. Dữ liệu tài chính được lấy từ các nguồn công khai và không liên kết với danh tính cá nhân nào.",
         privacyP3: "Chúng tôi sử dụng phân tích web cơ bản (Google Analytics) để hiểu các mẫu lưu lượng truy cập. Dữ liệu này được ẩn danh và không thể dùng để xác định danh tính cá nhân.",
         privacyP4: "Các tùy chọn của bạn (ngôn ngữ, chủ đề) được lưu trong bộ nhớ cục bộ của trình duyệt và không bao giờ rời khỏi thiết bị của bạn.",
 
@@ -388,6 +389,7 @@ const translations = {
         grossProfitMargin: "Gross Profit Margin:",
         ebitMargin: "EBIT Margin:",
         netProfitMargin: "Net Profit Margin:",
+        roic: "ROIC:",
 
         // Company Description & Price Chart
         companyDescription: "About the Company",

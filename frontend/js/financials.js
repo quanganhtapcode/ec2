@@ -19,6 +19,8 @@ class FinancialsManager {
         this.safeUpdateElement('pe-ratio', AppUtils.formatNumber(data.pe_ratio));
         this.safeUpdateElement('pb-ratio', AppUtils.formatNumber(data.pb_ratio));
         this.safeUpdateElement('ps-ratio', AppUtils.formatNumber(data.ps_ratio));
+        this.safeUpdateElement('ev-ebitda', AppUtils.formatNumber(data.ev_ebitda));
+        this.safeUpdateElement('pcf-ratio', AppUtils.formatNumber(data.pcf));
 
 
         // Efficiency Ratios
@@ -36,6 +38,7 @@ class FinancialsManager {
         this.safeUpdateElement('gross-profit-margin', AppUtils.formatPercent(data.gross_profit_margin));
         this.safeUpdateElement('ebit-margin', AppUtils.formatPercent(data.ebit_margin));
         this.safeUpdateElement('net-profit-margin', AppUtils.formatPercent(data.net_profit_margin));
+        this.safeUpdateElement('roic', AppUtils.formatPercent(data.roic));
     }
 
     /**
@@ -46,6 +49,8 @@ class FinancialsManager {
         this.safeUpdateElement('pe-ratio', '--');
         this.safeUpdateElement('pb-ratio', '--');
         this.safeUpdateElement('ps-ratio', '--');
+        this.safeUpdateElement('ev-ebitda', '--');
+        this.safeUpdateElement('pcf-ratio', '--');
 
 
         // Efficiency Ratios
@@ -63,6 +68,7 @@ class FinancialsManager {
         this.safeUpdateElement('gross-profit-margin', '--');
         this.safeUpdateElement('ebit-margin', '--');
         this.safeUpdateElement('net-profit-margin', '--');
+        this.safeUpdateElement('roic', '--');
     }
 
     /**
