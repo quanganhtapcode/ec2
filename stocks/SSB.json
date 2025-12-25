@@ -2,7 +2,7 @@
   "symbol": "SSB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T22:22:27.439932",
+  "last_updated": "2025-12-25T14:07:33.439686",
   "name": "Ngân hàng Thương mại Cổ phần Đông Nam Á",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 963723000000.0,
   "fixed_assets": 1367030000000.0,
   "ppe": 1367030000000.0,
-  "pe_ratio": 7.6104490073,
-  "pb_ratio": 1.254067283,
-  "ps_ratio": 3.5246013141,
+  "pe_ratio": 7.5032595847,
+  "pb_ratio": 1.2364043635,
+  "ps_ratio": 3.4749590421,
+  "pcf": 1.144006451,
   "eps_ttm": 2332.3196808667,
   "bvps": 14153.9455184534,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 33.352916032154425,
   "net_margin": 33.352916032154425,
   "debt_to_equity": 8.4568552553,
-  "market_cap": 50498750000000.0,
-  "current_price": 17500.0
+  "revenue_growth": 15.96583931483265,
+  "market_cap": 49787500000000.0,
+  "current_price": 17400.0
 }

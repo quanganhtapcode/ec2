@@ -2,7 +2,7 @@
   "symbol": "SHB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T22:16:14.374427",
+  "last_updated": "2025-12-25T14:00:15.440376",
   "name": "Ngân hàng Thương mại Cổ phần Sài Gòn – Hà Nội",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 1563509000000.0,
   "fixed_assets": 5328025000000.0,
   "ppe": 5328025000000.0,
-  "pe_ratio": 6.326095727,
-  "pb_ratio": 1.1386244116,
-  "ps_ratio": 2.3187170653,
+  "pe_ratio": 6.5589581464,
+  "pb_ratio": 1.1805369667,
+  "ps_ratio": 2.4040686137,
+  "pcf": 4.1513420823,
   "eps_ttm": 2576.6287301804,
   "bvps": 14315.5195282748,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 48.96338550826558,
   "net_margin": 48.96338550826558,
   "debt_to_equity": 11.9654233647,
-  "market_cap": 74877372559400.0,
-  "current_price": 16300.0
+  "revenue_growth": 43.69027522299129,
+  "market_cap": 77633594862200.0,
+  "current_price": 16700.0
 }

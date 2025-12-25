@@ -2,7 +2,7 @@
   "symbol": "LPB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T21:24:28.099658",
+  "last_updated": "2025-12-25T12:49:25.190239",
   "name": "Ngân hàng Thương mại Cổ phần Lộc Phát Việt Nam",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 1162384000000.0,
   "fixed_assets": 2731787000000.0,
   "ppe": 2731787000000.0,
-  "pe_ratio": 12.6853307306,
-  "pb_ratio": 3.0242684912,
-  "ps_ratio": 6.4190805692,
+  "pe_ratio": 12.3393671653,
+  "pb_ratio": 2.9417884415,
+  "ps_ratio": 6.2440147355,
+  "pcf": 3.5147945169,
   "eps_ttm": 3468.5733414655,
   "bvps": 14548.9727936977,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 65.21802473502656,
   "net_margin": 65.21802473502656,
   "debt_to_equity": 11.4051058208,
-  "market_cap": 131440412400000.0,
-  "current_price": 41800.0
+  "revenue_growth": 22.24306841187806,
+  "market_cap": 127855673880000.0,
+  "current_price": 42950.0
 }

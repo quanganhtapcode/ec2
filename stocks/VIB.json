@@ -2,7 +2,7 @@
   "symbol": "VIB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T22:56:13.893462",
+  "last_updated": "2025-12-25T14:51:23.969366",
   "name": "Ngân hàng Thương mại Cổ phần Quốc tế Việt Nam",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 1639368000000.0,
   "fixed_assets": 795269000000.0,
   "ppe": 795269000000.0,
-  "pe_ratio": 7.979100399,
-  "pb_ratio": 1.3349848669,
-  "ps_ratio": 3.0209981218,
+  "pe_ratio": 8.0465294165,
+  "pb_ratio": 1.3462664291,
+  "ps_ratio": 3.0465276834,
+  "pcf": 10.1112376087,
   "eps_ttm": 2224.5615561072,
   "bvps": 13296.0308694664,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 38.931695970451926,
   "net_margin": 38.931695970451926,
   "debt_to_equity": 11.0097766747,
-  "market_cap": 60421101352500.0,
-  "current_price": 17750.0
+  "revenue_growth": 14.025537969422508,
+  "market_cap": 60931702209000.0,
+  "current_price": 17800.0
 }

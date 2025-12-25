@@ -2,7 +2,7 @@
   "symbol": "ACB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T19:58:12.500287",
+  "last_updated": "2025-12-25T11:12:20.682785",
   "name": "Ngân hàng Thương mại Cổ phần Á Châu",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -22,15 +22,17 @@
   "pe_ratio": 7.1796399862,
   "pb_ratio": 1.3654222244,
   "ps_ratio": 3.6550591283,
+  "pcf": 7.6442770521,
   "eps_ttm": 3384.5708206384,
   "bvps": 17796.6928951016,
-  "dividend_per_share": 0.0411522634,
+  "dividend_per_share": 0.0,
   "roe": 19.91666777,
   "roa": 1.9116518,
   "net_profit_growth": 10.598246432211699,
   "net_profit_margin": 63.231497361039104,
   "net_margin": 63.231497361039104,
   "debt_to_equity": 9.3762400906,
+  "revenue_growth": 16.462822859531684,
   "market_cap": 124820755355700.0,
-  "current_price": 24200.0
+  "current_price": 24350.0
 }

@@ -2,7 +2,7 @@
   "symbol": "MBB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T21:26:12.661849",
+  "last_updated": "2025-12-25T12:50:21.506513",
   "name": "Ngân hàng Thương mại Cổ phần Quân đội",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 3349166000000.0,
   "fixed_assets": 5430416000000.0,
   "ppe": 5430416000000.0,
-  "pe_ratio": 8.3699493547,
-  "pb_ratio": 1.595862471,
-  "ps_ratio": 3.1421784272,
+  "pe_ratio": 8.3865235119,
+  "pb_ratio": 1.5990225947,
+  "ps_ratio": 3.1484005627,
+  "pcf": 7.4552990784,
   "eps_ttm": 3016.7446575731,
   "bvps": 15822.1654177302,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 42.88529084738999,
   "net_margin": 42.88529084738999,
   "debt_to_equity": 8.9823643334,
-  "market_cap": 203388747702250.0,
-  "current_price": 25100.0
+  "revenue_growth": 27.989787671398236,
+  "market_cap": 203791497697700.0,
+  "current_price": 25300.0
 }

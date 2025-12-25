@@ -2,7 +2,7 @@
   "symbol": "CTG",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T20:27:44.637086",
+  "last_updated": "2025-12-25T11:48:05.985395",
   "name": "Ngân hàng Thương mại Cổ phần Công thương Việt Nam",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 11147549000000.0,
   "fixed_assets": 10002157000000.0,
   "ppe": 10002157000000.0,
-  "pe_ratio": 8.1896677776,
-  "pb_ratio": 1.6181668583,
-  "ps_ratio": 3.2060153255,
+  "pe_ratio": 8.2246165732,
+  "pb_ratio": 1.6250722645,
+  "ps_ratio": 3.2196967564,
+  "pcf": 3.1625852054,
   "eps_ttm": 4291.9933939424,
   "bvps": 21722.1109307767,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 49.19028130294175,
   "net_margin": 49.19028130294175,
   "debt_to_equity": 15.2557963398,
-  "market_cap": 273009087839050.0,
-  "current_price": 35000.0
+  "revenue_growth": 19.613487903161914,
+  "market_cap": 274174133733100.0,
+  "current_price": 35700.0
 }

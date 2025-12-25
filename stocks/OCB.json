@@ -2,7 +2,7 @@
   "symbol": "OCB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T21:43:32.158974",
+  "last_updated": "2025-12-25T13:12:42.629286",
   "name": "Ngân hàng Thương mại Cổ phần Phương Đông",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 787773771826.0,
   "fixed_assets": 630506628479.0,
   "ppe": 630506628479.0,
-  "pe_ratio": 8.424330675,
-  "pb_ratio": 1.0073769226,
-  "ps_ratio": 2.9725570927,
+  "pe_ratio": 8.2879042673,
+  "pb_ratio": 0.9910631263,
+  "ps_ratio": 2.9244185163,
+  "pcf": 2.7090548119,
   "eps_ttm": 1465.9918367929,
   "bvps": 12259.5621583012,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 50.65303232878682,
   "net_margin": 50.65303232878682,
   "debt_to_equity": 8.6533665476,
-  "market_cap": 32888695707400.0,
-  "current_price": 12250.0
+  "revenue_growth": 25.08856840506678,
+  "market_cap": 32356085250600.0,
+  "current_price": 12200.0
 }

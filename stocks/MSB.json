@@ -2,7 +2,7 @@
   "symbol": "MSB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T21:30:43.209595",
+  "last_updated": "2025-12-25T12:56:39.572404",
   "name": "Ngân hàng Thương mại Cổ phần Hàng Hải Việt Nam",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 1203088000000.0,
   "fixed_assets": 432744000000.0,
   "ppe": 432744000000.0,
-  "pe_ratio": 7.4612782129,
-  "pb_ratio": 0.9923993718,
-  "ps_ratio": 2.7852190457,
+  "pe_ratio": 7.2877601149,
+  "pb_ratio": 0.9693203166,
+  "ps_ratio": 2.7204465098,
+  "pcf": 2.7520076523,
   "eps_ttm": 1728.9262820513,
   "bvps": 12998.7990384615,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 45.258898113035976,
   "net_margin": 45.258898113035976,
   "debt_to_equity": 7.7700081169,
-  "market_cap": 40248000000000.0,
-  "current_price": 12600.0
+  "revenue_growth": 19.423972618620056,
+  "market_cap": 39312000000000.0,
+  "current_price": 12500.0
 }

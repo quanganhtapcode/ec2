@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-12-23T23:28:46.325018",
-  "count": 703,
+  "last_updated": "2025-12-25T11:10:44.667684",
+  "count": 704,
   "source": "HOSE, HNX (from ticker_data.json)",
   "symbols": [
     "AAA",
@@ -329,6 +329,7 @@
     "MBS",
     "MCC",
     "MCF",
+    "MCH",
     "MCM",
     "MCO",
     "MCP",

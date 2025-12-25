@@ -2,7 +2,7 @@
   "symbol": "STB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T22:23:21.747678",
+  "last_updated": "2025-12-25T14:09:28.810416",
   "name": "Ngân hàng Thương mại Cổ phần Sài Gòn Thương Tín",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 8214653000000.0,
   "fixed_assets": 7355128000000.0,
   "ppe": 7355128000000.0,
-  "pe_ratio": 8.0380885251,
-  "pb_ratio": 1.5754027781,
-  "ps_ratio": 3.1091563584,
+  "pe_ratio": 9.0044999317,
+  "pb_ratio": 1.7648118908,
+  "ps_ratio": 3.482967142,
+  "pcf": 1.9775991959,
   "eps_ttm": 6518.9627903056,
   "bvps": 33261.3352773471,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 36.844655176048455,
   "net_margin": 36.844655176048455,
   "debt_to_equity": 12.5387108054,
-  "market_cap": 98785303518400.0,
-  "current_price": 56000.0
+  "revenue_growth": 27.357323730763987,
+  "market_cap": 110662162529200.0,
+  "current_price": 56900.0
 }

@@ -2,7 +2,7 @@
   "symbol": "BID",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T20:09:29.087118",
+  "last_updated": "2025-12-25T11:26:12.330258",
   "name": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -22,6 +22,7 @@
   "pe_ratio": 10.1558149924,
   "pb_ratio": 1.6586904751,
   "ps_ratio": 3.0796864929,
+  "pcf": 1.5523636262,
   "eps_ttm": 3781.0850265298,
   "bvps": 23150.7930970538,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 39.23491647914684,
   "net_margin": 39.23491647914684,
   "debt_to_equity": 17.2869844917,
+  "revenue_growth": 11.997636913487861,
   "market_cap": 269620297612800.0,
-  "current_price": 38000.0
+  "current_price": 38550.0
 }

@@ -2,7 +2,7 @@
   "symbol": "EIB",
   "data_source": "VCI",
   "data_period": "year",
-  "last_updated": "2025-12-23T20:45:19.464795",
+  "last_updated": "2025-12-25T12:06:14.593072",
   "name": "Ngân hàng Thương mại Cổ phần Xuất nhập khẩu Việt Nam",
   "exchange": "HSX",
   "sector": "Ngân hàng",
@@ -19,9 +19,10 @@
   "cash": 2095973000000.0,
   "fixed_assets": 3775847000000.0,
   "ppe": 3775847000000.0,
-  "pe_ratio": 13.764284039,
-  "pb_ratio": 1.5790893503,
-  "ps_ratio": 4.9358468786,
+  "pe_ratio": 13.7031094433,
+  "pb_ratio": 1.5720711754,
+  "ps_ratio": 4.9139097814,
+  "pcf": 5.7923044661,
   "eps_ttm": 1634.6654817804,
   "bvps": 14248.7187290778,
   "dividend_per_share": 0.0,
@@ -31,6 +32,7 @@
   "net_profit_margin": 30.354005376087194,
   "net_margin": 30.354005376087194,
   "debt_to_equity": 8.6342849818,
-  "market_cap": 41911213657500.0,
-  "current_price": 22450.0
+  "revenue_growth": 15.280382096944011,
+  "market_cap": 41724941596800.0,
+  "current_price": 22200.0
 }
