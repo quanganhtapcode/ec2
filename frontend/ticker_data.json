@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-12-23T23:28:45.743090",
-  "count": 1584,
+  "last_updated": "2025-12-25T11:10:44.366718",
+  "count": 1583,
   "tickers": [
     {
       "symbol": "BQP",
@@ -27,21 +27,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "ABS",
-      "name": "Công ty Cổ phần Dịch vụ Nông nghiệp Bình Thuận",
-      "sector": "Hóa chất",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "ARM",
-      "name": "Công ty Cổ phần Xuất nhập khẩu Hàng không",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "AFX",
       "name": "Công ty Cổ phần Xuất Nhập khẩu Nông sản Thực phẩm An Giang",
       "sector": "Bán lẻ",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "ABS",
+      "name": "Công ty Cổ phần Dịch vụ Nông nghiệp Bình Thuận",
+      "sector": "Hóa chất",
       "exchange": "HSX"
     },
     {
@@ -51,10 +45,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "A32",
-      "name": "Công ty Cổ phần 32",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "UPCOM"
+      "symbol": "ARM",
+      "name": "Công ty Cổ phần Xuất nhập khẩu Hàng không",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
     },
     {
       "symbol": "ALT",
@@ -87,22 +81,16 @@
       "exchange": "HNX"
     },
     {
+      "symbol": "A32",
+      "name": "Công ty Cổ phần 32",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "ASM",
       "name": "Công ty Cổ phần Tập đoàn Sao Mai",
       "sector": "Thực phẩm và đồ uống",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "ATS",
-      "name": "Công ty Cổ phần Tập đoàn Đầu tư ATS",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "AVF",
-      "name": "Công ty Cổ phần Việt An",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "APP",
@@ -123,10 +111,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "BHN",
-      "name": "Tổng Công ty Cổ phần Bia - Rượu - Nước giải khát Hà Nội",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "HSX"
+      "symbol": "ATS",
+      "name": "Công ty Cổ phần Tập đoàn Đầu tư ATS",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "HNX"
     },
     {
       "symbol": "AG1",
@@ -135,8 +123,8 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "BHG",
-      "name": "Công ty Cổ phần Chè Biển Hồ",
+      "symbol": "AVF",
+      "name": "Công ty Cổ phần Việt An",
       "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
@@ -153,9 +141,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "BMG",
-      "name": "Công ty Cổ phần May Bình Minh",
-      "sector": "Hàng cá nhân & Gia dụng",
+      "symbol": "BHN",
+      "name": "Tổng Công ty Cổ phần Bia - Rượu - Nước giải khát Hà Nội",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "BHG",
+      "name": "Công ty Cổ phần Chè Biển Hồ",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -165,9 +159,9 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "BSP",
-      "name": "Công ty Cổ phần Bia Sài Gòn - Phú Thọ",
-      "sector": "Thực phẩm và đồ uống",
+      "symbol": "BMG",
+      "name": "Công ty Cổ phần May Bình Minh",
+      "sector": "Hàng cá nhân & Gia dụng",
       "exchange": "UPCOM"
     },
     {
@@ -197,6 +191,12 @@
     {
       "symbol": "BHP",
       "name": "Công ty Cổ phần Bia Hà Nội - Hải Phòng",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "BSP",
+      "name": "Công ty Cổ phần Bia Sài Gòn - Phú Thọ",
       "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
@@ -297,12 +297,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "CDO",
-      "name": "Công ty Cổ phần Tư vấn Thiết kế và Phát triển Đô thị",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "BCM",
       "name": "Tập đoàn Đầu tư và Phát triển Công nghiệp Becamex - CTCP",
       "sector": "Bất động sản",
@@ -327,9 +321,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "CEN",
-      "name": "Công ty Cổ phần CENCON Việt Nam",
-      "sector": "Bán lẻ",
+      "symbol": "CDO",
+      "name": "Công ty Cổ phần Tư vấn Thiết kế và Phát triển Đô thị",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -339,14 +333,32 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "CEN",
+      "name": "Công ty Cổ phần CENCON Việt Nam",
+      "sector": "Bán lẻ",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CID",
+      "name": "Công ty Cổ phần Xây dựng và Phát triển Cơ sở Hạ tầng",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CNC",
+      "name": "Công ty Cổ phần Công nghệ cao Traphaco",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "TT6",
       "name": "Công ty Cổ Phần Tập Đoàn Tiến Thịnh",
       "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "CID",
-      "name": "Công ty Cổ phần Xây dựng và Phát triển Cơ sở Hạ tầng",
+      "symbol": "CC1",
+      "name": "Tổng Công ty Xây dựng số 1 - CTCP",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
@@ -363,98 +375,8 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "TVH",
-      "name": "Công ty Cổ phần Tư vấn Xây dựng công trình Hàng hải",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CMC",
-      "name": "Công ty Cổ phần Đầu tư CMC",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "TCK",
       "name": "Tổng Công ty Cơ khí Xây dựng - CTCP",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CNN",
-      "name": "Công ty Cổ phần Tư vấn Công nghệ, Thiết bị và Kiểm định Xây dựng - CONINCO",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "AAA",
-      "name": "Công ty Cổ phần Nhựa An Phát Xanh",
-      "sector": "Hóa chất",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "BMD",
-      "name": "Công ty Cổ phần Môi trường và Dịch vụ Đô thị Bình Thuận",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "AAM",
-      "name": "Công ty Cổ Phần Thủy Sản MeKong",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "ATB",
-      "name": "Công ty Cổ phần An Thịnh",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CT6",
-      "name": "Công ty Cổ phần Công trình 6",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CNC",
-      "name": "Công ty Cổ phần Công nghệ cao Traphaco",
-      "sector": "Y tế",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CC1",
-      "name": "Tổng Công ty Xây dựng số 1 - CTCP",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CAD",
-      "name": "Công ty Cổ phần Chế biến và Xuất khẩu Thủy sản Cadovimex",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "GTS",
-      "name": "Công ty Cổ phần Công trình Giao thông Sài Gòn",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CPH",
-      "name": "Công ty Cổ phần Phục vụ Mai táng Hải Phòng",
-      "sector": "Bán lẻ",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CPI",
-      "name": "Công ty Cổ phần Đầu tư Cảng Cái Lân",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CTN",
-      "name": "Công ty Cổ phần Xây dựng Công trình ngầm",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
@@ -471,21 +393,63 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "AAT",
-      "name": "Công ty Cổ phần Tập đoàn Tiên Sơn Thanh Hóa",
-      "sector": "Hàng cá nhân & Gia dụng",
+      "symbol": "AAA",
+      "name": "Công ty Cổ phần Nhựa An Phát Xanh",
+      "sector": "Hóa chất",
       "exchange": "HSX"
     },
     {
-      "symbol": "CTP",
-      "name": "Công ty Cổ phần Hoà Bình Takara",
+      "symbol": "BMD",
+      "name": "Công ty Cổ phần Môi trường và Dịch vụ Đô thị Bình Thuận",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CT6",
+      "name": "Công ty Cổ phần Công trình 6",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "AAM",
+      "name": "Công ty Cổ Phần Thủy Sản MeKong",
       "sector": "Thực phẩm và đồ uống",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "TVH",
+      "name": "Công ty Cổ phần Tư vấn Xây dựng công trình Hàng hải",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CMC",
+      "name": "Công ty Cổ phần Đầu tư CMC",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
     },
     {
-      "symbol": "CTW",
-      "name": "Công ty Cổ phần Cấp thoát nước Cần Thơ",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "ATB",
+      "name": "Công ty Cổ phần An Thịnh",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CTN",
+      "name": "Công ty Cổ phần Xây dựng Công trình ngầm",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CNN",
+      "name": "Công ty Cổ phần Tư vấn Công nghệ, Thiết bị và Kiểm định Xây dựng - CONINCO",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CAD",
+      "name": "Công ty Cổ phần Chế biến và Xuất khẩu Thủy sản Cadovimex",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -495,40 +459,28 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "BMJ",
-      "name": "Công ty Cổ phần Khoáng sản Miền Đông AHP",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "CPH",
+      "name": "Công ty Cổ phần Phục vụ Mai táng Hải Phòng",
+      "sector": "Bán lẻ",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DAG",
-      "name": "Công ty Cổ phần Tập đoàn Nhựa Đông Á",
-      "sector": "Hóa chất",
+      "symbol": "DNE",
+      "name": "Công ty Cổ phần Môi trường Đô thị Đà Nẵng",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "TTS",
-      "name": "Công ty Cổ phần Cán thép Thái Trung",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "CPI",
+      "name": "Công ty Cổ phần Đầu tư Cảng Cái Lân",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DAS",
-      "name": "Công ty Cổ phần Máy - Thiết bị Dầu khí Đà Nẵng",
-      "sector": "Ô tô và phụ tùng",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "VDG",
-      "name": "Công ty Cổ phần Vạn Đạt Group",
+      "symbol": "AAT",
+      "name": "Công ty Cổ phần Tập đoàn Tiên Sơn Thanh Hóa",
       "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "DBM",
-      "name": "Công ty Cổ phần Dược - Vật tư Y tế Đắk Lắk",
-      "sector": "Y tế",
-      "exchange": "UPCOM"
+      "exchange": "HSX"
     },
     {
       "symbol": "DCL",
@@ -537,21 +489,9 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "CVN",
-      "name": "Công ty Cổ phần Vinam",
-      "sector": "Y tế",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CII",
-      "name": "Công ty Cổ phần Đầu tư Hạ tầng Kỹ thuật Thành phố Hồ Chí Minh",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "CK8",
-      "name": "Công ty Cổ phần Cơ khí 120",
-      "sector": "Bất động sản",
+      "symbol": "BMJ",
+      "name": "Công ty Cổ phần Khoáng sản Miền Đông AHP",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
     },
     {
@@ -567,16 +507,94 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "GTS",
+      "name": "Công ty Cổ phần Công trình Giao thông Sài Gòn",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "DGC",
+      "name": "Công ty Cổ phần Tập đoàn Hóa chất Đức Giang",
+      "sector": "Hóa chất",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "VDG",
+      "name": "Công ty Cổ phần Vạn Đạt Group",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "DGT",
+      "name": "Công ty Cổ phần Công trình Giao thông Đồng Nai",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CTP",
+      "name": "Công ty Cổ phần Hoà Bình Takara",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "TTS",
+      "name": "Công ty Cổ phần Cán thép Thái Trung",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "DHG",
       "name": "Công ty Cổ phần Dược Hậu Giang",
       "sector": "Y tế",
       "exchange": "HSX"
     },
     {
-      "symbol": "DAH",
-      "name": "Công ty Cổ phần Tập đoàn Khách sạn Đông Á",
-      "sector": "Du lịch và Giải trí",
+      "symbol": "CTW",
+      "name": "Công ty Cổ phần Cấp thoát nước Cần Thơ",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CII",
+      "name": "Công ty Cổ phần Đầu tư Hạ tầng Kỹ thuật Thành phố Hồ Chí Minh",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "CK8",
+      "name": "Công ty Cổ phần Cơ khí 120",
+      "sector": "Bất động sản",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "DIC",
+      "name": "Công ty Cổ phần Đầu tư và Thương mại DIC",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "DLD",
+      "name": "Công ty Cổ phần Du lịch Đắk Lắk",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "DLG",
+      "name": "Công ty Cổ phần Tập đoàn Đức Long Gia Lai",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "DNW",
+      "name": "Công ty Cổ phần Cấp nước Đồng Nai",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CVN",
+      "name": "Công ty Cổ phần Vinam",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "CMI",
@@ -597,22 +615,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "DWC",
-      "name": "Công ty Cổ phần Cấp nước Đắk Lắk",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "DAG",
+      "name": "Công ty Cổ phần Tập đoàn Nhựa Đông Á",
+      "sector": "Hóa chất",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DIC",
-      "name": "Công ty Cổ phần Đầu tư và Thương mại DIC",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "DNE",
-      "name": "Công ty Cổ phần Môi trường Đô thị Đà Nẵng",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "symbol": "DAH",
+      "name": "Công ty Cổ phần Tập đoàn Khách sạn Đông Á",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "HSX"
     },
     {
       "symbol": "CMV",
@@ -621,10 +633,34 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "DWC",
+      "name": "Công ty Cổ phần Cấp nước Đắk Lắk",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "BSD",
+      "name": "Công ty Cổ phần Bia, Rượu Sài Gòn - Đồng Xuân",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "CTI",
       "name": "Công ty Cổ phần Đầu tư Phát triển Cường Thuận IDICO",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "DAS",
+      "name": "Công ty Cổ phần Máy - Thiết bị Dầu khí Đà Nẵng",
+      "sector": "Ô tô và phụ tùng",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "DOP",
+      "name": "Công ty Cổ phần Vận tải Xăng dầu Đồng Tháp",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "TDB",
@@ -639,21 +675,21 @@
       "exchange": "HNX"
     },
     {
+      "symbol": "DBM",
+      "name": "Công ty Cổ phần Dược - Vật tư Y tế Đắk Lắk",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "CKG",
       "name": "Công ty Cổ phần Tập đoàn CIC",
       "sector": "Bất động sản",
       "exchange": "HSX"
     },
     {
-      "symbol": "DLD",
-      "name": "Công ty Cổ phần Du lịch Đắk Lắk",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "DLG",
-      "name": "Công ty Cổ phần Tập đoàn Đức Long Gia Lai",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "DPM",
+      "name": "Tổng Công ty Phân bón và Hóa chất Dầu khí - Công ty Cổ phần",
+      "sector": "Hóa chất",
       "exchange": "HSX"
     },
     {
@@ -663,16 +699,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DNW",
-      "name": "Công ty Cổ phần Cấp nước Đồng Nai",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "BDT",
+      "name": "Công ty Cổ phần Xây lắp và Vật liệu xây dựng Đồng Tháp",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "DGC",
-      "name": "Công ty Cổ phần Tập đoàn Hóa chất Đức Giang",
-      "sector": "Hóa chất",
-      "exchange": "HSX"
     },
     {
       "symbol": "AAV",
@@ -685,12 +715,6 @@
       "name": "Tổng Công ty Cổ phần Công trình Viettel",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "DGT",
-      "name": "Công ty Cổ phần Công trình Giao thông Đồng Nai",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "BMP",
@@ -717,10 +741,10 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "BSD",
-      "name": "Công ty Cổ phần Bia, Rượu Sài Gòn - Đồng Xuân",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
+      "symbol": "DTL",
+      "name": "Công ty Cổ phần Đại Thiên Lộc",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HSX"
     },
     {
       "symbol": "ABB",
@@ -825,8 +849,8 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DOP",
-      "name": "Công ty Cổ phần Vận tải Xăng dầu Đồng Tháp",
+      "symbol": "MTV",
+      "name": "Công ty Cổ phần Dịch vụ Môi trường và Công trình Đô thị Vũng Tàu",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
@@ -849,10 +873,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DPM",
-      "name": "Tổng Công ty Phân bón và Hóa chất Dầu khí - Công ty Cổ phần",
-      "sector": "Hóa chất",
-      "exchange": "HSX"
+      "symbol": "DVG",
+      "name": "Công ty Cổ phần Đại Việt Group DVG",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "AMD",
@@ -871,12 +895,6 @@
       "name": "Công ty Cổ phần Công viên nước Đầm Sen",
       "sector": "Du lịch và Giải trí",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "BDT",
-      "name": "Công ty Cổ phần Xây lắp và Vật liệu xây dựng Đồng Tháp",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "BSC",
@@ -921,21 +939,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DTL",
-      "name": "Công ty Cổ phần Đại Thiên Lộc",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HSX"
+      "symbol": "E29",
+      "name": "Công ty cổ phần Đầu tư Xây dựng và Kỹ thuật 29",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "DID",
       "name": "Công ty Cổ phần DIC - Đồng Tiến",
       "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "MTV",
-      "name": "Công ty Cổ phần Dịch vụ Môi trường và Công trình Đô thị Vũng Tàu",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
@@ -987,12 +999,6 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "DVG",
-      "name": "Công ty Cổ phần Đại Việt Group DVG",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "CMP",
       "name": "Công ty Cổ phần Cảng Chân Mây",
       "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -1033,12 +1039,6 @@
       "name": "Công ty Cổ phần Sách Giáo dục tại Thành phố Hà Nội",
       "sector": "Truyền thông",
       "exchange": "HNX"
-    },
-    {
-      "symbol": "E29",
-      "name": "Công ty cổ phần Đầu tư Xây dựng và Kỹ thuật 29",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "BNA",
@@ -1455,12 +1455,6 @@
       "exchange": "DELISTED"
     },
     {
-      "symbol": "FBA",
-      "name": "Công ty Cổ phần Tập đoàn Quốc tế FBA",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "FCM",
       "name": "Công ty Cổ phần Bê tông Phan Vũ Hà Nam",
       "sector": "Xây dựng và Vật liệu",
@@ -1479,6 +1473,12 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "FIR",
+      "name": "Công ty Cổ phần Địa ốc First Real",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
       "symbol": "CKD",
       "name": "Công ty Cổ phần Cơ khí Đông Anh Licogi",
       "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -1488,6 +1488,12 @@
       "symbol": "TOS",
       "name": "Công ty Cổ phần Dịch vụ biển Tân Cảng",
       "sector": "Dầu khí",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "FBA",
+      "name": "Công ty Cổ phần Tập đoàn Quốc tế FBA",
+      "sector": "Hàng cá nhân & Gia dụng",
       "exchange": "UPCOM"
     },
     {
@@ -1527,10 +1533,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "FIR",
-      "name": "Công ty Cổ phần Địa ốc First Real",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
+      "symbol": "FSO",
+      "name": "Công ty Cổ phần Cơ khí đóng tàu thủy sản Việt Nam",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "TW3",
@@ -1545,15 +1551,27 @@
       "exchange": "HNX"
     },
     {
+      "symbol": "ART",
+      "name": "Công ty Cổ phần Chứng khoán ARTEX",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "FBC",
+      "name": "Công ty Cổ phần Cơ khí Phổ Yên",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "CMK",
       "name": "Công ty Cổ phần Cơ khí Mạo Khê - Vinacomin",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "FSO",
-      "name": "Công ty Cổ phần Cơ khí đóng tàu thủy sản Việt Nam",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "FCS",
+      "name": "Công ty Cổ phần Lương thực Thành phố Hồ Chí Minh",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -1569,27 +1587,9 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "FIT",
-      "name": "Công ty Cổ phần Tập đoàn F.I.T",
-      "sector": "Y tế",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "ACM",
       "name": "Công ty Cổ phần Tập đoàn Khoáng sản Á Cường",
       "sector": "Tài nguyên Cơ bản",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "ART",
-      "name": "Công ty Cổ phần Chứng khoán ARTEX",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "FBC",
-      "name": "Công ty Cổ phần Cơ khí Phổ Yên",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
@@ -1599,10 +1599,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "FCS",
-      "name": "Công ty Cổ phần Lương thực Thành phố Hồ Chí Minh",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
+      "symbol": "FRT",
+      "name": "Công ty Cổ phần Bán lẻ Kỹ thuật số FPT",
+      "sector": "Bán lẻ",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "FIT",
+      "name": "Công ty Cổ phần Tập đoàn F.I.T",
+      "sector": "Y tế",
+      "exchange": "HSX"
     },
     {
       "symbol": "ECI",
@@ -1629,27 +1635,9 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "FRT",
-      "name": "Công ty Cổ phần Bán lẻ Kỹ thuật số FPT",
-      "sector": "Bán lẻ",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "BEL",
       "name": "Công ty Cổ phần Điện tử Biên Hòa",
       "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "FRC",
-      "name": "Công ty Cổ phần Lâm đặc sản xuất khẩu Quảng Nam",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "FT1",
-      "name": "Công ty Cổ phần Phụ tùng máy số 1",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
@@ -1659,9 +1647,27 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "GAB",
-      "name": "Công ty Cổ phần Đầu tư Khai khoáng & Quản lý Tài sản FLC",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "PGV",
+      "name": "Tổng Công ty Phát điện 3 - Công ty Cổ phần",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "GER",
+      "name": "Công ty Cổ phần Thể thao Ngôi sao Geru",
+      "sector": "Hóa chất",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "GGG",
+      "name": "Công ty Cổ phần Ô tô Giải Phóng",
+      "sector": "Ô tô và phụ tùng",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "FRC",
+      "name": "Công ty Cổ phần Lâm đặc sản xuất khẩu Quảng Nam",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
     },
     {
@@ -1677,10 +1683,22 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "GGG",
-      "name": "Công ty Cổ phần Ô tô Giải Phóng",
-      "sector": "Ô tô và phụ tùng",
+      "symbol": "GLT",
+      "name": "Công ty Cổ phần Kỹ thuật điện Toàn Cầu",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "FT1",
+      "name": "Công ty Cổ phần Phụ tùng máy số 1",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "GMA",
+      "name": "Công ty Cổ phần G-Automobile",
+      "sector": "Ô tô và phụ tùng",
+      "exchange": "HNX"
     },
     {
       "symbol": "ACS",
@@ -1689,34 +1707,22 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "GMX",
+      "name": "Công ty Cổ phần Gạch ngói Gốm xây dựng Mỹ Xuân",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
       "symbol": "BIG",
       "name": "Công ty Cổ phần Đầu tư BIG Group Holdings",
       "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "GHC",
-      "name": "Công ty Cổ phần Thủy điện Gia Lai",
+      "symbol": "GSM",
+      "name": "Công ty Cổ phần Thủy điện Hương Sơn",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "FGL",
-      "name": "Công ty Cổ phần Cà phê Gia Lai",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "GAS",
-      "name": "Tổng Công ty Khí Việt Nam - Công ty Cổ phần",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "GMD",
-      "name": "Công ty Cổ phần Gemadept",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HSX"
     },
     {
       "symbol": "LDW",
@@ -1743,15 +1749,15 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "GMX",
-      "name": "Công ty Cổ phần Gạch ngói Gốm xây dựng Mỹ Xuân",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "ACV",
       "name": "Tổng Công ty Cảng Hàng không Việt Nam - CTCP",
       "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "GAB",
+      "name": "Công ty Cổ phần Đầu tư Khai khoáng & Quản lý Tài sản FLC",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -1767,6 +1773,12 @@
       "exchange": "HNX"
     },
     {
+      "symbol": "GTA",
+      "name": "Công ty Cổ phần Chế biến Gỗ Thuận An",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HSX"
+    },
+    {
       "symbol": "PHN",
       "name": "Công ty Cổ phần Pin Hà Nội",
       "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -1779,39 +1791,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PGV",
-      "name": "Tổng Công ty Phát điện 3 - Công ty Cổ phần",
+      "symbol": "GAS",
+      "name": "Tổng Công ty Khí Việt Nam - Công ty Cổ phần",
       "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "GER",
-      "name": "Công ty Cổ phần Thể thao Ngôi sao Geru",
-      "sector": "Hóa chất",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "GSM",
-      "name": "Công ty Cổ phần Thủy điện Hương Sơn",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "CKV",
-      "name": "Công ty Cổ phần CokyVina",
-      "sector": "Công nghệ Thông tin",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "GTA",
-      "name": "Công ty Cổ phần Chế biến Gỗ Thuận An",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "ADP",
-      "name": "Công ty Cổ phần Sơn Á Đông",
-      "sector": "Xây dựng và Vật liệu",
       "exchange": "HSX"
     },
     {
@@ -1821,10 +1803,40 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "HHV",
+      "name": "Công ty Cổ phần Đầu tư Hạ tầng Giao thông Đèo Cả",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
       "symbol": "AAS",
       "name": "Công ty Cổ phần Chứng khoán SmartInvest",
       "sector": "Dịch vụ tài chính",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "CKV",
+      "name": "Công ty Cổ phần CokyVina",
+      "sector": "Công nghệ Thông tin",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "HNP",
+      "name": "Công ty Cổ phần Hanel Xốp Nhựa",
+      "sector": "Hóa chất",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "ADP",
+      "name": "Công ty Cổ phần Sơn Á Đông",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "HAS",
+      "name": "Công ty Cổ phần Hacisco",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
     },
     {
       "symbol": "DND",
@@ -1845,6 +1857,12 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "HAV",
+      "name": "Công ty Cổ phần Rượu Hapro",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "CLC",
       "name": "Công ty Cổ phần Cát Lợi",
       "sector": "Hàng cá nhân & Gia dụng",
@@ -1857,10 +1875,10 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "HNP",
-      "name": "Công ty Cổ phần Hanel Xốp Nhựa",
-      "sector": "Hóa chất",
-      "exchange": "UPCOM"
+      "symbol": "HAX",
+      "name": "Công ty Cổ phần Dịch vụ Ô tô Hàng Xanh",
+      "sector": "Ô tô và phụ tùng",
+      "exchange": "HSX"
     },
     {
       "symbol": "CLG",
@@ -1869,46 +1887,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HAS",
-      "name": "Công ty Cổ phần Hacisco",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "GH3",
-      "name": "Công ty Cổ phần Công trình giao thông Hà Nội",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "HAV",
-      "name": "Công ty Cổ phần Rượu Hapro",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "HAX",
-      "name": "Công ty Cổ phần Dịch vụ Ô tô Hàng Xanh",
-      "sector": "Ô tô và phụ tùng",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "CMF",
-      "name": "Công ty Cổ phần Thực phẩm Cholimex",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "HCC",
       "name": "Công ty Cổ phần Bê tông Hòa Cầm - Intimex",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "HNX"
-    },
-    {
-      "symbol": "GIL",
-      "name": "Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khẩu Bình Thạnh",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "HSX"
     },
     {
       "symbol": "XDH",
@@ -1923,22 +1905,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "HDC",
-      "name": "Công ty Cổ phần Phát triển Nhà Bà Rịa Vũng Tàu",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "GLC",
-      "name": "Công ty Cổ phần Vàng Lào Cai",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "HDM",
+      "name": "Công ty Cổ phần Dệt May Huế",
+      "sector": "Hàng cá nhân & Gia dụng",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "HDG",
-      "name": "Công ty Cổ phần Tập đoàn Hà Đô",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
     },
     {
       "symbol": "DHD",
@@ -1947,10 +1917,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "GLT",
-      "name": "Công ty Cổ phần Kỹ thuật điện Toàn Cầu",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "HNX"
+      "symbol": "CMF",
+      "name": "Công ty Cổ phần Thực phẩm Cholimex",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "HEC",
@@ -1959,33 +1929,21 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "GMA",
-      "name": "Công ty Cổ phần G-Automobile",
-      "sector": "Ô tô và phụ tùng",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "FTS",
-      "name": "Công ty Cổ phần Chứng khoán FPT",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "HEJ",
       "name": "Tổng Công ty Tư vấn Xây dựng Thủy Lợi Việt Nam - CTCP",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "BGW",
-      "name": "Công ty Cổ phần Nước sạch Bắc Giang",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
+      "symbol": "GIL",
+      "name": "Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khẩu Bình Thạnh",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "HSX"
     },
     {
-      "symbol": "CH5",
-      "name": "Công ty Cổ phần Xây dựng số 5 Hà Nội",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "GHC",
+      "name": "Công ty Cổ phần Thủy điện Gia Lai",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
@@ -1995,9 +1953,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "BHA",
-      "name": "Công ty Cổ phần Thủy điện Bắc Hà",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "FGL",
+      "name": "Công ty Cổ phần Cà phê Gia Lai",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -2007,22 +1965,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HKB",
-      "name": "Công ty Cổ phần Nông nghiệp và Thực phẩm Hà Nội - Kinh Bắc",
-      "sector": "Thực phẩm và đồ uống",
+      "symbol": "GLC",
+      "name": "Công ty Cổ phần Vàng Lào Cai",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DSD",
-      "name": "Công ty cổ phần DHC Suối Đôi",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "DKG",
-      "name": "Công ty Cổ Phần Tập đoàn DamiK",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
+      "symbol": "FTS",
+      "name": "Công ty Cổ phần Chứng khoán FPT",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "HSX"
     },
     {
       "symbol": "HLC",
@@ -2037,15 +1989,27 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "ECO",
-      "name": "Công ty Cổ Phần Nhựa Sinh Thái Việt Nam",
-      "sector": "Hóa chất",
+      "symbol": "BGW",
+      "name": "Công ty Cổ phần Nước sạch Bắc Giang",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "DVC",
-      "name": "Công ty Cổ phần Thương mại dịch vụ Tổng Hợp Cảng Hải Phòng",
+      "symbol": "CH5",
+      "name": "Công ty Cổ phần Xây dựng số 5 Hà Nội",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "BHA",
+      "name": "Công ty Cổ phần Thủy điện Bắc Hà",
       "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "HLS",
+      "name": "Công ty Cổ phần Sứ kỹ thuật Hoàng Liên Sơn",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
@@ -2073,10 +2037,28 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "DSD",
+      "name": "Công ty cổ phần DHC Suối Đôi",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "DKG",
+      "name": "Công ty Cổ Phần Tập đoàn DamiK",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "HMH",
       "name": "Công ty Cổ phần Hải Minh",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
+    },
+    {
+      "symbol": "ECO",
+      "name": "Công ty Cổ Phần Nhựa Sinh Thái Việt Nam",
+      "sector": "Hóa chất",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "DCH",
@@ -2091,16 +2073,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "DNN",
-      "name": "Công ty Cổ phần Cấp nước Đà Nẵng",
+      "symbol": "DVC",
+      "name": "Công ty Cổ phần Thương mại dịch vụ Tổng Hợp Cảng Hải Phòng",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "TAB",
-      "name": "Công ty Cổ phần Freco Việt Nam",
+      "symbol": "GMD",
+      "name": "Công ty Cổ phần Gemadept",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "exchange": "HSX"
     },
     {
       "symbol": "HPB",
@@ -2115,15 +2097,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MCG",
-      "name": "Công ty Cổ phần Năng lượng và Bất động sản MCG",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "DNN",
+      "name": "Công ty Cổ phần Cấp nước Đà Nẵng",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "BHH",
-      "name": "Công ty Cổ Phần Thương Mại Bia Hà Nội - Hưng Yên 89",
-      "sector": "Thực phẩm và đồ uống",
+      "symbol": "TAB",
+      "name": "Công ty Cổ phần Freco Việt Nam",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
@@ -2145,6 +2127,42 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "HRB",
+      "name": "Công ty Cổ phần Harec Đầu tư và Thương Mại",
+      "sector": "Bất động sản",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "HSI",
+      "name": "Công ty Cổ phần Vật tư Tổng hợp và Phân bón Hóa sinh",
+      "sector": "Hóa chất",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "MCG",
+      "name": "Công ty Cổ phần Năng lượng và Bất động sản MCG",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "BHH",
+      "name": "Công ty Cổ Phần Bia Hà Nội - Hưng Yên 89",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "HT1",
+      "name": "Công ty Cổ phần Xi măng VICEM Hà Tiên",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "HTN",
+      "name": "Công ty Cổ phần Hưng Thịnh Incons",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
       "symbol": "EGL",
       "name": "Công ty Cổ phần Môi Trường Đô Thị Gia Lâm",
       "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -2157,8 +2175,14 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "HRB",
-      "name": "Công ty Cổ phần Harec Đầu tư và Thương Mại",
+      "symbol": "HU1",
+      "name": "Công ty Cổ phần Đầu tư và Xây dựng HUD1",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "HU6",
+      "name": "Công ty Cổ phần Đầu tư Phát triển Nhà và Đô thị HUD6",
       "sector": "Bất động sản",
       "exchange": "UPCOM"
     },
@@ -2169,22 +2193,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "HSI",
-      "name": "Công ty Cổ phần Vật tư Tổng hợp và Phân bón Hóa sinh",
-      "sector": "Hóa chất",
+      "symbol": "HD8",
+      "name": "Công ty Cổ phần Đầu tư Phát triển Nhà và Đô thị HUD8",
+      "sector": "Bất động sản",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HSP",
-      "name": "Công ty Cổ phần Sơn Tổng hợp Hà Nội",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "HHV",
-      "name": "Công ty Cổ phần Đầu tư Hạ tầng Giao thông Đèo Cả",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
+      "symbol": "HUT",
+      "name": "Công ty Cổ phần Tasco",
+      "sector": "Ô tô và phụ tùng",
+      "exchange": "HNX"
     },
     {
       "symbol": "HC3",
@@ -2199,10 +2217,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HT1",
-      "name": "Công ty Cổ phần Xi măng VICEM Hà Tiên",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
+      "symbol": "HVA",
+      "name": "Công ty Cổ phần Đầu tư HVA",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "HAH",
@@ -2223,22 +2241,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HTN",
-      "name": "Công ty Cổ phần Hưng Thịnh Incons",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "HU1",
-      "name": "Công ty Cổ phần Đầu tư và Xây dựng HUD1",
+      "symbol": "HVH",
+      "name": "Công ty Cổ phần Đầu tư và Công nghệ HVC",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "HU6",
-      "name": "Công ty Cổ phần Đầu tư Phát triển Nhà và Đô thị HUD6",
-      "sector": "Bất động sản",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "CKA",
@@ -2250,6 +2256,12 @@
       "symbol": "AGP",
       "name": "Công ty Cổ phần Dược phẩm AGIMEXPHARM",
       "sector": "Y tế",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "ICF",
+      "name": "Công ty Cổ phần Đầu tư - Thương mại - Thuỷ sản",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -2283,54 +2295,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HUT",
-      "name": "Công ty Cổ phần Tasco",
-      "sector": "Ô tô và phụ tùng",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "HVA",
-      "name": "Công ty Cổ phần Đầu tư HVA",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "HVH",
-      "name": "Công ty Cổ phần Đầu tư và Công nghệ HVC",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "HPX",
-      "name": "Công ty Cổ phần Đầu tư Hải Phát",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "APS",
-      "name": "Công ty Cổ phần Chứng khoán Châu Á - Thái Bình Dương",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "FDC",
-      "name": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư Thành phố Hồ Chí Minh",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "ICF",
-      "name": "Công ty Cổ phần Đầu tư - Thương mại - Thuỷ sản",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "HSV",
-      "name": "Công ty Cổ phần Tập đoàn HSV Việt Nam",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "ICG",
       "name": "Công ty Cổ phần Xây dựng Sông Hồng",
       "sector": "Xây dựng và Vật liệu",
@@ -2349,10 +2313,58 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "HPX",
+      "name": "Công ty Cổ phần Đầu tư Hải Phát",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
       "symbol": "IDC",
       "name": "Tổng Công ty IDICO - CTCP",
       "sector": "Bất động sản",
       "exchange": "HNX"
+    },
+    {
+      "symbol": "APS",
+      "name": "Công ty Cổ phần Chứng khoán Châu Á - Thái Bình Dương",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "IDV",
+      "name": "Công ty Cổ phần Phát triển Hạ tầng Vĩnh Phúc",
+      "sector": "Bất động sản",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "FDC",
+      "name": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư Thành phố Hồ Chí Minh",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "HSV",
+      "name": "Công ty Cổ phần Tập đoàn HSV Việt Nam",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "IFS",
+      "name": "Công ty Cổ phần Thực phẩm Quốc tế",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "IHK",
+      "name": "Công ty Cổ phần In Hàng Không",
+      "sector": "Truyền thông",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "ILA",
+      "name": "Công ty Cổ phần ILA",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "C69",
@@ -2367,10 +2379,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "IDV",
-      "name": "Công ty Cổ phần Phát triển Hạ tầng Vĩnh Phúc",
-      "sector": "Bất động sản",
-      "exchange": "HNX"
+      "symbol": "IBD",
+      "name": "Công ty Cổ phần In Tổng hợp Bình Dương",
+      "sector": "Truyền thông",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "HNR",
@@ -2391,22 +2403,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "IFS",
-      "name": "Công ty Cổ phần Thực phẩm Quốc tế",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
+      "symbol": "DDG",
+      "name": "Công ty Cổ phần Đầu tư Công nghiệp Xuất nhập khẩu Đông Dương",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HNX"
     },
     {
-      "symbol": "IHK",
-      "name": "Công ty Cổ phần In Hàng Không",
-      "sector": "Truyền thông",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "ILA",
-      "name": "Công ty Cổ phần ILA",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
+      "symbol": "INN",
+      "name": "Công ty Cổ phần Bao bì và In Nông nghiệp",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
     },
     {
       "symbol": "HLT",
@@ -2439,22 +2445,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "IBD",
-      "name": "Công ty Cổ phần In Tổng hợp Bình Dương",
-      "sector": "Truyền thông",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "DBD",
       "name": "Công ty Cổ phần Dược - Trang thiết bị y tế Bình Định (BIDIPHAR)",
       "sector": "Y tế",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "DDG",
-      "name": "Công ty Cổ phần Đầu tư Công nghiệp Xuất nhập khẩu Đông Dương",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HNX"
     },
     {
       "symbol": "VMK",
@@ -2463,9 +2457,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "INN",
-      "name": "Công ty Cổ phần Bao bì và In Nông nghiệp",
+      "symbol": "ISG",
+      "name": "Công ty Cổ phần Vận tải biển và Hợp tác lao động Quốc Tế",
       "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "ITQ",
+      "name": "Công ty Cổ phần Tập đoàn Thiên Quang",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "HNX"
     },
     {
@@ -2493,6 +2493,18 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "KBC",
+      "name": "Tổng Công ty Phát triển Đô thị Kinh Bắc",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "GH3",
+      "name": "Công ty Cổ phần Công trình giao thông Hà Nội",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "DC1",
       "name": "Công ty Cổ phần Đầu tư Phát triển Xây dựng số 1",
       "sector": "Xây dựng và Vật liệu",
@@ -2505,16 +2517,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "IPA",
-      "name": "Công ty Cổ phần Tập đoàn Đầu tư I.P.A",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "ISG",
-      "name": "Công ty Cổ phần Vận tải biển và Hợp tác lao động Quốc Tế",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "symbol": "KDC",
+      "name": "Công ty Cổ phần Tập đoàn KIDO",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "HSX"
     },
     {
       "symbol": "HIO",
@@ -2523,10 +2529,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "ITQ",
-      "name": "Công ty Cổ phần Tập đoàn Thiên Quang",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HNX"
+      "symbol": "KDH",
+      "name": "Công ty Cổ phần Đầu tư và Kinh doanh nhà Khang Điền",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
     },
     {
       "symbol": "C32",
@@ -2545,6 +2551,12 @@
       "name": "Công ty Cổ phần Chứng khoán DSC",
       "sector": "Dịch vụ tài chính",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "KTC",
+      "name": "Công ty Cổ phần Thương mại Kiên Giang",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "HAT",
@@ -2571,16 +2583,28 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "KBC",
-      "name": "Tổng Công ty Phát triển Đô thị Kinh Bắc",
+      "symbol": "KHG",
+      "name": "Công ty Cổ phần Tập đoàn Khải Hoàn Land",
       "sector": "Bất động sản",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "KHL",
+      "name": "Công ty Cổ phần Khoáng sản và Vật liệu Xây dựng Hưng Long",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "CST",
       "name": "Công ty Cổ phần Than Cao Sơn - TKV",
       "sector": "Tài nguyên Cơ bản",
       "exchange": "HNX"
+    },
+    {
+      "symbol": "KHP",
+      "name": "Công ty Cổ phần Điện lực Khánh Hòa",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HSX"
     },
     {
       "symbol": "HAR",
@@ -2607,45 +2631,9 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "KDC",
-      "name": "Công ty Cổ phần Tập đoàn KIDO",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "GCF",
       "name": "Công ty Cổ phần Thực phẩm G.C",
       "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "KTC",
-      "name": "Công ty Cổ phần Thương mại Kiên Giang",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "KHG",
-      "name": "Công ty Cổ phần Tập đoàn Khải Hoàn Land",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "GE2",
-      "name": "Tổng Công ty Phát điện 2 - Công ty Cổ phần",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "DELISTED"
-    },
-    {
-      "symbol": "KHP",
-      "name": "Công ty Cổ phần Điện lực Khánh Hòa",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "EIC",
-      "name": "Công ty Cổ phần EVN Quốc Tế",
-      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -2661,16 +2649,22 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "BIO",
-      "name": "Công ty Cổ phần Vắc xin và Sinh phẩm Nha Trang",
-      "sector": "Y tế",
-      "exchange": "UPCOM"
+      "symbol": "GE2",
+      "name": "Tổng Công ty Phát điện 2 - Công ty Cổ phần",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "DELISTED"
     },
     {
       "symbol": "KKC",
       "name": "Công ty Cổ phần Tập đoàn Thành Thái",
       "sector": "Tài nguyên Cơ bản",
       "exchange": "HNX"
+    },
+    {
+      "symbol": "EIC",
+      "name": "Công ty Cổ phần EVN Quốc Tế",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "KLB",
@@ -2683,6 +2677,30 @@
       "name": "Công ty Cổ phần Đầu tư Thương mại và Xuất nhập khẩu CFS",
       "sector": "Du lịch và Giải trí",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "KMR",
+      "name": "Công ty Cổ phần Mirae",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "KMT",
+      "name": "Công ty Cổ phần Kim khí Miền Trung",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "BIO",
+      "name": "Công ty Cổ phần Vắc xin và Sinh phẩm Nha Trang",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "KOS",
+      "name": "Công ty Cổ phần KOSY",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
     },
     {
       "symbol": "CMD",
@@ -2703,10 +2721,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "KMR",
-      "name": "Công ty Cổ phần Mirae",
+      "symbol": "KSD",
+      "name": "Công ty Cổ phần Đầu tư DNA",
       "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "HSX"
+      "exchange": "HNX"
     },
     {
       "symbol": "CRC",
@@ -2721,16 +2739,16 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "KMT",
-      "name": "Công ty Cổ phần Kim khí Miền Trung",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HNX"
+      "symbol": "KSH",
+      "name": "Công ty Cổ phần Damac GLS",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
     },
     {
-      "symbol": "KOS",
-      "name": "Công ty Cổ phần KOSY",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
+      "symbol": "KHD",
+      "name": "Công ty Cổ phần Khai thác, Chế biến Khoáng sản Hải Dương",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "C4G",
@@ -2745,10 +2763,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "HDM",
-      "name": "Công ty Cổ phần Dệt May Huế",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "UPCOM"
+      "symbol": "KST",
+      "name": "Công ty Cổ phần KASATI",
+      "sector": "Công nghệ Thông tin",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "HDC",
+      "name": "Công ty Cổ phần Phát triển Nhà Bà Rịa Vũng Tàu",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
     },
     {
       "symbol": "HTM",
@@ -2757,10 +2781,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "KSB",
-      "name": "Công ty Cổ phần Khoáng sản và Xây dựng Bình Dương",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "HDG",
+      "name": "Công ty Cổ phần Tập đoàn Hà Đô",
+      "sector": "Bất động sản",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "KSV",
+      "name": "Tổng Công ty Khoáng sản TKV - Công ty Cổ phần",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HNX"
     },
     {
       "symbol": "HES",
@@ -2775,22 +2805,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "KSD",
-      "name": "Công ty Cổ phần Đầu tư DNA",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "BWE",
       "name": "Công ty Cổ phần - Tổng công ty Nước - Môi trường Bình Dương",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "HSX"
     },
     {
-      "symbol": "KSH",
-      "name": "Công ty Cổ phần Damac GLS",
+      "symbol": "KTS",
+      "name": "Công ty Cổ phần Đường Kon Tum",
       "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
+      "exchange": "HNX"
     },
     {
       "symbol": "BKC",
@@ -2799,9 +2823,9 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "KHD",
-      "name": "Công ty Cổ phần Khai thác, Chế biến Khoáng sản Hải Dương",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "KTT",
+      "name": "Công ty Cổ phần Tập đoàn Đầu tư KTT",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -2829,22 +2853,10 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "KST",
-      "name": "Công ty Cổ phần KASATI",
-      "sector": "Công nghệ Thông tin",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "HBC",
       "name": "Công ty Cổ phần Tập đoàn Xây dựng Hòa Bình",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "KSV",
-      "name": "Tổng Công ty Khoáng sản TKV - Công ty Cổ phần",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HNX"
     },
     {
       "symbol": "AGX",
@@ -2853,16 +2865,28 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "KTL",
-      "name": "Công ty Cổ phần Kim khí Thăng Long",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "L18",
+      "name": "Công ty Cổ phần Đầu tư và Xây dựng số 18",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "L44",
+      "name": "Công ty Cổ phần Lilama 45.4",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "KTT",
-      "name": "Công ty Cổ phần Tập đoàn Đầu tư KTT",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "L62",
+      "name": "Công ty Cổ phần Lilama 69 - 2",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "LAF",
+      "name": "Công ty Cổ phần Chế biến Hàng Xuất khẩu Long An",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "HSX"
     },
     {
       "symbol": "CMT",
@@ -2883,10 +2907,10 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "L18",
-      "name": "Công ty Cổ phần Đầu tư và Xây dựng số 18",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
+      "symbol": "LMI",
+      "name": "Công ty Cổ phần Đầu tư Xây dựng Lắp máy IDICO",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "EFI",
@@ -2907,9 +2931,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "L43",
-      "name": "Công ty Cổ phần Lilama 45.3",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "LSG",
+      "name": "Công ty Cổ phần Bất động sản Sài Gòn Vi na",
+      "sector": "Bất động sản",
       "exchange": "UPCOM"
     },
     {
@@ -2919,21 +2943,21 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "L44",
-      "name": "Công ty Cổ phần Lilama 45.4",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "L61",
-      "name": "Công ty Cổ phần Lilama 69-1",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "HLO",
       "name": "Công Ty Cổ Phần Công Nghệ Ha Lô",
       "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "LAS",
+      "name": "Công ty Cổ phần Supe Phốt phát và Hóa chất Lâm Thao",
+      "sector": "Hóa chất",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "LAW",
+      "name": "Công ty Cổ phần Cấp thoát nước Long An",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
@@ -2949,21 +2973,15 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "LMI",
-      "name": "Công ty Cổ phần Đầu tư Xây dựng Lắp máy IDICO",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "LCC",
+      "name": "Công ty Cổ phần Xi măng Hồng Phong",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "LSG",
-      "name": "Công ty Cổ phần Bất động sản Sài Gòn Vi na",
-      "sector": "Bất động sản",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "LAS",
-      "name": "Công ty Cổ phần Supe Phốt phát và Hóa chất Lâm Thao",
-      "sector": "Hóa chất",
+      "symbol": "LCD",
+      "name": "Công ty Cổ phần Lắp máy - Thí nghiệm cơ điện",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "HNX"
     },
     {
@@ -2985,40 +3003,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "LAW",
-      "name": "Công ty Cổ phần Cấp thoát nước Long An",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "LIG",
       "name": "Công ty Cổ phần Licogi 13",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "HNX"
     },
     {
-      "symbol": "LBE",
-      "name": "Công ty Cổ phần Thương mại và Dịch vụ LVA",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "LCC",
-      "name": "Công ty Cổ phần Xi măng Hồng Phong",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "LCM",
+      "name": "Công ty Cổ phần Khai thác và Chế biến Khoáng sản Lào Cai",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "LCD",
-      "name": "Công ty Cổ phần Lắp máy - Thí nghiệm cơ điện",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "LCG",
-      "name": "Công ty Cổ phần Lizen",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
     },
     {
       "symbol": "MH3",
@@ -3027,10 +3021,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "LQN",
-      "name": "Công ty Cổ phần Licogi Quảng Ngãi",
+      "symbol": "LGC",
+      "name": "Công ty Cổ phần Đầu tư Cầu đường CII",
       "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
+      "exchange": "HSX"
     },
     {
       "symbol": "HHC",
@@ -3057,15 +3051,15 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "LCM",
-      "name": "Công ty Cổ phần Khai thác và Chế biến Khoáng sản Lào Cai",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "HKB",
+      "name": "Công ty Cổ phần Nông nghiệp và Thực phẩm Hà Nội - Kinh Bắc",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HLS",
-      "name": "Công ty Cổ phần Sứ kỹ thuật Hoàng Liên Sơn",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "LIC",
+      "name": "Tổng Công ty LICOGI - Công ty Cổ phần",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -3087,16 +3081,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "LGC",
-      "name": "Công ty Cổ phần Đầu tư Cầu đường CII",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
+      "symbol": "LLM",
+      "name": "Tổng Công ty lắp máy Việt Nam - Công ty Cổ phần",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
-      "symbol": "LGL",
-      "name": "Công ty Cổ phần Đầu tư và Phát triển Đô thị Long Giang",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
+      "symbol": "AMS",
+      "name": "Công ty Cổ phần Cơ khí Xây dựng AMECC",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "RYG",
@@ -3105,20 +3099,14 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "LHG",
-      "name": "Công ty Cổ phần Long Hậu",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "LIC",
-      "name": "Tổng Công ty LICOGI - Công ty Cổ phần",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "LKW",
+      "name": "Công ty Cổ phần Cấp nước Long Khánh",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "LG9",
-      "name": "Công ty Cổ phần Cơ giới và Xây lắp số 9",
+      "symbol": "LM3",
+      "name": "Công ty Cổ phần Lilama 3",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
@@ -3129,8 +3117,8 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "AMS",
-      "name": "Công ty Cổ phần Cơ khí Xây dựng AMECC",
+      "symbol": "LM7",
+      "name": "Công ty Cổ phần Lilama 7",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
@@ -3183,6 +3171,12 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "LNC",
+      "name": "Công ty Cổ phần Lệ Ninh",
+      "sector": "Hóa chất",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "BTG",
       "name": "Công ty Cổ phần Bao bì Tiền Giang",
       "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -3195,14 +3189,8 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "LM3",
-      "name": "Công ty Cổ phần Lilama 3",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "LM7",
-      "name": "Công ty Cổ phần Lilama 7",
+      "symbol": "LO5",
+      "name": "Công ty Cổ phần Lilama 5",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
@@ -3210,6 +3198,12 @@
       "symbol": "HHN",
       "name": "Công ty Cổ phần Vận tải và Dịch vụ Hàng hóa Hà Nội",
       "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "LTC",
+      "name": "Công ty Cổ phần Điện nhẹ Viễn Thông",
+      "sector": "Công nghệ Thông tin",
       "exchange": "UPCOM"
     },
     {
@@ -3255,16 +3249,16 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "LNC",
-      "name": "Công ty Cổ phần Lệ Ninh",
-      "sector": "Hóa chất",
+      "symbol": "LUT",
+      "name": "Công ty Cổ phần Đầu tư Xây dựng Lương Tài",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "LO5",
-      "name": "Công ty Cổ phần Lilama 5",
+      "symbol": "MAC",
+      "name": "Công ty Cổ phần Tập đoàn Macstar",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "exchange": "HNX"
     },
     {
       "symbol": "HEV",
@@ -3291,9 +3285,9 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "LUT",
-      "name": "Công ty Cổ phần Đầu tư Xây dựng Lương Tài",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "MA1",
+      "name": "Công ty Cổ phần Thiết bị",
+      "sector": "Bất động sản",
       "exchange": "UPCOM"
     },
     {
@@ -3321,22 +3315,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MAC",
-      "name": "Công ty Cổ phần Tập đoàn Macstar",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "DDH",
       "name": "Công ty Cổ phần Đảm bảo giao thông đường thủy Hải Phòng",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MA1",
-      "name": "Công ty Cổ phần Thiết bị",
-      "sector": "Bất động sản",
-      "exchange": "UPCOM"
+      "symbol": "MAS",
+      "name": "Công ty cổ phần Dịch vụ Hàng Không Sân Bay Đà Nẵng",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "HNX"
     },
     {
       "symbol": "HGT",
@@ -3357,10 +3345,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "MAS",
-      "name": "Công ty cổ phần Dịch vụ Hàng Không Sân Bay Đà Nẵng",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "HNX"
+      "symbol": "MBB",
+      "name": "Ngân hàng Thương mại Cổ phần Quân đội",
+      "sector": "Ngân hàng",
+      "exchange": "HSX"
     },
     {
       "symbol": "SBG",
@@ -3375,16 +3363,22 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "MCC",
+      "name": "Công ty Cổ phần Gạch ngói cao cấp",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "MCF",
+      "name": "Công ty Cổ phần Xây lắp Cơ khí và Lương thực Thực phẩm",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "HNX"
+    },
+    {
       "symbol": "BBM",
       "name": "Công ty Cổ phần Bia Hà Nội - Nam Định",
       "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "MBB",
-      "name": "Ngân hàng Thương mại Cổ phần Quân đội",
-      "sector": "Ngân hàng",
-      "exchange": "HSX"
     },
     {
       "symbol": "FIC",
@@ -3399,10 +3393,22 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "MDA",
+      "name": "Công ty Cổ phần Môi trường Đô thị Đông Anh",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "HPG",
       "name": "Công ty Cổ phần Tập đoàn Hòa Phát",
       "sector": "Tài nguyên Cơ bản",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "MDC",
+      "name": "Công ty Cổ phần Than Mông Dương - Vinacomin",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HNX"
     },
     {
       "symbol": "FID",
@@ -3411,15 +3417,9 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "MCC",
-      "name": "Công ty Cổ phần Gạch ngói cao cấp",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "HD8",
-      "name": "Công ty Cổ phần Đầu tư Phát triển Nhà và Đô thị HUD8",
-      "sector": "Bất động sản",
+      "symbol": "HMD",
+      "name": "Công ty Cổ phần Hóa chất Minh Đức",
+      "sector": "Hóa chất",
       "exchange": "UPCOM"
     },
     {
@@ -3441,6 +3441,12 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "MEC",
+      "name": "Công ty Cổ phần Cơ khí - Lắp máy Sông Đà",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "DRI",
       "name": "Công ty Cổ phần Đầu tư Cao su Đắk Lắk",
       "sector": "Hóa chất",
@@ -3457,6 +3463,12 @@
       "name": "Công ty Cổ phần Cao su Hòa Bình",
       "sector": "Hóa chất",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "HSP",
+      "name": "Công ty Cổ phần Sơn Tổng hợp Hà Nội",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "ACB",
@@ -3537,16 +3549,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MCF",
-      "name": "Công ty Cổ phần Xây lắp Cơ khí và Lương thực Thực phẩm",
-      "sector": "Thực phẩm và đồ uống",
+      "symbol": "MED",
+      "name": "Công ty Cổ phần Dược Trung ương Mediplantex",
+      "sector": "Y tế",
       "exchange": "HNX"
-    },
-    {
-      "symbol": "MCM",
-      "name": "Công ty Cổ phần Giống bò sữa Mộc Châu",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "HSX"
     },
     {
       "symbol": "DHN",
@@ -3633,10 +3639,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MDC",
-      "name": "Công ty Cổ phần Than Mông Dương - Vinacomin",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HNX"
+      "symbol": "JOS",
+      "name": "Công ty Cổ phần Chế biến Thủy sản Xuất khẩu Minh Hải",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "IME",
@@ -3655,6 +3661,12 @@
       "name": "Công ty Cổ phần Du lịch và Xuất nhập khẩu Lạng Sơn",
       "sector": "Du lịch và Giải trí",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "MIC",
+      "name": "Công ty Cổ phần Kỹ nghệ Khoáng sản Quảng Nam",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HNX"
     },
     {
       "symbol": "CDG",
@@ -3678,12 +3690,6 @@
       "symbol": "GLW",
       "name": "Công ty Cổ phần Cấp thoát nước Gia Lai",
       "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "MEC",
-      "name": "Công ty Cổ phần Cơ khí - Lắp máy Sông Đà",
-      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -3717,6 +3723,12 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "IPA",
+      "name": "Công ty Cổ phần Tập đoàn Đầu tư I.P.A",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
+    },
+    {
       "symbol": "HDA",
       "name": "Công ty Cổ phần Hãng sơn Đông Á",
       "sector": "Xây dựng và Vật liệu",
@@ -3729,16 +3741,16 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "MIM",
+      "name": "Công ty Cổ phần Khoáng sản và Cơ khí",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "ITD",
       "name": "Công ty Cổ phần Công nghệ ITD",
       "sector": "Công nghệ Thông tin",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "KHL",
-      "name": "Công ty Cổ phần Khoáng sản và Vật liệu Xây dựng Hưng Long",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "IMP",
@@ -3753,10 +3765,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "MED",
-      "name": "Công ty Cổ phần Dược Trung ương Mediplantex",
-      "sector": "Y tế",
-      "exchange": "HNX"
+      "symbol": "MLS",
+      "name": "Công ty Cổ phần Chăn nuôi - Mitraco",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "FRM",
@@ -3765,22 +3777,16 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "MZG",
+      "name": "Công ty Cổ Phần Miza",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "HLB",
       "name": "Công ty Cổ phần Bia và Nước giải khát Hạ Long",
       "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "MEF",
-      "name": "Công ty Cổ phần MEINFA",
-      "sector": "Y tế",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "KDH",
-      "name": "Công ty Cổ phần Đầu tư và Kinh doanh nhà Khang Điền",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
     },
     {
       "symbol": "FTI",
@@ -3843,10 +3849,10 @@
       "exchange": "DELISTED"
     },
     {
-      "symbol": "JOS",
-      "name": "Công ty Cổ phần Chế biến Thủy sản Xuất khẩu Minh Hải",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
+      "symbol": "KSB",
+      "name": "Công ty Cổ phần Khoáng sản và Xây dựng Bình Dương",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
     },
     {
       "symbol": "VBG",
@@ -3909,10 +3915,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "KTS",
-      "name": "Công ty Cổ phần Đường Kon Tum",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "HNX"
+      "symbol": "KTL",
+      "name": "Công ty Cổ phần Kim khí Thăng Long",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "DPG",
@@ -3939,16 +3945,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "L62",
-      "name": "Công ty Cổ phần Lilama 69 - 2",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "L43",
+      "name": "Công ty Cổ phần Lilama 45.3",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "LAF",
-      "name": "Công ty Cổ phần Chế biến Hàng Xuất khẩu Long An",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "HSX"
+      "symbol": "L61",
+      "name": "Công ty Cổ phần Lilama 69-1",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "HVT",
@@ -3975,6 +3981,12 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "LBE",
+      "name": "Công ty Cổ phần Thương mại và Dịch vụ LVA",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "HNX"
+    },
+    {
       "symbol": "GTT",
       "name": "Công ty Cổ phần Thuận Thảo",
       "sector": "Du lịch và Giải trí",
@@ -3987,16 +3999,22 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MIM",
-      "name": "Công ty Cổ phần Khoáng sản và Cơ khí",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "LCG",
+      "name": "Công ty Cổ phần Lizen",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "LQN",
+      "name": "Công ty Cổ phần Licogi Quảng Ngãi",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "LHC",
-      "name": "Công ty Cổ phần Đầu tư và Xây dựng Thủy lợi Lâm Đồng",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
+      "symbol": "MPC",
+      "name": "Công ty Cổ phần Tập đoàn Thủy sản Minh Phú",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "HBH",
@@ -4005,27 +4023,39 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MLS",
-      "name": "Công ty Cổ phần Chăn nuôi - Mitraco",
-      "sector": "Thực phẩm và đồ uống",
+      "symbol": "LHG",
+      "name": "Công ty Cổ phần Long Hậu",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "MST",
+      "name": "Công ty Cổ phần Đầu tư MST",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "LGL",
+      "name": "Công ty Cổ phần Đầu tư và Phát triển Đô thị Long Giang",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "LHC",
+      "name": "Công ty Cổ phần Đầu tư và Xây dựng Thủy lợi Lâm Đồng",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "LG9",
+      "name": "Công ty Cổ phần Cơ giới và Xây lắp số 9",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "LLM",
-      "name": "Tổng Công ty lắp máy Việt Nam - Công ty Cổ phần",
+      "symbol": "MTL",
+      "name": "Công ty Cổ phần Dịch vụ Môi trường Đô thị Từ Liêm",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "LKW",
-      "name": "Công ty Cổ phần Cấp nước Long Khánh",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "MZG",
-      "name": "Công ty Cổ Phần Miza",
-      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
     },
     {
@@ -4062,12 +4092,6 @@
       "symbol": "BLF",
       "name": "Công ty Cổ phần Thủy sản Bạc Liêu",
       "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "LTC",
-      "name": "Công ty Cổ phần Điện nhẹ Viễn Thông",
-      "sector": "Công nghệ Thông tin",
       "exchange": "UPCOM"
     },
     {
@@ -4113,12 +4137,6 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "MDA",
-      "name": "Công ty Cổ phần Môi trường Đô thị Đông Anh",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "MDF",
       "name": "Công ty Cổ phần Gỗ MDF VRG - Quảng Trị",
       "sector": "Tài nguyên Cơ bản",
@@ -4137,10 +4155,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "HMD",
-      "name": "Công ty Cổ phần Hóa chất Minh Đức",
-      "sector": "Hóa chất",
-      "exchange": "UPCOM"
+      "symbol": "MCM",
+      "name": "Công ty Cổ phần Giống bò sữa Mộc Châu",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "HSX"
     },
     {
       "symbol": "MFS",
@@ -4149,10 +4167,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MIC",
-      "name": "Công ty Cổ phần Kỹ nghệ Khoáng sản Quảng Nam",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HNX"
+      "symbol": "MEF",
+      "name": "Công ty Cổ phần MEINFA",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "GSP",
@@ -4203,12 +4221,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MPC",
-      "name": "Công ty Cổ phần Tập đoàn Thủy sản Minh Phú",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "BHC",
       "name": "Công ty Cổ phần Bê tông Biên Hòa",
       "sector": "Xây dựng và Vật liệu",
@@ -4221,15 +4233,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MSR",
-      "name": "Công ty Cổ phần Masan High-Tech Materials",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "UPCOM"
+      "symbol": "MWG",
+      "name": "Công ty Cổ phần Đầu tư Thế Giới Di Động",
+      "sector": "Bán lẻ",
+      "exchange": "HSX"
     },
     {
-      "symbol": "MST",
-      "name": "Công ty Cổ phần Đầu tư MST",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "NAG",
+      "name": "Công ty Cổ phần Tập đoàn Nagakawa",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
     },
     {
@@ -4245,15 +4257,21 @@
       "exchange": "HNX"
     },
     {
+      "symbol": "MSR",
+      "name": "Công ty Cổ phần Masan High-Tech Materials",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "HHS",
       "name": "Công ty Cổ phần Đầu tư Dịch vụ Hoàng Huy",
       "sector": "Ô tô và phụ tùng",
       "exchange": "HSX"
     },
     {
-      "symbol": "MTL",
-      "name": "Công ty Cổ phần Dịch vụ Môi trường Đô thị Từ Liêm",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "NAC",
+      "name": "Công ty Cổ phần Tư vấn Xây dựng Tổng hợp",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -4299,10 +4317,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "MWG",
-      "name": "Công ty Cổ phần Đầu tư Thế Giới Di Động",
-      "sector": "Bán lẻ",
-      "exchange": "HSX"
+      "symbol": "VET",
+      "name": "Công ty Cổ phần Thuốc Thú y Trung ương NAVETCO",
+      "sector": "Hóa chất",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "NAU",
@@ -4311,10 +4329,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NAG",
-      "name": "Công ty Cổ phần Tập đoàn Nagakawa",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
+      "symbol": "NBB",
+      "name": "Công ty Cổ phần Đầu tư Năm Bảy Bảy",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
     },
     {
       "symbol": "DXP",
@@ -4323,9 +4341,15 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "NAC",
-      "name": "Công ty Cổ phần Tư vấn Xây dựng Tổng hợp",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "NBP",
+      "name": "Công ty Cổ phần Nhiệt Điện Ninh Bình",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "NCS",
+      "name": "Công ty Cổ phần Suất ăn Hàng không Nội Bài",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -4362,12 +4386,12 @@
       "symbol": "MCH",
       "name": "Công ty Cổ phần Hàng Tiêu Dùng MaSan",
       "sector": "Thực phẩm và đồ uống",
-      "exchange": "DELISTED"
+      "exchange": "HSX"
     },
     {
-      "symbol": "VET",
-      "name": "Công ty Cổ phần Thuốc Thú y Trung ương NAVETCO",
-      "sector": "Hóa chất",
+      "symbol": "HND",
+      "name": "Công ty Cổ phần Nhiệt điện Hải Phòng",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
@@ -4383,10 +4407,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NBB",
-      "name": "Công ty Cổ phần Đầu tư Năm Bảy Bảy",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
+      "symbol": "NDW",
+      "name": "Công ty Cổ phần Cấp nước Nam Định",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "NED",
+      "name": "Công ty Cổ phần Đầu tư và Phát triển Điện Tây Bắc",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "DIG",
@@ -4401,16 +4431,16 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "NBP",
-      "name": "Công ty Cổ phần Nhiệt Điện Ninh Bình",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "NFC",
+      "name": "Công ty Cổ phần Phân lân Ninh Bình",
+      "sector": "Hóa chất",
       "exchange": "HNX"
     },
     {
-      "symbol": "NCS",
-      "name": "Công ty Cổ phần Suất ăn Hàng không Nội Bài",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
+      "symbol": "NHH",
+      "name": "Công ty Cổ phần Nhựa Hà Nội",
+      "sector": "Hóa chất",
+      "exchange": "HSX"
     },
     {
       "symbol": "HU4",
@@ -4419,9 +4449,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HND",
-      "name": "Công ty Cổ phần Nhiệt điện Hải Phòng",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "NHP",
+      "name": "Công ty Cổ phần Sản xuất Xuất nhập khẩu NHP",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
@@ -4449,12 +4479,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NDW",
-      "name": "Công ty Cổ phần Cấp nước Nam Định",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "HDW",
       "name": "Công ty Cổ phần Kinh doanh Nước sạch Hải Dương",
       "sector": "Điện, nước & xăng dầu khí đốt",
@@ -4476,12 +4500,6 @@
       "symbol": "IST",
       "name": "Công ty Cổ phần ICD Tân Cảng Sóng Thần",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NED",
-      "name": "Công ty Cổ phần Đầu tư và Phát triển Điện Tây Bắc",
-      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -4515,16 +4533,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NFC",
-      "name": "Công ty Cổ phần Phân lân Ninh Bình",
-      "sector": "Hóa chất",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "NHH",
-      "name": "Công ty Cổ phần Nhựa Hà Nội",
-      "sector": "Hóa chất",
-      "exchange": "HSX"
+      "symbol": "NLS",
+      "name": "Công ty Cổ phần Cấp thoát nước Lạng Sơn",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "NDP",
@@ -4533,8 +4545,8 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NHP",
-      "name": "Công ty Cổ phần Sản xuất Xuất nhập khẩu NHP",
+      "symbol": "NOS",
+      "name": "Công ty Cổ phần Vận tải Biển và Thương mại Phương Đông",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
@@ -4551,8 +4563,8 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NLS",
-      "name": "Công ty Cổ phần Cấp thoát nước Lạng Sơn",
+      "symbol": "NS2",
+      "name": "Công ty Cổ phần Nước sạch số 2 Hà Nội",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
@@ -4569,10 +4581,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NOS",
-      "name": "Công ty Cổ phần Vận tải Biển và Thương mại Phương Đông",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "symbol": "NT2",
+      "name": "Công ty Cổ phần Điện lực Dầu khí Nhơn Trạch 2",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HSX"
     },
     {
       "symbol": "HD6",
@@ -4587,21 +4599,21 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "NS2",
-      "name": "Công ty Cổ phần Nước sạch số 2 Hà Nội",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NSC",
-      "name": "Công ty Cổ phần Tập đoàn Giống cây trồng Việt Nam",
-      "sector": "Thực phẩm và đồ uống",
+      "symbol": "NTL",
+      "name": "Công ty Cổ phần Phát triển Đô thị Từ Liêm",
+      "sector": "Bất động sản",
       "exchange": "HSX"
     },
     {
       "symbol": "NBC",
       "name": "Công ty Cổ phần Than Núi Béo - Vinacomin",
       "sector": "Tài nguyên Cơ bản",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "EVS",
+      "name": "Công ty Cổ phần Chứng khoán EVS",
+      "sector": "Dịch vụ tài chính",
       "exchange": "HNX"
     },
     {
@@ -4635,16 +4647,16 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "OPC",
+      "name": "Công ty Cổ phần Dược Phẩm OPC",
+      "sector": "Y tế",
+      "exchange": "HSX"
+    },
+    {
       "symbol": "NBW",
       "name": "Công ty Cổ phần Cấp nước Nhà Bè",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "HNX"
-    },
-    {
-      "symbol": "NT2",
-      "name": "Công ty Cổ phần Điện lực Dầu khí Nhơn Trạch 2",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HSX"
     },
     {
       "symbol": "HU3",
@@ -4656,12 +4668,6 @@
       "symbol": "HTE",
       "name": "Công ty Cổ phần Đầu tư Kinh doanh Điện lực Thành phố Hồ Chí Minh",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NTB",
-      "name": "Công ty Cổ phần Đầu tư Xây dựng và Khai thác Công trình giao thông 584",
-      "sector": "Bất động sản",
       "exchange": "UPCOM"
     },
     {
@@ -4683,12 +4689,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NTC",
-      "name": "Công ty Cổ phần Khu Công nghiệp Nam Tân Uyên",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "KDM",
       "name": "Công ty Cổ phần Tập đoàn GCL",
       "sector": "Xây dựng và Vật liệu",
@@ -4701,16 +4701,40 @@
       "exchange": "HNX"
     },
     {
+      "symbol": "PAI",
+      "name": "Công ty Cổ phần Công nghê thông tin, Viễn thông và Tự động hóa Dầu khí",
+      "sector": "Viễn thông",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PAS",
+      "name": "Công ty Cổ phần Quốc tế Phương Anh",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PC1",
+      "name": "Công ty Cổ phần Tập đoàn PC1",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "PCC",
+      "name": "Công ty Cổ phần Tập đoàn Xây lắp 1 - Petrolimex",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "HGM",
       "name": "Công ty Cổ phần Cơ khí và Khoáng sản Hà Giang",
       "sector": "Tài nguyên Cơ bản",
       "exchange": "HNX"
     },
     {
-      "symbol": "ONE",
-      "name": "Công ty Cổ phần Công nghệ ONE",
-      "sector": "Công nghệ Thông tin",
-      "exchange": "HNX"
+      "symbol": "PCM",
+      "name": "Công ty Cổ phần Vật liệu Xây dựng Bưu điện",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "NGC",
@@ -4725,21 +4749,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "ONW",
-      "name": "Công ty Cổ phần Dịch vụ Một Thế giới",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "UPCOM"
+      "symbol": "PCT",
+      "name": "Công ty Cổ phần Vận tải Biển Global Pacific",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
     },
     {
       "symbol": "HAC",
       "name": "Công ty Cổ phần Chứng khoán Hải Phòng",
       "sector": "Dịch vụ tài chính",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PAI",
-      "name": "Công ty Cổ phần Công nghê thông tin, Viễn thông và Tự động hóa Dầu khí",
-      "sector": "Viễn thông",
       "exchange": "UPCOM"
     },
     {
@@ -4755,21 +4773,15 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "PAP",
-      "name": "Công ty Cổ phần Dầu khí đầu tư khai thác Cảng Phước An",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "NRC",
       "name": "Công ty Cổ phần Tập đoàn NRC",
       "sector": "Bất động sản",
       "exchange": "HNX"
     },
     {
-      "symbol": "PC1",
-      "name": "Công ty Cổ phần Tập đoàn PC1",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "PET",
+      "name": "Tổng Công ty Cổ phần Dịch vụ Tổng hợp Dầu khí",
+      "sector": "Bán lẻ",
       "exchange": "HSX"
     },
     {
@@ -4785,9 +4797,9 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "PCC",
-      "name": "Công ty Cổ phần Tập đoàn Xây lắp 1 - Petrolimex",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "PCF",
+      "name": "Công ty Cổ phần Cà phê PETEC",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -4797,15 +4809,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PDB",
-      "name": "Công ty Cổ phần Tập đoàn Đầu tư DIN Capital",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PDR",
-      "name": "Công ty Cổ phần Phát triển Bất động sản Phát Đạt",
-      "sector": "Bất động sản",
+      "symbol": "PLX",
+      "name": "Tập đoàn Xăng dầu Việt Nam",
+      "sector": "Dầu khí",
       "exchange": "HSX"
     },
     {
@@ -4821,12 +4827,6 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "PDV",
-      "name": "Công ty Cổ phần Vận tải và Tiếp vận Phương Đông Việt",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "CSV",
       "name": "Công ty Cổ phần Hóa chất Cơ bản miền Nam",
       "sector": "Hóa chất",
@@ -4836,6 +4836,12 @@
       "symbol": "CTB",
       "name": "Công ty Cổ phần Chế tạo Bơm Hải Dương",
       "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "PGT",
+      "name": "Công ty Cổ phần PGT Holdings",
+      "sector": "Du lịch và Giải trí",
       "exchange": "HNX"
     },
     {
@@ -4851,16 +4857,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "PEN",
-      "name": "Công ty Cổ phần Xây lắp III Petrolimex",
+      "symbol": "PHC",
+      "name": "Công ty Cổ phần Xây dựng Phục Hưng Holdings",
       "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
+      "exchange": "HSX"
     },
     {
-      "symbol": "PFL",
-      "name": "Công ty Cổ phần Dầu khí Đông Đô",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
+      "symbol": "PHR",
+      "name": "Công ty Cổ phần Cao su Phước Hòa",
+      "sector": "Hóa chất",
+      "exchange": "HSX"
     },
     {
       "symbol": "GMC",
@@ -4881,10 +4887,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NST",
-      "name": "Công ty Cổ phần Ngân Sơn",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "HNX"
+      "symbol": "NSC",
+      "name": "Công ty Cổ phần Tập đoàn Giống cây trồng Việt Nam",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "HSX"
     },
     {
       "symbol": "LAI",
@@ -4899,16 +4905,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "PGD",
-      "name": "Công ty Cổ phần Phân phối khí thấp áp dầu khí Việt Nam",
+      "symbol": "PIC",
+      "name": "Công ty Cổ phần Đầu tư Điện lực 3",
       "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HSX"
+      "exchange": "HNX"
     },
     {
-      "symbol": "PHR",
-      "name": "Công ty Cổ phần Cao su Phước Hòa",
-      "sector": "Hóa chất",
-      "exchange": "HSX"
+      "symbol": "EIN",
+      "name": "Công ty Cổ phần Đầu tư - Thương Mại - Dịch vụ Điện lực",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "NVL",
@@ -4935,63 +4941,15 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "HNF",
-      "name": "Công ty Cổ phần Thực phẩm Hữu Nghị",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PHS",
-      "name": "Công ty Cổ phần Chứng khoán Phú Hưng",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NQB",
-      "name": "Công ty Cổ phần Cấp nước Quảng Bình",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PIS",
-      "name": "Tổng Công ty Pisico Bình Định - Công ty Cổ phần",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "DM7",
-      "name": "Công ty Cổ phần Dệt may 7",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PLE",
-      "name": "Công ty Cổ phần Tư vấn Xây dựng Petrolimex",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "INC",
-      "name": "Công ty Cổ phần Tư vấn Đầu tư IDICO",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "PNC",
       "name": "Công ty Cổ phần Văn hóa Phương Nam",
       "sector": "Truyền thông",
       "exchange": "HSX"
     },
     {
-      "symbol": "PSH",
-      "name": "Công ty Cổ phần Thương mại Đầu tư Dầu khí Nam Sông Hậu",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "IRC",
-      "name": "Công ty Cổ phần Cao su Công nghiệp",
-      "sector": "Hóa chất",
+      "symbol": "HNF",
+      "name": "Công ty Cổ phần Thực phẩm Hữu Nghị",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -5001,21 +4959,63 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "HBS",
-      "name": "Công ty Cổ phần Chứng khoán Hòa Bình",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "POV",
-      "name": "Công ty Cổ phần Xăng dầu Dầu khí Vũng Áng",
+      "symbol": "NQB",
+      "name": "Công ty Cổ phần Cấp nước Quảng Bình",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MES",
-      "name": "Công ty Cổ phần Cơ điện Công trình",
+      "symbol": "PNP",
+      "name": "Công ty Cổ phần Tân Cảng – Phú Hữu",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PNT",
+      "name": "Công ty Cổ phần Kỹ thuật Xây dựng Phú Nhuận",
       "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "DM7",
+      "name": "Công ty Cổ phần Dệt may 7",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "POB",
+      "name": "Công ty Cổ phần Xăng dầu Dầu khí Hưng Yên",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "INC",
+      "name": "Công ty Cổ phần Tư vấn Đầu tư IDICO",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "POT",
+      "name": "Công ty Cổ phần Thiết bị Bưu điện",
+      "sector": "Công nghệ Thông tin",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "PSH",
+      "name": "Công ty Cổ phần Thương mại Đầu tư Dầu khí Nam Sông Hậu",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "NST",
+      "name": "Công ty Cổ phần Ngân Sơn",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "IRC",
+      "name": "Công ty Cổ phần Cao su Công nghiệp",
+      "sector": "Hóa chất",
       "exchange": "UPCOM"
     },
     {
@@ -5025,21 +5025,21 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "HBS",
+      "name": "Công ty Cổ phần Chứng khoán Hòa Bình",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "HNX"
+    },
+    {
       "symbol": "PPS",
       "name": "Công ty Cổ phần Dịch vụ Kỹ thuật Điện lực Dầu khí Việt Nam",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
     },
     {
-      "symbol": "LMH",
-      "name": "Công ty Cổ phần Quốc Tế Holding",
-      "sector": "Bất động sản",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "KVC",
-      "name": "Công ty Cổ phần Sản xuất Xuất nhập khẩu Inox Kim Vĩ",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "MES",
+      "name": "Công ty Cổ phần Cơ điện Công trình",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -5049,16 +5049,28 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "LMH",
+      "name": "Công ty Cổ phần Quốc Tế Holding",
+      "sector": "Bất động sản",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "PSE",
       "name": "Công ty Cổ phần Phân bón và hóa chất dầu khí Đông Nam Bộ",
       "sector": "Hóa chất",
       "exchange": "HNX"
     },
     {
-      "symbol": "KPF",
-      "name": "Công ty Cổ phần Đầu tư Tài sản KOJI",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "KVC",
+      "name": "Công ty Cổ phần Sản xuất Xuất nhập khẩu Inox Kim Vĩ",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PSI",
+      "name": "Công ty Cổ phần Chứng khoán Dầu khí",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "HNX"
     },
     {
       "symbol": "PSL",
@@ -5067,10 +5079,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PTB",
-      "name": "Công ty Cổ phần Phú Tài",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HSX"
+      "symbol": "KPF",
+      "name": "Công ty Cổ phần Đầu tư Tài sản KOJI",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PSP",
+      "name": "Công ty Cổ phần Cảng Dịch vụ Dầu khí Đình Vũ",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "MTA",
@@ -5079,9 +5097,21 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NTL",
-      "name": "Công ty Cổ phần Phát triển Đô thị Từ Liêm",
+      "symbol": "NTB",
+      "name": "Công ty Cổ phần Đầu tư Xây dựng và Khai thác Công trình giao thông 584",
       "sector": "Bất động sản",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "NTC",
+      "name": "Công ty Cổ phần Khu Công nghiệp Nam Tân Uyên",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "PTB",
+      "name": "Công ty Cổ phần Phú Tài",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "HSX"
     },
     {
@@ -5093,30 +5123,6 @@
     {
       "symbol": "GCB",
       "name": "Công ty Cổ phần PETEC Bình Định",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "MEL",
-      "name": "Công ty Cổ phần Thép Mê Lin",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "NUE",
-      "name": "Công ty Cổ phần Môi trường Đô thị Nha Trang",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "KHW",
-      "name": "Công ty Cổ phần Cấp thoát nước Khánh Hòa",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NTW",
-      "name": "Công ty Cổ phần Cấp nước Nhơn Trạch",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
@@ -5133,10 +5139,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MSB",
-      "name": "Ngân hàng Thương mại Cổ phần Hàng Hải Việt Nam",
-      "sector": "Ngân hàng",
-      "exchange": "HSX"
+      "symbol": "MEL",
+      "name": "Công ty Cổ phần Thép Mê Lin",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "KHW",
+      "name": "Công ty Cổ phần Cấp thoát nước Khánh Hòa",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "KSF",
@@ -5151,16 +5163,46 @@
       "exchange": "HNX"
     },
     {
+      "symbol": "PTH",
+      "name": "Công ty Cổ phần Vận tải và Dịch vụ Petrolimex Hà Tây",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PTL",
+      "name": "Công ty Cổ phần Victory Group",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "MSB",
+      "name": "Ngân hàng Thương mại Cổ phần Hàng Hải Việt Nam",
+      "sector": "Ngân hàng",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "NUE",
+      "name": "Công ty Cổ phần Môi trường Đô thị Nha Trang",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PTM",
+      "name": "Công ty Cổ phần Sản xuất, Thương mại Và Dịch vụ Ô tô PTM",
+      "sector": "Ô tô và phụ tùng",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "MNB",
       "name": "Tổng Công ty May Nhà Bè - Công ty Cổ phần",
       "sector": "Hàng cá nhân & Gia dụng",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PTH",
-      "name": "Công ty Cổ phần Vận tải và Dịch vụ Petrolimex Hà Tây",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
+      "symbol": "PTS",
+      "name": "Công ty Cổ phần Vận tải và Dịch vụ Petrolimex Hải Phòng",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
     },
     {
       "symbol": "HHB",
@@ -5175,48 +5217,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PTM",
-      "name": "Công ty Cổ phần Sản xuất, Thương mại Và Dịch vụ Ô tô PTM",
-      "sector": "Ô tô và phụ tùng",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NVT",
-      "name": "Công ty Cổ phần Bất động sản Du lịch Ninh Vân Bay",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "EVS",
-      "name": "Công ty Cổ phần Chứng khoán EVS",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "NWT",
-      "name": "Công ty Cổ phần Vận tải Newway",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "OCB",
-      "name": "Ngân hàng Thương mại Cổ phần Phương Đông",
-      "sector": "Ngân hàng",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "PTS",
-      "name": "Công ty Cổ phần Vận tải và Dịch vụ Petrolimex Hải Phòng",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "MCO",
-      "name": "Công ty Cổ phần Đầu tư và Xây dựng BDC Việt Nam",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "POS",
       "name": "Công ty Cổ phần Vận hành và Xây lắp PTSC",
       "sector": "Dầu khí",
@@ -5229,16 +5229,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MHC",
-      "name": "Công ty Cổ phần MHC",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "OCH",
-      "name": "Công ty Cổ phần One Capital Hospitality",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "HNX"
+      "symbol": "NTW",
+      "name": "Công ty Cổ phần Cấp nước Nhơn Trạch",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "DSP",
@@ -5259,22 +5253,16 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "MCO",
+      "name": "Công ty Cổ phần Đầu tư và Xây dựng BDC Việt Nam",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
       "symbol": "PVA",
       "name": "Công ty Cổ phần Tổng Công ty Xây lắp Dầu khí Nghệ An",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PVB",
-      "name": "Công ty Cổ phần Bọc ống Dầu khí Việt Nam",
-      "sector": "Dầu khí",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "OGC",
-      "name": "Công ty Cổ phần Tập đoàn Đại Dương",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HSX"
     },
     {
       "symbol": "PVC",
@@ -5283,16 +5271,10 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "MRF",
-      "name": "Công ty Cổ phần MERUFA",
-      "sector": "Y tế",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "L63",
-      "name": "Công ty Cổ phần Lilama 69-3",
+      "symbol": "MHC",
+      "name": "Công ty Cổ phần MHC",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "exchange": "HSX"
     },
     {
       "symbol": "PCE",
@@ -5305,12 +5287,6 @@
       "name": "Công ty Cổ phần Phát triển Đô thị Dầu khí",
       "sector": "Bất động sản",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "OPC",
-      "name": "Công ty Cổ phần Dược Phẩm OPC",
-      "sector": "Y tế",
-      "exchange": "HSX"
     },
     {
       "symbol": "PVH",
@@ -5337,16 +5313,88 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "PVS",
+      "name": "Tổng Công ty Cổ phần Dịch vụ Kỹ thuật Dầu khí Việt Nam",
+      "sector": "Dầu khí",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "MRF",
+      "name": "Công ty Cổ phần MERUFA",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "L63",
+      "name": "Công ty Cổ phần Lilama 69-3",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PVY",
+      "name": "Công ty Cổ phần Chế tạo Giàn khoan Dầu khí",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PX1",
+      "name": "Công ty Cổ phần Xi măng Sông Lam 2",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "NVT",
+      "name": "Công ty Cổ phần Bất động sản Du lịch Ninh Vân Bay",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "PXS",
+      "name": "Công ty Cổ phần Kết cấu Kim loại và Lắp máy Dầu khí",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "NWT",
+      "name": "Công ty Cổ phần Vận tải Newway",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "OCB",
+      "name": "Ngân hàng Thương mại Cổ phần Phương Đông",
+      "sector": "Ngân hàng",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "PXT",
+      "name": "Công ty Cổ phần Xây lắp Đường ống Bể chứa Dầu khí",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "OCH",
+      "name": "Công ty Cổ phần One Capital Hospitality",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "HNX"
+    },
+    {
       "symbol": "HCM",
       "name": "Công ty Cổ phần Chứng khoán Thành phố Hồ Chí Minh",
       "sector": "Dịch vụ tài chính",
       "exchange": "HSX"
     },
     {
-      "symbol": "ORS",
-      "name": "Công ty Cổ phần Chứng khoán Tiên Phong",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HSX"
+      "symbol": "PWS",
+      "name": "Công ty Cổ phần Cấp thoát nước Phú Yên",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "QCC",
+      "name": "Công ty Cổ phần Đầu tư Xây dựng và Phát triển Hạ tầng Viễn Thông",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "L35",
@@ -5355,9 +5403,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PVS",
-      "name": "Tổng Công ty Cổ phần Dịch vụ Kỹ thuật Dầu khí Việt Nam",
-      "sector": "Dầu khí",
+      "symbol": "QHD",
+      "name": "Công ty Cổ phần Que hàn điện Việt Đức",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
     },
     {
@@ -5367,9 +5415,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PVY",
-      "name": "Công ty Cổ phần Chế tạo Giàn khoan Dầu khí",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "QHW",
+      "name": "Công ty Cổ phần Nước khoáng Quảng Ninh",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -5391,105 +5439,21 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PAS",
-      "name": "Công ty Cổ phần Quốc tế Phương Anh",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PX1",
-      "name": "Công ty Cổ phần Xi măng Sông Lam 2",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PBP",
-      "name": "Công ty Cổ phần Bao bì Dầu khí Việt Nam",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "NDX",
-      "name": "Công ty Cổ phần Xây lắp Phát triển Nhà Đà Nẵng",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "ILB",
-      "name": "Công ty Cổ phần ICD Tân Cảng - Long Bình",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "PXS",
-      "name": "Công ty Cổ phần Kết cấu Kim loại và Lắp máy Dầu khí",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PXT",
-      "name": "Công ty Cổ phần Xây lắp Đường ống Bể chứa Dầu khí",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PCG",
-      "name": "Công ty Cổ phần Đầu tư Phát triển Gas Đô thị",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PWS",
-      "name": "Công ty Cổ phần Cấp thoát nước Phú Yên",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PCM",
-      "name": "Công ty Cổ phần Vật liệu Xây dựng Bưu điện",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "QCC",
-      "name": "Công ty Cổ phần Đầu tư Xây dựng và Phát triển Hạ tầng Viễn Thông",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PCT",
-      "name": "Công ty Cổ phần Vận tải Biển Global Pacific",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "QHD",
-      "name": "Công ty Cổ phần Que hàn điện Việt Đức",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "QHW",
-      "name": "Công ty Cổ phần Nước khoáng Quảng Ninh",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "MQN",
       "name": "Công ty Cổ phần Môi trường đô thị Quảng Ngãi",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "QSP",
-      "name": "Công ty Cổ phần Tân cảng Quy Nhơn",
+      "symbol": "PQN",
+      "name": "Công ty Cổ phần Dịch vụ Dầu khí Quảng Ngãi PTSC",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NHA",
-      "name": "Tổng Công ty Đầu tư Phát triển Nhà và Đô thị Nam Hà Nội",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "OGC",
+      "name": "Công ty Cổ phần Tập đoàn Đại Dương",
+      "sector": "Dịch vụ tài chính",
       "exchange": "HSX"
     },
     {
@@ -5505,9 +5469,9 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "NTP",
-      "name": "Công ty Cổ phần Nhựa Thiếu niên Tiền Phong",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "ONE",
+      "name": "Công ty Cổ phần Công nghệ ONE",
+      "sector": "Công nghệ Thông tin",
       "exchange": "HNX"
     },
     {
@@ -5517,28 +5481,28 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PDC",
-      "name": "Công ty Cổ phần Du lịch Dầu khí Phương Đông",
+      "symbol": "ONW",
+      "name": "Công ty Cổ phần Dịch vụ Một Thế giới",
       "sector": "Du lịch và Giải trí",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "RAT",
-      "name": "Công ty Cổ phần Vận tải và Thương mại Đường sắt",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "symbol": "NDX",
+      "name": "Công ty Cổ phần Xây lắp Phát triển Nhà Đà Nẵng",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
     },
     {
-      "symbol": "PDN",
-      "name": "Công ty Cổ phần Cảng Đồng Nai",
+      "symbol": "ILB",
+      "name": "Công ty Cổ phần ICD Tân Cảng - Long Bình",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HSX"
     },
     {
-      "symbol": "NNT",
-      "name": "Công ty Cổ phần Cấp nước Ninh Thuận",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
+      "symbol": "RCL",
+      "name": "Công ty Cổ phần Địa ốc Chợ Lớn",
+      "sector": "Bất động sản",
+      "exchange": "HNX"
     },
     {
       "symbol": "RIC",
@@ -5547,15 +5511,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MHL",
-      "name": "Công ty Cổ phần Minh Hữu Liên",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "UPCOM"
+      "symbol": "ORS",
+      "name": "Công ty Cổ phần Chứng khoán Tiên Phong",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "HSX"
     },
     {
-      "symbol": "MIE",
-      "name": "Tổng Công ty Máy và Thiết bị Công nghiệp - CTCP",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "S96",
+      "name": "Công ty Cổ phần Sông Đà 9.06",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -5565,45 +5529,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "SAF",
-      "name": "Công ty Cổ phần Lương thực Thực phẩm SAFOCO",
+      "symbol": "SAB",
+      "name": "Tổng Công ty Cổ phần Bia - Rượu - Nước Giải khát Sài Gòn",
       "sector": "Thực phẩm và đồ uống",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PEC",
-      "name": "Công ty Cổ phần Cơ khí Điện lực",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "SKV",
-      "name": "Công ty Cổ phần Nước Giải khát Yến sào Khánh Hòa",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "L40",
-      "name": "Công ty Cổ phần Đầu tư và Xây dựng 40",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PEQ",
-      "name": "Công ty Cổ phần Thiết bị xăng dầu Petrolimex",
-      "sector": "Dầu khí",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NDC",
-      "name": "Công ty Cổ phần Nam Dược",
-      "sector": "Y tế",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PET",
-      "name": "Tổng Công ty Cổ phần Dịch vụ Tổng hợp Dầu khí",
-      "sector": "Bán lẻ",
       "exchange": "HSX"
     },
     {
@@ -5613,21 +5541,15 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "NHA",
+      "name": "Tổng Công ty Đầu tư Phát triển Nhà và Đô thị Nam Hà Nội",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
       "symbol": "SBM",
       "name": "Công ty Cổ phần Đầu tư phát triển Bắc Minh",
       "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "HNG",
-      "name": "Công ty Cổ phần Nông nghiệp Quốc tế Hoàng Anh Gia Lai",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PCF",
-      "name": "Công ty Cổ phần Cà phê PETEC",
-      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -5637,9 +5559,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PEG",
-      "name": "Tổng Công ty Thương mại Kỹ thuật và Đầu tư - Công ty Cổ phần",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "NTP",
+      "name": "Công ty Cổ phần Nhựa Thiếu niên Tiền Phong",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "PAP",
+      "name": "Công ty Cổ phần Dầu khí đầu tư khai thác Cảng Phước An",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
@@ -5661,15 +5589,21 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "PBP",
+      "name": "Công ty Cổ phần Bao bì Dầu khí Việt Nam",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
+    },
+    {
       "symbol": "SD8",
       "name": "Công ty Cổ phần Sông Đà 8",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PTV",
-      "name": "Công ty Cổ phần Thương mại Dầu khí",
-      "sector": "Dầu khí",
+      "symbol": "NNT",
+      "name": "Công ty Cổ phần Cấp nước Ninh Thuận",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
@@ -5691,28 +5625,40 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "MHL",
+      "name": "Công ty Cổ phần Minh Hữu Liên",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "MIE",
+      "name": "Tổng Công ty Máy và Thiết bị Công nghiệp - CTCP",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "SFN",
       "name": "Công ty Cổ phần Dệt lưới Sài Gòn",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
     },
     {
-      "symbol": "NHC",
-      "name": "Công ty Cổ phần Gạch ngói Nhị Hiệp",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PLX",
-      "name": "Tập đoàn Xăng dầu Việt Nam",
-      "sector": "Dầu khí",
-      "exchange": "HSX"
+      "symbol": "PCG",
+      "name": "Công ty Cổ phần Đầu tư Phát triển Gas Đô thị",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "SGT",
       "name": "Công ty Cổ phần Công nghệ Viễn thông Sài Gòn",
       "sector": "Công nghệ Thông tin",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "L40",
+      "name": "Công ty Cổ phần Đầu tư và Xây dựng 40",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
     },
     {
       "symbol": "SHG",
@@ -5727,10 +5673,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "CRV",
-      "name": "Công ty Cổ phần Tập đoàn Bất động sản CRV",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
+      "symbol": "NDC",
+      "name": "Công ty Cổ phần Nam Dược",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "SHN",
+      "name": "Công ty Cổ phần Đầu tư Tổng hợp Hà Nội",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HNX"
     },
     {
       "symbol": "SJ1",
@@ -5739,63 +5691,27 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "GKM",
-      "name": "Công ty Cổ phần GKM Holdings",
+      "symbol": "HNG",
+      "name": "Công ty Cổ phần Nông nghiệp Quốc tế Hoàng Anh Gia Lai",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PDB",
+      "name": "Công ty Cổ phần Tập đoàn Đầu tư DIN Capital",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "HNX"
     },
     {
-      "symbol": "PGB",
-      "name": "Ngân hàng Thương mại Cổ phần Thịnh vượng và Phát triển",
-      "sector": "Ngân hàng",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NVB",
-      "name": "Ngân hàng Thương mại Cổ phần Quốc Dân",
-      "sector": "Ngân hàng",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PGC",
-      "name": "Tổng Công ty Gas Petrolimex - Công ty Cổ phần",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "PGN",
-      "name": "Công ty Cổ phần Phụ Gia Nhựa",
-      "sector": "Hóa chất",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PGT",
-      "name": "Công ty Cổ phần PGT Holdings",
+      "symbol": "PDC",
+      "name": "Công ty Cổ phần Du lịch Dầu khí Phương Đông",
       "sector": "Du lịch và Giải trí",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PLP",
-      "name": "Công ty Cổ phần Sản xuất và Công nghệ Nhựa Pha Lê",
-      "sector": "Hóa chất",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "PBC",
-      "name": "Công ty Cổ phần Dược Phẩm Trung ương 1 - Pharbaco",
-      "sector": "Y tế",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PHC",
-      "name": "Công ty Cổ phần Xây dựng Phục Hưng Holdings",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "SQC",
-      "name": "Công ty Cổ phần Khoáng sản Sài Gòn - Quy Nhơn",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "NSL",
+      "name": "Công ty Cổ phần Cấp nước Sơn La",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
@@ -5805,16 +5721,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "LBM",
-      "name": "Công ty Cổ phần Khoáng sản và Vật liệu xây dựng Lâm Đồng",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "PDN",
+      "name": "Công ty Cổ phần Cảng Đồng Nai",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "PHH",
-      "name": "Công ty Cổ phần Hồng Hà Việt Nam",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "STT",
@@ -5823,10 +5733,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PHP",
-      "name": "Công ty Cổ phần Cảng Hải Phòng",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "symbol": "NHC",
+      "name": "Công ty Cổ phần Gạch ngói Nhị Hiệp",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "PDR",
+      "name": "Công ty Cổ phần Phát triển Bất động sản Phát Đạt",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
     },
     {
       "symbol": "SWC",
@@ -5835,27 +5751,63 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "NXT",
-      "name": "Công ty Cổ phần Sản xuất và Cung ứng vật liệu xây dựng Kon Tum",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "PDV",
+      "name": "Công ty Cổ phần Vận tải và Tiếp vận Phương Đông Việt",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "PEC",
+      "name": "Công ty Cổ phần Cơ khí Điện lực",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PPP",
-      "name": "Công ty Cổ phần Dược phẩm Phong Phú",
-      "sector": "Y tế",
+      "symbol": "CRV",
+      "name": "Công ty Cổ phần Tập đoàn Bất động sản CRV",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "GKM",
+      "name": "Công ty Cổ phần GKM Holdings",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "HNX"
     },
     {
-      "symbol": "PTP",
-      "name": "Công ty Cổ phần PTP",
-      "sector": "Viễn thông",
+      "symbol": "PEQ",
+      "name": "Công ty Cổ phần Thiết bị xăng dầu Petrolimex",
+      "sector": "Dầu khí",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "NVB",
+      "name": "Ngân hàng Thương mại Cổ phần Quốc Dân",
+      "sector": "Ngân hàng",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "PEN",
+      "name": "Công ty Cổ phần Xây lắp III Petrolimex",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
     },
     {
       "symbol": "TAW",
       "name": "Công ty Cổ phần Cấp nước Trung An",
       "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PEG",
+      "name": "Tổng Công ty Thương mại Kỹ thuật và Đầu tư - Công ty Cổ phần",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PTV",
+      "name": "Công ty Cổ phần Thương mại Dầu khí",
+      "sector": "Dầu khí",
       "exchange": "UPCOM"
     },
     {
@@ -5865,16 +5817,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PRC",
-      "name": "Công ty Cổ phần Logistics Portserco",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PIT",
-      "name": "Công ty Cổ phần Xuất nhập khẩu Petrolimex",
-      "sector": "Bán lẻ",
-      "exchange": "HSX"
+      "symbol": "PFL",
+      "name": "Công ty Cổ phần Dầu khí Đông Đô",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "G36",
@@ -5883,45 +5829,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PIA",
-      "name": "Công ty Cổ phần Tin học Viễn thông Petrolimex",
-      "sector": "Viễn thông",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "PIC",
-      "name": "Công ty Cổ phần Đầu tư Điện lực 3",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "NTF",
-      "name": "Công ty Cổ phần Dược - Vật tư y tế Nghệ An",
-      "sector": "Y tế",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PID",
-      "name": "Công ty Cổ phần Trang trí nội thất Dầu khí",
+      "symbol": "LBM",
+      "name": "Công ty Cổ phần Khoáng sản và Vật liệu xây dựng Lâm Đồng",
       "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
+      "exchange": "HSX"
     },
     {
-      "symbol": "PNP",
-      "name": "Công ty Cổ phần Tân Cảng – Phú Hữu",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "PSI",
-      "name": "Công ty Cổ phần Chứng khoán Dầu khí",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "EIN",
-      "name": "Công ty Cổ phần Đầu tư - Thương Mại - Dịch vụ Điện lực",
-      "sector": "Du lịch và Giải trí",
+      "symbol": "PGB",
+      "name": "Ngân hàng Thương mại Cổ phần Thịnh vượng và Phát triển",
+      "sector": "Ngân hàng",
       "exchange": "UPCOM"
     },
     {
@@ -5931,15 +5847,159 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "PNT",
-      "name": "Công ty Cổ phần Kỹ thuật Xây dựng Phú Nhuận",
+      "symbol": "PGC",
+      "name": "Tổng Công ty Gas Petrolimex - Công ty Cổ phần",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "MTB",
+      "name": "Công ty Cổ phần Môi trường và Công trình đô thị tỉnh Thái Bình",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "THD",
+      "name": "Công ty Cổ phần Thaiholdings",
+      "sector": "Bất động sản",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "TIS",
+      "name": "Công ty Cổ phần Gang thép Thái Nguyên",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PGD",
+      "name": "Công ty Cổ phần Phân phối khí thấp áp dầu khí Việt Nam",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "TJC",
+      "name": "Công ty Cổ phần Dịch vụ Vận tải và Thương mại",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "TLH",
+      "name": "Công ty Cổ phần Tập đoàn Thép Tiến Lên",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "TLT",
+      "name": "Công ty Cổ phần Viglacera Thăng Long",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "POB",
-      "name": "Công ty Cổ phần Xăng dầu Dầu khí Hưng Yên",
+      "symbol": "PGN",
+      "name": "Công ty Cổ phần Phụ Gia Nhựa",
+      "sector": "Hóa chất",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "TMP",
+      "name": "Công ty Cổ phần Thủy điện Thác Mơ",
       "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "PLP",
+      "name": "Công ty Cổ phần Sản xuất và Công nghệ Nhựa Pha Lê",
+      "sector": "Hóa chất",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "TOT",
+      "name": "Công ty Cổ phần Transimex Logistics",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "NXT",
+      "name": "Công ty Cổ phần Sản xuất và Cung ứng vật liệu xây dựng Kon Tum",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PBC",
+      "name": "Công ty Cổ phần Dược Phẩm Trung ương 1 - Pharbaco",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PTP",
+      "name": "Công ty Cổ phần PTP",
+      "sector": "Viễn thông",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PHH",
+      "name": "Công ty Cổ phần Hồng Hà Việt Nam",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "TAR",
+      "name": "Công ty Cổ phần Nông nghiệp Công nghệ cao Trung An",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PHP",
+      "name": "Công ty Cổ phần Cảng Hải Phòng",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "TTC",
+      "name": "Công ty Cổ phần Gạch men Thanh Thanh",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "PHS",
+      "name": "Công ty Cổ phần Chứng khoán Phú Hưng",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "NTF",
+      "name": "Công ty Cổ phần Dược - Vật tư y tế Nghệ An",
+      "sector": "Y tế",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PIA",
+      "name": "Công ty Cổ phần Tin học Viễn thông Petrolimex",
+      "sector": "Viễn thông",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "TTT",
+      "name": "Công ty Cổ phần Du Lịch - Thương Mại Tây Ninh",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "HUB",
+      "name": "Công ty Cổ phần Xây lắp Thừa Thiên Huế",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "PID",
+      "name": "Công ty Cổ phần Trang trí nội thất Dầu khí",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "PIS",
+      "name": "Tổng Công ty Pisico Bình Định - Công ty Cổ phần",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
     },
     {
@@ -5949,15 +6009,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "MTB",
-      "name": "Công ty Cổ phần Môi trường và Công trình đô thị tỉnh Thái Bình",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "symbol": "PIT",
+      "name": "Công ty Cổ phần Xuất nhập khẩu Petrolimex",
+      "sector": "Bán lẻ",
+      "exchange": "HSX"
     },
     {
-      "symbol": "PSP",
-      "name": "Công ty Cổ phần Cảng Dịch vụ Dầu khí Đình Vũ",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "PLE",
+      "name": "Công ty Cổ phần Tư vấn Xây dựng Petrolimex",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -5965,12 +6025,6 @@
       "name": "Công ty Cổ phần PIV",
       "sector": "Bất động sản",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "POT",
-      "name": "Công ty Cổ phần Thiết bị Bưu điện",
-      "sector": "Công nghệ Thông tin",
-      "exchange": "HNX"
     },
     {
       "symbol": "PJC",
@@ -5991,27 +6045,33 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "TRT",
+      "name": "Công ty Cổ phần RedstarCera",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "POV",
+      "name": "Công ty Cổ phần Xăng dầu Dầu khí Vũng Áng",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "DNA",
       "name": "Công ty Cổ phần Điện nước An Giang",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "THD",
-      "name": "Công ty Cổ phần Thaiholdings",
-      "sector": "Bất động sản",
-      "exchange": "HNX"
+      "symbol": "PJT",
+      "name": "Công ty Cổ phần Vận tải Xăng dầu đường thủy Petrolimex",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HSX"
     },
     {
       "symbol": "PPC",
       "name": "Công ty Cổ phần Nhiệt điện Phả Lại",
       "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "PJT",
-      "name": "Công ty Cổ phần Vận tải Xăng dầu đường thủy Petrolimex",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HSX"
     },
     {
@@ -6021,15 +6081,15 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "PTL",
-      "name": "Công ty Cổ phần Victory Group",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
+      "symbol": "PPP",
+      "name": "Công ty Cổ phần Dược phẩm Phong Phú",
+      "sector": "Y tế",
+      "exchange": "HNX"
     },
     {
-      "symbol": "TIS",
-      "name": "Công ty Cổ phần Gang thép Thái Nguyên",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "TTZ",
+      "name": "Công ty Cổ phần Đầu tư Xây dựng và Công nghệ Tiến Trung",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -6051,20 +6111,20 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "TJC",
-      "name": "Công ty Cổ phần Dịch vụ Vận tải và Thương mại",
+      "symbol": "PRC",
+      "name": "Công ty Cổ phần Logistics Portserco",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
     },
     {
-      "symbol": "TLH",
-      "name": "Công ty Cổ phần Tập đoàn Thép Tiến Lên",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HSX"
+      "symbol": "TV1",
+      "name": "Công ty Cổ phần Tư vấn Xây dựng Điện 1",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
-      "symbol": "TLT",
-      "name": "Công ty Cổ phần Viglacera Thăng Long",
+      "symbol": "TVA",
+      "name": "Công ty cổ phần Sứ Viglacera Thanh Trì",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
@@ -6075,9 +6135,9 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "TMP",
-      "name": "Công ty Cổ phần Thủy điện Thác Mơ",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "TVS",
+      "name": "Công ty Cổ phần Chứng khoán Thiên Việt",
+      "sector": "Dịch vụ tài chính",
       "exchange": "HSX"
     },
     {
@@ -6087,9 +6147,27 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "TOT",
-      "name": "Công ty Cổ phần Transimex Logistics",
+      "symbol": "UCT",
+      "name": "Công ty Cổ phần Đô thị Cần Thơ",
       "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "UDJ",
+      "name": "Công ty Cổ phần Phát triển Đô thị",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "FCC",
+      "name": "Công ty Cổ phần Liên hợp Thực phẩm",
+      "sector": "Bất động sản",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "UNI",
+      "name": "Công ty Cổ phần Đầu tư và Phát triển Sao Mai Việt",
+      "sector": "Công nghệ Thông tin",
       "exchange": "HNX"
     },
     {
@@ -6111,9 +6189,9 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "TAR",
-      "name": "Công ty Cổ phần Nông nghiệp Công nghệ cao Trung An",
-      "sector": "Thực phẩm và đồ uống",
+      "symbol": "V15",
+      "name": "Công ty Cổ phần Xây dựng số 15",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
     {
@@ -6147,8 +6225,14 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "TTC",
-      "name": "Công ty Cổ phần Gạch men Thanh Thanh",
+      "symbol": "VBC",
+      "name": "Công ty Cổ phần Nhựa, Bao bì Vinh",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HNX"
+    },
+    {
+      "symbol": "VC1",
+      "name": "Công ty Cổ phần Xây dựng số 1",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "HNX"
     },
@@ -6175,12 +6259,6 @@
       "name": "Công ty Cổ phần Procimex Việt Nam",
       "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
-    },
-    {
-      "symbol": "TTT",
-      "name": "Công ty Cổ phần Du Lịch - Thương Mại Tây Ninh",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "HNX"
     },
     {
       "symbol": "PSC",
@@ -6213,10 +6291,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "HUB",
-      "name": "Công ty Cổ phần Xây lắp Thừa Thiên Huế",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "HSX"
+      "symbol": "PVB",
+      "name": "Công ty Cổ phần Bọc ống Dầu khí Việt Nam",
+      "sector": "Dầu khí",
+      "exchange": "HNX"
     },
     {
       "symbol": "PTO",
@@ -6267,22 +6345,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "TRT",
-      "name": "Công ty Cổ phần RedstarCera",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "PV2",
       "name": "Công ty Cổ phần Đầu tư PV2",
       "sector": "Bất động sản",
       "exchange": "HNX"
     },
     {
-      "symbol": "QNP",
-      "name": "Công ty Cổ phần Cảng Quy Nhơn",
+      "symbol": "QSP",
+      "name": "Công ty Cổ phần Tân cảng Quy Nhơn",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HSX"
+      "exchange": "UPCOM"
     },
     {
       "symbol": "CSI",
@@ -6309,10 +6381,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "PQN",
-      "name": "Công ty Cổ phần Dịch vụ Dầu khí Quảng Ngãi PTSC",
+      "symbol": "QNP",
+      "name": "Công ty Cổ phần Cảng Quy Nhơn",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
+      "exchange": "HSX"
     },
     {
       "symbol": "PVD",
@@ -6321,10 +6393,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "RCL",
-      "name": "Công ty Cổ phần Địa ốc Chợ Lớn",
-      "sector": "Bất động sản",
-      "exchange": "HNX"
+      "symbol": "RAT",
+      "name": "Công ty Cổ phần Vận tải và Thương mại Đường sắt",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "PVE",
@@ -6339,28 +6411,16 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "S96",
-      "name": "Công ty Cổ phần Sông Đà 9.06",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "PRE",
       "name": "Tổng Công ty Cổ phần Tái bảo hiểm Hà Nội",
       "sector": "Bảo hiểm",
       "exchange": "HNX"
     },
     {
-      "symbol": "TTZ",
-      "name": "Công ty Cổ phần Đầu tư Xây dựng và Công nghệ Tiến Trung",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "SAB",
-      "name": "Tổng Công ty Cổ phần Bia - Rượu - Nước Giải khát Sài Gòn",
+      "symbol": "SAF",
+      "name": "Công ty Cổ phần Lương thực Thực phẩm SAFOCO",
       "sector": "Thực phẩm và đồ uống",
-      "exchange": "HSX"
+      "exchange": "HNX"
     },
     {
       "symbol": "PVL",
@@ -6385,18 +6445,6 @@
       "name": "Tổng Công ty Điện lực Dầu khí Việt Nam - CTCP",
       "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "SHN",
-      "name": "Công ty Cổ phần Đầu tư Tổng hợp Hà Nội",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "TV1",
-      "name": "Công ty Cổ phần Tư vấn Xây dựng Điện 1",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "PVT",
@@ -6429,12 +6477,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "TVA",
-      "name": "Công ty cổ phần Sứ Viglacera Thanh Trì",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "PXI",
       "name": "Công ty Cổ phần Xây dựng Công nghiệp và Dân dụng Dầu khí",
       "sector": "Xây dựng và Vật liệu",
@@ -6450,6 +6492,12 @@
       "symbol": "PXM",
       "name": "Công ty Cổ phần Xây lắp Dầu khí Miền Trung",
       "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "SKV",
+      "name": "Công ty Cổ phần Nước Giải khát Yến sào Khánh Hòa",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
@@ -6477,33 +6525,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "TVS",
-      "name": "Công ty Cổ phần Chứng khoán Thiên Việt",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "UCT",
-      "name": "Công ty Cổ phần Đô thị Cần Thơ",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "SB1",
+      "name": "Công ty Cổ phần Bia Sài Gòn - Nghệ Tĩnh",
+      "sector": "Thực phẩm và đồ uống",
       "exchange": "UPCOM"
     },
     {
       "symbol": "CQN",
       "name": "Công ty Cổ phần Cảng Quảng Ninh",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "NSL",
-      "name": "Công ty Cổ phần Cấp nước Sơn La",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "FCC",
-      "name": "Công ty Cổ phần Liên hợp Thực phẩm",
-      "sector": "Bất động sản",
       "exchange": "UPCOM"
     },
     {
@@ -6537,12 +6567,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "UNI",
-      "name": "Công ty Cổ phần Đầu tư và Phát triển Sao Mai Việt",
-      "sector": "Công nghệ Thông tin",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "QTC",
       "name": "Công ty Cổ phần Công trình Giao thông Vận tải Quảng Nam",
       "sector": "Xây dựng và Vật liệu",
@@ -6555,10 +6579,10 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "V15",
-      "name": "Công ty Cổ phần Xây dựng số 15",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
+      "symbol": "VIG",
+      "name": "Công ty Cổ phần Chứng khoán Đầu tư Tài chính Việt Nam",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "HNX"
     },
     {
       "symbol": "RCC",
@@ -6579,12 +6603,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "SD1",
-      "name": "Công ty Cổ phần Sông Đà 1",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "DELISTED"
-    },
-    {
       "symbol": "RDP",
       "name": "Công ty Cổ phần Rạng Đông Holding",
       "sector": "Hóa chất",
@@ -6603,21 +6621,21 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VBC",
-      "name": "Công ty Cổ phần Nhựa, Bao bì Vinh",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "DS3",
       "name": "Công ty Cổ phần DS3",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
     },
     {
-      "symbol": "VC1",
-      "name": "Công ty Cổ phần Xây dựng số 1",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "TVM",
+      "name": "Công ty Cổ phần Tư vấn đầu tư Mỏ và công nghiệp - Vinacomin",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "VIF",
+      "name": "Tổng Công ty Lâm nghiệp Việt Nam - Công ty Cổ phần",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "HNX"
     },
     {
@@ -6645,6 +6663,12 @@
       "exchange": "HNX"
     },
     {
+      "symbol": "VGT",
+      "name": "Tập đoàn Dệt May Việt Nam",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "S72",
       "name": "Công ty Cổ phần Sông Đà 7.02",
       "sector": "Xây dựng và Vật liệu",
@@ -6655,6 +6679,12 @@
       "name": "Công ty Cổ phần Sông Đà 7.04",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "VPS",
+      "name": "Công ty Cổ phần Thuốc sát trùng Việt Nam",
+      "sector": "Hóa chất",
+      "exchange": "HSX"
     },
     {
       "symbol": "S99",
@@ -6669,10 +6699,22 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "VSN",
+      "name": "Công ty Cổ phần Việt Nam Kỹ Nghệ Súc Sản",
+      "sector": "Thực phẩm và đồ uống",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "SGN",
       "name": "Công ty Cổ phần Phục vụ mặt đất Sài Gòn",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "VIW",
+      "name": "Tổng công ty Đầu tư Nước và Môi trường Việt Nam - Công ty Cổ phần",
+      "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "PGI",
@@ -6690,6 +6732,12 @@
       "symbol": "SAL",
       "name": "Công ty Cổ phần Trục vớt Cứu hộ Việt Nam",
       "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "VKC",
+      "name": "Công ty Cổ phần VKC Holdings",
+      "sector": "Ô tô và phụ tùng",
       "exchange": "UPCOM"
     },
     {
@@ -6756,6 +6804,12 @@
       "symbol": "PMG",
       "name": "Công ty Cổ phần Đầu tư và Sản xuất Petro Miền Trung",
       "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "VMD",
+      "name": "Công ty Cổ phần Y Dược phẩm Vimedimex",
+      "sector": "Y tế",
       "exchange": "HSX"
     },
     {
@@ -6891,6 +6945,12 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "VMG",
+      "name": "Công ty Cổ phần Thương mại và Dịch vụ Dầu khí Vũng Tàu",
+      "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "XLV",
       "name": "Công ty Cổ phần Xây lắp và Dịch vụ Sông Đà",
       "sector": "Xây dựng và Vật liệu",
@@ -6900,6 +6960,12 @@
       "symbol": "SDD",
       "name": "Công ty Cổ phần Đầu tư và Xây lắp Sông Đà",
       "sector": "Xây dựng và Vật liệu",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "AIC",
+      "name": "Công ty Cổ phần Tập đoàn Bảo hiểm DBV",
+      "sector": "Bảo hiểm",
       "exchange": "UPCOM"
     },
     {
@@ -7164,6 +7230,12 @@
       "symbol": "SII",
       "name": "Công ty Cổ phần Hạ tầng Nước Sài Gòn",
       "sector": "Điện, nước & xăng dầu khí đốt",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "SQC",
+      "name": "Công ty Cổ phần Khoáng sản Sài Gòn - Quy Nhơn",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
     },
     {
@@ -8205,12 +8277,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "UDJ",
-      "name": "Công ty Cổ phần Phát triển Đô thị",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "UEM",
       "name": "Công ty Cổ phần Cơ điện Uông Bí - Vinacomin",
       "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -8433,6 +8499,12 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "VND",
+      "name": "Công ty Cổ phần Chứng khoán VNDIRECT",
+      "sector": "Dịch vụ tài chính",
+      "exchange": "HSX"
+    },
+    {
       "symbol": "VDB",
       "name": "Công ty Cổ phần Vận tải và Chế biến Than Đông Bắc",
       "sector": "Tài nguyên Cơ bản",
@@ -8505,12 +8577,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "SB1",
-      "name": "Công ty Cổ phần Bia Sài Gòn - Nghệ Tĩnh",
-      "sector": "Thực phẩm và đồ uống",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "VEC",
       "name": "Tổng Công ty Cổ phần Điện tử và Tin học Việt Nam",
       "sector": "Công nghệ Thông tin",
@@ -8559,12 +8625,6 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "VTR",
-      "name": "Công ty Cổ phần Du lịch Vietravel",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "VFR",
       "name": "Công ty Cổ phần Vận tải và Thuê tàu",
       "sector": "Hàng & Dịch vụ Công nghiệp",
@@ -8575,6 +8635,12 @@
       "name": "Ngân hàng Thương mại Cổ phần Quốc tế Việt Nam",
       "sector": "Ngân hàng",
       "exchange": "HSX"
+    },
+    {
+      "symbol": "VTR",
+      "name": "Công ty Cổ phần Du lịch Vietravel",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "VGS",
@@ -8649,15 +8715,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VIG",
-      "name": "Công ty Cổ phần Chứng khoán Đầu tư Tài chính Việt Nam",
-      "sector": "Dịch vụ tài chính",
-      "exchange": "HNX"
-    },
-    {
       "symbol": "VID",
       "name": "Công ty Cổ phần Đầu tư Phát triển Thương mại Viễn Đông",
       "sector": "Tài nguyên Cơ bản",
+      "exchange": "HSX"
+    },
+    {
+      "symbol": "VPD",
+      "name": "Công ty Cổ phần Phát triển Điện lực Việt Nam",
+      "sector": "Điện, nước & xăng dầu khí đốt",
       "exchange": "HSX"
     },
     {
@@ -8685,9 +8751,9 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "TVM",
-      "name": "Công ty Cổ phần Tư vấn đầu tư Mỏ và công nghiệp - Vinacomin",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "symbol": "VNP",
+      "name": "Công ty Cổ phần Nhựa Việt Nam",
+      "sector": "Hóa chất",
       "exchange": "UPCOM"
     },
     {
@@ -8697,20 +8763,8 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "VIF",
-      "name": "Tổng Công ty Lâm nghiệp Việt Nam - Công ty Cổ phần",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HNX"
-    },
-    {
-      "symbol": "VGT",
-      "name": "Tập đoàn Dệt May Việt Nam",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "VPS",
-      "name": "Công ty Cổ phần Thuốc sát trùng Việt Nam",
+      "symbol": "GVR",
+      "name": "Tập đoàn Công nghiệp Cao su Việt Nam - Công ty Cổ phần",
       "sector": "Hóa chất",
       "exchange": "HSX"
     },
@@ -8721,22 +8775,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VSN",
-      "name": "Công ty Cổ phần Việt Nam Kỹ Nghệ Súc Sản",
-      "sector": "Thực phẩm và đồ uống",
+      "symbol": "VNX",
+      "name": "Công ty Cổ phần Quảng cáo và Hội chợ Thương mại Vinexad",
+      "sector": "Truyền thông",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VIW",
-      "name": "Tổng công ty Đầu tư Nước và Môi trường Việt Nam - Công ty Cổ phần",
-      "sector": "Xây dựng và Vật liệu",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "VKC",
-      "name": "Công ty Cổ phần VKC Holdings",
-      "sector": "Ô tô và phụ tùng",
-      "exchange": "UPCOM"
+      "symbol": "VOS",
+      "name": "Công ty Cổ phần Vận tải Biển Việt Nam",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HSX"
     },
     {
       "symbol": "VHE",
@@ -8751,21 +8799,15 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VGL",
-      "name": "Công ty Cổ phần Mạ kẽm công nghiệp Vingal-Vnsteel",
-      "sector": "Tài nguyên Cơ bản",
+      "symbol": "VPR",
+      "name": "Công ty Cổ phần VINAPRINT",
+      "sector": "Truyền thông",
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VMD",
-      "name": "Công ty Cổ phần Y Dược phẩm Vimedimex",
-      "sector": "Y tế",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "VMG",
-      "name": "Công ty Cổ phần Thương mại và Dịch vụ Dầu khí Vũng Tàu",
-      "sector": "Điện, nước & xăng dầu khí đốt",
+      "symbol": "VGL",
+      "name": "Công ty Cổ phần Mạ kẽm công nghiệp Vingal-Vnsteel",
+      "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
     },
     {
@@ -8775,16 +8817,16 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "AIC",
-      "name": "Công ty Cổ phần Tập đoàn Bảo hiểm DBV",
-      "sector": "Bảo hiểm",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "GVT",
       "name": "Công ty Cổ phần Giấy Việt Trì",
       "sector": "Tài nguyên Cơ bản",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "VRE",
+      "name": "Công ty Cổ phần Vincom Retail",
+      "sector": "Bất động sản",
+      "exchange": "HSX"
     },
     {
       "symbol": "CGV",
@@ -8793,9 +8835,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VND",
-      "name": "Công ty Cổ phần Chứng khoán VNDIRECT",
-      "sector": "Dịch vụ tài chính",
+      "symbol": "VSI",
+      "name": "Công ty Cổ phần Đầu tư và Xây dựng Cấp thoát nước",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "HSX"
     },
     {
@@ -8853,24 +8895,6 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "VPD",
-      "name": "Công ty Cổ phần Phát triển Điện lực Việt Nam",
-      "sector": "Điện, nước & xăng dầu khí đốt",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "VNP",
-      "name": "Công ty Cổ phần Nhựa Việt Nam",
-      "sector": "Hóa chất",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "GVR",
-      "name": "Tập đoàn Công nghiệp Cao su Việt Nam - Công ty Cổ phần",
-      "sector": "Hóa chất",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "VNY",
       "name": "Công ty Cổ phần Thuốc thú y Trung ương I",
       "sector": "Hóa chất",
@@ -8925,18 +8949,6 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "VNX",
-      "name": "Công ty Cổ phần Quảng cáo và Hội chợ Thương mại Vinexad",
-      "sector": "Truyền thông",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "VOS",
-      "name": "Công ty Cổ phần Vận tải Biển Việt Nam",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "VMC",
       "name": "Công ty Cổ phần VIMECO",
       "sector": "Xây dựng và Vật liệu",
@@ -8976,12 +8988,6 @@
       "symbol": "VNA",
       "name": "Công ty Cổ phần Vận tải biển Vinaship",
       "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "VPR",
-      "name": "Công ty Cổ phần VINAPRINT",
-      "sector": "Truyền thông",
       "exchange": "UPCOM"
     },
     {
@@ -9045,12 +9051,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VRE",
-      "name": "Công ty Cổ phần Vincom Retail",
-      "sector": "Bất động sản",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "VNG",
       "name": "Công ty Cổ phần Du Lịch Thành Thành Công",
       "sector": "Du lịch và Giải trí",
@@ -9084,12 +9084,6 @@
       "symbol": "VNM",
       "name": "Công ty Cổ phần Sữa Việt Nam",
       "sector": "Thực phẩm và đồ uống",
-      "exchange": "HSX"
-    },
-    {
-      "symbol": "VSI",
-      "name": "Công ty Cổ phần Đầu tư và Xây dựng Cấp thoát nước",
-      "sector": "Xây dựng và Vật liệu",
       "exchange": "HSX"
     },
     {
@@ -9129,12 +9123,6 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "VTM",
-      "name": "Công ty Cổ phần Vận tải và Đưa đón thợ mỏ - Vinacomin",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "UPCOM"
-    },
-    {
       "symbol": "VOC",
       "name": "Tổng Công ty Công nghiệp Dầu thực vật Việt Nam - Công ty Cổ phần",
       "sector": "Thực phẩm và đồ uống",
@@ -9171,12 +9159,6 @@
       "exchange": "HSX"
     },
     {
-      "symbol": "VTP",
-      "name": "Tổng Công ty Cổ phần Bưu chính Viettel",
-      "sector": "Hàng & Dịch vụ Công nghiệp",
-      "exchange": "HSX"
-    },
-    {
       "symbol": "VPH",
       "name": "Công ty Cổ phần Vạn Phát Hưng",
       "sector": "Bất động sản",
@@ -9187,12 +9169,6 @@
       "name": "Công ty Cổ phần Vinpearl",
       "sector": "Du lịch và Giải trí",
       "exchange": "HSX"
-    },
-    {
-      "symbol": "DLT",
-      "name": "Công ty Cổ phần Du lịch và Thương mại - Vinacomin",
-      "sector": "Du lịch và Giải trí",
-      "exchange": "UPCOM"
     },
     {
       "symbol": "VPA",
@@ -9222,6 +9198,12 @@
       "symbol": "VQC",
       "name": "Công ty Cổ phần Giám định Vinaconmin",
       "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "UPCOM"
+    },
+    {
+      "symbol": "YTC",
+      "name": "Công ty Cổ phần Xuất nhập khẩu Y tế Thành phố Hồ Chí Minh",
+      "sector": "Y tế",
       "exchange": "UPCOM"
     },
     {
@@ -9267,6 +9249,12 @@
       "exchange": "UPCOM"
     },
     {
+      "symbol": "VTM",
+      "name": "Công ty Cổ phần Vận tải và Đưa đón thợ mỏ - Vinacomin",
+      "sector": "Du lịch và Giải trí",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "VTA",
       "name": "Công ty Cổ phần VITALY",
       "sector": "Xây dựng và Vật liệu",
@@ -9285,10 +9273,10 @@
       "exchange": "HNX"
     },
     {
-      "symbol": "DFC",
-      "name": "Công ty Cổ phần Xích líp Đông Anh",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "UPCOM"
+      "symbol": "VTP",
+      "name": "Tổng Công ty Cổ phần Bưu chính Viettel",
+      "sector": "Hàng & Dịch vụ Công nghiệp",
+      "exchange": "HSX"
     },
     {
       "symbol": "VTE",
@@ -9303,9 +9291,9 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "CQT",
-      "name": "Công ty Cổ phần Xi măng Quán Triều VVMI",
-      "sector": "Xây dựng và Vật liệu",
+      "symbol": "DLT",
+      "name": "Công ty Cổ phần Du lịch và Thương mại - Vinacomin",
+      "sector": "Du lịch và Giải trí",
       "exchange": "UPCOM"
     },
     {
@@ -9323,12 +9311,6 @@
     {
       "symbol": "VTI",
       "name": "Công ty Cổ phần Sản xuất - Xuất nhập khẩu Dệt may",
-      "sector": "Hàng cá nhân & Gia dụng",
-      "exchange": "UPCOM"
-    },
-    {
-      "symbol": "XPH",
-      "name": "Công ty Cổ phần Xà phòng Hà Nội",
       "sector": "Hàng cá nhân & Gia dụng",
       "exchange": "UPCOM"
     },
@@ -9351,6 +9333,12 @@
       "exchange": "HSX"
     },
     {
+      "symbol": "DFC",
+      "name": "Công ty Cổ phần Xích líp Đông Anh",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "UPCOM"
+    },
+    {
       "symbol": "VTQ",
       "name": "Công ty Cổ phần Việt Trung Quảng Bình",
       "sector": "Hóa chất",
@@ -9369,8 +9357,8 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "YBC",
-      "name": "Công ty Cổ phần Xi măng và Khoáng sản Yên Bái",
+      "symbol": "CQT",
+      "name": "Công ty Cổ phần Xi măng Quán Triều VVMI",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
     },
@@ -9411,10 +9399,10 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "YBM",
-      "name": "Công ty Cổ phần Khoáng sản Công nghiệp Yên Bái",
-      "sector": "Tài nguyên Cơ bản",
-      "exchange": "HSX"
+      "symbol": "XPH",
+      "name": "Công ty Cổ phần Xà phòng Hà Nội",
+      "sector": "Hàng cá nhân & Gia dụng",
+      "exchange": "UPCOM"
     },
     {
       "symbol": "VXB",
@@ -9439,12 +9427,6 @@
       "name": "Công ty Cổ phần Bến xe Miền Tây",
       "sector": "Hàng & Dịch vụ Công nghiệp",
       "exchange": "HNX"
-    },
-    {
-      "symbol": "YEG",
-      "name": "Công ty Cổ phần Tập đoàn Yeah1",
-      "sector": "Truyền thông",
-      "exchange": "HSX"
     },
     {
       "symbol": "WSB",
@@ -9477,10 +9459,16 @@
       "exchange": "UPCOM"
     },
     {
-      "symbol": "YTC",
-      "name": "Công ty Cổ phần Xuất nhập khẩu Y tế Thành phố Hồ Chí Minh",
-      "sector": "Y tế",
+      "symbol": "YBC",
+      "name": "Công ty Cổ phần Xi măng và Khoáng sản Yên Bái",
+      "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "YBM",
+      "name": "Công ty Cổ phần Khoáng sản Công nghiệp Yên Bái",
+      "sector": "Tài nguyên Cơ bản",
+      "exchange": "HSX"
     },
     {
       "symbol": "XMC",
@@ -9493,6 +9481,12 @@
       "name": "Công ty Cổ phần Xuân Mai - Đạo Tú",
       "sector": "Xây dựng và Vật liệu",
       "exchange": "UPCOM"
+    },
+    {
+      "symbol": "YEG",
+      "name": "Công ty Cổ phần Tập đoàn Yeah1",
+      "sector": "Truyền thông",
+      "exchange": "HSX"
     },
     {
       "symbol": "XMP",
