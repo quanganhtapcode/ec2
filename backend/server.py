@@ -1,9 +1,14 @@
 import warnings
 warnings.filterwarnings("ignore", message="pkg_resources is deprecated as an API.*", category=UserWarning)
 
+# Load environment variables FIRST (before any other imports that might need them)
+import os
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env'))
+
 import pandas as pd
 import numpy as np
-from flask import Flask, jsonify, request, send_file, abort
+from flask import Flask, jsonify, request, send_file, abort, redirect, Response
 from flask_cors import CORS
 from flask_compress import Compress
 import logging
@@ -11,10 +16,11 @@ import time
 from datetime import datetime, timedelta
 from vnstock import Vnstock, Listing, Company, Quote
 from backend.models import ValuationModels
+from backend.r2_client import get_r2_client
 import json
-import os
 from collections import defaultdict
 from functools import wraps
+import io
 
 app = Flask(__name__)
 
@@ -3373,6 +3379,9 @@ def get_stock_history(symbol):
 def download_financial_data(ticker):
     """Download financial statement Excel file for a specific ticker
     
+    Storage: Cloudflare R2 (with local fallback)
+    Security: Pre-signed URLs with 15-minute expiration
+    
     Rate limits:
     - Maximum 20 downloads per IP per hour
     - Returns 429 status code when limit exceeded
@@ -3390,32 +3399,55 @@ def download_financial_data(ticker):
         
         # Use validated/sanitized ticker
         ticker = result
+        client_ip = get_client_ip()
         
-        # Use absolute path to data folder (script's parent directory)
+        # Try R2 first (primary storage)
+        r2_client = get_r2_client()
+        if r2_client.is_configured:
+            # Option 1: Redirect to pre-signed URL (fastest, uses R2 CDN)
+            presigned_result = r2_client.get_presigned_url(ticker, expires_in=900)  # 15 minutes
+            
+            if presigned_result['success']:
+                logger.info(f"R2 redirect for {ticker} to {client_ip}")
+                return redirect(presigned_result['url'], code=302)
+            
+            # Option 2: Proxy download through server (if pre-signed fails)
+            if not presigned_result.get('not_found'):
+                download_result = r2_client.download_excel(ticker)
+                if download_result['success']:
+                    logger.info(f"R2 proxy download for {ticker} ({download_result['size']} bytes) to {client_ip}")
+                    return Response(
+                        download_result['content'],
+                        mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        headers={
+                            'Content-Disposition': f'attachment; filename="{ticker}.xlsx"',
+                            'Content-Length': str(download_result['size'])
+                        }
+                    )
+        
+        # Fallback: Local file system (for backwards compatibility)
         script_dir = os.path.dirname(os.path.abspath(__file__))
         data_folder = os.path.join(os.path.dirname(script_dir), 'data')
         file_path = os.path.join(data_folder, f'{ticker}.xlsx')
         
-        # Check if file exists before attempting to serve
-        if not os.path.exists(file_path):
-            logger.warning(f"Financial data file not found for {ticker}")
-            return jsonify({
-                'error': 'File not found',
-                'message': f'Financial data for {ticker} is not available. The ticker may not exist or data has not been collected yet.',
-                'ticker': ticker
-            }), 404
+        if os.path.exists(file_path):
+            file_size = os.path.getsize(file_path)
+            logger.info(f"Local fallback for {ticker} ({file_size} bytes) to {client_ip}")
+            return send_file(
+                file_path,
+                as_attachment=True,
+                download_name=f'{ticker}.xlsx',
+                mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
         
-        # Get file size for logging
-        file_size = os.path.getsize(file_path)
-        client_ip = get_client_ip()
-        logger.info(f"Serving financial data file for {ticker} ({file_size} bytes) to {client_ip}")
+        # File not found in R2 or local
+        logger.warning(f"Financial data not found for {ticker} (R2 and local)")
+        return jsonify({
+            'error': 'File not found',
+            'message': f'Financial data for {ticker} is not available. The ticker may not exist or data has not been collected yet.',
+            'ticker': ticker
+        }), 404
         
-        return send_file(
-            file_path,
-            as_attachment=True,
-            download_name=f'{ticker}.xlsx',
-            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-        )
     except Exception as e:
         logger.error(f"Error serving file for {ticker}: {e}")
         return jsonify({

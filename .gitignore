@@ -19,6 +19,7 @@ stock_list.json
 *.pem
 .env
 .env.*
+.env.vps
 
 # ========================================
 # STANDARD IGNORES
