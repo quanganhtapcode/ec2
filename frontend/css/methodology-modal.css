@@ -145,18 +145,20 @@ body.modal-open .search-input-compact {
 
 /* Modal Body - Simple content */
 .modal-body.methodology-content {
-    padding: 18px;
+    padding: 20px;
     overflow-y: auto;
     flex: 1;
     -webkit-overflow-scrolling: touch;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 /* Intro text */
 .methodology-intro {
     color: var(--color-text-secondary, #4b5563);
-    font-size: 0.85rem;
-    line-height: 1.5;
-    margin: 0 0 16px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
 }
 
 [data-theme="dark"] .methodology-intro {
@@ -165,8 +167,8 @@ body.modal-open .search-input-compact {
 
 /* Methodology Item - Simple text block */
 .methodology-item {
-    margin-bottom: 14px;
-    padding-bottom: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--color-border, #e5e7eb);
 }
 
@@ -176,13 +178,13 @@ body.modal-open .search-input-compact {
 
 .methodology-item:last-of-type {
     border-bottom: none;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     padding-bottom: 0;
 }
 
 .methodology-item strong {
     color: var(--color-text, #1a1a1a);
-    font-size: 0.85rem;
+    font-size: 13px;
 }
 
 [data-theme="dark"] .methodology-item strong {
@@ -191,33 +193,73 @@ body.modal-open .search-input-compact {
 
 .methodology-item span {
     color: var(--color-text-secondary, #6b7280);
-    font-size: 0.8rem;
+    font-size: 13px;
 }
 
 .methodology-item p {
     color: var(--color-text-secondary, #6b7280);
-    font-size: 0.8rem;
-    line-height: 1.5;
-    margin: 4px 0 8px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 6px 0 10px 0;
 }
 
 [data-theme="dark"] .methodology-item p {
     color: var(--color-text-secondary, #9ca3af);
 }
 
+/* Headings in methodology items */
+.methodology-item h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text, #1a1a1a);
+    margin: 0 0 8px 0;
+}
+
+[data-theme="dark"] .methodology-item h4 {
+    color: var(--color-text, #fff);
+}
+
+/* Lists in methodology items */
+.methodology-item ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.methodology-item li {
+    font-size: 13px;
+    color: var(--color-text-secondary, #6b7280);
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+[data-theme="dark"] .methodology-item li {
+    color: var(--color-text-secondary, #9ca3af);
+}
+
+.methodology-item li strong {
+    color: var(--color-text, #374151);
+    font-size: 13px;
+}
+
+[data-theme="dark"] .methodology-item li strong {
+    color: var(--color-text, #e5e7eb);
+}
+
 .methodology-item code {
     display: block;
-    font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
-    font-size: 0.75rem;
-    color: var(--color-text-secondary, #6b7280);
+    font-family: var(--font-family-base, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text, #1a1a1a);
     background: var(--color-background, #f5f5f5);
-    padding: 6px 10px;
-    border-radius: 4px;
-    overflow-x: auto;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid var(--color-primary, #2563eb);
+    margin: 8px 0;
 }
 
 [data-theme="dark"] .methodology-item code {
-    color: var(--color-text-secondary, #9ca3af);
+    color: var(--color-text, #fff);
     background: var(--color-background, #252525);
 }
 
@@ -235,14 +277,11 @@ body.modal-open .search-input-compact {
     border-left-color: #f59e0b;
 }
 
-.methodology-disclaimer span {
-    font-size: 0.75rem;
+.methodology-disclaimer span,
+.methodology-disclaimer p {
+    font-size: 13px;
     color: var(--color-text-secondary, #4b5563);
-    line-height: 1.5;
-}
-
-[data-theme="dark"] .methodology-disclaimer span {
-    color: var(--color-text-secondary, #9ca3af);
+    line-height: 1.6;
 }
 
 /* Formula Box - detailed explanation container */
@@ -258,10 +297,10 @@ body.modal-open .search-input-compact {
 }
 
 .methodology-formula-box .formula-title {
-    font-size: 0.75rem;
+    font-size: 13px;
     font-weight: 600;
     color: var(--color-text, #374151);
-    margin: 8px 0 4px 0;
+    margin: 10px 0 6px 0;
 }
 
 .methodology-formula-box .formula-title:first-child {
@@ -274,14 +313,15 @@ body.modal-open .search-input-compact {
 
 .methodology-formula-box code {
     display: block;
-    font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
-    font-size: 0.72rem;
-    color: #2563eb;
-    background: rgba(37, 99, 235, 0.08);
-    padding: 6px 10px;
-    border-radius: 4px;
-    margin: 4px 0;
-    border-left: 2px solid #2563eb;
+    font-family: var(--font-family-base, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-primary, #2563eb);
+    background: rgba(37, 99, 235, 0.06);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 8px 0;
+    border-left: 3px solid var(--color-primary, #2563eb);
 }
 
 [data-theme="dark"] .methodology-formula-box code {
@@ -301,9 +341,9 @@ body.modal-open .search-input-compact {
 }
 
 .formula-components .component {
-    font-size: 0.72rem;
+    font-size: 13px;
     color: var(--color-text-secondary, #6b7280);
-    margin: 4px 0;
+    margin: 6px 0;
     padding-left: 8px;
 }
 
@@ -317,13 +357,12 @@ body.modal-open .search-input-compact {
 }
 
 .formula-note {
-    font-size: 0.7rem;
+    font-size: 13px;
     color: var(--color-text-secondary, #6b7280);
     background: rgba(107, 114, 128, 0.08);
-    padding: 6px 10px;
-    border-radius: 4px;
-    margin-top: 8px;
-    font-style: italic;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-top: 10px;
 }
 
 [data-theme="dark"] .formula-note {
@@ -349,9 +388,9 @@ body.modal-open .search-input-compact {
 }
 
 .data-source-list .source-item {
-    font-size: 0.75rem;
+    font-size: 13px;
     color: var(--color-text-secondary, #6b7280);
-    margin: 4px 0;
+    margin: 6px 0;
 }
 
 .data-source-list .source-item strong {

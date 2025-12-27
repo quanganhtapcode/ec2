@@ -203,6 +203,7 @@ Script `deploy.ps1` sẽ:
 | `automation/update_tickers.py` | VPS | (Được gọi) | Tạo data cho Search Bar. |
 | `automation/generate_stock_list.py` | VPS | (Được gọi) | Tạo danh sách mã cần tải data. |
 | `automation/update_peers.py` | VPS | (Được gọi) | Tính toán chỉ số ngành. |
+| `automation/update_excel_data.py` | **Local** | ❌ (Chạy tay) | Tải Excel từ VietCap → Upload R2. |
 | `automation/pull_data.ps1` | **Local** | ❌ (Chạy tay) | Kéo data từ VPS về Local. |
 | `automation/deploy.ps1` | **Local** | ❌ (Chạy tay) | Đẩy data từ Local lên GitHub/VPS. |
 

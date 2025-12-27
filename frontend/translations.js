@@ -132,8 +132,8 @@ const translations = {
         fcfeDesc: "Dòng tiền tự do đến vốn chủ",
         fcff: "FCFF",
         fcffDesc: "Dòng tiền tự do đến doanh nghiệp",
-        justifiedPE: "P/E hợp lý",
-        justifiedPB: "P/B hợp lý",
+        justifiedPE: "P/E Ngành",
+        justifiedPB: "P/B Ngành",
         modelsSelected: "mô hình đã chọn",
         selectAll: "Chọn tất cả",
         deselectAll: "Bỏ chọn tất cả",
@@ -147,10 +147,10 @@ const translations = {
         fcfeExplain: "Tiền mặt có sẵn cho cổ đông sau chi phí hoạt động, tái đầu tư và trả nợ. Chiết khấu theo tỷ suất sinh lợi yêu cầu trên vốn chủ.",
         fcffFull: "Dòng tiền tự do doanh nghiệp",
         fcffExplain: "Tiền mặt có sẵn cho tất cả nhà cung cấp vốn. Chiết khấu theo WACC để có giá trị doanh nghiệp, sau đó trừ nợ ròng để có giá trị vốn chủ.",
-        peFull: "Mô hình Gordon Growth",
-        peExplain: "Tỷ lệ P/E lý thuyết dựa trên tỷ lệ chi trả, tốc độ tăng trưởng và lợi nhuận yêu cầu. Nhân với EPS để có giá trị nội tại.",
-        pbFull: "Mô hình Thu nhập Thặng dư",
-        pbExplain: "Tỷ lệ P/B lý thuyết dựa trên ROE, tốc độ tăng trưởng và lợi nhuận yêu cầu. Nhân với giá trị sổ sách mỗi cổ phiếu để có giá trị nội tại.",
+        peFull: "Phương pháp So sánh Ngành",
+        peExplain: "Định giá dựa trên Median P/E của top 10 công ty cùng ngành. Loại bỏ outliers (P/E < 0 hoặc > 100) trước khi tính.",
+        pbFull: "Phương pháp So sánh Ngành",
+        pbExplain: "Định giá dựa trên Median P/B của top 10 công ty cùng ngành. Loại bỏ outliers (P/B < 0 hoặc > 10) trước khi tính.",
         weightedAverageMethod: "Trung bình Gia quyền",
         weightedExplain: "Giá trị cuối cùng là trung bình gia quyền của các mô hình đã chọn. Mặc định, trọng số bằng nhau được gán cho tất cả mô hình.",
 
@@ -184,13 +184,13 @@ const translations = {
         fcffMarketDiff: "Chênh lệch so với thị trường:",
 
         // PE Valuation
-        justifiedPERatio: "Tỷ lệ P/E hợp lý:",
+        justifiedPERatio: "Median P/E Ngành:",
         currentEPS: "EPS hiện tại:",
         peShareValue: "Giá trị mỗi cổ phiếu:",
         peMarketDiff: "Chênh lệch so với thị trường:",
 
         // PB Valuation
-        justifiedPBRatio: "Tỷ lệ P/B hợp lý:",
+        justifiedPBRatio: "Median P/B Ngành:",
         bookValuePerShare: "Giá trị sổ sách/CP:",
         pbShareValue: "Giá trị mỗi cổ phiếu:",
         pbMarketDiff: "Chênh lệch so với thị trường:",
@@ -439,8 +439,8 @@ const translations = {
         fcfeDesc: "Free Cash Flow to Equity",
         fcff: "FCFF",
         fcffDesc: "Free Cash Flow to Firm",
-        justifiedPE: "Justified P/E",
-        justifiedPB: "Justified P/B",
+        justifiedPE: "Comparable P/E",
+        justifiedPB: "Comparable P/B",
         modelsSelected: "models selected",
         selectAll: "Select All",
         deselectAll: "Deselect All",
@@ -454,10 +454,10 @@ const translations = {
         fcfeExplain: "Cash available to shareholders after operating expenses, reinvestments, and debt payments. Discounted at the required return on equity.",
         fcffFull: "Free Cash Flow to Firm",
         fcffExplain: "Cash available to all capital providers. Discounted at WACC to get enterprise value, then subtract net debt for equity value.",
-        peFull: "Gordon Growth Model",
-        peExplain: "Theoretical P/E ratio based on payout ratio, growth rate, and required return. Multiplied by EPS for intrinsic value.",
-        pbFull: "Residual Income Model",
-        pbExplain: "Theoretical P/B ratio based on ROE, growth rate, and required return. Multiplied by book value per share for intrinsic value.",
+        peFull: "Sector Comparable Method",
+        peExplain: "Valuation based on Median P/E of top 10 peers in the same sector by market cap. Outliers (P/E < 0 or > 100) are removed.",
+        pbFull: "Sector Comparable Method",
+        pbExplain: "Valuation based on Median P/B of top 10 peers in the same sector by market cap. Outliers (P/B < 0 or > 10) are removed.",
         weightedAverageMethod: "Weighted Average",
         weightedExplain: "Final value is a weighted average of selected models. By default, equal weights are assigned to all selected models.",
 
@@ -490,13 +490,13 @@ const translations = {
         fcffMarketDiff: "Difference vs Market:",
 
         // PE Valuation
-        justifiedPERatio: "Justified P/E Ratio:",
+        justifiedPERatio: "Sector Median P/E:",
         currentEPS: "Current EPS:",
         peShareValue: "Share Value:",
         peMarketDiff: "Difference vs Market:",
 
         // PB Valuation
-        justifiedPBRatio: "Justified P/B Ratio:",
+        justifiedPBRatio: "Sector Median P/B:",
         bookValuePerShare: "Book Value per Share:",
         pbShareValue: "Share Value:",
         pbMarketDiff: "Difference vs Market:",

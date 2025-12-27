@@ -3,6 +3,8 @@
 # ========================================
 backend/
 automation/
+deployment/
+notebooks/
 jobs/
 scripts/
 

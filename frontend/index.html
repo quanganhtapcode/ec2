@@ -60,7 +60,7 @@
         "@type": "WebApplication",
         "name": "Vietnam Stock Valuation Tool",
         "alternateName": ["Công Cụ Định Giá Cổ Phiếu Việt Nam", "VN Stock Valuation", "Vietnam DCF Calculator"],
-        "description": "Free stock valuation tool for Vietnamese stocks. Calculate intrinsic value using DCF (FCFE, FCFF), Justified P/E, P/B models. Analyze VN30, HOSE, HNX stocks.",
+        "description": "Free stock valuation tool for Vietnamese stocks. Calculate intrinsic value using DCF (FCFE, FCFF), Comparable P/E, P/B models. Analyze VN30, HOSE, HNX stocks.",
         "url": "https://valuation.quanganh.org",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Web Browser",
@@ -756,12 +756,12 @@
                             <span class="result-diff" id="fcff-diff">--</span>
                         </div>
                         <div class="result-card" id="pe-card">
-                            <span class="result-title">Justified P/E</span>
+                            <span class="result-title">Comparable P/E</span>
                             <span class="result-value" id="pe-result">--</span>
                             <span class="result-diff" id="pe-diff">--</span>
                         </div>
                         <div class="result-card" id="pb-card">
-                            <span class="result-title">Justified P/B</span>
+                            <span class="result-title">Comparable P/B</span>
                             <span class="result-value" id="pb-result">--</span>
                             <span class="result-diff" id="pb-diff">--</span>
                         </div>
@@ -892,11 +892,11 @@
                                         </div>
                                     </div>
                                     <div class="model-detail-section">
-                                        <h4 data-i18n="justifiedPE">Justified P/E Valuation</h4>
+                                        <h4 data-i18n="justifiedPE">Comparable P/E Valuation</h4>
                                         <div class="summary-table">
                                             <div class="summary-row">
-                                                <span class="summary-label" data-i18n="justifiedPERatio">Justified P/E
-                                                    Ratio:</span>
+                                                <span class="summary-label" data-i18n="justifiedPERatio">Sector Median
+                                                    P/E</span>
                                                 <span class="summary-value" id="pe-justified-ratio">--</span>
                                             </div>
                                             <div class="summary-row">
@@ -915,11 +915,11 @@
                                         </div>
                                     </div>
                                     <div class="model-detail-section">
-                                        <h4 data-i18n="justifiedPB">Justified P/B Valuation</h4>
+                                        <h4 data-i18n="justifiedPB">Comparable P/B Valuation</h4>
                                         <div class="summary-table">
                                             <div class="summary-row">
-                                                <span class="summary-label" data-i18n="justifiedPBRatio">Justified P/B
-                                                    Ratio:</span>
+                                                <span class="summary-label" data-i18n="justifiedPBRatio">Sector Median
+                                                    P/B</span>
                                                 <span class="summary-value" id="pb-justified-ratio">--</span>
                                             </div>
                                             <div class="summary-row">
@@ -1062,149 +1062,157 @@
                 </button>
             </div>
             <div class="modal-body methodology-content">
-                <p class="methodology-intro" data-i18n="methodologyIntro">
-                    This tool uses the following valuation methods to estimate the intrinsic value of stocks:
+                <p class="methodology-intro">
+                    Công cụ này sử dụng 4 phương pháp định giá để ước tính giá trị nội tại của cổ phiếu.
+                    Kết quả cuối cùng là trung bình có trọng số của các mô hình được chọn.
                 </p>
 
-                <div class="methodology-item">
-                    <strong>1. FCFE</strong> (<span data-i18n="fcfeFull">Free Cash Flow to Equity</span>)
-                    <p data-i18n="fcfeExplain">Định giá dựa trên dòng tiền tự do thuộc về cổ đông sau khi trừ các chi
-                        phí vốn và thanh toán nợ.</p>
-
-                    <div class="methodology-formula-box">
-                        <div class="formula-title">Công thức tính FCFE:</div>
-                        <code>FCFE = Net Income + Depreciation + Net Borrowing − ΔWorking Capital − CapEx</code>
-
-                        <div class="formula-components">
-                            <div class="component"><span>Net Income</span>: Lợi nhuận ròng (từ Income Statement)</div>
-                            <div class="component"><span>Depreciation</span>: Khấu hao (từ Cash Flow Statement)</div>
-                            <div class="component"><span>Net Borrowing</span>: Vay ròng = Vay mới − Trả nợ</div>
-                            <div class="component"><span>ΔWorking Capital</span>: Thay đổi vốn lưu động = ΔReceivables +
-                                ΔInventory − ΔPayables</div>
-                            <div class="component"><span>CapEx</span>: Chi tiêu vốn cố định</div>
-                        </div>
-
-                        <div class="formula-title">Định giá theo DCF:</div>
-                        <code>Equity Value = Σ(FCFEₜ / (1+r)ᵗ) + Terminal Value / (1+r)ⁿ</code>
-                        <code>Terminal Value = FCFEₙ × (1+g) / (r − g)</code>
-                        <code>Value per Share = Equity Value / Shares Outstanding</code>
-
-                        <div class="formula-note">
-                            <strong>r</strong> = Cost of Equity (Required Return) | <strong>g</strong> = Terminal Growth
-                            Rate | <strong>n</strong> = Forecast Years
-                        </div>
-                    </div>
-                </div>
-
-                <div class="methodology-item">
-                    <strong>2. FCFF</strong> (<span data-i18n="fcffFull">Free Cash Flow to Firm</span>)
-                    <p data-i18n="fcffExplain">Định giá dựa trên dòng tiền tự do thuộc về toàn bộ doanh nghiệp (cổ đông
-                        + chủ nợ).</p>
-
-                    <div class="methodology-formula-box">
-                        <div class="formula-title">Công thức tính FCFF:</div>
-                        <code>FCFF = EBIT × (1 − Tax Rate) + Depreciation − CapEx − ΔWorking Capital</code>
-
-                        <div class="formula-components">
-                            <div class="component"><span>EBIT</span>: Earnings Before Interest & Tax (từ Income
-                                Statement)</div>
-                            <div class="component"><span>Tax Rate</span>: Thuế suất doanh nghiệp (mặc định 20%)</div>
-                        </div>
-
-                        <div class="formula-title">Định giá theo DCF:</div>
-                        <code>Enterprise Value = Σ(FCFFₜ / (1+WACC)ᵗ) + Terminal Value / (1+WACC)ⁿ</code>
-                        <code>Equity Value = Enterprise Value − Net Debt</code>
-                        <code>Net Debt = Total Debt − Cash</code>
-                        <code>Value per Share = Equity Value / Shares Outstanding</code>
-
-                        <div class="formula-note">
-                            <strong>WACC</strong> = Weighted Average Cost of Capital (chi phí vốn bình quân gia quyền)
-                        </div>
-                    </div>
-                </div>
-
-                <div class="methodology-item">
-                    <strong>3. Justified P/E</strong> (<span data-i18n="peFull">Gordon Growth Model</span>)
-                    <p data-i18n="peExplain">Tính P/E lý thuyết dựa trên mô hình tăng trưởng cổ tức Gordon, sau đó nhân
-                        với EPS.</p>
-
-                    <div class="methodology-formula-box">
-                        <div class="formula-title">Công thức:</div>
-                        <code>Dividend Growth (g) = ROE × Retention Ratio = ROE × (1 − Payout Ratio)</code>
-                        <code>Justified P/E = Payout Ratio × (1 + g) / (r − g)</code>
-                        <code>Value per Share = Justified P/E × Current EPS</code>
-
-                        <div class="formula-components">
-                            <div class="component"><span>ROE</span>: Return on Equity (từ dữ liệu tài chính)</div>
-                            <div class="component"><span>Payout Ratio</span>: Tỷ lệ chi trả cổ tức (người dùng nhập)
-                            </div>
-                            <div class="component"><span>EPS</span>: Earnings Per Share = Net Income / Shares
-                                Outstanding</div>
-                        </div>
-
-                        <div class="formula-note">
-                            Nếu r ≤ g, mô hình không hợp lệ → sử dụng P/E mặc định = 15x
-                        </div>
-                    </div>
-                </div>
-
-                <div class="methodology-item">
-                    <strong>4. Justified P/B</strong> (<span data-i18n="pbFull">Residual Income Model</span>)
-                    <p data-i18n="pbExplain">Tính P/B lý thuyết dựa trên khả năng sinh lời vượt chi phí vốn chủ sở hữu.
+                <!-- Bank Industry Note -->
+                <div class="methodology-note-box"
+                    style="background: #fff8e1; border-left: 4px solid #ffa000; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
+                    <p style="margin: 0; font-weight: 600; color: #e65100;">⚠️ Lưu ý cho ngành Ngân hàng</p>
+                    <p style="margin: 8px 0 0 0; color: #5d4037;">
+                        Các mô hình DCF (FCFE/FCFF) không phù hợp với ngân hàng do cấu trúc vốn đặc thù - nợ là nguyên
+                        liệu kinh doanh, không phải nguồn tài trợ.
+                        Khi định giá ngân hàng, hệ thống tự động chỉ sử dụng P/E và P/B với trọng số 50/50.
                     </p>
-
-                    <div class="methodology-formula-box">
-                        <div class="formula-title">Công thức:</div>
-                        <code>Dividend Growth (g) = ROE × (1 − Payout Ratio)</code>
-                        <code>Justified P/B = (ROE − g) / (r − g)</code>
-                        <code>Value per Share = Justified P/B × Book Value per Share</code>
-
-                        <div class="formula-components">
-                            <div class="component"><span>Book Value per Share</span>: BVPS = Total Equity / Shares
-                                Outstanding</div>
-                            <div class="component"><span>Total Equity</span>: Vốn chủ sở hữu (từ Balance Sheet)</div>
-                        </div>
-
-                        <div class="formula-note">
-                            ROE > r → P/B > 1 (cổ phiếu có giá trị cao hơn giá trị sổ sách)
-                        </div>
-                    </div>
                 </div>
 
+                <!-- FCFE -->
                 <div class="methodology-item">
-                    <strong>5. <span data-i18n="weightedAverageMethod">Weighted Average</span></strong>
-                    <p data-i18n="weightedExplain">Giá trị cuối cùng là trung bình có trọng số của các mô hình được
-                        chọn.</p>
+                    <h4>1. FCFE - Free Cash Flow to Equity</h4>
+                    <p>Dòng tiền tự do thuộc về cổ đông sau khi trừ chi phí hoạt động, tái đầu tư và thanh toán nợ.</p>
 
                     <div class="methodology-formula-box">
-                        <div class="formula-title">Công thức:</div>
-                        <code>Target Price = Σ(Model Valueᵢ × Weightᵢ) / Σ(Weightᵢ)</code>
+                        <p><strong>Công thức tính FCFE:</strong></p>
+                        <code>FCFE = Lợi nhuận ròng + Khấu hao + Vay ròng − Thay đổi vốn lưu động + CapEx</code>
 
-                        <div class="formula-note">
-                            Mặc định: Mỗi mô hình có trọng số 25%. Người dùng có thể điều chỉnh trọng số theo đánh giá
-                            riêng.
-                        </div>
+                        <p style="margin-top: 12px;"><strong>Trong đó:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>Lợi nhuận ròng: Net Profit For the Year (Income Statement)</li>
+                            <li>Khấu hao: Depreciation and Amortisation (Cash Flow Statement)</li>
+                            <li>Vay ròng = Proceeds from Borrowings + Repayment of Borrowings</li>
+                            <li>Thay đổi vốn lưu động = ΔReceivables + ΔInventory − ΔPayables</li>
+                            <li>CapEx = Purchase of Fixed Assets + Proceeds from Disposal</li>
+                        </ul>
+
+                        <p style="margin-top: 12px;"><strong>Định giá:</strong></p>
+                        <code>Equity Value = Σ(FCFE dự phóng / (1+r)^t) + Terminal Value / (1+r)^n</code>
+                        <code>Terminal Value = FCFE năm cuối × (1+g) / (r−g)</code>
+                        <code>Giá trị mỗi CP = Equity Value / Số CP lưu hành</code>
+
+                        <p style="margin-top: 8px; font-size: 13px; color: #666;">
+                            r = Cost of Equity (Required Return) &nbsp;|&nbsp; g = Terminal Growth Rate &nbsp;|&nbsp; n
+                            = Số năm dự phóng
+                        </p>
                     </div>
                 </div>
 
-                <div class="methodology-item data-sources">
-                    <strong>📊 Nguồn dữ liệu</strong>
-                    <div class="data-source-list">
-                        <div class="source-item">• <strong>Báo cáo tài chính</strong>: VCI (nguồn chính), TCBS (dự
-                            phòng)</div>
-                        <div class="source-item">• <strong>Giá thời gian thực</strong>: VCI Trading API</div>
-                        <div class="source-item">• <strong>Thông tin công ty</strong>: VCI Company Profile</div>
-                        <div class="source-item">• <strong>Tin tức & sự kiện</strong>: TCBS, CafeF</div>
+                <!-- FCFF -->
+                <div class="methodology-item">
+                    <h4>2. FCFF - Free Cash Flow to Firm</h4>
+                    <p>Dòng tiền tự do thuộc về toàn bộ doanh nghiệp (cả cổ đông và chủ nợ).</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức tính FCFF:</strong></p>
+                        <code>FCFF = Lợi nhuận ròng + Khấu hao + Chi phí lãi vay×(1−T) − Thay đổi vốn lưu động + CapEx</code>
+
+                        <p style="margin-top: 12px;"><strong>Trong đó:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>Chi phí lãi vay×(1−T): Cộng lại vì FCFF thuộc về cả chủ nợ</li>
+                            <li>T = Tax Rate (mặc định 20%)</li>
+                        </ul>
+
+                        <p style="margin-top: 12px;"><strong>Định giá:</strong></p>
+                        <code>Enterprise Value = Σ(FCFF dự phóng / (1+WACC)^t) + Terminal Value / (1+WACC)^n</code>
+                        <code>Equity Value = Enterprise Value − Nợ vay ngắn hạn − Nợ vay dài hạn + Tiền mặt</code>
+                        <code>Giá trị mỗi CP = Equity Value / Số CP lưu hành</code>
+
+                        <p style="margin-top: 8px; font-size: 13px; color: #666;">
+                            WACC = Weighted Average Cost of Capital (chi phí vốn bình quân gia quyền)
+                        </p>
                     </div>
                 </div>
 
-                <div class="methodology-disclaimer">
-                    <span data-i18n="methodologyDisclaimer">
-                        ⚠️ Lưu ý: Các định giá này dựa trên dữ liệu lịch sử và giả định do người dùng xác định.
+                <!-- P/E Comparable -->
+                <div class="methodology-item">
+                    <h4>3. P/E Comparable - So sánh ngành</h4>
+                    <p>Định giá dựa trên Median P/E của top 10 công ty cùng ngành theo vốn hóa thị trường.</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức:</strong></p>
+                        <code>Median P/E = Median(P/E của top 10 peers cùng ngành)</code>
+                        <code>Giá trị mỗi CP = Median P/E × EPS hiện tại</code>
+
+                        <p style="margin-top: 12px;"><strong>Chi tiết:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>Peers: Top 10 công ty cùng ngành (ICB Level 2) theo Market Cap</li>
+                            <li>EPS: Earnings Per Share từ dữ liệu tài chính gần nhất</li>
+                            <li>Outlier Removal: Loại bỏ P/E &lt; 0 hoặc P/E &gt; 100 trước khi tính median</li>
+                            <li>Fallback: Nếu không tìm được peers → P/E = 15x (trung bình thị trường)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- P/B Comparable -->
+                <div class="methodology-item">
+                    <h4>4. P/B Comparable - So sánh ngành</h4>
+                    <p>Định giá dựa trên Median P/B của top 10 công ty cùng ngành theo vốn hóa thị trường.</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức:</strong></p>
+                        <code>Median P/B = Median(P/B của top 10 peers cùng ngành)</code>
+                        <code>Giá trị mỗi CP = Median P/B × BVPS</code>
+
+                        <p style="margin-top: 12px;"><strong>Chi tiết:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>BVPS = Book Value Per Share = Vốn chủ sở hữu / Số CP lưu hành</li>
+                            <li>Outlier Removal: Loại bỏ P/B &lt; 0 hoặc P/B &gt; 10 trước khi tính median</li>
+                            <li>Fallback: Nếu không tìm được peers → P/B = 1.5x (trung bình thị trường)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Weighted Average -->
+                <div class="methodology-item">
+                    <h4>5. Trung bình có trọng số</h4>
+                    <p>Giá trị cuối cùng là trung bình có trọng số của các mô hình được chọn.</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức:</strong></p>
+                        <code>Giá mục tiêu = Σ(Giá trị mô hình × Trọng số) / Σ(Trọng số)</code>
+
+                        <p style="margin-top: 12px;"><strong>Trọng số mặc định:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>Doanh nghiệp thường: FCFE 25% + FCFF 25% + P/E 25% + P/B 25%</li>
+                            <li>Ngân hàng: P/E 50% + P/B 50% (FCFE và FCFF tự động bị loại)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Data Sources -->
+                <div class="methodology-item" style="background: #f5f5f5; padding: 16px; border-radius: 8px;">
+                    <h4 style="margin-top: 0;">📊 Nguồn dữ liệu</h4>
+                    <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                        <li><strong>Báo cáo tài chính:</strong> VCI (VietCap) - Income Statement, Balance Sheet, Cash
+                            Flow</li>
+                        <li><strong>Giá thời gian thực:</strong> VCI Trading API</li>
+                        <li><strong>Thông tin công ty:</strong> VCI Company Profile</li>
+                        <li><strong>Sector Peers:</strong> vnstock Screener API (cập nhật hàng ngày)</li>
+                        <li><strong>Tin tức:</strong> CafeF News API</li>
+                    </ul>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="methodology-disclaimer"
+                    style="background: #fff3e0; padding: 16px; border-radius: 8px; margin-top: 20px;">
+                    <p style="margin: 0; color: #e65100;">
+                        <strong>⚠️ Lưu ý quan trọng:</strong> Các định giá này dựa trên dữ liệu lịch sử và giả định do
+                        người dùng xác định.
                         Chúng nên được sử dụng như một trong nhiều công cụ phân tích đầu tư, không phải là tiêu chí ra
                         quyết định duy nhất.
                         Luôn thực hiện nghiên cứu độc lập và tham khảo ý kiến chuyên gia tài chính trước khi đầu tư.
-                    </span>
+                    </p>
                 </div>
             </div>
         </div>

@@ -1,67 +1,117 @@
-# Vietnam Stock Valuation Tool
+# 🇻🇳 Vietnam Stock Valuation Tool
 
-Ứng dụng định giá cổ phiếu Việt Nam đơn giản và hiệu quả. Tự động tính toán các chỉ số FCFE, FCFF, P/E, P/B và đưa ra khuyến nghị đầu tư.
+Ứng dụng định giá cổ phiếu Việt Nam - tự động tính toán giá trị nội tại dựa trên các phương pháp FCFE, FCFF, P/E, P/B.
+
+🌐 **Website:** [valuation.quanganh.org](https://valuation.quanganh.org)
+
+---
 
 ## 🚀 Tính năng chính
 
-*   **Định giá tự động:** Nhập mã cổ phiếu (ví dụ: VCB, HPG), app tự tính giá trị thực.
-*   **Dữ liệu Real-time:** Kết nối trực tiếp với thị trường chứng khoán Việt Nam.
-*   **Biểu đồ trực quan:** Xem xu hướng tài chính và biến động giá.
-*   **Khuyến nghị:** Mua/Bán/Giữ dựa trên biên an toàn 15%.
+| Tính năng | Mô tả |
+|-----------|-------|
+| **Định giá tự động** | Nhập mã cổ phiếu → Tính giá trị thực (FCFE, FCFF, P/E, P/B) |
+| **Dữ liệu Real-time** | Kết nối vnstock API, giá cập nhật liên tục |
+| **Sector Comparable** | So sánh P/E, P/B với top 10 công ty cùng ngành |
+| **Biểu đồ TradingView** | Xem biến động giá, volume, chỉ báo kỹ thuật |
+| **Export Excel** | Tải báo cáo định giá chi tiết |
+| **Khuyến nghị** | Mua/Bán/Giữ dựa trên margin of safety 15% |
 
-## 🛠️ Hướng dẫn cài đặt & Chạy Local
+---
 
-### 1. Backend (Python)
-Cài đặt thư viện và chạy server định giá:
+## � Cấu trúc Project
 
+```
+Valuation/
+├── frontend/           # Giao diện web (HTML/CSS/JS)
+├── backend/            # API Flask + Valuation Models
+│   ├── server.py       # Main API server
+│   ├── models.py       # FCFE, FCFF, P/E, P/B calculations
+│   └── r2_client.py    # Cloudflare R2 storage client
+├── automation/         # Scripts tự động hóa
+│   ├── deploy.ps1      # Deploy code lên GitHub + VPS
+│   ├── update_excel_data.py    # Cập nhật Excel → R2
+│   ├── update_json_data.py     # Cập nhật stock JSON data
+│   └── update_peers.py         # Cập nhật sector peers
+├── data/               # Excel files (local backup)
+├── stocks/             # Stock JSON data
+├── docs/               # Tài liệu hướng dẫn
+├── .env                # R2 credentials (gitignored)
+├── requirements.txt    # Python dependencies
+└── stock_list.json     # Danh sách mã cổ phiếu
+```
+
+---
+
+## 🛠️ Cài đặt Local
+
+### 1. Clone & Setup
 ```bash
-# Vào thư mục
-cd C:\Users\PC\Downloads\Valuation
+git clone https://github.com/quanganhtapcode/ec2.git
+cd ec2
 
-# Cài đặt thư viện (chỉ làm lần đầu)
-pip install flask flask-cors vnstock pandas numpy requests
+# Tạo virtual environment
+python -m venv venv
+.\venv\Scripts\Activate.ps1  # Windows
+source venv/bin/activate     # Linux/Mac
 
-# Chạy server
+# Cài đặt dependencies
+pip install -r requirements.txt
+```
+
+### 2. Chạy Backend
+```bash
 python backend/server.py
 ```
-*Server sẽ chạy tại: `http://localhost:5000`*
+Server chạy tại: `http://localhost:5000`
 
-### 2. Frontend (Giao diện)
-Đơn giản là mở file `frontend/index.html` bằng trình duyệt (hoặc dùng Live Server trong VS Code).
+### 3. Chạy Frontend
+Mở `frontend/index.html` bằng browser hoặc dùng Live Server (VS Code).
 
 ---
 
-## ☁️ Quản lý VPS & Deploy (Dành cho Admin)
+## ☁️ Cloud Storage (Cloudflare R2)
 
-Chúng tôi cung cấp 2 công cụ (script) tự động hóa mọi việc. Bạn không cần nhớ lệnh phức tạp.
+Excel files được lưu trên **Cloudflare R2** thay vì VPS để:
+- ✅ Giảm tải VPS
+- ✅ Tốc độ download nhanh hơn (CDN)
+- ✅ Tiết kiệm dung lượng VPS
 
-### 1. Deploy Code Mới (`scripts/deploy.ps1`)
-Dùng khi bạn vừa sửa code backend/frontend xong và muốn đưa lên VPS.
+Chi tiết: [docs/STORAGE.md](docs/STORAGE.md)
 
+---
+
+## 📚 Tài liệu
+
+| Tài liệu | Nội dung |
+|----------|----------|
+| [docs/DEPLOY.md](docs/DEPLOY.md) | Hướng dẫn deploy code lên VPS |
+| [docs/STORAGE.md](docs/STORAGE.md) | Cấu hình Cloudflare R2 storage |
+| [docs/AUTOMATION.md](docs/AUTOMATION.md) | Scripts tự động hóa |
+
+---
+
+## 🔧 Dành cho Admin
+
+### Deploy code mới
 ```powershell
-.\scripts\deploy.ps1
+.\automation\deploy.ps1 -CommitMessage "Mô tả thay đổi"
 ```
-*Script sẽ tự động:*
-*   Commit code lên GitHub.
-*   Upload file thay đổi lên VPS.
-*   Khởi động lại server.
 
-### 2. Quản lý & Sửa Lỗi VPS (`scripts/manage_vps.ps1`)
-Dùng khi:
-*   Web bị lỗi 502, không vào được.
-*   Muốn xem server đang chạy thế nào.
-*   Cài đặt lại toàn bộ cấu hình server (Option "Fix Service").
-
+### Cập nhật dữ liệu
 ```powershell
-.\scripts\manage_vps.ps1
+# Cập nhật Excel (upload lên R2)
+python automation/update_excel_data.py
+
+# Cập nhật JSON data
+python automation/update_json_data.py
+
+# Cập nhật sector peers
+python automation/update_peers.py
 ```
-*Chọn các số 1, 2, 3... tương ứng trên menu để thực hiện.*
 
 ---
 
-## 📚 Tài liệu chi tiết
-*   [Hướng dẫn Deploy chi tiết](docs/deploy-guide.md)
-*   [Update cấu hình VPS](docs/UPDATE_VPS.md)
+## � License
 
----
-© 2025 quanganhdeptrai.
+MIT License - © 2025 Quang Anh

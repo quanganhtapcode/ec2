@@ -334,11 +334,11 @@ class ReportGenerator {
 
         const pe = valuationResults.justified_pe;
         const peDiff = ((pe.shareValue - currentPrice) / currentPrice * 100).toFixed(1);
-        csv.push(`Justified P/E${SEP}${pe.shareValue.toLocaleString('vi-VN')}${SEP}${modelWeights.justified_pe}%${SEP}${peDiff}%`);
+        csv.push(`Comparable P/E${SEP}${pe.shareValue.toLocaleString('vi-VN')}${SEP}${modelWeights.justified_pe}%${SEP}${peDiff}%`);
 
         const pb = valuationResults.justified_pb;
         const pbDiff = ((pb.shareValue - currentPrice) / currentPrice * 100).toFixed(1);
-        csv.push(`Justified P/B${SEP}${pb.shareValue.toLocaleString('vi-VN')}${SEP}${modelWeights.justified_pb}%${SEP}${pbDiff}%`);
+        csv.push(`Comparable P/B${SEP}${pb.shareValue.toLocaleString('vi-VN')}${SEP}${modelWeights.justified_pb}%${SEP}${pbDiff}%`);
 
         csv.push('───────────────────────────────────────────────────────────────────────────────');
         csv.push(`>>> ${t.weightedAverageTargetPrice || 'WEIGHTED TARGET PRICE'}${SEP}${weightedValue.toLocaleString('vi-VN')} VND${SEP}${SEP}${upside >= 0 ? '+' : ''}${upside.toFixed(2)}%`);
@@ -385,24 +385,24 @@ class ReportGenerator {
         csv.push('');
 
         // 4.3 P/E
-        csv.push('4.3 Justified P/E Valuation');
+        csv.push('4.3 Comparable P/E Valuation (Sector Comparable)');
         csv.push(`Description${SEP}Value`);
         csv.push(`Current EPS${SEP}${(stockData.eps_ttm || stockData.eps)?.toLocaleString('vi-VN')} VND`);
-        csv.push(`Justified P/E Ratio${SEP}${pe.ratio?.toFixed(2)}x`);
+        csv.push(`Sector Median P/E${SEP}${pe.ratio?.toFixed(2)}x`);
         csv.push(`= Fair Value per Share${SEP}${pe.shareValue.toLocaleString('vi-VN')} VND`);
-        csv.push(`Formula${SEP}Justified P/E = Payout × (1+g) / (r-g)`);
+        csv.push(`Formula${SEP}Fair Value = Median P/E × Current EPS`);
         csv.push(`Payout Ratio${SEP}${(assumptions.payoutRatio || 40)}%`);
         csv.push(`Growth Rate (g)${SEP}${assumptions.revenueGrowth}%`);
         csv.push(`Required Return (r)${SEP}${assumptions.requiredReturn}%`);
         csv.push('');
 
         // 4.4 P/B
-        csv.push('4.4 Justified P/B Valuation');
+        csv.push('4.4 Comparable P/B Valuation (Sector Comparable)');
         csv.push(`Description${SEP}Value`);
         csv.push(`Book Value per Share${SEP}${(stockData.bvps || stockData.book_value_per_share)?.toLocaleString('vi-VN')} VND`);
-        csv.push(`Justified P/B Ratio${SEP}${pb.ratio?.toFixed(2)}x`);
+        csv.push(`Sector Median P/B${SEP}${pb.ratio?.toFixed(2)}x`);
         csv.push(`= Fair Value per Share${SEP}${pb.shareValue.toLocaleString('vi-VN')} VND`);
-        csv.push(`Formula${SEP}Justified P/B = ROE × Payout × (1+g) / (r-g)`);
+        csv.push(`Formula${SEP}Fair Value = Median P/B × Book Value per Share`);
         csv.push(`ROE${SEP}${stockData.roe?.toFixed(2)}%`);
         csv.push('');
 
