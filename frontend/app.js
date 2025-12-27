@@ -84,6 +84,32 @@ class StockValuationApp {
 
         // Setup visibility change listener for auto-refresh
         this.setupVisibilityListener();
+
+        // Auto-load symbol from URL query parameter (for SEO and sharing)
+        this.loadSymbolFromURL();
+    }
+
+    /**
+     * Load stock symbol from URL query parameter
+     * This enables deep linking and helps SEO by making ?symbol=VCB URLs indexable
+     */
+    loadSymbolFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const symbol = urlParams.get('symbol');
+
+        if (symbol && /^[A-Z0-9]{1,10}$/i.test(symbol)) {
+            const upperSymbol = symbol.toUpperCase();
+            // Set the input value
+            const symbolInput = document.getElementById('stock-symbol');
+            if (symbolInput) {
+                symbolInput.value = upperSymbol;
+            }
+
+            // Delay loading to ensure all components are initialized
+            setTimeout(() => {
+                this.loadStockData();
+            }, 100);
+        }
     }
 
     setupEventListeners() {
@@ -413,7 +439,56 @@ class StockValuationApp {
 
     }
 
+    /**
+     * Update SEO meta tags dynamically when a stock is loaded
+     * This helps fix duplicate content issues in Google Search Console
+     */
+    updateSEOMetaTags(symbol, stockData) {
+        const baseUrl = 'https://valuation.quanganh.org';
+        const companyName = stockData?.name || symbol;
 
+        // Update canonical URL to include symbol parameter
+        const canonicalUrl = symbol ? `${baseUrl}/?symbol=${symbol}` : baseUrl + '/';
+        const canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) {
+            canonicalLink.href = canonicalUrl;
+        }
+
+        // Update page title
+        if (symbol && companyName) {
+            document.title = `Định giá ${symbol} - ${companyName} | Stock Valuation Vietnam`;
+        } else {
+            document.title = 'Định Giá Cổ Phiếu Việt Nam Miễn Phí | Vietnam Stock Valuation Tool - DCF, P/E, P/B';
+        }
+
+        // Update meta description
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription && symbol) {
+            metaDescription.content = `Định giá cổ phiếu ${symbol} (${companyName}) miễn phí. Tính giá trị nội tại với DCF, P/E, P/B. Phân tích tài chính chi tiết. Free ${symbol} stock valuation.`;
+        }
+
+        // Update Open Graph tags
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) {
+            ogUrl.content = canonicalUrl;
+        }
+
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle && symbol) {
+            ogTitle.content = `Định giá ${symbol} - ${companyName} | Vietnam Stock Valuation`;
+        }
+
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        if (ogDescription && symbol) {
+            ogDescription.content = `Định giá cổ phiếu ${symbol} (${companyName}) miễn phí với mô hình DCF, P/E, P/B. Free valuation tool.`;
+        }
+
+        // Update URL in browser without reload (for sharing)
+        if (symbol && window.history.pushState) {
+            const newUrl = `${window.location.pathname}?symbol=${symbol}`;
+            window.history.replaceState({ symbol: symbol }, document.title, newUrl);
+        }
+    }
 
     switchTab(tabName) {
         document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -647,6 +722,9 @@ class StockValuationApp {
             }
 
             this.updateOverviewDisplay(this.stockData);
+
+            // Update SEO meta tags for the loaded stock
+            this.updateSEOMetaTags(symbol, this.stockData);
 
             // Removed: showStatus success toast - loading indicator already shows completion
 

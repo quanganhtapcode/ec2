@@ -4,27 +4,33 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
+Allow: /?symbol=*
 
-# Allow Google to crawl everything important
+# Allow Google to crawl everything for proper rendering
 User-agent: Googlebot
 Allow: /
+Allow: /css/
+Allow: /js/
 Allow: /?symbol=*
 
 # Allow Bing
 User-agent: Bingbot
 Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /?symbol=*
 
 # Disallow backend/API paths (not useful for SEO)
 Disallow: /api/
 Disallow: /backend/
-Disallow: /js/
-Disallow: /css/
 Disallow: /*.json$
 
-# Allow favicon and images for rich results
+# Allow favicon, images and static assets for rich results
 Allow: /favicon*
 Allow: /og-image.png
 Allow: /apple-touch-icon.png
+Allow: /css/*.css$
+Allow: /js/*.js$
 
 # Crawl-delay to be nice to the server
 Crawl-delay: 1
