@@ -681,16 +681,14 @@ class OverviewAutocomplete {
         }
         const query = this.input.value.trim().toUpperCase();
         this.dropdown.innerHTML = results.map((t, i) => `
-            <div class="ticker-item ${i === this.selectedIndex ? 'selected' : ''}" 
-                 data-symbol="${t.symbol}"
-                 style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; cursor: pointer; border-bottom: 1px solid #f0f0f0; transition: background 0.15s;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <span style="font-weight: 600; color: #1a1a1a; font-size: 14px;">${this.highlight(t.symbol, query)}</span>
-                    <span style="font-size: 11px; color: #999; background: #f5f5f5; padding: 2px 6px; border-radius: 4px;">${t.exchange || ''}</span>
+            <div class="ticker-item ${i === this.selectedIndex ? 'selected' : ''}" data-symbol="${t.symbol}">
+                <div class="ticker-item-left">
+                    <span class="ticker-symbol">${this.highlight(t.symbol, query)}</span>
+                    <span class="ticker-name">${t.name || ''}</span>
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 13px; color: #666; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${t.name || ''}</div>
-                    ${t.sector ? `<div style="font-size: 11px; color: #999;">${t.sector}</div>` : ''}
+                <div class="ticker-item-right">
+                    <span class="ticker-exchange">${t.exchange || ''}</span>
+                    ${t.sector ? `<span class="ticker-sector">${t.sector}</span>` : ''}
                 </div>
             </div>
         `).join('');

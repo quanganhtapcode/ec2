@@ -156,52 +156,66 @@
 /* Mobile responsive styles */
 @media (max-width: 768px) {
     .ticker-dropdown {
-        position: fixed !important;
-        top: auto !important;
-        left: 16px !important;
-        right: 16px !important;
-        width: calc(100% - 32px) !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
         border-radius: 12px;
-        max-height: 60vh;
+        max-height: 50vh;
         margin-top: 8px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
     }
 
     .ticker-item {
-        padding: 14px 16px;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        text-align: center;
+        padding: 12px 14px;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        justify-content: space-between !important;
+        gap: 12px;
+        text-align: left;
     }
 
     .ticker-item-left {
-        width: 100%;
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        flex: 1;
+        min-width: 0;
     }
 
     .ticker-item-right {
-        align-items: center;
-        text-align: center;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end !important;
+        text-align: right !important;
+        gap: 2px;
+        flex-shrink: 0;
     }
 
     .ticker-symbol {
-        font-size: 16px;
+        font-size: 15px;
+        font-weight: 700;
     }
 
     .ticker-name {
-        font-size: 13px;
-        white-space: normal;
-        max-width: 90%;
-    }
-
-    .ticker-sector {
-        font-size: 11px;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+        color: #666;
     }
 
     .ticker-exchange {
         font-size: 10px;
+        padding: 2px 6px;
+    }
+
+    .ticker-sector {
+        font-size: 10px;
+        color: #999;
     }
 }
 
