@@ -99,9 +99,10 @@ body {
 }
 
 .change-value {
-    font-size: 12px;
-    color: #999;
-    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-top: 4px;
 }
 
 .index-chart {

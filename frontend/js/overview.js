@@ -96,6 +96,20 @@ async function loadAllIndicesWithCharts() {
             // Load sparkline chart for this index
             loadIndexChart(indexId, info.id, isUp);
         }
+
+        // Update fetch time display for indices
+        const indicesFetchTimeEl = document.getElementById('indices-fetch-time');
+        if (indicesFetchTimeEl) {
+            const now = new Date();
+            indicesFetchTimeEl.textContent = `📅 Cập nhật lúc: ${now.toLocaleString('vi-VN', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            })}`;
+        }
     } catch (error) {
         console.error('Error loading indices:', error);
     }
