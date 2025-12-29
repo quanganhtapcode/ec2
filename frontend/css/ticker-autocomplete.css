@@ -156,36 +156,51 @@
 /* Mobile responsive styles */
 @media (max-width: 768px) {
     .ticker-dropdown {
-        border-radius: 8px;
+        position: fixed !important;
+        top: auto !important;
+        left: 16px !important;
+        right: 16px !important;
+        width: calc(100% - 32px) !important;
+        border-radius: 12px;
         max-height: 60vh;
+        margin-top: 8px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .ticker-item {
-        padding: 10px 12px;
+        padding: 14px 16px;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
+        align-items: center;
+        gap: 6px;
+        text-align: center;
     }
 
     .ticker-item-left {
         width: 100%;
+        justify-content: center;
     }
 
     .ticker-item-right {
-        align-items: flex-start;
-        text-align: left;
+        align-items: center;
+        text-align: center;
         width: 100%;
     }
 
     .ticker-symbol {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .ticker-name {
-        font-size: 12px;
+        font-size: 13px;
+        white-space: normal;
+        max-width: 90%;
     }
 
     .ticker-sector {
+        font-size: 11px;
+    }
+
+    .ticker-exchange {
         font-size: 10px;
     }
 }
