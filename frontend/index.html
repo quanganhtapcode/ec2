@@ -933,6 +933,12 @@
             setupTimeRangeButtons();
             loadPEChart();
 
+            // Auto-refresh realtime data every 30 seconds
+            setInterval(() => {
+                loadAllIndicesWithCharts();
+                console.log('📊 Refreshed market data at', new Date().toLocaleTimeString('vi-VN'));
+            }, 30000); // 30 seconds
+
             // Search functionality - use correct ID
             const searchInput = document.getElementById('symbol-search');
             if (searchInput) {
