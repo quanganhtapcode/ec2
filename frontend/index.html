@@ -520,12 +520,17 @@
 
         @media (max-width: 768px) {
 
-            /* Reduce main content padding on mobile */
+            /* Reduce main content padding on mobile - small margin for breathing room */
             .main-content {
-                padding: 0 !important;
+                padding: 16px !important;
                 padding-top: 60px !important;
-                /* Smaller top padding on mobile */
-                gap: 6px;
+                gap: 8px;
+                margin: 0 !important;
+            }
+
+            .left-column {
+                padding: 0 !important;
+                margin: 0 !important;
             }
 
             .header-inner {
@@ -538,11 +543,12 @@
                 max-width: none;
             }
 
-            /* Force 2 columns for indices on mobile (Perplexity style) */
+            /* Force 2 columns for indices on mobile */
             .indices-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 6px;
-                /* Even smaller gap on mobile */
+                gap: 4px;
+                margin: 0 0 8px 0 !important;
+                padding: 0 !important;
             }
 
             .index-card {
