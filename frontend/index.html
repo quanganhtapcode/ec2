@@ -268,58 +268,21 @@
             <div class="sidebar-section">
                 <div class="sidebar-title">
                     ⭐ Watchlist
-                    <span style="font-size: 12px; color: #999;">Thêm mã</span>
+                    <span id="watchlist-count" style="font-size: 12px; color: #999;">0 mã</span>
+                </div>
+                <!-- Add stock input -->
+                <div class="watchlist-add" style="margin-bottom: 12px;">
+                    <input type="text" id="watchlist-input" placeholder="Nhập mã cổ phiếu..."
+                        style="width: 100%; padding: 8px 12px; border: 1px solid #e5e5e5; border-radius: 8px; font-size: 13px; outline: none;"
+                        autocomplete="off">
                 </div>
                 <div id="watchlist">
-                    <div class="watchlist-item" onclick="location.href='?symbol=VCB'">
-                        <div class="stock-icon">VCB</div>
-                        <div class="stock-info">
-                            <div class="stock-name">Vietcombank</div>
-                            <div class="stock-symbol-small">VCB · HOSE</div>
-                        </div>
-                        <div class="stock-price-info">
-                            <div class="stock-price">57,100</div>
-                            <div class="stock-change-small positive">+0.35%</div>
-                        </div>
-                    </div>
-                    <div class="watchlist-item" onclick="location.href='?symbol=FPT'">
-                        <div class="stock-icon">FPT</div>
-                        <div class="stock-info">
-                            <div class="stock-name">FPT Corporation</div>
-                            <div class="stock-symbol-small">FPT · HOSE</div>
-                        </div>
-                        <div class="stock-price-info">
-                            <div class="stock-price">92,500</div>
-                            <div class="stock-change-small negative">-0.54%</div>
-                        </div>
-                    </div>
-                    <div class="watchlist-item" onclick="location.href='?symbol=VNM'">
-                        <div class="stock-icon">VNM</div>
-                        <div class="stock-info">
-                            <div class="stock-name">Vinamilk</div>
-                            <div class="stock-symbol-small">VNM · HOSE</div>
-                        </div>
-                        <div class="stock-price-info">
-                            <div class="stock-price">72,300</div>
-                            <div class="stock-change-small positive">+1.12%</div>
-                        </div>
-                    </div>
-                    <div class="watchlist-item" onclick="location.href='?symbol=HPG'">
-                        <div class="stock-icon">HPG</div>
-                        <div class="stock-info">
-                            <div class="stock-name">Hòa Phát</div>
-                            <div class="stock-symbol-small">HPG · HOSE</div>
-                        </div>
-                        <div class="stock-price-info">
-                            <div class="stock-price">26,900</div>
-                            <div class="stock-change-small positive">+2.48%</div>
-                        </div>
-                    </div>
+                    <!-- Watchlist items will be rendered by JavaScript -->
                 </div>
         </aside>
     </main>
 
-    <script src="js/overview.js?v=4"></script>
+    <script src="js/overview.js?v=7"></script>
 </body>
 
 </html>

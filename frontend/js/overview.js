@@ -28,6 +28,36 @@ const INDEX_MAP = {
     '11': { id: 'vn30', name: 'VN30' }
 };
 
+// ============ STOCK LOGO HELPER ============
+// Logos are served from Cloudflare R2 (CDN cached, 64x64 optimized)
+// Fallback: If R2 fails, show text abbreviation
+const LOGO_BASE_URL = 'https://pub-b8489c273ce541b8a7472ac801083222.r2.dev/logos/';
+
+/**
+ * Generate HTML for stock logo with image fallback to text
+ * @param {string} symbol - Stock symbol (e.g., VCB, FPT)
+ * @param {string} bgColor - Optional background color for fallback (default: gradient)
+ * @param {string} textColor - Optional text color for fallback
+ * @returns {string} HTML string for logo container
+ */
+function getStockLogoHtml(symbol, bgColor = null, textColor = null) {
+    const fallbackStyle = bgColor
+        ? `background: ${bgColor}; color: ${textColor || '#666'};`
+        : 'background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); color: #0369a1;';
+
+    return `
+        <div class="stock-logo-wrapper" style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+            <img src="${LOGO_BASE_URL}${symbol}.jpg" alt="${symbol}" 
+                style="width: 100%; height: 100%; object-fit: cover;"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="stock-logo-fallback" style="display: none; width: 100%; height: 100%; ${fallbackStyle} align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">
+                ${symbol.slice(0, 3)}
+            </div>
+        </div>
+    `;
+}
+
+
 // ============ INITIALIZATION ============
 document.addEventListener('DOMContentLoaded', function () {
     // Load data first (most important)
@@ -332,7 +362,7 @@ async function loadTopMovers(type) {
 
             return `
                 <div class="mover-item" onclick="location.href='?symbol=${item.Symbol}'">
-                    <div class="mover-icon">${item.Symbol.slice(0, 3)}</div>
+                    ${getStockLogoHtml(item.Symbol)}
                     <div class="mover-info">
                         <div class="mover-name">${companyNameDisplay}</div>
                         <div class="mover-symbol">${item.Symbol} · ${exchange}</div>
@@ -394,7 +424,7 @@ async function loadForeignFlows(type) {
 
             return `
                 <div class="mover-item" onclick="location.href='?symbol=${item.Symbol}'">
-                    <div class="mover-icon" style="background:${iconBg}; color:${iconColor}">${item.Symbol.slice(0, 3)}</div>
+                    ${getStockLogoHtml(item.Symbol, iconBg, iconColor)}
                     <div class="mover-info">
                         <div class="mover-name">${companyNameDisplay}</div>
                         <div class="mover-symbol">${item.Symbol} · ${exchange}</div>
@@ -756,3 +786,177 @@ const symbolSearchInput = document.getElementById('symbol-search');
 if (symbolSearchInput) {
     new OverviewAutocomplete(symbolSearchInput);
 }
+
+// ============ WATCHLIST MANAGEMENT ============
+const WATCHLIST_KEY = 'stock_watchlist';
+const DEFAULT_WATCHLIST = ['VCB', 'FPT', 'VNM', 'HPG'];
+
+// Get watchlist from localStorage
+function getWatchlist() {
+    try {
+        const saved = localStorage.getItem(WATCHLIST_KEY);
+        if (saved) {
+            return JSON.parse(saved);
+        }
+    } catch (e) {
+        console.error('Error reading watchlist:', e);
+    }
+    // Return default watchlist if none saved
+    return [...DEFAULT_WATCHLIST];
+}
+
+// Save watchlist to localStorage
+function saveWatchlist(symbols) {
+    try {
+        localStorage.setItem(WATCHLIST_KEY, JSON.stringify(symbols));
+    } catch (e) {
+        console.error('Error saving watchlist:', e);
+    }
+}
+
+// Add symbol to watchlist
+function addToWatchlist(symbol) {
+    const watchlist = getWatchlist();
+    const upperSymbol = symbol.toUpperCase().trim();
+    if (!upperSymbol) return false;
+    if (watchlist.includes(upperSymbol)) {
+        console.log(`${upperSymbol} already in watchlist`);
+        return false;
+    }
+    watchlist.unshift(upperSymbol); // Add to beginning
+    saveWatchlist(watchlist);
+    loadWatchlist(); // Reload UI
+    return true;
+}
+
+// Remove symbol from watchlist
+function removeFromWatchlist(symbol) {
+    const watchlist = getWatchlist();
+    const index = watchlist.indexOf(symbol.toUpperCase());
+    if (index > -1) {
+        watchlist.splice(index, 1);
+        saveWatchlist(watchlist);
+        loadWatchlist(); // Reload UI
+        return true;
+    }
+    return false;
+}
+
+// Load and render watchlist
+async function loadWatchlist() {
+    const container = document.getElementById('watchlist');
+    const countEl = document.getElementById('watchlist-count');
+    const watchlist = getWatchlist();
+
+    if (countEl) {
+        countEl.textContent = `${watchlist.length} mã`;
+    }
+
+    if (watchlist.length === 0) {
+        container.innerHTML = '<div style="text-align: center; padding: 20px; color: #999; font-size: 13px;">Chưa có mã nào trong watchlist.<br>Nhập mã cổ phiếu ở trên để thêm.</div>';
+        return;
+    }
+
+    container.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải...</div>';
+
+    try {
+        // Fetch data for all symbols in watchlist
+        const symbolsParam = watchlist.join(',');
+        const response = await fetch(`${API_BASE}/api/stock/batch-price?symbols=${symbolsParam}`);
+        const result = await response.json();
+
+        // Build HTML for each watchlist item
+        let html = '';
+        for (const symbol of watchlist) {
+            const data = result[symbol] || {};
+            const price = data.price || data.currentPrice || '--';
+            const change = data.change || data.changePercent || 0;
+            const companyName = data.companyName || data.name || symbol;
+            const exchange = data.exchange || 'HOSE';
+            const isUp = change >= 0;
+            const changeClass = isUp ? 'positive' : 'negative';
+            const changeText = change !== 0 ? (isUp ? '+' : '') + parseFloat(change).toFixed(2) + '%' : '--';
+            const priceDisplay = typeof price === 'number' ? price.toLocaleString('vi-VN') : price;
+
+            // Truncate company name
+            const nameDisplay = companyName.length > 25 ? companyName.slice(0, 25) + '...' : companyName;
+
+            html += `
+                <div class="mover-item watchlist-stock" data-symbol="${symbol}">
+                    ${getStockLogoHtml(symbol, 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)', '#d97706')}
+                    <div class="mover-info" onclick="location.href='?symbol=${symbol}'" style="cursor: pointer;">
+                        <div class="mover-name">${nameDisplay}</div>
+                        <div class="mover-symbol">${symbol} · ${exchange}</div>
+                    </div>
+                    <div class="mover-price-info">
+                        <div class="mover-price">${priceDisplay}</div>
+                        <div class="mover-change ${changeClass}">${changeText}</div>
+                    </div>
+                    <button class="watchlist-remove-btn" onclick="removeFromWatchlist('${symbol}')" title="Xóa khỏi watchlist" 
+                        style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; margin-left: 4px; font-size: 16px; transition: color 0.2s;"
+                        onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#9ca3af'">×</button>
+                </div>
+            `;
+        }
+
+        container.innerHTML = html;
+
+    } catch (error) {
+        console.error('Error loading watchlist data:', error);
+        // Fallback: show symbols without price data
+        container.innerHTML = watchlist.map(symbol => `
+            <div class="mover-item watchlist-stock" data-symbol="${symbol}">
+                ${getStockLogoHtml(symbol, 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)', '#d97706')}
+                <div class="mover-info" onclick="location.href='?symbol=${symbol}'" style="cursor: pointer;">
+                    <div class="mover-name">${symbol}</div>
+                    <div class="mover-symbol">${symbol} · HOSE</div>
+                </div>
+                <div class="mover-price-info">
+                    <div class="mover-price">--</div>
+                    <div class="mover-change">--</div>
+                </div>
+                <button class="watchlist-remove-btn" onclick="removeFromWatchlist('${symbol}')" title="Xóa khỏi watchlist"
+                    style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; margin-left: 4px; font-size: 16px;"
+                    onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#9ca3af'">×</button>
+            </div>
+        `).join('');
+    }
+}
+
+// Setup watchlist input
+function setupWatchlistInput() {
+    const input = document.getElementById('watchlist-input');
+    if (!input) return;
+
+    input.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            const symbol = this.value.trim().toUpperCase();
+            if (symbol) {
+                addToWatchlist(symbol);
+                this.value = '';
+            }
+        }
+    });
+
+    // Focus effect
+    input.addEventListener('focus', function () {
+        this.style.borderColor = '#0d9668';
+        this.style.boxShadow = '0 0 0 3px rgba(13, 150, 104, 0.1)';
+    });
+
+    input.addEventListener('blur', function () {
+        this.style.borderColor = '#e5e5e5';
+        this.style.boxShadow = 'none';
+    });
+}
+
+// Initialize watchlist on page load
+document.addEventListener('DOMContentLoaded', function () {
+    loadWatchlist();
+    setupWatchlistInput();
+
+    // Auto-refresh watchlist every 30 seconds
+    setInterval(() => {
+        loadWatchlist();
+    }, 30000);
+});
