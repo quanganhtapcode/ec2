@@ -373,6 +373,89 @@ body {
     color: #ef4444;
 }
 
+/* ============ TOP MOVERS COMPACT LAYOUT ============ */
+.mover-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f3f4f6;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.mover-item:hover {
+    background: #f9fafb;
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.mover-item:last-child {
+    border-bottom: none;
+}
+
+.mover-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #0369a1;
+    flex-shrink: 0;
+}
+
+.mover-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.mover-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.mover-symbol {
+    font-size: 11px;
+    color: #6b7280;
+    margin-top: 1px;
+}
+
+.mover-price-info {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.mover-price {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.3;
+}
+
+.mover-change {
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 1px;
+}
+
+.mover-change.positive {
+    color: #10b981;
+}
+
+.mover-change.negative {
+    color: #ef4444;
+}
+
 /* ============ LOADING STATE ============ */
 .loading {
     display: flex;

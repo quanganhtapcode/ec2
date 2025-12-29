@@ -323,16 +323,23 @@ async function loadTopMovers(type) {
                 ? (Math.abs(item.Value) / 1e9).toFixed(1) + ' tỷ'
                 : (percent >= 0 ? '+' : '') + percent.toFixed(2) + '%';
 
+            // Truncate company name to ~25 chars
+            const companyName = item.CompanyName?.slice(0, 28) || item.Symbol;
+            const companyNameDisplay = companyName.length >= 28 ? companyName + '...' : companyName;
+
+            // Exchange mapping
+            const exchange = item.Exchange || 'HOSE';
+
             return `
-                <div class="watchlist-item" onclick="location.href='?symbol=${item.Symbol}'">
-                    <div class="stock-icon">${item.Symbol.slice(0, 3)}</div>
-                    <div class="stock-info">
-                        <div class="stock-name">${item.Symbol}</div>
-                        <div class="stock-symbol-small">${item.CompanyName?.slice(0, 25) || ''}...</div>
+                <div class="mover-item" onclick="location.href='?symbol=${item.Symbol}'">
+                    <div class="mover-icon">${item.Symbol.slice(0, 3)}</div>
+                    <div class="mover-info">
+                        <div class="mover-name">${companyNameDisplay}</div>
+                        <div class="mover-symbol">${item.Symbol} · ${exchange}</div>
                     </div>
-                    <div class="stock-price-info">
-                        <div class="stock-price">${item.CurrentPrice?.toLocaleString('vi-VN')}</div>
-                        <div class="stock-change-small ${changeClass}">${changeText}</div>
+                    <div class="mover-price-info">
+                        <div class="mover-price">${item.CurrentPrice?.toLocaleString('vi-VN')}</div>
+                        <div class="mover-change ${changeClass}">${changeText}</div>
                     </div>
                 </div>
             `;
@@ -375,17 +382,26 @@ async function loadForeignFlows(type) {
 
         container.innerHTML = data.map(item => {
             const valueDisplay = (item.Value / 1e9).toFixed(1) + ' tỷ';
+            const isBuy = type === 'foreign-buy';
+
+            // Truncate company name
+            const companyName = item.CompanyName?.slice(0, 28) || item.Symbol;
+            const companyNameDisplay = companyName.length >= 28 ? companyName + '...' : companyName;
+
+            const exchange = item.Exchange || 'HOSE';
+            const iconBg = isBuy ? 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)' : 'linear-gradient(135deg, #fee2e2 0%, #fecaca 100%)';
+            const iconColor = isBuy ? '#059669' : '#dc2626';
 
             return `
-                <div class="watchlist-item" onclick="location.href='?symbol=${item.Symbol}'">
-                    <div class="stock-icon" style="background:${type === 'foreign-buy' ? '#ecfdf5' : '#fef2f2'}; color:${type === 'foreign-buy' ? '#10b981' : '#ef4444'}">${item.Symbol.slice(0, 3)}</div>
-                    <div class="stock-info">
-                        <div class="stock-name">${item.Symbol}</div>
-                        <div class="stock-symbol-small">${item.CompanyName?.slice(0, 20) || ''}...</div>
+                <div class="mover-item" onclick="location.href='?symbol=${item.Symbol}'">
+                    <div class="mover-icon" style="background:${iconBg}; color:${iconColor}">${item.Symbol.slice(0, 3)}</div>
+                    <div class="mover-info">
+                        <div class="mover-name">${companyNameDisplay}</div>
+                        <div class="mover-symbol">${item.Symbol} · ${exchange}</div>
                     </div>
-                    <div class="stock-price-info">
-                        <div class="stock-price">${item.CurrentPrice?.toLocaleString('vi-VN')}</div>
-                        <div class="stock-change-small ${type === 'foreign-buy' ? 'positive' : 'negative'}">${valueDisplay}</div>
+                    <div class="mover-price-info">
+                        <div class="mover-price">${item.CurrentPrice?.toLocaleString('vi-VN')}</div>
+                        <div class="mover-change ${isBuy ? 'positive' : 'negative'}">${valueDisplay}</div>
                     </div>
                 </div>
             `;
