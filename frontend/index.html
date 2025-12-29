@@ -924,45 +924,26 @@
 
         // ============ INITIALIZATION ============
         document.addEventListener('DOMContentLoaded', function () {
-            updateClock();
-            setInterval(updateClock, 1000);
-
+            // Load data first (most important)
             loadAllIndicesWithCharts();
             loadNews();
             loadTopMovers('gainers');
             setupMoverTabs();
-            setupForeignTabs(); // Initialize foreign tabs
+            setupForeignTabs();
             setupTimeRangeButtons();
             loadPEChart();
 
-            // Search functionality
-            document.getElementById('stock-search').addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    const symbol = this.value.trim().toUpperCase();
-                    if (symbol) window.location.href = `index.html?symbol=${symbol}`;
-                }
-            });
-        });
-
-        // ============ CLOCK & STATUS ============
-        function updateClock() {
-            const now = new Date();
-            const dateOptions = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-            document.getElementById('current-date').textContent = now.toLocaleDateString('vi-VN', dateOptions);
-
-            const hour = now.getHours();
-            const isOpen = hour >= 9 && hour < 15 && now.getDay() !== 0 && now.getDay() !== 6;
-            const statusDot = document.getElementById('market-status-dot');
-            const statusText = document.getElementById('market-status-text');
-
-            if (isOpen) {
-                statusDot.classList.remove('closed');
-                statusText.textContent = 'Đang mở';
-            } else {
-                statusDot.classList.add('closed');
-                statusText.textContent = 'Đã đóng';
+            // Search functionality - use correct ID
+            const searchInput = document.getElementById('symbol-search');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        const symbol = this.value.trim().toUpperCase();
+                        if (symbol) window.location.href = `valuation.html?symbol=${symbol}`;
+                    }
+                });
             }
-        }
+        });
 
         // ============ LOAD ALL INDICES WITH SPARKLINE CHARTS ============
         async function loadAllIndicesWithCharts() {
