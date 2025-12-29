@@ -29,9 +29,9 @@ const INDEX_MAP = {
 };
 
 // ============ STOCK LOGO HELPER ============
-// Logos are served from Cloudflare R2 (CDN cached, 64x64 optimized)
-// Fallback: If R2 fails, show text abbreviation
-const LOGO_BASE_URL = 'https://pub-b8489c273ce541b8a7472ac801083222.r2.dev/logos/';
+// Logos are served locally from 'logos' folder (via GitHub/Vercel)
+// Fallback: If image fails, show text abbreviation
+const LOGO_BASE_URL = 'logos/';
 
 /**
  * Generate HTML for stock logo with image fallback to text
