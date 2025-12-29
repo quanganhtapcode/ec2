@@ -523,14 +523,17 @@
             /* Reduce main content padding on mobile - small margin for breathing room */
             .main-content {
                 padding: 16px !important;
-                padding-top: 60px !important;
-                gap: 8px;
+                padding-top: 70px !important;
+                gap: 20px;
                 margin: 0 !important;
             }
 
             .left-column {
                 padding: 0 !important;
                 margin: 0 !important;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
             }
 
             .header-inner {
@@ -546,33 +549,27 @@
             /* Force 2 columns for indices on mobile */
             .indices-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 4px;
-                margin: 0 0 8px 0 !important;
+                gap: 8px;
+                margin: 0 !important;
                 padding: 0 !important;
             }
 
             .index-card {
-                padding: 10px;
-                /* Reduce padding to fit */
+                padding: 12px;
                 min-width: 0;
-                /* CRITICAL for grid item shrinking */
                 overflow: hidden;
-                /* Prevent spillover */
             }
 
             .index-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 2px;
-                /* Tighter gap */
                 margin-bottom: 8px;
             }
 
             .index-name {
                 font-size: 14px;
-                /* Larger */
                 font-weight: 700;
-                /* Bold */
                 color: #111827;
                 white-space: nowrap;
                 overflow: hidden;
@@ -582,7 +579,6 @@
 
             .index-symbol {
                 display: none;
-                /* User requested removal */
             }
 
             .index-change {
@@ -621,8 +617,20 @@
                 max-width: 100%;
             }
 
+            /* P/E Section spacing */
+            .pe-section {
+                margin-bottom: 0 !important;
+                padding-top: 8px;
+            }
+
+            /* Section headers */
+            .section-header {
+                margin-bottom: 12px;
+            }
+
             .news-item {
-                padding: 12px 0;
+                padding: 14px 0;
+                border-bottom: 1px solid #f0f0f0;
             }
 
             .news-title {
@@ -637,10 +645,14 @@
             .sidebar-section {
                 padding: 16px;
                 box-shadow: none;
-                /* Flatter look on mobile */
-                border-radius: 0;
-                border-left: none;
-                border-right: none;
+                border-radius: 8px;
+                margin-top: 8px;
+            }
+
+            .sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
             }
         }
 
