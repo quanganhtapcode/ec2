@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Định Giá Cổ Phiếu Việt Nam Miễn Phí | Vietnam Stock Valuation Tool - DCF, P/E, P/B</title>
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description"
+        content="Công cụ định giá cổ phiếu Việt Nam MIỄN PHÍ. Tính giá trị nội tại với mô hình DCF (FCFE, FCFF), P/E, P/B. Phân tích VN30, HOSE, HNX. Free Vietnam stock valuation calculator for intrinsic value analysis.">
+    <meta name="keywords"
+        content="định giá cổ phiếu, định giá, valuation, stock valuation vietnam, vietnam stock valuation, định giá cổ phiếu việt nam, công cụ định giá, tính giá trị cổ phiếu, giá trị nội tại, intrinsic value, DCF calculator, FCFE, FCFF, P/E ratio, P/B ratio, chiết khấu dòng tiền, phân tích cổ phiếu, phân tích chứng khoán, chứng khoán việt nam, VN30, HOSE, HNX, VCB, HPG, FPT, VNM, MBB, TCB, VIC, VHM, VPB, MWG, đầu tư chứng khoán, stock screener vietnam, tính toán định giá, valuation calculator, free stock valuation, công cụ đầu tư, investment tool vietnam, vietnamese stock analysis, cổ phiếu việt nam, xác định giá trị cổ phiếu, fair value, target price, giá mục tiêu">
+    <meta name="author" content="Quang Anh">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <link rel="canonical" href="https://valuation.quanganh.org/">
+
+    <!-- Additional SEO Tags -->
+    <meta name="geo.region" content="VN">
+    <meta name="geo.placename" content="Vietnam">
+    <meta name="geo.position" content="21.0285;105.8542">
+    <meta name="ICBM" content="21.0285, 105.8542">
+    <meta name="language" content="Vietnamese, English">
+    <meta name="revisit-after" content="1 days">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="coverage" content="Vietnam">
+    <meta name="target" content="all">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <!-- Hreflang for language variants -->
+    <link rel="alternate" hreflang="vi" href="https://valuation.quanganh.org/">
+    <link rel="alternate" hreflang="en" href="https://valuation.quanganh.org/">
+    <link rel="alternate" hreflang="x-default" href="https://valuation.quanganh.org/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://valuation.quanganh.org/">
+    <meta property="og:title" content="Định Giá Cổ Phiếu Việt Nam Miễn Phí | Vietnam Stock Valuation Tool">
+    <meta property="og:description"
+        content="Công cụ định giá cổ phiếu Việt Nam miễn phí. Tính giá trị nội tại với DCF (FCFE, FCFF), P/E, P/B. Phân tích VN30, HOSE, HNX. Free Vietnam stock valuation calculator.">
+    <meta property="og:image" content="https://valuation.quanganh.org/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Định Giá Cổ Phiếu Việt Nam - Vietnam Stock Valuation Tool">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="Định Giá Cổ Phiếu - Stock Valuation">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://valuation.quanganh.org/">
+    <meta name="twitter:title" content="Định Giá Cổ Phiếu Việt Nam | Vietnam Stock Valuation Tool">
+    <meta name="twitter:description"
+        content="Công cụ định giá cổ phiếu miễn phí. Tính giá trị nội tại cổ phiếu Việt Nam với DCF, P/E, P/B. Free stock valuation tool.">
+    <meta name="twitter:image" content="https://valuation.quanganh.org/og-image.png">
+    <meta name="twitter:creator" content="@quanganh">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Định Giá Cổ Phiếu Việt Nam",
+        "alternateName": ["Vietnam Stock Valuation Tool", "Công Cụ Định Giá", "Stock Valuation Vietnam", "VN Stock Valuation", "Vietnam DCF Calculator", "Định Giá DCF", "Tính Giá Trị Cổ Phiếu", "Valuation Calculator Vietnam"],
+        "description": "Công cụ định giá cổ phiếu Việt Nam miễn phí. Tính giá trị nội tại với mô hình FCFE, FCFF, P/E, P/B. Phân tích VN30, HOSE, HNX. Free Vietnam stock valuation calculator.",
+        "url": "https://valuation.quanganh.org",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "VND"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Quang Anh"
+        },
+        "inLanguage": ["vi", "en"],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Nhà đầu tư, Nhân viên phân tích, Traders, Investors, Financial Analysts"
+        },
+        "featureList": ["Định giá DCF", "FCFE Model", "FCFF Model", "P/E Ratio", "P/B Ratio", "Biểu đồ lịch sử", "Chỉ số tài chính", "So sánh cổ phiếu"],
+        "keywords": "định giá cổ phiếu, định giá, valuation, stock valuation vietnam"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Định Giá Cổ Phiếu Việt Nam",
+        "alternateName": ["Vietnam Stock Valuation", "Stock Valuation Tool", "Công Cụ Định Giá"],
+        "url": "https://valuation.quanganh.org",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://valuation.quanganh.org/?symbol={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "inLanguage": ["vi", "en"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Định Giá Cổ Phiếu - Stock Valuation",
+        "url": "https://valuation.quanganh.org",
+        "logo": "https://valuation.quanganh.org/favicon-512x512.png",
+        "sameAs": [],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "availableLanguage": ["Vietnamese", "English"]
+        }
+    }
+    </script>
+
+    <!-- Favicon - Generated by favicon.io -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0066CC">
+    <meta name="msapplication-TileColor" content="#0066CC">
+
+    <!-- Inter Font - Preconnect and preload for faster load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/variables.css?v=1">
+    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="css/toast.css?v=2">
+    <link rel="stylesheet" href="css/company-profile.css?v=10">
+    <link rel="stylesheet" href="css/price-hero.css?v=1">
+    <link rel="stylesheet" href="css/valuation.css?v=1">
+    <link rel="stylesheet" href="css/financials.css?v=1">
+    <link rel="stylesheet" href="css/header-fixed.css?v=1">
+    <link rel="stylesheet" href="css/tradingview.css?v=3">
+    <link rel="stylesheet" href="css/ticker-autocomplete.css?v=1">
+    <link rel="stylesheet" href="css/methodology-modal.css?v=1">
+    <link rel="stylesheet" href="css/footer-modal.css?v=1">
+    <!-- ExcelJS, FileSaver, JSZip are lazy-loaded when Export is clicked (saves ~500KB initial load) -->
+    <!-- Critical scripts - load immediately -->
+    <script src="translations.js?v=11"></script>
+    <script src="js/toast.js?v=2"></script>
+    <script src="js/utils.js?v=1"></script>
+    <script src="js/api.js?v=1"></script>
+
+    <!-- Chart.js - defer to not block initial render -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+
+    <!-- Non-critical modules - defer for faster page load -->
+    <script src="js/company-profile.js?v=9" defer></script>
+    <script src="js/tradingview.js?v=7" defer></script>
+    <script src="js/report-generator.js?v=1" defer></script>
+    <script src="js/chart-manager.js?v=1" defer></script>
+    <script src="js/financials.js?v=2" defer></script>
+    <script src="js/news.js?v=1" defer></script>
+    <script src="js/history.js?v=1" defer></script>
+    <script src="js/ticker-autocomplete.js?v=1" defer></script>
+
+    <!-- Main app - loads after all dependencies -->
+    <script src="app.js?v=21" defer></script>
+</head>
+
+<body class="app-container">
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loader"></div>
+            <p class="loading-text">Loading...</p>
+        </div>
+    </div>
+    <div id="status-message" class="status-message hidden"></div>
+    <header class="app-header py-16"
+        style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; background: var(--color-background); border-bottom: 1px solid var(--color-border);">
+        <div class="container header-bar">
+            <form class="search-form header-search-form">
+                <div class="search-container-v2 search-container-compact">
+                    <!-- Search Icon (Decorative) -->
+                    <div class="search-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="search-icon-prefix">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
+
+                    <!-- Main Input -->
+                    <div class="search-input-wrapper-compact">
+                        <label for="stock-symbol" class="sr-only" data-i18n="stockSymbolSearch">Stock Symbol
+                            Search</label>
+                        <input type="text" id="stock-symbol" class="search-input-compact"
+                            placeholder="Search tickers..." data-i18n-placeholder="searchTickers">
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="search-controls-compact">
+                        <select id="period-select" class="sr-only">
+                            <option value="year">Latest Year</option>
+                            <option value="quarter">Latest Quarter</option>
+                        </select>
+
+                        <!-- Period Button -->
+                        <button type="button" id="period-toggle-btn" class="control-btn-compact period-btn-compact"
+                            title="Toggle Period">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span id="period-text" class="period-text-compact">Year</span>
+                        </button>
+
+                        <div class="divider-compact"></div>
+
+                        <!-- Download Button -->
+                        <button type="button" id="download-financials-btn" class="control-btn-compact"
+                            title="Download Excel" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Hidden submit button to allow Enter key -->
+                    <button type="submit" id="search-btn" class="sr-only" aria-label="Search"></button>
+                </div>
+            </form>
+        </div>
+    </header>
+    <main class="app-main" style="padding-top: 90px;">
+        <section class="container">
+            <div class="tabs tabs-segmented">
+                <button class="tab-btn active" data-tab="overview">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span data-i18n="companyOverview">Overview</span>
+                </button>
+                <button class="tab-btn" data-tab="financials">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span data-i18n="financials">Financials</span>
+                </button>
+                <button class="tab-btn" data-tab="valuation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span data-i18n="valuationAssumptions">Valuation</span>
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    <span data-i18n="history">History</span>
+                </button>
+                <button class="tab-btn" data-tab="summary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        class="tab-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span data-i18n="summaryReport">Report</span>
+                </button>
+            </div>
+
+            <div class="tab-content">
+                <div id="overview" class="tab-pane active">
+                    <!-- Stock Price Hero - First thing users see -->
+                    <section class="stock-price-hero">
+                        <div class="stock-hero-logo" id="stock-hero-logo">--</div>
+                        <div class="stock-hero-content">
+                            <h2 class="stock-hero-name">
+                                <span id="stock-hero-company-name">--</span>
+                                <span class="stock-hero-symbol" id="stock-hero-symbol">--</span>
+                                <span class="stock-hero-industry" id="stock-hero-industry">--</span>
+                            </h2>
+                            <div class="stock-hero-price-row">
+                                <span class="stock-hero-price" id="stock-hero-price">--</span>
+                                <span class="stock-hero-currency">VND</span>
+                                <div class="stock-hero-change neutral" id="stock-hero-change">
+                                    <span id="stock-hero-change-value">--</span>
+                                    <span class="stock-hero-change-percent" id="stock-hero-change-percent">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stock-hero-info">
+                            <div class="stock-hero-market-cap-row"
+                                style="display: flex; gap: 16px; align-items: center;">
+                                <div style="display: flex; align-items: baseline; gap: 4px;">
+                                    <span class="stock-hero-market-cap" id="stock-hero-market-cap">--</span>
+                                    <span class="stock-hero-market-cap-label" data-i18n="marketCapShort">Market
+                                        Cap</span>
+                                </div>
+                                <span style="color: var(--color-text-muted);">|</span>
+                                <div style="display: flex; align-items: baseline; gap: 4px;">
+                                    <span class="stock-hero-market-cap" id="stock-hero-shares">--</span>
+                                    <span class="stock-hero-market-cap-label" data-i18n="sharesShort">Shares</span>
+                                </div>
+                            </div>
+                            <span class="stock-hero-exchange" id="stock-hero-exchange">--</span>
+                        </div>
+                    </section>
+
+                    <!-- 2. TradingView Stock Chart Widget - Right after price hero -->
+                    <div class="tradingview-widget-section mt-16">
+                        <div class="card">
+                            <div class="card__body">
+                                <div class="chart-header-row"
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                                    <h3 style="margin: 0;" data-i18n="priceChart">Stock Price Chart</h3>
+                                    <div class="chart-controls" style="display: flex; gap: 4px;">
+                                        <button class="time-btn" data-range="1M">1M</button>
+                                        <button class="time-btn" data-range="3M">3M</button>
+                                        <button class="time-btn active" data-range="6M">6M</button>
+                                        <button class="time-btn" data-range="1Y">1Y</button>
+                                        <button class="time-btn" data-range="2Y">2Y</button>
+                                    </div>
+                                </div>
+                                <div id="tradingview-widget-container" class="tradingview-widget-container">
+                                    <div id="tradingview-widget" style="height: 400px;"></div>
+                                    <div class="tradingview-widget-copyright" style="display: none;">
+                                        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                                            <span class="blue-text">Track all markets on TradingView</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Key Metrics (compact grid) -->
+                    <div class="key-metrics-section mt-32">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="keyMetrics">Key Metrics</h3>
+                                <div class="key-metrics-grid">
+                                    <div class="metric-item">
+                                        <span class="metric-label" data-i18n="peRatio">P/E:</span>
+                                        <span class="metric-value" id="overview-pe">--</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label" data-i18n="pbRatio">P/B:</span>
+                                        <span class="metric-value" id="overview-pb">--</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label" data-i18n="eps">EPS:</span>
+                                        <span class="metric-value" id="eps">--</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label" data-i18n="netProfitMargin">Net Margin:</span>
+                                        <span class="metric-value" id="overview-npm">--</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label" data-i18n="roe">ROE (%):</span>
+                                        <span class="metric-value" id="roe">--</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label" data-i18n="roa">ROA (%):</span>
+                                        <span class="metric-value" id="roa">--</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label" data-i18n="profitGrowth">Profit Growth:</span>
+                                        <span class="metric-value" id="profit-growth">--</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label" data-i18n="debtEquity">Debt/Equity:</span>
+                                        <span class="metric-value" id="overview-de">--</span>
+                                    </div>
+                                </div>
+                                <p class="metrics-note" data-i18n="metricsNote">* Data from most recent quarter</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. About the Company (full width) -->
+                    <div class="company-description-section mt-32">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="companyDescription">About the Company</h3>
+                                <div class="company-description-wrapper" id="company-description-wrapper">
+                                    <p id="company-description" class="company-description-text collapsed">--</p>
+                                    <button id="read-more-btn" class="read-more-btn" style="display: none;">
+                                        <span data-i18n="readMore">Xem thêm</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 5. News & Events -->
+                    <div class="company-info-row mt-32">
+                        <div class="news-section" style="flex: 1;">
+                            <div class="card" style="height: 100%;">
+                                <div class="card__body">
+                                    <h3 data-i18n="latestNews">Latest News</h3>
+                                    <div id="news-list" class="news-list-container">
+                                        <!-- News items will be here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="events-section" style="flex: 1;">
+                            <div class="card" style="height: 100%;">
+                                <div class="card__body">
+                                    <h3 data-i18n="events">Events</h3>
+                                    <div id="events-list" class="events-list-container">
+                                        <!-- Events items will be here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="financials" class="tab-pane">
+                    <div class="ratios-grid mt-24">
+                        <div class="ratio-category">
+                            <h4 class="ratio-category-title" data-i18n="valuationRatios">Valuation Ratios</h4>
+                            <div class="ratio-items">
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="peRatio">P/E Ratio:</span>
+                                    <span class="ratio-value" id="pe-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="pbRatio">P/B Ratio:</span>
+                                    <span class="ratio-value" id="pb-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="psRatio">P/S Ratio:</span>
+                                    <span class="ratio-value" id="ps-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="pcfRatio">P/CF:</span>
+                                    <span class="ratio-value" id="pcf-ratio">--</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ratio-category">
+                            <h4 class="ratio-category-title" data-i18n="efficiencyRatios">Efficiency Ratios</h4>
+                            <div class="ratio-items">
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="evEbitda">EV/EBITDA:</span>
+                                    <span class="ratio-value" id="ev-ebitda">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="assetTurnover">Asset Turnover:</span>
+                                    <span class="ratio-value" id="asset-turnover">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="inventoryTurnover">Inventory Turnover:</span>
+                                    <span class="ratio-value" id="inventory-turnover">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="fixedAssetTurnover">Fixed Asset
+                                        Turnover:</span>
+                                    <span class="ratio-value" id="fixed-asset-turnover">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ratio-category">
+                            <h4 class="ratio-category-title" data-i18n="liquidityRatios">Liquidity Ratios</h4>
+                            <div class="ratio-items">
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="currentRatio">Current Ratio:</span>
+                                    <span class="ratio-value" id="current-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="quickRatio">Quick Ratio:</span>
+                                    <span class="ratio-value" id="quick-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="cashRatio">Cash Ratio:</span>
+                                    <span class="ratio-value" id="cash-ratio">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="interestCoverage">Interest Coverage:</span>
+                                    <span class="ratio-value" id="interest-coverage">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ratio-category">
+                            <h4 class="ratio-category-title" data-i18n="profitabilityMargins">Profitability Margins</h4>
+                            <div class="ratio-items">
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="grossProfitMargin">Gross Profit Margin:</span>
+                                    <span class="ratio-value" id="gross-profit-margin">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="ebitMargin">EBIT Margin:</span>
+                                    <span class="ratio-value" id="ebit-margin">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="netProfitMargin">Net Profit Margin:</span>
+                                    <span class="ratio-value" id="net-profit-margin">--</span>
+                                </div>
+                                <div class="ratio-item">
+                                    <span class="ratio-label" data-i18n="roic">ROIC:</span>
+                                    <span class="ratio-value" id="roic">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="charts-grid historical-charts">
+                        <div class="chart-container full-width">
+                            <div class="chart-header">
+                                <h4 data-i18n="roeRoaTrends">ROE & ROA Trends (Last 5 Years)</h4>
+                            </div>
+                            <canvas id="roe-roa-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <div class="chart-header">
+                                <h4 data-i18n="liquidityTrends">Liquidity Ratios Trends (Last 5 Years)</h4>
+                            </div>
+                            <canvas id="liquidity-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <div class="chart-header">
+                                <h4 data-i18n="pePbTrends">P/E & P/B Ratios Trends (Last 5 Years)</h4>
+                            </div>
+                            <canvas id="pe-pb-chart"></canvas>
+                        </div>
+                        <div class="chart-container full-width">
+                            <div class="chart-header">
+                                <h4 data-i18n="nimTrend">Net Interest Margin (NIM) Trend (TTM)</h4>
+                            </div>
+                            <canvas id="nim-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="history" class="tab-pane">
+                    <div class="card mt-24">
+                        <div class="card__body">
+                            <div class="history-header">
+                                <h3 data-i18n="priceHistory">Price History</h3>
+                                <div class="history-controls">
+                                    <div class="range-selector">
+                                        <button class="history-btn" data-history-range="1M">1M</button>
+                                        <button class="history-btn" data-history-range="6M">6M</button>
+                                        <button class="history-btn active" data-history-range="1Y">1Y</button>
+                                        <button class="history-btn" data-history-range="2Y">2Y</button>
+                                        <button class="history-btn" data-history-range="5Y">5Y</button>
+                                    </div>
+                                    <button id="download-history-btn" class="btn btn--secondary btn--sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                        Download Excel
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="history-table" class="data-table"
+                                    style="width: 100%; border-collapse: collapse;">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Open</th>
+                                            <th>High</th>
+                                            <th>Low</th>
+                                            <th>Close</th>
+                                            <th>Volume</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Data rows -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="valuation" class="tab-pane">
+                    <div class="form-grid">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="modelAssumptions">Model Assumptions</h3>
+                                <form id="assumptions-form" class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="revenue-growth" class="form-label"
+                                                data-i18n="revenueGrowth">Revenue
+                                                Growth (%):</label>
+                                            <input type="number" id="revenue-growth" class="form-control" step="0.1"
+                                                value="8.0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="terminal-growth" class="form-label"
+                                                data-i18n="terminalGrowth">Terminal Growth (%):</label>
+                                            <input type="number" id="terminal-growth" class="form-control" step="0.1"
+                                                value="3.0">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="wacc" class="form-label" data-i18n="wacc">WACC (%):</label>
+                                            <input type="number" id="wacc" class="form-control" step="0.1" value="10.5">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="required-return" class="form-label"
+                                                data-i18n="requiredReturn">Required Return (%):</label>
+                                            <input type="number" id="required-return" class="form-control" step="0.1"
+                                                value="12.0">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="tax-rate" class="form-label" data-i18n="taxRate">Tax Rate
+                                                (%):</label>
+                                            <input type="number" id="tax-rate" class="form-control" step="0.1"
+                                                value="20.0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="projection-years" class="form-label"
+                                                data-i18n="projectionYears">Projection Years:</label>
+                                            <input type="number" id="projection-years" class="form-control" step="1"
+                                                value="5">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" id="calculate-btn" class="btn btn--primary"
+                                            data-i18n="calculateValuation">Calculate Valuation</button>
+                                        <button type="button" id="reset-assumptions-btn" class="btn btn--outline"
+                                            data-i18n="resetAssumptions">Reset Assumptions</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="selectValuationModels">Select Valuation Models</h3>
+                                <p class="methodology-hint">
+                                    <span data-i18n="selectModelsDescWithLink">Choose models to include. Learn about our
+                                    </span><a href="#" id="methodology-btn" class="methodology-link"
+                                        data-i18n="methodologyLink">methodology here</a>.
+                                </p>
+                                <form id="weights-form" class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="weight-checkbox-label" data-model="fcfe">
+                                                <input type="checkbox" id="fcfe-enabled" class="weight-checkbox" checked
+                                                    style="display: none;">
+                                                <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
+                                                    <strong data-i18n="fcfe">FCFE</strong>
+                                                    <small style="display: block; color: var(--color-text-secondary);"
+                                                        data-i18n="fcfeDesc">Free Cash Flow to Equity</small>
+                                                </span>
+                                                <span id="fcfe-weight-display" class="weight-percentage">25.0%</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="weight-checkbox-label" data-model="fcff">
+                                                <input type="checkbox" id="fcff-enabled" class="weight-checkbox" checked
+                                                    style="display: none;">
+                                                <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
+                                                    <strong data-i18n="fcff">FCFF</strong>
+                                                    <small style="display: block; color: var(--color-text-secondary);"
+                                                        data-i18n="fcffDesc">Free Cash Flow to Firm</small>
+                                                </span>
+                                                <span id="fcff-weight-display" class="weight-percentage">25.0%</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="weight-checkbox-label" data-model="pe">
+                                                <input type="checkbox" id="pe-enabled" class="weight-checkbox" checked
+                                                    style="display: none;">
+                                                <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
+                                                    <strong>P/E</strong>
+                                                    <small style="display: block; color: var(--color-text-secondary);"
+                                                        data-i18n="justifiedPE">Justified P/E</small>
+                                                </span>
+                                                <span id="pe-weight-display" class="weight-percentage">25.0%</span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="weight-checkbox-label" data-model="pb">
+                                                <input type="checkbox" id="pb-enabled" class="weight-checkbox" checked
+                                                    style="display: none;">
+                                                <span class="weight-checkbox-text">
+                                                    <span class="checkmark">✓</span>
+                                                    <strong>P/B</strong>
+                                                    <small style="display: block; color: var(--color-text-secondary);"
+                                                        data-i18n="justifiedPB">Justified P/B</small>
+                                                </span>
+                                                <span id="pb-weight-display" class="weight-percentage">25.0%</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="weight-controls">
+                                    <span style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                                        <span id="selected-count">4</span> <span data-i18n="modelsSelected">models
+                                            selected</span>
+                                    </span>
+                                    <button id="select-all-btn" class="btn btn--outline btn--sm"
+                                        data-i18n="selectAll">Select All</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results-grid mt-24">
+                        <div class="result-card" id="fcfe-card">
+                            <span class="result-title">FCFE</span>
+                            <span class="result-value" id="fcfe-result">--</span>
+                            <span class="result-diff" id="fcfe-diff">--</span>
+                        </div>
+                        <div class="result-card" id="fcff-card">
+                            <span class="result-title">FCFF</span>
+                            <span class="result-value" id="fcff-result">--</span>
+                            <span class="result-diff" id="fcff-diff">--</span>
+                        </div>
+                        <div class="result-card" id="pe-card">
+                            <span class="result-title">Comparable P/E</span>
+                            <span class="result-value" id="pe-result">--</span>
+                            <span class="result-diff" id="pe-diff">--</span>
+                        </div>
+                        <div class="result-card" id="pb-card">
+                            <span class="result-title">Comparable P/B</span>
+                            <span class="result-value" id="pb-result">--</span>
+                            <span class="result-diff" id="pb-diff">--</span>
+                        </div>
+                        <div class="result-card highlight">
+                            <span class="result-title" data-i18n="weightedAverage">Weighted Average</span>
+                            <span class="result-value" id="weighted-result">--</span>
+                            <span class="result-diff" id="weighted-diff">--</span>
+                        </div>
+                    </div>
+
+                    <!-- Bank Valuation Note -->
+                    <!-- Bank Valuation Note -->
+                    <div id="bank-valuation-note" class="alert alert-info mt-3"
+                        style="display: none; background-color: #e3f2fd; color: #0d47a1; padding: 10px; border-radius: 5px; margin-top: 15px; font-size: 0.9em;">
+                        <i class="fas fa-info-circle"></i> <strong data-i18n="bankNoteTitle">Note for Banking
+                            Sector:</strong> <span data-i18n="bankNoteContent">Traditional DCF models (FCFE/FCFF) are
+                            not suitable for banks due to their unique capital structure. Valuation is based primarily
+                            on P/E and P/B methods using sector comparisons.</span>
+                    </div>
+
+                    <div class="recommendation-box">
+                        <h4 data-i18n="investmentRecommendation">Investment Recommendation</h4>
+                        <div class="recommendation" id="recommendation"><span data-i18n="waitingForData">Waiting for
+                                data</span></div>
+                        <div class="potential-return"><span data-i18n="potentialReturn">Potential Return:</span> <span
+                                id="return-value">--</span></div>
+                    </div>
+                </div>
+
+                <div id="summary" class="tab-pane">
+                    <!-- Valuation Summary Grid - 2 columns -->
+                    <div class="summary-info-grid">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="companyInformation">Company Information</h3>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="symbol">Stock Symbol:</span>
+                                    <span class="summary-value" id="summary-symbol">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="name">Company Name:</span>
+                                    <span class="summary-value" id="summary-name">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="industry">Industry:</span>
+                                    <span class="summary-value" id="summary-sector">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="exchange">Exchange:</span>
+                                    <span class="summary-value" id="summary-exchange">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="marketIndicators">Market Indicators</h3>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="currentPrice">Current Price:</span>
+                                    <span class="summary-value" id="summary-price">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="marketCap">Market Cap:</span>
+                                    <span class="summary-value" id="summary-market-cap">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="peRatio">P/E:</span>
+                                    <span class="summary-value" id="summary-pe">--</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label" data-i18n="pbRatio">P/B:</span>
+                                    <span class="summary-value" id="summary-pb">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Details Grid - 2 columns -->
+                    <div class="summary-grid">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3 data-i18n="modelDetails">Model Details</h3>
+                                <div class="models-detail">
+                                    <div class="model-detail-section">
+                                        <h4><span data-i18n="fcfe">FCFE</span> (<span data-i18n="fcfeDesc">Free Cash
+                                                Flow to Equity</span>)</h4>
+                                        <div class="summary-table">
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcfeEquityValue">Equity
+                                                    Value:</span>
+                                                <span class="summary-value" id="fcfe-equity">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcfeShareValue">Share
+                                                    Value:</span>
+                                                <span class="summary-value" id="fcfe-share-value">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcfeMarketDiff">Difference vs
+                                                    Market:</span>
+                                                <span class="summary-value" id="fcfe-market-diff">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="model-detail-section">
+                                        <h4><span data-i18n="fcff">FCFF</span> (<span data-i18n="fcffDesc">Free Cash
+                                                Flow to Firm</span>)</h4>
+                                        <div class="summary-table">
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcffEV">Enterprise Value
+                                                    (EV):</span>
+                                                <span class="summary-value" id="fcff-ev">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcffEquityValue">Equity
+                                                    Value:</span>
+                                                <span class="summary-value" id="fcff-equity">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcffShareValue">Share
+                                                    Value:</span>
+                                                <span class="summary-value" id="fcff-share-value">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="fcffMarketDiff">Difference vs
+                                                    Market:</span>
+                                                <span class="summary-value" id="fcff-market-diff">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="model-detail-section">
+                                        <h4 data-i18n="justifiedPE">Comparable P/E Valuation</h4>
+                                        <div class="summary-table">
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="justifiedPERatio">Sector Median
+                                                    P/E</span>
+                                                <span class="summary-value" id="pe-justified-ratio">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="currentEPS">Current EPS:</span>
+                                                <span class="summary-value" id="pe-current-eps">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="peShareValue">Share Value:</span>
+                                                <span class="summary-value" id="pe-share-value">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="peMarketDiff">Difference vs
+                                                    Market:</span>
+                                                <span class="summary-value" id="pe-market-diff">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="model-detail-section">
+                                        <h4 data-i18n="justifiedPB">Comparable P/B Valuation</h4>
+                                        <div class="summary-table">
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="justifiedPBRatio">Sector Median
+                                                    P/B</span>
+                                                <span class="summary-value" id="pb-justified-ratio">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="bookValuePerShare">Book Value per
+                                                    Share:</span>
+                                                <span class="summary-value" id="pb-current-bvps">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="pbShareValue">Share Value:</span>
+                                                <span class="summary-value" id="pb-share-value">--</span>
+                                            </div>
+                                            <div class="summary-row">
+                                                <span class="summary-label" data-i18n="pbMarketDiff">Difference vs
+                                                    Market:</span>
+                                                <span class="summary-value" id="pb-market-diff">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sensitivity Analysis Section (New) -->
+                    <div class="row mt-24">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card__header">
+                                    <h3 data-i18n="sensitivityAnalysis">Sensitivity Analysis (FCFF)</h3>
+                                </div>
+                                <div class="card__body">
+                                    <p class="text-secondary mb-16" style="font-size: 14px;">
+                                        Matrix showing how valuation changes with different WACC (Rows) and Terminal
+                                        Growth (Columns) estimates.
+                                        <b style="color: var(--color-primary)">Base Case</b> is highlighted.
+                                    </p>
+                                    <div class="sensitivity-container"
+                                        style="overflow-x: auto; display: flex; justify-content: center;">
+                                        <table class="sensitivity-table" id="sensitivity-table">
+                                            <thead>
+                                                <!-- Header injected by JS -->
+                                            </thead>
+                                            <tbody>
+                                                <!-- Rows injected by JS -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-box-large">
+                        <h3 data-i18n="conclusionRecommendation">Conclusion and Recommendation</h3>
+                        <div class="recommendation-details">
+                            <div class="recommendation-summary">
+                                <div class="summary-table">
+                                    <div class="summary-row">
+                                        <span class="summary-label" data-i18n="targetPrice">Target Price:</span>
+                                        <span class="summary-value highlight" id="target-price">--</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="summary-label" data-i18n="upsideDownside">Upside/Downside
+                                            Potential:</span>
+                                        <span class="summary-value" id="summary-potential">--</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="summary-label" data-i18n="confidenceLevel">Confidence Level:</span>
+                                        <span class="summary-value" id="confidence-level">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="final-recommendation-status">
+                                <h4 data-i18n="recommendation">Recommendation</h4>
+                                <div id="final-recommendation"><span data-i18n="waitingForData">Waiting for data</span>
+                                </div>
+                                <p class="recommendation-reasoning" id="recommendation-reasoning"
+                                    data-i18n="loadDataMessage">Please load company data and perform valuation
+                                    calculations to receive investment recommendations.</p>
+                            </div>
+                            <div class="export-actions-group">
+                                <div class="export-section">
+                                    <h4 class="export-section-title" data-i18n="exportReports">Export Reports</h4>
+                                    <div class="export-actions">
+                                        <button id="export-excel-btn" class="btn btn--primary" disabled>
+                                            <span data-i18n="exportExcelReport">📊 Export Excel Report</span>
+                                        </button>
+                                    </div>
+                                    <p class="export-hint" data-i18n="exportHint">Complete valuation calculations to
+                                        enable exports</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-top">
+                    <div class="footer-links">
+                        <a href="#" id="contact-link">Contact</a>
+                        <a href="#" id="disclaimer-link">Disclaimer</a>
+                        <a href="#" id="privacy-link">Privacy</a>
+                        <a href="#" id="terms-link">Terms</a>
+                    </div>
+                    <div class="footer-controls">
+                        <button id="language-toggle-btn" class="footer-btn language-toggle"
+                            aria-label="Change language">
+                            <span class="lang-flag en-flag">🇺🇸</span>
+                            <span class="lang-flag vi-flag">🇻🇳</span>
+                        </button>
+                        <button id="theme-toggle-btn" class="footer-btn theme-toggle" aria-label="Toggle theme">
+                            <span class="theme-icon light-icon">☀️</span>
+                            <span class="theme-icon dark-icon">🌙</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="footer-copyright">Created by <a href="https://github.com/quanganhtapcode" target="_blank"
+                            rel="noopener noreferrer" class="footer-link">Quang Anh</a>, 2025 ©</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Methodology Modal -->
+    <div id="methodology-modal" class="modal-overlay hidden">
+        <div class="modal-container methodology-modal">
+            <div class="modal-header">
+                <h2 data-i18n="valuationMethodology">Valuation Methodology</h2>
+                <button class="modal-close-btn" id="methodology-close-btn" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body methodology-content">
+                <p class="methodology-intro">
+                    Công cụ này sử dụng 4 phương pháp định giá để ước tính giá trị nội tại của cổ phiếu.
+                    Kết quả cuối cùng là trung bình có trọng số của các mô hình được chọn.
+                </p>
+
+                <!-- Bank Industry Note -->
+                <div class="methodology-note-box"
+                    style="background: #fff8e1; border-left: 4px solid #ffa000; padding: 16px; margin-bottom: 24px; border-radius: 4px;">
+                    <p style="margin: 0; font-weight: 600; color: #e65100;">⚠️ Lưu ý cho ngành Ngân hàng</p>
+                    <p style="margin: 8px 0 0 0; color: #5d4037;">
+                        Các mô hình DCF (FCFE/FCFF) không phù hợp với ngân hàng do cấu trúc vốn đặc thù - nợ là nguyên
+                        liệu kinh doanh, không phải nguồn tài trợ.
+                        Khi định giá ngân hàng, hệ thống tự động chỉ sử dụng P/E và P/B với trọng số 50/50.
+                    </p>
+                </div>
+
+                <!-- FCFE -->
+                <div class="methodology-item">
+                    <h4>1. FCFE - Free Cash Flow to Equity</h4>
+                    <p>Dòng tiền tự do thuộc về cổ đông sau khi trừ chi phí hoạt động, tái đầu tư và thanh toán nợ.</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức tính FCFE:</strong></p>
+                        <code>FCFE = Lợi nhuận ròng + Khấu hao + Vay ròng − Thay đổi vốn lưu động + CapEx</code>
+
+                        <p style="margin-top: 12px;"><strong>Trong đó:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>Lợi nhuận ròng: Net Profit For the Year (Income Statement)</li>
+                            <li>Khấu hao: Depreciation and Amortisation (Cash Flow Statement)</li>
+                            <li>Vay ròng = Proceeds from Borrowings + Repayment of Borrowings</li>
+                            <li>Thay đổi vốn lưu động = ΔReceivables + ΔInventory − ΔPayables</li>
+                            <li>CapEx = Purchase of Fixed Assets + Proceeds from Disposal</li>
+                        </ul>
+
+                        <p style="margin-top: 12px;"><strong>Định giá:</strong></p>
+                        <code>Equity Value = Σ(FCFE dự phóng / (1+r)^t) + Terminal Value / (1+r)^n</code>
+                        <code>Terminal Value = FCFE năm cuối × (1+g) / (r−g)</code>
+                        <code>Giá trị mỗi CP = Equity Value / Số CP lưu hành</code>
+
+                        <p style="margin-top: 8px; font-size: 13px; color: #666;">
+                            r = Cost of Equity (Required Return) &nbsp;|&nbsp; g = Terminal Growth Rate &nbsp;|&nbsp; n
+                            = Số năm dự phóng
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FCFF -->
+                <div class="methodology-item">
+                    <h4>2. FCFF - Free Cash Flow to Firm</h4>
+                    <p>Dòng tiền tự do thuộc về toàn bộ doanh nghiệp (cả cổ đông và chủ nợ).</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức tính FCFF:</strong></p>
+                        <code>FCFF = Lợi nhuận ròng + Khấu hao + Chi phí lãi vay×(1−T) − Thay đổi vốn lưu động + CapEx</code>
+
+                        <p style="margin-top: 12px;"><strong>Trong đó:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>Chi phí lãi vay×(1−T): Cộng lại vì FCFF thuộc về cả chủ nợ</li>
+                            <li>T = Tax Rate (mặc định 20%)</li>
+                        </ul>
+
+                        <p style="margin-top: 12px;"><strong>Định giá:</strong></p>
+                        <code>Enterprise Value = Σ(FCFF dự phóng / (1+WACC)^t) + Terminal Value / (1+WACC)^n</code>
+                        <code>Equity Value = Enterprise Value − Nợ vay ngắn hạn − Nợ vay dài hạn + Tiền mặt</code>
+                        <code>Giá trị mỗi CP = Equity Value / Số CP lưu hành</code>
+
+                        <p style="margin-top: 8px; font-size: 13px; color: #666;">
+                            WACC = Weighted Average Cost of Capital (chi phí vốn bình quân gia quyền)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- P/E Comparable -->
+                <div class="methodology-item">
+                    <h4>3. P/E Comparable - So sánh ngành</h4>
+                    <p>Định giá dựa trên Median P/E của top 10 công ty cùng ngành theo vốn hóa thị trường.</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức:</strong></p>
+                        <code>Median P/E = Median(P/E của top 10 peers cùng ngành)</code>
+                        <code>Giá trị mỗi CP = Median P/E × EPS hiện tại</code>
+
+                        <p style="margin-top: 12px;"><strong>Chi tiết:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>Peers: Top 10 công ty cùng ngành (ICB Level 2) theo Market Cap</li>
+                            <li>EPS: Earnings Per Share từ dữ liệu tài chính gần nhất</li>
+                            <li>Outlier Removal: Loại bỏ P/E &lt; 0 hoặc P/E &gt; 100 trước khi tính median</li>
+                            <li>Fallback: Nếu không tìm được peers → P/E = 15x (trung bình thị trường)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- P/B Comparable -->
+                <div class="methodology-item">
+                    <h4>4. P/B Comparable - So sánh ngành</h4>
+                    <p>Định giá dựa trên Median P/B của top 10 công ty cùng ngành theo vốn hóa thị trường.</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức:</strong></p>
+                        <code>Median P/B = Median(P/B của top 10 peers cùng ngành)</code>
+                        <code>Giá trị mỗi CP = Median P/B × BVPS</code>
+
+                        <p style="margin-top: 12px;"><strong>Chi tiết:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>BVPS = Book Value Per Share = Vốn chủ sở hữu / Số CP lưu hành</li>
+                            <li>Outlier Removal: Loại bỏ P/B &lt; 0 hoặc P/B &gt; 10 trước khi tính median</li>
+                            <li>Fallback: Nếu không tìm được peers → P/B = 1.5x (trung bình thị trường)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Weighted Average -->
+                <div class="methodology-item">
+                    <h4>5. Trung bình có trọng số</h4>
+                    <p>Giá trị cuối cùng là trung bình có trọng số của các mô hình được chọn.</p>
+
+                    <div class="methodology-formula-box">
+                        <p><strong>Công thức:</strong></p>
+                        <code>Giá mục tiêu = Σ(Giá trị mô hình × Trọng số) / Σ(Trọng số)</code>
+
+                        <p style="margin-top: 12px;"><strong>Trọng số mặc định:</strong></p>
+                        <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                            <li>Doanh nghiệp thường: FCFE 25% + FCFF 25% + P/E 25% + P/B 25%</li>
+                            <li>Ngân hàng: P/E 50% + P/B 50% (FCFE và FCFF tự động bị loại)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Data Sources -->
+                <div class="methodology-item" style="background: #f5f5f5; padding: 16px; border-radius: 8px;">
+                    <h4 style="margin-top: 0;">📊 Nguồn dữ liệu</h4>
+                    <ul style="margin: 8px 0; padding-left: 20px; list-style: disc;">
+                        <li><strong>Báo cáo tài chính:</strong> VCI (VietCap) - Income Statement, Balance Sheet, Cash
+                            Flow</li>
+                        <li><strong>Giá thời gian thực:</strong> VCI Trading API</li>
+                        <li><strong>Thông tin công ty:</strong> VCI Company Profile</li>
+                        <li><strong>Sector Peers:</strong> vnstock Screener API (cập nhật hàng ngày)</li>
+                        <li><strong>Tin tức:</strong> CafeF News API</li>
+                    </ul>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="methodology-disclaimer"
+                    style="background: #fff3e0; padding: 16px; border-radius: 8px; margin-top: 20px;">
+                    <p style="margin: 0; color: #e65100;">
+                        <strong>⚠️ Lưu ý quan trọng:</strong> Các định giá này dựa trên dữ liệu lịch sử và giả định do
+                        người dùng xác định.
+                        Chúng nên được sử dụng như một trong nhiều công cụ phân tích đầu tư, không phải là tiêu chí ra
+                        quyết định duy nhất.
+                        Luôn thực hiện nghiên cứu độc lập và tham khảo ý kiến chuyên gia tài chính trước khi đầu tư.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay hidden">
+        <div class="modal-container footer-modal">
+            <div class="modal-header">
+                <h2 data-i18n="contact">Contact</h2>
+                <button class="modal-close-btn" data-modal-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body footer-modal-content">
+                <div class="contact-info">
+                    <h3 data-i18n="getInTouch">Get in Touch</h3>
+                    <p data-i18n="contactIntro">If you have any questions, suggestions, or feedback about this valuation
+                        tool, feel free to reach out:</p>
+
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <a href="mailto:quanganh@example.com">quanganh@example.com</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <strong>GitHub:</strong>
+                        <a href="https://github.com/quanganhtapcode" target="_blank"
+                            rel="noopener noreferrer">github.com/quanganhtapcode</a>
+                    </div>
+
+                    <div class="contact-note">
+                        <p data-i18n="contactNote">This tool is developed and maintained as a personal project. Response
+                            times may vary.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer Modal -->
+    <div id="disclaimer-modal" class="modal-overlay hidden">
+        <div class="modal-container footer-modal">
+            <div class="modal-header">
+                <h2 data-i18n="disclaimer">Disclaimer</h2>
+                <button class="modal-close-btn" data-modal-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body footer-modal-content">
+                <div class="disclaimer-content">
+                    <h3 data-i18n="importantNotice">Important Notice</h3>
+                    <p data-i18n="disclaimerP1">The information provided by this stock valuation tool is for educational
+                        and informational purposes only. It should not be considered as financial advice, investment
+                        recommendations, or a solicitation to buy or sell any securities.</p>
+
+                    <h4 data-i18n="noGuarantee">No Guarantee of Accuracy</h4>
+                    <p data-i18n="disclaimerP2">While we strive to provide accurate and up-to-date information, we make
+                        no representations or warranties of any kind, express or implied, about the completeness,
+                        accuracy, reliability, or suitability of the data and valuations provided.</p>
+
+                    <h4 data-i18n="investmentRisks">Investment Risks</h4>
+                    <p data-i18n="disclaimerP3">All investments carry risk. Past performance is not indicative of future
+                        results. The valuations generated by this tool are based on historical data and assumptions that
+                        may not reflect future market conditions.</p>
+
+                    <h4 data-i18n="professionalAdvice">Seek Professional Advice</h4>
+                    <p data-i18n="disclaimerP4">Before making any investment decisions, you should consult with a
+                        qualified financial advisor who can provide personalized advice based on your individual
+                        circumstances and risk tolerance.</p>
+
+                    <div class="disclaimer-warning">
+                        <strong data-i18n="disclaimerWarning">⚠️ Use this tool at your own risk. The creators and
+                            maintainers of this tool are not responsible for any financial losses or damages resulting
+                            from the use of this tool.</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal-overlay hidden">
+        <div class="modal-container footer-modal">
+            <div class="modal-header">
+                <h2 data-i18n="privacyPolicy">Privacy Policy</h2>
+                <button class="modal-close-btn" data-modal-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body footer-modal-content">
+                <div class="privacy-content">
+                    <p class="last-updated" data-i18n="lastUpdated">Last Updated: December 2024</p>
+
+                    <h3 data-i18n="dataCollection">Data Collection</h3>
+                    <p data-i18n="privacyP1">This tool operates primarily on the client-side (in your browser). We do
+                        not collect, store, or transmit your personal information to external servers unless explicitly
+                        required for functionality.</p>
+
+                    <h4 data-i18n="whatWeCollect">What We May Collect</h4>
+                    <ul>
+                        <li data-i18n="privacyL1">Stock symbols you search for (processed locally)</li>
+                        <li data-i18n="privacyL2">Your preference settings (theme, language) stored in your browser's
+                            local storage</li>
+                        <li data-i18n="privacyL3">Anonymous usage analytics (if enabled)</li>
+                    </ul>
+
+                    <h4 data-i18n="thirdPartyServices">Third-Party Services</h4>
+                    <p data-i18n="privacyP2">This tool may use third-party APIs to retrieve stock market data. These
+                        services have their own privacy policies that govern how they handle data.</p>
+
+                    <h4 data-i18n="localStorage">Local Storage</h4>
+                    <p data-i18n="privacyP3">We use browser local storage to save your preferences (such as theme and
+                        language settings) for a better user experience. You can clear this data at any time through
+                        your browser settings.</p>
+
+                    <h4 data-i18n="contactUs">Contact Us</h4>
+                    <p data-i18n="privacyP4">If you have any questions about this Privacy Policy, please contact us
+                        through the Contact page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal-overlay hidden">
+        <div class="modal-container footer-modal">
+            <div class="modal-header">
+                <h2 data-i18n="termsOfUse">Terms of Use</h2>
+                <button class="modal-close-btn" data-modal-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body footer-modal-content">
+                <div class="terms-content">
+                    <p class="last-updated" data-i18n="lastUpdated">Last Updated: December 2024</p>
+
+                    <h3 data-i18n="acceptanceOfTerms">Acceptance of Terms</h3>
+                    <p data-i18n="termsP1">By accessing and using this stock valuation tool, you agree to be bound by
+                        these Terms of Use. If you do not agree to these terms, please do not use this tool.</p>
+
+                    <h4 data-i18n="useOfService">Use of Service</h4>
+                    <p data-i18n="termsP2">This tool is provided for personal, non-commercial use only. You may not:</p>
+                    <ul>
+                        <li data-i18n="termsL1">Use this tool for any unlawful purpose</li>
+                        <li data-i18n="termsL2">Attempt to gain unauthorized access to any part of the service</li>
+                        <li data-i18n="termsL3">Redistribute, sell, or commercially exploit the tool without permission
+                        </li>
+                        <li data-i18n="termsL4">Use automated systems to scrape or extract data</li>
+                    </ul>
+
+                    <h4 data-i18n="intellectualProperty">Intellectual Property</h4>
+                    <p data-i18n="termsP3">All content, features, and functionality of this tool are owned by the
+                        creator and are protected by applicable intellectual property laws.</p>
+
+                    <h4 data-i18n="limitationOfLiability">Limitation of Liability</h4>
+                    <p data-i18n="termsP4">The tool is provided "as is" without warranties of any kind. We shall not be
+                        liable for any direct, indirect, incidental, or consequential damages arising from your use of
+                        this tool.</p>
+
+                    <h4 data-i18n="changesToTerms">Changes to Terms</h4>
+                    <p data-i18n="termsP5">We reserve the right to modify these terms at any time. Continued use of the
+                        tool after changes constitutes acceptance of the new terms.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Universal Modal Handler with Scroll Lock
+        document.addEventListener('DOMContentLoaded', function () {
+            let scrollPosition = 0;
+
+            // Self-contained function to apply translations (independent of app object)
+            function applyModalTranslations() {
+                // Get current language from localStorage or document lang
+                const lang = localStorage.getItem('language') || document.documentElement.lang || 'en';
+
+                // Check if translations object exists
+                if (typeof translations === 'undefined' || !translations[lang]) {
+                    console.warn('Translations not available for language:', lang);
+                    return;
+                }
+
+                const langData = translations[lang];
+
+                // Update all elements with data-i18n attribute
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (langData[key]) {
+                        element.textContent = langData[key];
+                    }
+                });
+            }
+
+            // Generic modal open/close functions with scroll lock
+            function openModal(modal) {
+                if (modal) {
+                    // Save current scroll position before locking
+                    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+                    // Apply fixed position to body and set negative top to maintain visual position
+                    document.body.style.top = `-${scrollPosition}px`;
+                    document.body.classList.add('modal-open');
+                    document.documentElement.classList.add('modal-open');
+
+                    // Apply translations to modal content
+                    applyModalTranslations();
+
+                    modal.classList.remove('hidden');
+                }
+            }
+
+            function closeModal(modal) {
+                if (modal) {
+                    modal.classList.add('hidden');
+
+                    // Only unlock scroll if no other modals are open
+                    const openModals = document.querySelectorAll('.modal-overlay:not(.hidden)');
+                    if (openModals.length === 0) {
+                        document.body.classList.remove('modal-open');
+                        document.documentElement.classList.remove('modal-open');
+                        document.body.style.top = '';
+
+                        // Restore scroll position
+                        window.scrollTo(0, scrollPosition);
+                    }
+                }
+            }
+
+            function closeAllModals() {
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                    modal.classList.add('hidden');
+                });
+                document.body.classList.remove('modal-open');
+                document.documentElement.classList.remove('modal-open');
+                document.body.style.top = '';
+
+                // Restore scroll position
+                window.scrollTo(0, scrollPosition);
+            }
+
+            // Methodology Modal
+            const methodologyBtn = document.getElementById('methodology-btn');
+            const methodologyModal = document.getElementById('methodology-modal');
+            const methodologyCloseBtn = document.getElementById('methodology-close-btn');
+
+            if (methodologyBtn && methodologyModal) {
+                methodologyBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openModal(methodologyModal);
+                });
+                methodologyCloseBtn.addEventListener('click', () => closeModal(methodologyModal));
+                methodologyModal.addEventListener('click', function (e) {
+                    if (e.target === methodologyModal) closeModal(methodologyModal);
+                });
+            }
+
+            // Footer Modals (Contact, Disclaimer, Privacy, Terms)
+            const footerModals = {
+                'contact-link': 'contact-modal',
+                'disclaimer-link': 'disclaimer-modal',
+                'privacy-link': 'privacy-modal',
+                'terms-link': 'terms-modal'
+            };
+
+            Object.entries(footerModals).forEach(([linkId, modalId]) => {
+                const link = document.getElementById(linkId);
+                const modal = document.getElementById(modalId);
+
+                if (link && modal) {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        openModal(modal);
+                    });
+
+                    // Close button within modal
+                    const closeBtn = modal.querySelector('[data-modal-close]');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', () => closeModal(modal));
+                    }
+
+                    // Click outside to close
+                    modal.addEventListener('click', function (e) {
+                        if (e.target === modal) closeModal(modal);
+                    });
+                }
+            });
+
+            // Global Escape key handler
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeAllModals();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

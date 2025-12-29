@@ -3,15 +3,28 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
-  <!-- Main Page - Định Giá Cổ Phiếu Việt Nam -->
+  <!-- Main Page - Market Overview -->
   <url>
     <loc>https://valuation.quanganh.org/</loc>
-    <lastmod>2025-12-27</lastmod>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="vi" href="https://valuation.quanganh.org/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://valuation.quanganh.org/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://valuation.quanganh.org/"/>
+    <image:image>
+      <image:loc>https://valuation.quanganh.org/og-image.png</image:loc>
+      <image:title>Thị Trường Chứng Khoán Việt Nam - Vietnam Stock Market Overview</image:title>
+      <image:caption>VN-Index, HNX, VN30 realtime. P/E chart, tin tức, top movers.</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Valuation Tool Page -->
+  <url>
+    <loc>https://valuation.quanganh.org/valuation.html</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://valuation.quanganh.org/og-image.png</image:loc>
       <image:title>Định Giá Cổ Phiếu Việt Nam - Vietnam Stock Valuation Tool</image:title>
