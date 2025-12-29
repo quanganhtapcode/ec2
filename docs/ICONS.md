@@ -1,20 +1,46 @@
-# Icon Generation Instructions
+# 🖼️ Icon Generation (Complete)
 
-You have `favicon.svg` which is great for modern browsers. To support all devices and platforms, you need additional formats:
+## Trạng thái hiện tại: ✅ Hoàn thành
+
+Tất cả các icons cần thiết đã được tạo và deploy.
 
 ## Required Icon Sizes
 
 ### For Browsers
-- `favicon.ico` - 16x16, 32x32 (multi-size ICO file)
-- `favicon-16x16.png` - 16x16
-- `favicon-32x32.png` - 32x32
+- ✅ `favicon.ico` - Multi-size ICO file
+- ✅ `favicon.svg` - SVG format (modern browsers)
+- ✅ `favicon-16x16.png` - 16x16
+- ✅ `favicon-32x32.png` - 32x32
 
 ### For Mobile/PWA
-- `apple-touch-icon.png` - 180x180 (iOS)
-- `favicon-192x192.png` - 192x192 (Android)
-- `favicon-512x512.png` - 512x512 (Android/PWA)
+- ✅ `apple-touch-icon.png` - 180x180 (iOS)
+- ✅ `android-chrome-192x192.png` - 192x192 (Android)
+- ✅ `android-chrome-512x512.png` - 512x512 (Android/PWA)
 
-## How to Generate Icons from SVG
+### Web App Manifest
+- ✅ `site.webmanifest` - PWA manifest file
+
+---
+
+## File Locations
+
+Tất cả icons nằm trong thư mục `frontend/`:
+
+```
+frontend/
+├── favicon.ico
+├── favicon.svg
+├── favicon-16x16.png
+├── favicon-32x32.png
+├── apple-touch-icon.png
+├── android-chrome-192x192.png
+├── android-chrome-512x512.png
+└── site.webmanifest
+```
+
+---
+
+## Regenerate Icons (Nếu cần)
 
 ### Option 1: Online Tools (Easiest)
 1. Go to https://realfavicongenerator.net/
@@ -30,30 +56,17 @@ You have `favicon.svg` which is great for modern browsers. To support all device
 magick convert -background none frontend/favicon.svg -resize 16x16 frontend/favicon-16x16.png
 magick convert -background none frontend/favicon.svg -resize 32x32 frontend/favicon-32x32.png
 magick convert -background none frontend/favicon.svg -resize 180x180 frontend/apple-touch-icon.png
-magick convert -background none frontend/favicon.svg -resize 192x192 frontend/favicon-192x192.png
-magick convert -background none frontend/favicon.svg -resize 512x512 frontend/favicon-512x512.png
+magick convert -background none frontend/favicon.svg -resize 192x192 frontend/android-chrome-192x192.png
+magick convert -background none frontend/favicon.svg -resize 512x512 frontend/android-chrome-512x512.png
 
 # Generate ICO file (Windows)
 magick convert frontend/favicon-16x16.png frontend/favicon-32x32.png frontend/favicon.ico
 ```
 
-### Option 3: Photoshop/GIMP/Figma
-1. Open `favicon.svg` in your design tool
-2. Export as PNG at each required size
-3. Use an ICO converter for the `.ico` file
+---
 
-## Quick Deploy Script
+## Deploy After Changes
 
-After generating icons, run:
 ```powershell
-.\deployment\deploy-quick.ps1 "Add favicon and PWA icons"
+.\automation\deploy.ps1 -CommitMessage "Update favicon and PWA icons"
 ```
-
-## Current Status
-- ✅ favicon.svg (SVG format - modern browsers)
-- ❌ favicon.ico (needed for IE/legacy browsers)
-- ❌ favicon-16x16.png
-- ❌ favicon-32x32.png
-- ❌ apple-touch-icon.png (needed for iOS)
-- ❌ favicon-192x192.png (needed for Android/PWA)
-- ❌ favicon-512x512.png (needed for Android/PWA)

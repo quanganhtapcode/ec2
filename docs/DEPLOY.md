@@ -6,7 +6,7 @@
 |------------|-----|
 | **Production** | https://valuation.quanganh.org |
 | **API** | https://api.quanganh.org |
-| **VPS** | 203.55.176.10 (root@10.66.66.1) |
+| **VPS** | root@10.66.66.1 (qua VPN) |
 
 ---
 
@@ -24,15 +24,16 @@ cd C:\Users\PC\Downloads\Valuation
 
 **Script sẽ tự động:**
 1. ✅ Commit & push code lên GitHub
-2. ✅ Sync files lên VPS qua SCP
-3. ✅ Restart gunicorn service
+2. ✅ Sync `backend/`, `frontend/`, `automation/` lên VPS
+3. ✅ Sync `sector_peers.json`, `package.json`
+4. ✅ Restart gunicorn-ec2 service
 
 ---
 
 ## 2. SSH vào VPS (Khi cần debug)
 
 ```powershell
-ssh -i "$env:USERPROFILE\Desktop\key.pem" root@10.66.66.1
+ssh -i "$env:USERPROFILE\Downloads\key.pem" root@10.66.66.1
 ```
 
 **Các lệnh hữu ích:**
@@ -54,13 +55,23 @@ systemctl status gunicorn-ec2
 ```
 /root/apps/ec2/
 ├── backend/
-│   ├── server.py
-│   ├── models.py
-│   └── r2_client.py
+│   ├── server.py       # API server
+│   ├── models.py       # Valuation models
+│   └── r2_client.py    # R2 storage client
 ├── frontend/
+│   ├── index.html      # Market Overview page
+│   ├── valuation.html  # Valuation page
+│   ├── css/            # Stylesheets
+│   │   ├── overview.css
+│   │   └── ticker-autocomplete.css
+│   ├── js/             # JavaScript
+│   │   └── overview.js
+│   └── ticker_data.json
+├── automation/
+├── stocks/             # Stock JSON data (700+ files)
 ├── .venv/              # Virtual environment
 ├── .env                # R2 credentials
-└── stocks/             # Stock JSON data
+└── sector_peers.json
 ```
 
 ---
@@ -88,8 +99,8 @@ systemctl restart gunicorn-ec2
 ```
 
 ### Lỗi Permission denied (SSH)
-- Kiểm tra file `key.pem` tại `~/Desktop/key.pem`
-- Đảm bảo quyền: `chmod 400 key.pem`
+- Kiểm tra file `key.pem` tại `~/Downloads/key.pem`
+- Đảm bảo quyền: `chmod 400 key.pem` (Linux/Mac)
 
 ### Service không start
 ```bash
@@ -98,6 +109,10 @@ cd /root/apps/ec2
 source .venv/bin/activate
 python -c "from backend.server import app; print('OK')"
 ```
+
+### JavaScript không load
+- Clear cache browser: `Ctrl+Shift+R`
+- Kiểm tra version trong URL: `overview.js?v=1`
 
 ---
 
@@ -111,4 +126,19 @@ cp -r /root/apps/ec2 /root/apps/ec2_backup_$(date +%Y%m%d)
 rm -rf /root/apps/ec2
 mv /root/apps/ec2_backup_YYYYMMDD /root/apps/ec2
 systemctl restart gunicorn-ec2
+```
+
+---
+
+## 7. Services trên VPS
+
+| Service | Mô tả | Status |
+|---------|-------|--------|
+| `gunicorn-ec2.service` | API Backend | Always running |
+| `val-updater.service` | Auto update JSON | Timer: Ngày 1, 15 |
+
+```bash
+# Kiểm tra tất cả services
+systemctl status gunicorn-ec2
+systemctl list-timers | grep val
 ```
