@@ -163,14 +163,22 @@ async function loadIndexChart(indexId, elementId, isUp) {
 }
 
 // ============ MINI SPARKLINE CHART ============
+// Store chart instances so we can destroy them before creating new ones
+const chartInstances = {};
+
 function createMiniChart(canvasId, data, isUp) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
 
+    // Destroy existing chart on this canvas if it exists
+    if (chartInstances[canvasId]) {
+        chartInstances[canvasId].destroy();
+    }
+
     const ctx = canvas.getContext('2d');
     const color = isUp ? '#10b981' : '#ef4444';
 
-    new Chart(ctx, {
+    chartInstances[canvasId] = new Chart(ctx, {
         type: 'line',
         data: {
             labels: data.map((_, i) => i),
