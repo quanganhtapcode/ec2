@@ -62,6 +62,16 @@
 </head>
 
 <body class="app-container">
+    <!-- URL Redirect: Clean URL support - redirect /?symbol=XXX to /valuation.html?symbol=XXX -->
+    <script>
+        (function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const symbol = urlParams.get('symbol');
+            if (symbol) {
+                window.location.replace('valuation.html?symbol=' + encodeURIComponent(symbol));
+            }
+        })();
+    </script>
     <!-- Header - Same style as valuation.html for seamless navigation -->
     <header class="app-header py-16"
         style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; background: var(--color-background, #fff); border-bottom: 1px solid var(--color-border, #e5e5e5);">
@@ -256,7 +266,7 @@
                     <span style="font-size: 12px; color: #999;">Thêm mã</span>
                 </div>
                 <div id="watchlist">
-                    <div class="watchlist-item" onclick="location.href='index.html?symbol=VCB'">
+                    <div class="watchlist-item" onclick="location.href='?symbol=VCB'">
                         <div class="stock-icon">VCB</div>
                         <div class="stock-info">
                             <div class="stock-name">Vietcombank</div>
@@ -267,7 +277,7 @@
                             <div class="stock-change-small positive">+0.35%</div>
                         </div>
                     </div>
-                    <div class="watchlist-item" onclick="location.href='index.html?symbol=FPT'">
+                    <div class="watchlist-item" onclick="location.href='?symbol=FPT'">
                         <div class="stock-icon">FPT</div>
                         <div class="stock-info">
                             <div class="stock-name">FPT Corporation</div>
@@ -278,7 +288,7 @@
                             <div class="stock-change-small negative">-0.54%</div>
                         </div>
                     </div>
-                    <div class="watchlist-item" onclick="location.href='index.html?symbol=VNM'">
+                    <div class="watchlist-item" onclick="location.href='?symbol=VNM'">
                         <div class="stock-icon">VNM</div>
                         <div class="stock-info">
                             <div class="stock-name">Vinamilk</div>
@@ -289,7 +299,7 @@
                             <div class="stock-change-small positive">+1.12%</div>
                         </div>
                     </div>
-                    <div class="watchlist-item" onclick="location.href='index.html?symbol=HPG'">
+                    <div class="watchlist-item" onclick="location.href='?symbol=HPG'">
                         <div class="stock-icon">HPG</div>
                         <div class="stock-info">
                             <div class="stock-name">Hòa Phát</div>

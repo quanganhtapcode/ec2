@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         searchInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 const symbol = this.value.trim().toUpperCase();
-                if (symbol) window.location.href = `valuation.html?symbol=${symbol}`;
+                if (symbol) window.location.href = `?symbol=${symbol}`;
             }
         });
     }
@@ -190,7 +190,7 @@ async function loadNews() {
                     const changeDisplay = change ? `${isUp ? '+' : ''}${change}` : '';
 
                     stockHtml = `
-                        <div class="stock-tag ${changeClass}" onclick="event.stopPropagation(); window.location.href='valuation.html?symbol=${symbol}'" style="cursor: pointer;">
+                        <div class="stock-tag ${changeClass}" onclick="event.stopPropagation(); window.location.href='?symbol=${symbol}'" style="cursor: pointer;">
                             ${symbol} ${priceDisplay}${changeDisplay}
                         </div>
                     `;
@@ -310,7 +310,7 @@ async function loadTopMovers(type) {
                 : (percent >= 0 ? '+' : '') + percent.toFixed(2) + '%';
 
             return `
-                <div class="watchlist-item" onclick="location.href='valuation.html?symbol=${item.Symbol}'">
+                <div class="watchlist-item" onclick="location.href='?symbol=${item.Symbol}'">
                     <div class="stock-icon">${item.Symbol.slice(0, 3)}</div>
                     <div class="stock-info">
                         <div class="stock-name">${item.Symbol}</div>
@@ -363,7 +363,7 @@ async function loadForeignFlows(type) {
             const valueDisplay = (item.Value / 1e9).toFixed(1) + ' tỷ';
 
             return `
-                <div class="watchlist-item" onclick="location.href='valuation.html?symbol=${item.Symbol}'">
+                <div class="watchlist-item" onclick="location.href='?symbol=${item.Symbol}'">
                     <div class="stock-icon" style="background:${type === 'foreign-buy' ? '#ecfdf5' : '#fef2f2'}; color:${type === 'foreign-buy' ? '#10b981' : '#ef4444'}">${item.Symbol.slice(0, 3)}</div>
                     <div class="stock-info">
                         <div class="stock-name">${item.Symbol}</div>
@@ -684,10 +684,10 @@ class OverviewAutocomplete {
             <div class="ticker-item ${i === this.selectedIndex ? 'selected' : ''}" data-symbol="${t.symbol}">
                 <div class="ticker-item-left">
                     <span class="ticker-symbol">${this.highlight(t.symbol, query)}</span>
-                    <span class="ticker-name">${t.name || ''}</span>
+                    <span class="ticker-exchange">${t.exchange || ''}</span>
                 </div>
                 <div class="ticker-item-right">
-                    <span class="ticker-exchange">${t.exchange || ''}</span>
+                    <span class="ticker-name">${t.name || ''}</span>
                     ${t.sector ? `<span class="ticker-sector">${t.sector}</span>` : ''}
                 </div>
             </div>
@@ -712,7 +712,7 @@ class OverviewAutocomplete {
     selectItem(symbol) {
         this.close();
         // Navigate to valuation page with the selected symbol
-        window.location.href = `valuation.html?symbol=${symbol}`;
+        window.location.href = `?symbol=${symbol}`;
     }
 
     close() {
