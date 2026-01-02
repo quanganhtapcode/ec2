@@ -83,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const activeForeign = document.querySelector('.foreign-tab.active');
         if (activeForeign) loadForeignFlows(activeForeign.dataset.type);
 
+        // Refresh Lottery
+        if (window.refreshLottery) window.refreshLottery(true);
+
         console.log('📊 Refreshed market data at', new Date().toLocaleTimeString('vi-VN'));
     }, 30000); // 30 seconds
 
@@ -468,11 +471,7 @@ function setupLotteryTabs() {
 
     if (!container || !tabs.length) return;
 
-    let currentRegion = 'mb'; // Default
-
-    async function loadLottery(region) {
-        currentRegion = region;
-
+    async function loadLottery(region, silent = false) {
         // Update Active Tab
         tabs.forEach(t => {
             t.classList.toggle('active', t.dataset.region === region);
@@ -481,7 +480,9 @@ function setupLotteryTabs() {
             t.style.color = '';
         });
 
-        container.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải dữ liệu xổ số...</div>';
+        if (!silent) {
+            container.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải dữ liệu xổ số...</div>';
+        }
         try {
             const resp = await fetch(`/api/market/lottery?region=${region}`);
             const data = await resp.json();
@@ -494,9 +495,19 @@ function setupLotteryTabs() {
             renderLotteryTable(data, region);
         } catch (e) {
             console.error(e);
-            container.innerHTML = '<div class="error" style="text-align: center; color: red; padding: 20px;">Lỗi tải dữ liệu xổ số</div>';
+            if (!silent) {
+                container.innerHTML = '<div class="error" style="text-align: center; color: red; padding: 20px;">Lỗi tải dữ liệu xổ số</div>';
+            }
         }
     }
+
+    // Expose refresh function globally
+    window.refreshLottery = (silent = false) => {
+        const activeTab = document.querySelector('.lottery-tab.active');
+        if (activeTab) {
+            loadLottery(activeTab.dataset.region, silent);
+        }
+    };
 
     function renderLotteryTable(data, region) {
         if (!data.results) {
@@ -550,6 +561,12 @@ function setupLotteryTabs() {
                  </tr>`;
             });
             html += `</tbody></table>`;
+        }
+
+        if (data.pubDate) {
+            const dateParts = data.pubDate.split(' ');
+            const dateStr = dateParts[0] || data.pubDate;
+            html += `<div style="margin-top: 8px; text-align: center; font-size: 11px; color: #9ca3af; font-style: italic;">Kết quả ngày: ${dateStr}</div>`;
         }
 
         html += '</div>';
