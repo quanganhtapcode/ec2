@@ -198,7 +198,7 @@ ssh -i ~/Downloads/key.pem root@10.66.66.1 "systemctl restart val-updater.servic
 
 ### Kiểm tra dữ liệu mới
 ```bash
-ssh -i ~/Downloads/key.pem root@10.66.66.1 "cat /root/apps/ec2/stocks/VIC.json | head -20"
+ssh -i ~/Downloads/key.pem root@10.66.66.1 "cat /var/www/api.quanganh.org/stocks/VIC.json | head -20"
 ```
 
 ---

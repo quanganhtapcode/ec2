@@ -17,7 +17,8 @@ const API = {
     REPORTS: `${API_BASE}/api/market/reports`,
     NEWS: `${API_BASE}/api/market/news?page=1&size=100`,
     TOP_MOVERS: `${API_BASE}/api/market/top-movers`,
-    FOREIGN_FLOW: `${API_BASE}/api/market/foreign-flow`
+    FOREIGN_FLOW: `${API_BASE}/api/market/foreign-flow`,
+    GOLD: `${API_BASE}/api/market/gold`
 };
 
 // Index IDs from CafeF: 1=VNINDEX, 2=HNX, 9=UPCOM, 11=VN30
@@ -795,176 +796,92 @@ if (symbolSearchInput) {
     new OverviewAutocomplete(symbolSearchInput);
 }
 
-// ============ WATCHLIST MANAGEMENT ============
-const WATCHLIST_KEY = 'stock_watchlist';
-const DEFAULT_WATCHLIST = ['VCB', 'FPT', 'VNM', 'HPG'];
-
-// Get watchlist from localStorage
-function getWatchlist() {
-    try {
-        const saved = localStorage.getItem(WATCHLIST_KEY);
-        if (saved) {
-            return JSON.parse(saved);
-        }
-    } catch (e) {
-        console.error('Error reading watchlist:', e);
-    }
-    // Return default watchlist if none saved
-    return [...DEFAULT_WATCHLIST];
-}
-
-// Save watchlist to localStorage
-function saveWatchlist(symbols) {
-    try {
-        localStorage.setItem(WATCHLIST_KEY, JSON.stringify(symbols));
-    } catch (e) {
-        console.error('Error saving watchlist:', e);
-    }
-}
-
-// Add symbol to watchlist
-function addToWatchlist(symbol) {
-    const watchlist = getWatchlist();
-    const upperSymbol = symbol.toUpperCase().trim();
-    if (!upperSymbol) return false;
-    if (watchlist.includes(upperSymbol)) {
-        console.log(`${upperSymbol} already in watchlist`);
-        return false;
-    }
-    watchlist.unshift(upperSymbol); // Add to beginning
-    saveWatchlist(watchlist);
-    loadWatchlist(); // Reload UI
-    return true;
-}
-
-// Remove symbol from watchlist
-function removeFromWatchlist(symbol) {
-    const watchlist = getWatchlist();
-    const index = watchlist.indexOf(symbol.toUpperCase());
-    if (index > -1) {
-        watchlist.splice(index, 1);
-        saveWatchlist(watchlist);
-        loadWatchlist(); // Reload UI
-        return true;
-    }
-    return false;
-}
-
-// Load and render watchlist
-async function loadWatchlist() {
-    const container = document.getElementById('watchlist');
-    const countEl = document.getElementById('watchlist-count');
-    const watchlist = getWatchlist();
-
-    if (countEl) {
-        countEl.textContent = `${watchlist.length} mã`;
-    }
-
-    if (watchlist.length === 0) {
-        container.innerHTML = '<div style="text-align: center; padding: 20px; color: #999; font-size: 13px;">Chưa có mã nào trong watchlist.<br>Nhập mã cổ phiếu ở trên để thêm.</div>';
-        return;
-    }
+// ============ GOLD PRICE MANAGEMENT ============
+async function loadGoldPrice() {
+    const container = document.getElementById('gold-price-list');
+    if (!container) return;
 
     container.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải...</div>';
 
     try {
-        // Fetch data for all symbols in watchlist
-        const symbolsParam = watchlist.join(',');
-        const response = await fetch(`${API_BASE}/api/stock/batch-price?symbols=${symbolsParam}`);
+        const response = await fetch(API.GOLD);
         const result = await response.json();
 
-        // Build HTML for each watchlist item
-        let html = '';
-        for (const symbol of watchlist) {
-            const data = result[symbol] || {};
-            const price = data.price || data.currentPrice || '--';
-            const change = data.change || data.changePercent || 0;
-            const companyName = data.companyName || data.name || symbol;
-            const exchange = data.exchange || 'HOSE';
-            const isUp = change >= 0;
-            const changeClass = isUp ? 'positive' : 'negative';
-            const changeText = change !== 0 ? (isUp ? '+' : '') + parseFloat(change).toFixed(2) + '%' : '--';
-            const priceDisplay = typeof price === 'number' ? price.toLocaleString('vi-VN') : price;
-
-            // Truncate company name
-            const nameDisplay = companyName.length > 25 ? companyName.slice(0, 25) + '...' : companyName;
-
-            html += `
-                <div class="mover-item watchlist-stock" data-symbol="${symbol}">
-                    ${getStockLogoHtml(symbol, 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)', '#d97706')}
-                    <div class="mover-info" onclick="location.href='?symbol=${symbol}'" style="cursor: pointer;">
-                        <div class="mover-name">${nameDisplay}</div>
-                        <div class="mover-symbol">${symbol} · ${exchange}</div>
-                    </div>
-                    <div class="mover-price-info">
-                        <div class="mover-price">${priceDisplay}</div>
-                        <div class="mover-change ${changeClass}">${changeText}</div>
-                    </div>
-                    <button class="watchlist-remove-btn" onclick="removeFromWatchlist('${symbol}')" title="Xóa khỏi watchlist" 
-                        style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; margin-left: 4px; font-size: 16px; transition: color 0.2s;"
-                        onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#9ca3af'">×</button>
-                </div>
-            `;
+        // Handle result format { data: [...], cached: bool } from backend
+        // or direct array if proxied directly
+        let goldData = [];
+        if (result.data && Array.isArray(result.data)) {
+            goldData = result.data;
+        } else if (Array.isArray(result)) {
+            goldData = result;
+        } else if (result.Data && Array.isArray(result.Data)) {
+            goldData = result.Data; // Just in case
         }
 
-        container.innerHTML = html;
+        if (!goldData || goldData.length === 0) {
+            container.innerHTML = '<div class="loading">Không có dữ liệu vàng</div>';
+            return;
+        }
+
+        // Filter for key items in Ho Chi Minh (Id 1, 49, 81 are usually SJC, Ring, Jewelry)
+        // ID 1: Vàng SJC 1L, 10L, 1KG
+        // ID 49: Vàng nhẫn SJC 99,99% 1 chỉ, 2 chỉ, 5 chỉ
+        // ID 81: Nữ trang 99,99%
+        const hcmItems = goldData.filter(item => item.BranchName === "Hồ Chí Minh" && [1, 49, 81].includes(item.Id));
+
+        if (hcmItems.length === 0) {
+            // Fallback if IDs change: take first 3 HCM items
+            const anyHcm = goldData.filter(item => item.BranchName === "Hồ Chí Minh").slice(0, 5);
+            if (anyHcm.length > 0) {
+                renderGoldItems(container, anyHcm);
+            } else {
+                renderGoldItems(container, goldData.slice(0, 5));
+            }
+        } else {
+            renderGoldItems(container, hcmItems);
+        }
 
     } catch (error) {
-        console.error('Error loading watchlist data:', error);
-        // Fallback: show symbols without price data
-        container.innerHTML = watchlist.map(symbol => `
-            <div class="mover-item watchlist-stock" data-symbol="${symbol}">
-                ${getStockLogoHtml(symbol, 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)', '#d97706')}
-                <div class="mover-info" onclick="location.href='?symbol=${symbol}'" style="cursor: pointer;">
-                    <div class="mover-name">${symbol}</div>
-                    <div class="mover-symbol">${symbol} · HOSE</div>
-                </div>
-                <div class="mover-price-info">
-                    <div class="mover-price">--</div>
-                    <div class="mover-change">--</div>
-                </div>
-                <button class="watchlist-remove-btn" onclick="removeFromWatchlist('${symbol}')" title="Xóa khỏi watchlist"
-                    style="background: none; border: none; color: #9ca3af; cursor: pointer; padding: 4px; margin-left: 4px; font-size: 16px;"
-                    onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='#9ca3af'">×</button>
-            </div>
-        `).join('');
+        console.error('Error loading gold price:', error);
+        container.innerHTML = '<div class="loading">Lỗi tải giá vàng</div>';
     }
 }
 
-// Setup watchlist input
-function setupWatchlistInput() {
-    const input = document.getElementById('watchlist-input');
-    if (!input) return;
+function renderGoldItems(container, items) {
+    container.innerHTML = items.map(item => {
+        const buy = item.Buy;
+        const sell = item.Sell;
+        // Clean up name: "Vàng SJC 1L, 10L, 1KG" -> "Vàng SJC"
+        let name = item.TypeName;
+        if (item.Id === 1) name = "Vàng SJC (Miếng)";
+        else if (item.Id === 49) name = "Vàng Nhẫn 9999";
+        else if (item.Id === 81) name = "Nữ Trang 9999";
+        else name = name.replace('Vàng ', '').substring(0, 20);
 
-    input.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            const symbol = this.value.trim().toUpperCase();
-            if (symbol) {
-                addToWatchlist(symbol);
-                this.value = '';
-            }
-        }
-    });
-
-    // Focus effect
-    input.addEventListener('focus', function () {
-        this.style.borderColor = '#0d9668';
-        this.style.boxShadow = '0 0 0 3px rgba(13, 150, 104, 0.1)';
-    });
-
-    input.addEventListener('blur', function () {
-        this.style.borderColor = '#e5e5e5';
-        this.style.boxShadow = 'none';
-    });
+        return `
+            <div class="mover-item" style="cursor: default;">
+                <div class="stock-logo-wrapper" style="width: 32px; height: 32px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color: #d97706; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; border-radius: 50%;">
+                    Au
+                </div>
+                <div class="mover-info">
+                    <div class="mover-name" style="font-weight: 600; color: #4b5563;">${name}</div>
+                    <div class="mover-symbol" style="font-size: 11px; color: #9ca3af;">${item.BranchName}</div>
+                </div>
+                <div class="mover-price-info" style="align-items: flex-end; font-family: 'Inter', sans-serif;">
+                    <div class="mover-price" style="font-size: 12px; color: #6b7280;">Mua: <span style="color: #059669; font-weight: 600;">${buy}</span></div>
+                    <div class="mover-price" style="font-size: 12px; color: #6b7280;">Bán: <span style="color: #dc2626; font-weight: 600;">${sell}</span></div>
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
-// Initialize watchlist on page load
+// Initialize Gold Price on page load
 document.addEventListener('DOMContentLoaded', function () {
-    loadWatchlist();
-    setupWatchlistInput();
+    loadGoldPrice();
 
-    // Auto-refresh watchlist every 30 seconds
+    // Auto-refresh every 5 minutes
     setInterval(() => {
-        loadWatchlist();
-    }, 30000);
+        loadGoldPrice();
+    }, 300000);
 });

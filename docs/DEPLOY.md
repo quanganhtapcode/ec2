@@ -53,7 +53,7 @@ systemctl status gunicorn-ec2
 ## 3. Cấu trúc trên VPS
 
 ```
-/root/apps/ec2/
+/var/www/api.quanganh.org/
 ├── backend/
 │   ├── server.py       # API server
 │   ├── models.py       # Valuation models
@@ -79,7 +79,7 @@ systemctl status gunicorn-ec2
 ## 4. Cập nhật Dependencies trên VPS
 
 ```bash
-cd /root/apps/ec2
+cd /var/www/api.quanganh.org
 source .venv/bin/activate
 pip install -r requirements.txt
 systemctl restart gunicorn-ec2
@@ -105,7 +105,7 @@ systemctl restart gunicorn-ec2
 ### Service không start
 ```bash
 # Kiểm tra syntax Python
-cd /root/apps/ec2
+cd /var/www/api.quanganh.org
 source .venv/bin/activate
 python -c "from backend.server import app; print('OK')"
 ```
@@ -120,11 +120,11 @@ python -c "from backend.server import app; print('OK')"
 
 ```bash
 # Trên VPS - backup trước khi thay đổi lớn
-cp -r /root/apps/ec2 /root/apps/ec2_backup_$(date +%Y%m%d)
+cp -r /var/www/api.quanganh.org /var/www/api.quanganh.org_backup_$(date +%Y%m%d)
 
 # Rollback nếu có lỗi
-rm -rf /root/apps/ec2
-mv /root/apps/ec2_backup_YYYYMMDD /root/apps/ec2
+rm -rf /var/www/api.quanganh.org
+mv /var/www/api.quanganh.org_backup_YYYYMMDD /var/www/api.quanganh.org
 systemctl restart gunicorn-ec2
 ```
 
