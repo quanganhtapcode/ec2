@@ -53,7 +53,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/variables.css?v=1">
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
     <link rel="stylesheet" href="css/ticker-autocomplete.css?v=1">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -245,6 +245,7 @@
                         Đang tải...
                     </div>
                 </div>
+
             </div>
 
             <!-- Foreign Flows (Market Breadth/Signal) -->
@@ -276,10 +277,48 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Lottery Results -->
+            <div class="sidebar-section">
+                <div class="sidebar-title">
+                    🎱 Kết Quả Xổ Số
+                </div>
+                <div class="lottery-controls"
+                    style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+                    <div style="display: flex; gap: 8px;">
+                        <div style="position: relative; flex: 1;">
+                            <input type="text" id="lottery-date-text" class="form-control"
+                                style="width: 100%; font-size: 13px; padding: 6px; background: #fff; cursor: pointer;"
+                                readonly>
+                            <input type="date" id="lottery-date"
+                                style="position: absolute; visibility: hidden; width: 0; height: 0;">
+                            <div
+                                style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #666;">
+                                📅
+                            </div>
+                        </div>
+                        <select id="lottery-region" class="form-control"
+                            style="flex: 1; font-size: 13px; padding: 6px;">
+                            <option value="mb">Miền Bắc</option>
+                            <option value="mt">Miền Trung</option>
+                            <option value="mn">Miền Nam</option>
+                        </select>
+                    </div>
+                    <select id="lottery-province" class="form-control"
+                        style="width: 100%; font-size: 13px; padding: 6px; display: none;">
+                        <!-- Options populated by JS -->
+                    </select>
+                </div>
+                <!-- Lottery Container -->
+                <div id="lottery-container"
+                    style="width: 100%; border-radius: 8px; overflow: hidden; position: relative; margin-top: 12px; min-height: 200px;">
+                </div>
+            </div>
         </aside>
     </main>
 
-    <script src="js/overview.js?v=10"></script>
+    <iframe id="tradingview-widget-container" style="display:none;"></iframe>
+    <script src="js/overview.js?v=17"></script>
 </body>
 
 </html>

@@ -312,7 +312,8 @@ body {
 }
 
 .mover-tab,
-.foreign-tab {
+.foreign-tab,
+.lottery-tab {
     flex: 1;
     padding: 6px 12px;
     border: none;
@@ -328,12 +329,14 @@ body {
 }
 
 .mover-tab:hover,
-.foreign-tab:hover {
+.foreign-tab:hover,
+.lottery-tab:hover {
     color: #111827;
 }
 
 .mover-tab.active,
-.foreign-tab.active {
+.foreign-tab.active,
+.lottery-tab.active {
     background: #ffffff;
     color: #111827;
     font-weight: 600;
