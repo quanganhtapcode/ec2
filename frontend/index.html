@@ -280,34 +280,14 @@
 
             <!-- Lottery Results -->
             <div class="sidebar-section">
-                <div class="sidebar-title">
-                    🎱 Kết Quả Xổ Số
+                <div class="sidebar-title" style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>🎱 Kết Quả Xổ Số</span>
+                    <span id="lottery-display-date" style="font-size: 12px; color: #eee; font-weight: normal;"></span>
                 </div>
-                <div class="lottery-controls"
-                    style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
-                    <div style="display: flex; gap: 8px;">
-                        <div style="position: relative; flex: 1;">
-                            <input type="text" id="lottery-date-text" class="form-control"
-                                style="width: 100%; font-size: 13px; padding: 6px; background: #fff; cursor: pointer;"
-                                readonly>
-                            <input type="date" id="lottery-date"
-                                style="position: absolute; visibility: hidden; width: 0; height: 0;">
-                            <div
-                                style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #666;">
-                                📅
-                            </div>
-                        </div>
-                        <select id="lottery-region" class="form-control"
-                            style="flex: 1; font-size: 13px; padding: 6px;">
-                            <option value="mb">Miền Bắc</option>
-                            <option value="mt">Miền Trung</option>
-                            <option value="mn">Miền Nam</option>
-                        </select>
-                    </div>
-                    <select id="lottery-province" class="form-control"
-                        style="width: 100%; font-size: 13px; padding: 6px; display: none;">
-                        <!-- Options populated by JS -->
-                    </select>
+                <div class="movers-tabs">
+                    <button class="lottery-tab active" data-region="mb">Miền Bắc</button>
+                    <button class="lottery-tab" data-region="mt">Miền Trung</button>
+                    <button class="lottery-tab" data-region="mn">Miền Nam</button>
                 </div>
                 <!-- Lottery Container -->
                 <div id="lottery-container"
@@ -318,7 +298,7 @@
     </main>
 
     <iframe id="tradingview-widget-container" style="display:none;"></iframe>
-    <script src="js/overview.js?v=17"></script>
+    <script src="js/overview.js?v=21"></script>
 </body>
 
 </html>

@@ -461,44 +461,44 @@ const PROVINCES = {
 };
 
 function setupLotteryTabs() {
-    const regionSelect = document.getElementById('lottery-region');
-    const provinceSelect = document.getElementById('lottery-province');
+    // Simplified Lottery Logic: Just 3 Regions via Tabs
+    const tabs = document.querySelectorAll('.lottery-tab');
     const container = document.getElementById('lottery-container');
-    const dateText = document.getElementById('lottery-date-text');
+    const dateDisplay = document.getElementById('lottery-display-date');
 
-    if (!container || !regionSelect) return;
+    if (!container || !tabs.length) return;
 
-    // Make the date display field readonly as it will only show the latest RSS date
-    if (dateText) dateText.readOnly = true;
+    let currentRegion = 'mb'; // Default
 
-    async function loadLottery() {
-        const region = regionSelect.value;
-        const province = provinceSelect.value;
+    async function loadLottery(region) {
+        currentRegion = region;
+
+        // Update Active Tab
+        tabs.forEach(t => {
+            t.classList.toggle('active', t.dataset.region === region);
+            // Cleanup inline styles to let CSS take over
+            t.style.background = '';
+            t.style.color = '';
+        });
 
         container.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải dữ liệu xổ số...</div>';
-
         try {
             const resp = await fetch(`/api/market/lottery?region=${region}`);
             const data = await resp.json();
 
-            // Update Date Display from Data
-            if (data.pubDate) {
-                // Parse "02/01/2026 17:31:01" -> "02/01/2026"
+            if (data.pubDate && dateDisplay) {
                 const dateParts = data.pubDate.split(' ');
-                if (dateText && dateParts[0]) {
-                    dateText.value = dateParts[0];
-                }
+                if (dateParts[0]) dateDisplay.textContent = `📅 ${dateParts[0]}`;
             }
 
-            renderLotteryTable(data, region, province);
-
+            renderLotteryTable(data, region);
         } catch (e) {
             console.error(e);
             container.innerHTML = '<div class="error" style="text-align: center; color: red; padding: 20px;">Lỗi tải dữ liệu xổ số</div>';
         }
     }
 
-    function renderLotteryTable(data, region, filterProvince) {
+    function renderLotteryTable(data, region) {
         if (!data.results) {
             container.innerHTML = '<div style="padding:20px; text-align:center;">Chưa có dữ liệu</div>';
             return;
@@ -507,7 +507,6 @@ function setupLotteryTabs() {
         let html = '<div class="lottery-table-container" style="overflow-x: auto;">';
 
         if (region === 'mb') {
-            // MB Render
             const res = data.results;
             html += `<table style="width:100%; font-size: 13px; border-collapse: collapse; text-align: center;">
                 <tr style="background:#f0f0f0; font-weight:bold;"><td style="padding:8px; border:1px solid #ddd; width: 80px;">G.ĐB</td><td style="padding:8px; border:1px solid #ddd; color: #ef4444; font-size: 16px; font-weight: 700;">${(res.DB || ['...']).join(' ')}</td></tr>
@@ -520,50 +519,29 @@ function setupLotteryTabs() {
                 <tr><td style="padding:8px; border:1px solid #ddd;">G.7</td><td style="padding:8px; border:1px solid #ddd;">${(res.G7 || []).join(' - ')}</td></tr>
             </table>`;
         } else {
-            // MN/MT Render
-            const provinces = data.results.provinces || [];
-
-            // Filter if specific province selected (and it's not 'all')
-            // Note: RSS names (e.g., "Vĩnh Long") might not match Slugs perfectly if we filter by slug.
-            // But we can try fuzzy match or just showing all if fuzzy match fails.
-            // Actually, we can just show available provinces in RSS. If user picked "tp-ho-chi-minh", we verify.
-
-            let displayProvinces = provinces;
-            // Simple filter by name if filterProvince is set and we can map slug to Name?
-            // Unreliable without mapping. Let's just show ALL from RSS if 'all' is picked.
-            // If user picked a specific province, we try to find it in the RSS list.
-            if (filterProvince && filterProvince !== 'all') {
-                // Try to find matching province by checking if slug pattern matches name?
-                // Simple approach: Filter by user selection if we can.
-                // Actually, let's just show only the matching one if found.
-                const slugMap = PROVINCES[region].find(p => p.slug === filterProvince);
-                if (slugMap) {
-                    const found = provinces.filter(p => p.name.includes(slugMap.name) || slugMap.name.includes(p.name));
-                    if (found.length > 0) displayProvinces = found;
-                }
-            }
+            // MN/MT Render - Always show FULL MATRIX
+            const displayProvinces = data.results.provinces || [];
 
             if (displayProvinces.length === 0) {
-                container.innerHTML = '<div style="padding:20px; text-align:center;">Không tìm thấy dữ liệu cho tỉnh này hôm nay</div>';
+                container.innerHTML = '<div style="padding:20px; text-align:center;">Chưa có dữ liệu hôm nay</div>';
                 return;
             }
 
-            // Build Matrix Table
-            // Rows: G8, G7, G6, G5, G4, G3, G2, G1, DB
             const prizesOrder = ['G8', 'G7', 'G6', 'G5', 'G4', 'G3', 'G2', 'G1', 'DB'];
-
             html += `<table style="width:100%; font-size: 13px; border-collapse: collapse; text-align: center;">
                 <thead>
                     <tr style="background:#f0f0f0;">
-                       <th style="padding:8px; border:1px solid #ddd; width: 40px;">Giải</th>
-                       ${displayProvinces.map(p => `<th style="padding:8px; border:1px solid #ddd;">${p.name}</th>`).join('')}
+                       <th style="padding:8px; border:1px solid #ddd; width: 40px; position: sticky; left: 0; background: #e5e7eb; z-index: 10;">Giải</th>
+                       ${displayProvinces.map(p => `<th style="padding:8px; border:1px solid #ddd; min-width: 90px;">${p.name}</th>`).join('')}
                     </tr>
                 </thead>
                 <tbody>`;
 
-            prizesOrder.forEach(prize => {
-                html += `<tr>
-                    <td style="padding:8px; border:1px solid #ddd; font-weight: bold;">${prize}</td>
+            prizesOrder.forEach((prize, index) => {
+                const bg = index % 2 === 0 ? '#fff' : '#f9f9f9';
+                const stickyBg = index % 2 === 0 ? '#fff' : '#f9f9f9';
+                html += `<tr style="background: ${bg};">
+                    <td style="padding:8px; border:1px solid #ddd; font-weight: bold; position: sticky; left: 0; background: ${stickyBg}; z-index: 5; box-shadow: 1px 0 2px rgba(0,0,0,0.1);">${prize}</td>
                     ${displayProvinces.map(p => {
                     const val = p.prizes[prize] || [];
                     const cellStyle = prize === 'DB' ? 'color: #ef4444; font-weight: 700;' : '';
@@ -571,7 +549,6 @@ function setupLotteryTabs() {
                 }).join('')}
                  </tr>`;
             });
-
             html += `</tbody></table>`;
         }
 
@@ -579,56 +556,17 @@ function setupLotteryTabs() {
         container.innerHTML = html;
     }
 
-    // Event Listeners
-    regionSelect.addEventListener('change', () => {
-        // Update Province Dropdown
-        const region = regionSelect.value;
-        provinceSelect.innerHTML = '';
-        provinceSelect.style.display = 'block';
-
-        const defaultOpt = document.createElement('option');
-        defaultOpt.value = 'all';
-        let regionName = 'Miền Bắc';
-        if (region === 'mt') regionName = 'Miền Trung';
-        if (region === 'mn') regionName = 'Miền Nam';
-        defaultOpt.textContent = `— Xem cả ${regionName} —`;
-        provinceSelect.appendChild(defaultOpt);
-
-        const list = PROVINCES[region] || [];
-        list.forEach(p => {
-            const opt = document.createElement('option');
-            opt.value = p.slug;
-            opt.textContent = p.name;
-            provinceSelect.appendChild(opt);
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const r = tab.dataset.region;
+            loadLottery(r);
         });
-
-        loadLottery();
     });
 
-    provinceSelect.addEventListener('change', loadLottery);
-
     // Initial Load
-    // Populate Initial Provinces for MB (since HTML hardcoded options might be missing if we just replaced JS)
-    // Actually, we should trigger the region change logic to populate provinces correctly on first load.
-    // Manually populate for 'mb' (default)
-    {
-        const region = 'mb';
-        provinceSelect.innerHTML = '';
-        const defaultOpt = document.createElement('option');
-        defaultOpt.value = 'all';
-        defaultOpt.textContent = `— Xem cả Miền Bắc —`;
-        provinceSelect.appendChild(defaultOpt);
-        const list = PROVINCES[region] || [];
-        list.forEach(p => {
-            const opt = document.createElement('option');
-            opt.value = p.slug;
-            opt.textContent = p.name;
-            provinceSelect.appendChild(opt);
-        });
-    }
-
-    loadLottery();
+    loadLottery('mb');
 }
+
 
 // ============ FOREIGN FLOWS ============
 async function loadForeignFlows(type) {
