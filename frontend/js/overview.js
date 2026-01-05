@@ -997,15 +997,15 @@ async function loadGoldPrice(retryCount = 0) {
         const response = await fetch(API.GOLD);
         const result = await response.json();
 
-        // Handle result format { data: [...], cached: bool } from backend
-        // or direct array if proxied directly
+        // Handle result format { data: [...], updated_at: "..." } from backend
         let goldData = [];
+        let updatedAt = '';
+
         if (result.data && Array.isArray(result.data)) {
             goldData = result.data;
+            updatedAt = result.updated_at || '';
         } else if (Array.isArray(result)) {
             goldData = result;
-        } else if (result.Data && Array.isArray(result.Data)) {
-            goldData = result.Data; // Just in case
         }
 
         if (!goldData || goldData.length === 0) {
@@ -1013,30 +1013,15 @@ async function loadGoldPrice(retryCount = 0) {
             if (retryCount < MAX_RETRIES) {
                 console.log(`⏳ Giá vàng trống, thử lại lần ${retryCount + 1}/${MAX_RETRIES}...`);
                 container.innerHTML = `<div class="loading"><div class="spinner"></div>Đang thử lại (${retryCount + 1}/${MAX_RETRIES})...</div>`;
-                await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retry
+                await new Promise(resolve => setTimeout(resolve, 1000));
                 return loadGoldPrice(retryCount + 1);
             }
             container.innerHTML = '<div class="loading">Không có dữ liệu vàng</div>';
             return;
         }
 
-        // Filter for key items in Ho Chi Minh (Id 1, 49, 81 are usually SJC, Ring, Jewelry)
-        // ID 1: Vàng SJC 1L, 10L, 1KG
-        // ID 49: Vàng nhẫn SJC 99,99% 1 chỉ, 2 chỉ, 5 chỉ
-        // ID 81: Nữ trang 99,99%
-        const hcmItems = goldData.filter(item => item.BranchName === "Hồ Chí Minh" && [1, 49, 81].includes(item.Id));
-
-        if (hcmItems.length === 0) {
-            // Fallback if IDs change: take first 3 HCM items
-            const anyHcm = goldData.filter(item => item.BranchName === "Hồ Chí Minh").slice(0, 5);
-            if (anyHcm.length > 0) {
-                renderGoldItems(container, anyHcm);
-            } else {
-                renderGoldItems(container, goldData.slice(0, 5));
-            }
-        } else {
-            renderGoldItems(container, hcmItems);
-        }
+        // Render gold items directly (backend already filtered)
+        renderGoldItems(container, goldData, updatedAt);
 
     } catch (error) {
         console.error('Error loading gold price:', error);
@@ -1051,16 +1036,11 @@ async function loadGoldPrice(retryCount = 0) {
     }
 }
 
-function renderGoldItems(container, items) {
-    container.innerHTML = items.map(item => {
+function renderGoldItems(container, items, updatedAt = '') {
+    let html = items.map(item => {
         const buy = item.Buy;
         const sell = item.Sell;
-        // Clean up name: "Vàng SJC 1L, 10L, 1KG" -> "Vàng SJC"
-        let name = item.TypeName;
-        if (item.Id === 1) name = "Vàng SJC (Miếng)";
-        else if (item.Id === 49) name = "Vàng Nhẫn 9999";
-        else if (item.Id === 81) name = "Nữ Trang 9999";
-        else name = name.replace('Vàng ', '').substring(0, 20);
+        const name = item.TypeName || 'Vàng';
 
         return `
             <div class="mover-item" style="cursor: default;">
@@ -1078,6 +1058,13 @@ function renderGoldItems(container, items) {
             </div>
         `;
     }).join('');
+
+    // Add update time footer
+    if (updatedAt) {
+        html += `<div style="text-align: center; font-size: 10px; color: #9ca3af; margin-top: 8px; font-style: italic;">Cập nhật: ${updatedAt} (BTMC)</div>`;
+    }
+
+    container.innerHTML = html;
 }
 
 // Initialize Gold Price on page load
