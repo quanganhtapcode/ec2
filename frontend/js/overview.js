@@ -983,11 +983,15 @@ if (symbolSearchInput) {
 }
 
 // ============ GOLD PRICE MANAGEMENT ============
-async function loadGoldPrice() {
+async function loadGoldPrice(retryCount = 0) {
+    const MAX_RETRIES = 3;
     const container = document.getElementById('gold-price-list');
     if (!container) return;
 
-    container.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải...</div>';
+    // Show loading on first attempt only
+    if (retryCount === 0) {
+        container.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải...</div>';
+    }
 
     try {
         const response = await fetch(API.GOLD);
@@ -1005,6 +1009,13 @@ async function loadGoldPrice() {
         }
 
         if (!goldData || goldData.length === 0) {
+            // Retry up to MAX_RETRIES times if no data
+            if (retryCount < MAX_RETRIES) {
+                console.log(`⏳ Giá vàng trống, thử lại lần ${retryCount + 1}/${MAX_RETRIES}...`);
+                container.innerHTML = `<div class="loading"><div class="spinner"></div>Đang thử lại (${retryCount + 1}/${MAX_RETRIES})...</div>`;
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second before retry
+                return loadGoldPrice(retryCount + 1);
+            }
             container.innerHTML = '<div class="loading">Không có dữ liệu vàng</div>';
             return;
         }
@@ -1029,6 +1040,13 @@ async function loadGoldPrice() {
 
     } catch (error) {
         console.error('Error loading gold price:', error);
+        // Retry on network errors too
+        if (retryCount < MAX_RETRIES) {
+            console.log(`⏳ Lỗi tải giá vàng, thử lại lần ${retryCount + 1}/${MAX_RETRIES}...`);
+            container.innerHTML = `<div class="loading"><div class="spinner"></div>Đang thử lại (${retryCount + 1}/${MAX_RETRIES})...</div>`;
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            return loadGoldPrice(retryCount + 1);
+        }
         container.innerHTML = '<div class="loading">Lỗi tải giá vàng</div>';
     }
 }
