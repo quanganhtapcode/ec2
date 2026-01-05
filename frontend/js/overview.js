@@ -1084,8 +1084,8 @@ function renderGoldItems(container, items) {
 document.addEventListener('DOMContentLoaded', function () {
     loadGoldPrice();
 
-    // Auto-refresh every 5 minutes
+    // Auto-refresh every 30 seconds
     setInterval(() => {
         loadGoldPrice();
-    }, 300000);
+    }, 30000);
 });
