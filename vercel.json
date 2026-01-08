@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://api.quanganh.org/api/$1"
+      "destination": "https://api.quanganh.org/v1/valuation/$1"
     },
     {
       "source": "/",

@@ -59,6 +59,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
     <link rel="stylesheet" href="css/overview.css?v=3">
+    <link rel="stylesheet" href="css/methodology-modal.css?v=1">
+    <link rel="stylesheet" href="css/footer-modal.css?v=1">
 </head>
 
 <body class="app-container">
@@ -90,7 +92,7 @@
                     <!-- Main Input -->
                     <div class="search-input-wrapper-compact">
                         <input type="text" id="symbol-search" class="search-input-compact"
-                            placeholder="Search tickers..." autocomplete="off">
+                            placeholder="Search tickers..." data-i18n-placeholder="searchTickers" autocomplete="off">
                     </div>
                 </div>
             </form>
@@ -180,7 +182,7 @@
             <!-- P/E Chart Section -->
             <div class="pe-section" style="margin-bottom: 24px;">
                 <div class="section-header">
-                    <h2 class="section-title">📊 Định Giá</h2>
+                    <h2 class="section-title" data-i18n="valuation">📊 Định Giá</h2>
                     <div class="time-range-buttons" id="time-range-buttons">
                         <button class="time-btn" data-months="1">1M</button>
                         <button class="time-btn" data-months="3">3M</button>
@@ -191,11 +193,11 @@
                 </div>
                 <div style="display: flex; gap: 24px; margin-bottom: 16px;">
                     <div>
-                        <div style="font-size: 12px; color: #999;">P/E Thị trường</div>
+                        <div style="font-size: 12px; color: #999;" data-i18n="marketPE">P/E Thị trường</div>
                         <div style="font-size: 28px; font-weight: 600; color: #ef4444;" id="pe-value">--</div>
                     </div>
                     <div>
-                        <div style="font-size: 12px; color: #999;">VN-Index</div>
+                        <div style="font-size: 12px; color: #999;" data-i18n="vnIndex">VN-Index</div>
                         <div style="font-size: 28px; font-weight: 600; color: #3b82f6;" id="vnindex-pe">--</div>
                     </div>
                     <div style="margin-left: auto; display: flex; gap: 16px; align-items: center;">
@@ -217,13 +219,13 @@
 
             <!-- Market Summary -->
             <div class="section-header">
-                <h2 class="section-title">📰 Tin tức</h2>
-                <span class="section-meta" id="news-update-time">Cập nhật vài phút trước</span>
+                <h2 class="section-title" data-i18n="newsSection">📰 Tin tức</h2>
+                <span class="section-meta" id="news-update-time" data-i18n="updatedAgo">Cập nhật vài phút trước</span>
             </div>
             <div class="news-list" id="news-list">
                 <div class="loading">
                     <div class="spinner"></div>
-                    Đang tải tin tức...
+                    <span data-i18n="loadingNews">Đang tải tin tức...</span>
                 </div>
             </div>
         </div>
@@ -232,17 +234,17 @@
         <aside class="sidebar">
             <!-- Top Movers -->
             <div class="sidebar-section">
-                <div class="sidebar-title">
+                <div class="sidebar-title" data-i18n="topMovers">
                     🔥 Top Biến Động
                 </div>
                 <div class="movers-tabs">
-                    <button class="mover-tab active" data-type="gainers">📈 Tăng</button>
-                    <button class="mover-tab" data-type="losers">📉 Giảm</button>
+                    <button class="mover-tab active" data-type="gainers" data-i18n="gainers">📈 Tăng</button>
+                    <button class="mover-tab" data-type="losers" data-i18n="losers">📉 Giảm</button>
                 </div>
                 <div id="movers-list">
                     <div class="loading">
                         <div class="spinner"></div>
-                        Đang tải...
+                        <span data-i18n="loadingData">Đang tải...</span>
                     </div>
                 </div>
 
@@ -250,30 +252,30 @@
 
             <!-- Foreign Flows (Market Breadth/Signal) -->
             <div class="sidebar-section">
-                <div class="sidebar-title">
+                <div class="sidebar-title" data-i18n="foreignFlow">
                     💰 Khối Ngoại
                 </div>
                 <div class="movers-tabs">
-                    <button class="foreign-tab active" data-type="foreign-buy">NN Mua</button>
-                    <button class="foreign-tab" data-type="foreign-sell">NN Bán</button>
+                    <button class="foreign-tab active" data-type="foreign-buy" data-i18n="foreignBuy">NN Mua</button>
+                    <button class="foreign-tab" data-type="foreign-sell" data-i18n="foreignSell">NN Bán</button>
                 </div>
                 <div id="foreign-list">
                     <div class="loading">
                         <div class="spinner"></div>
-                        Đang tải...
+                        <span data-i18n="loadingData">Đang tải...</span>
                     </div>
                 </div>
             </div>
 
             <!-- Gold Price -->
             <div class="sidebar-section">
-                <div class="sidebar-title">
+                <div class="sidebar-title" data-i18n="goldPrice">
                     🏆 Giá Vàng SJC
                 </div>
                 <div id="gold-price-list">
                     <div class="loading">
                         <div class="spinner"></div>
-                        Đang tải...
+                        <span data-i18n="loadingData">Đang tải...</span>
                     </div>
                 </div>
             </div>
@@ -281,13 +283,13 @@
             <!-- Lottery Results -->
             <div class="sidebar-section">
                 <div class="sidebar-title" style="display: flex; align-items: center; justify-content: space-between;">
-                    <span>🎱 Kết Quả Xổ Số</span>
+                    <span data-i18n="lotteryResults">🎱 Kết Quả Xổ Số</span>
                     <span id="lottery-display-date" style="font-size: 12px; color: #eee; font-weight: normal;"></span>
                 </div>
                 <div class="movers-tabs">
-                    <button class="lottery-tab active" data-region="mb">Miền Bắc</button>
-                    <button class="lottery-tab" data-region="mt">Miền Trung</button>
-                    <button class="lottery-tab" data-region="mn">Miền Nam</button>
+                    <button class="lottery-tab active" data-region="mb" data-i18n="northRegion">Miền Bắc</button>
+                    <button class="lottery-tab" data-region="mt" data-i18n="centralRegion">Miền Trung</button>
+                    <button class="lottery-tab" data-region="mn" data-i18n="southRegion">Miền Nam</button>
                 </div>
                 <!-- Lottery Container -->
                 <div id="lottery-container"
@@ -298,7 +300,365 @@
     </main>
 
     <iframe id="tradingview-widget-container" style="display:none;"></iframe>
-    <script src="js/overview.js?v=23"></script>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-top">
+                    <div class="footer-links">
+                        <a href="#" id="contact-link" data-i18n="contact">Contact</a>
+                        <a href="#" id="disclaimer-link" data-i18n="disclaimer">Disclaimer</a>
+                        <a href="#" id="privacy-link" data-i18n="privacyPolicy">Privacy</a>
+                        <a href="#" id="terms-link" data-i18n="termsOfUse">Terms</a>
+                    </div>
+                    <div class="footer-controls">
+                        <button id="language-toggle-btn" class="footer-btn language-toggle"
+                            aria-label="Change language">
+                            <span class="lang-flag en-flag">🇺🇸</span>
+                            <span class="lang-flag vi-flag">🇻🇳</span>
+                        </button>
+                        <button id="theme-toggle-btn" class="footer-btn theme-toggle" aria-label="Toggle theme">
+                            <span class="theme-icon light-icon">☀️</span>
+                            <span class="theme-icon dark-icon">🌙</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="footer-copyright">Created by <a href="https://github.com/quanganhtapcode" target="_blank"
+                            rel="noopener noreferrer" class="footer-link">Quang Anh</a>, 2025 ©</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay hidden">
+        <div class="modal-container footer-modal">
+            <div class="modal-header">
+                <h2 data-i18n="getInTouch">Get in Touch</h2>
+                <button class="modal-close-btn" data-modal-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body footer-modal-content">
+                <p data-i18n="contactIntro">If you have any questions, suggestions, or feedback about this tool, feel
+                    free to reach out:</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>📧 Email:</strong>
+                        <a href="mailto:contact@quanganh.org">contact@quanganh.org</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>💻 GitHub:</strong>
+                        <a href="https://github.com/quanganhtapcode" target="_blank"
+                            rel="noopener noreferrer">github.com/quanganhtapcode</a>
+                    </div>
+                </div>
+                <div class="contact-note">
+                    <p data-i18n="contactNote">This tool is developed and maintained as a personal project. Response
+                        times may vary.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer Modal -->
+    <div id="disclaimer-modal" class="modal-overlay hidden">
+        <div class="modal-container footer-modal">
+            <div class="modal-header">
+                <h2 data-i18n="disclaimerTitle">Disclaimer</h2>
+                <button class="modal-close-btn" data-modal-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body footer-modal-content">
+                <h4 data-i18n="importantNotice">Important Notice</h4>
+                <p data-i18n="disclaimerP1">This stock valuation tool is for informational and educational purposes
+                    only. It does not constitute financial, investment, tax, or legal advice.</p>
+
+                <h4 data-i18n="noGuarantee">No Guarantee of Accuracy</h4>
+                <p data-i18n="disclaimerP2">The calculations and estimates provided by this tool are based on publicly
+                    available data and user-defined assumptions. They are not guaranteed to be accurate, complete, or
+                    suitable for any specific purpose.</p>
+
+                <h4 data-i18n="investmentRisks">Investment Risks</h4>
+                <p data-i18n="disclaimerP3">Past performance does not guarantee future results. Investment values can
+                    fluctuate and you may lose some or all of your investment.</p>
+
+                <h4 data-i18n="professionalAdvice">Seek Professional Advice</h4>
+                <p data-i18n="disclaimerP4">Always consult with a qualified financial advisor before making investment
+                    decisions. The author of this tool is not responsible for any losses or damages arising from its
+                    use.</p>
+
+                <div class="disclaimer-warning">
+                    <strong data-i18n="disclaimerWarning">⚠️ Use this tool at your own risk. The creators and
+                        maintainers of this tool are not responsible for any financial losses or damages resulting from
+                        the use of this tool.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal-overlay hidden">
+        <div class="modal-container footer-modal">
+            <div class="modal-header">
+                <h2 data-i18n="privacyTitle">Privacy Policy</h2>
+                <button class="modal-close-btn" data-modal-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body footer-modal-content">
+                <p class="last-updated" data-i18n="lastUpdated">Last Updated: December 2024</p>
+
+                <h4 data-i18n="dataCollection">Data Collection</h4>
+                <p data-i18n="privacyP1">We respect your privacy. This tool operates entirely client-side - no personal
+                    data is collected, stored, or transmitted to our servers.</p>
+
+                <h4 data-i18n="whatWeCollect">What We May Collect</h4>
+                <ul>
+                    <li data-i18n="privacyL1">Stock symbols you search for (processed locally)</li>
+                    <li data-i18n="privacyL2">Your preference settings (theme, language) stored in your browser's local
+                        storage</li>
+                    <li data-i18n="privacyL3">Anonymous usage analytics (if enabled)</li>
+                </ul>
+
+                <h4 data-i18n="thirdPartyServices">Third-Party Services</h4>
+                <p data-i18n="privacyP2">All valuation calculations are performed directly in your browser. Financial
+                    data is fetched from public sources and is not linked to any personal identity.</p>
+
+                <h4 data-i18n="localStorage">Local Storage</h4>
+                <p data-i18n="privacyP4">Your preferences (language, theme) are stored in your browser's local storage
+                    and never leave your device.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal-overlay hidden">
+        <div class="modal-container footer-modal">
+            <div class="modal-header">
+                <h2 data-i18n="termsTitle">Terms of Use</h2>
+                <button class="modal-close-btn" data-modal-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body footer-modal-content">
+                <p class="last-updated" data-i18n="lastUpdated">Last Updated: December 2024</p>
+
+                <h4 data-i18n="acceptanceOfTerms">Acceptance of Terms</h4>
+                <p data-i18n="termsP1">By using this stock valuation tool, you agree to the following terms:</p>
+
+                <h4 data-i18n="useOfService">Use of Service</h4>
+                <p data-i18n="termsP2">This tool is provided "as is" without any warranties. We make no guarantees about
+                    the accuracy or reliability of calculations.</p>
+                <ul>
+                    <li data-i18n="termsL1">Use this tool for any unlawful purpose</li>
+                    <li data-i18n="termsL2">Attempt to gain unauthorized access to any part of the service</li>
+                    <li data-i18n="termsL3">Redistribute, sell, or commercially exploit the tool without permission</li>
+                    <li data-i18n="termsL4">Use automated systems to scrape or extract data</li>
+                </ul>
+
+                <h4 data-i18n="intellectualProperty">Intellectual Property</h4>
+                <p data-i18n="termsP3">You are solely responsible for any investment decisions you make. The valuation
+                    results are not recommendations to buy or sell.</p>
+
+                <h4 data-i18n="limitationOfLiability">Limitation of Liability</h4>
+                <p data-i18n="termsP4">Commercial use requires written permission. Personal and educational use is
+                    welcome.</p>
+
+                <h4 data-i18n="changesToTerms">Changes to Terms</h4>
+                <p data-i18n="termsP5">We reserve the right to modify these terms at any time. Continued use of the tool
+                    after changes constitutes acceptance of the new terms.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="translations.js?v=12"></script>
+    <script src="js/overview.js?v=24"></script>
+    <script>
+        // ============ LANGUAGE & THEME SYSTEM ============
+        (function () {
+            // Get current language from localStorage or default to 'vi'
+            let currentLang = localStorage.getItem('language') || 'vi';
+
+            // Apply translations
+            function applyTranslations(lang) {
+                if (typeof translations === 'undefined' || !translations[lang]) {
+                    console.warn('Translations not available for language:', lang);
+                    return;
+                }
+
+                const langData = translations[lang];
+
+                // Update all elements with data-i18n attribute
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (langData[key]) {
+                        element.textContent = langData[key];
+                    }
+                });
+
+                // Update placeholders
+                document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                    const key = element.getAttribute('data-i18n-placeholder');
+                    if (langData[key]) {
+                        element.placeholder = langData[key];
+                    }
+                });
+
+                // Update document lang
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+
+                // Update language toggle button appearance
+                const langBtn = document.getElementById('language-toggle-btn');
+                if (langBtn) {
+                    langBtn.classList.toggle('en', lang === 'en');
+                    langBtn.classList.toggle('vi', lang === 'vi');
+                }
+            }
+
+            // Theme system
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                updateThemeButton(savedTheme);
+            }
+
+            function toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeButton(newTheme);
+            }
+
+            function updateThemeButton(theme) {
+                const themeBtn = document.getElementById('theme-toggle-btn');
+                if (themeBtn) {
+                    themeBtn.classList.toggle('dark', theme === 'dark');
+                }
+            }
+
+            // Modal system
+            let scrollPosition = 0;
+
+            function openModal(modal) {
+                if (modal) {
+                    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                    document.body.style.top = `-${scrollPosition}px`;
+                    document.body.classList.add('modal-open');
+                    document.documentElement.classList.add('modal-open');
+                    applyTranslations(currentLang);
+                    modal.classList.remove('hidden');
+                }
+            }
+
+            function closeModal(modal) {
+                if (modal) {
+                    modal.classList.add('hidden');
+                    const openModals = document.querySelectorAll('.modal-overlay:not(.hidden)');
+                    if (openModals.length === 0) {
+                        document.body.classList.remove('modal-open');
+                        document.documentElement.classList.remove('modal-open');
+                        document.body.style.top = '';
+                        window.scrollTo(0, scrollPosition);
+                    }
+                }
+            }
+
+            function closeAllModals() {
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                    modal.classList.add('hidden');
+                });
+                document.body.classList.remove('modal-open');
+                document.documentElement.classList.remove('modal-open');
+                document.body.style.top = '';
+                window.scrollTo(0, scrollPosition);
+            }
+
+            // Initialize on DOM ready
+            document.addEventListener('DOMContentLoaded', function () {
+                // Apply initial translations
+                applyTranslations(currentLang);
+
+                // Initialize theme
+                initTheme();
+
+                // Language toggle
+                const langBtn = document.getElementById('language-toggle-btn');
+                if (langBtn) {
+                    langBtn.addEventListener('click', function () {
+                        currentLang = currentLang === 'vi' ? 'en' : 'vi';
+                        applyTranslations(currentLang);
+                    });
+                }
+
+                // Theme toggle
+                const themeBtn = document.getElementById('theme-toggle-btn');
+                if (themeBtn) {
+                    themeBtn.addEventListener('click', toggleTheme);
+                }
+
+                // Footer modals
+                const footerModals = {
+                    'contact-link': 'contact-modal',
+                    'disclaimer-link': 'disclaimer-modal',
+                    'privacy-link': 'privacy-modal',
+                    'terms-link': 'terms-modal'
+                };
+
+                Object.entries(footerModals).forEach(([linkId, modalId]) => {
+                    const link = document.getElementById(linkId);
+                    const modal = document.getElementById(modalId);
+
+                    if (link && modal) {
+                        link.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            openModal(modal);
+                        });
+
+                        // Close button within modal
+                        const closeBtn = modal.querySelector('[data-modal-close]');
+                        if (closeBtn) {
+                            closeBtn.addEventListener('click', () => closeModal(modal));
+                        }
+
+                        // Click outside to close
+                        modal.addEventListener('click', function (e) {
+                            if (e.target === modal) closeModal(modal);
+                        });
+                    }
+                });
+
+                // Global Escape key handler
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') {
+                        closeAllModals();
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>

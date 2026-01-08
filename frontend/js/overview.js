@@ -6,19 +6,19 @@
 // ============ API ENDPOINTS ============
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000'
-    : 'https://api.quanganh.org';
+    : 'https://api.quanganh.org/v1/valuation';
 
 const API = {
-    PE_CHART: `${API_BASE}/api/market/pe-chart`,
-    REALTIME: `${API_BASE}/api/market/realtime`,
-    INDICES: `${API_BASE}/api/market/indices`,
-    REALTIME_CHART: `${API_BASE}/api/market/realtime-chart`,
-    REALTIME_MARKET: `${API_BASE}/api/market/realtime-market`,
-    REPORTS: `${API_BASE}/api/market/reports`,
-    NEWS: `${API_BASE}/api/market/news?page=1&size=100`,
-    TOP_MOVERS: `${API_BASE}/api/market/top-movers`,
-    FOREIGN_FLOW: `${API_BASE}/api/market/foreign-flow`,
-    GOLD: `${API_BASE}/api/market/gold`
+    PE_CHART: `${API_BASE}/market/pe-chart`,
+    REALTIME: `${API_BASE}/market/realtime`,
+    INDICES: `${API_BASE}/market/indices`,
+    REALTIME_CHART: `${API_BASE}/market/realtime-chart`,
+    REALTIME_MARKET: `${API_BASE}/market/realtime-market`,
+    REPORTS: `${API_BASE}/market/reports`,
+    NEWS: `${API_BASE}/market/news?page=1&size=100`,
+    TOP_MOVERS: `${API_BASE}/market/top-movers`,
+    FOREIGN_FLOW: `${API_BASE}/market/foreign-flow`,
+    GOLD: `${API_BASE}/market/gold`
 };
 
 // Index IDs from CafeF: 1=VNINDEX, 2=HNX, 9=UPCOM, 11=VN30

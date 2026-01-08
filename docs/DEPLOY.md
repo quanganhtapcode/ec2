@@ -138,7 +138,29 @@ systemctl restart gunicorn-ec2
 | `val-updater.service` | Auto update JSON | Timer: Ngày 1, 15 |
 
 ```bash
-# Kiểm tra tất cả services
 systemctl status gunicorn-ec2
 systemctl list-timers | grep val
+```
+
+---
+
+## 8. API Gateway Setup (Multi-project Support)
+
+Using NGINX as API Gateway to route requests to multiple projects:
+
+| Path | Backward Compatible | Port | Project |
+|------|---------------------|------|---------|
+| `/v1/valuation` | `/api/` | 8000 | Valuation App |
+| `/v1/store` | - | 3001 | POS App |
+| `/v1/invoice` | - | 3000 | Invoice App |
+
+### Deployment
+Config file is located at `deployment/nginx-api-gateway.conf`. To deploy:
+
+```powershell
+# Upload config
+scp -i "$env:USERPROFILE\Downloads\key.pem" "deployment\nginx-api-gateway.conf" root@203.55.176.10:/etc/nginx/sites-available/api.quanganh.org
+
+# Restart NGINX
+ssh -i "$env:USERPROFILE\Downloads\key.pem" root@203.55.176.10 "nginx -t && systemctl reload nginx"
 ```
