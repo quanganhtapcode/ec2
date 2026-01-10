@@ -48,7 +48,7 @@ class ApiClient {
      */
     async getValuation(symbol) {
         const cleanSymbol = symbol.trim().toUpperCase();
-        const url = `${this.baseUrl}/api/valuation/${cleanSymbol}`;
+        const url = `${this.baseUrl}/valuation/${cleanSymbol}`;
 
         try {
             const response = await fetch(url);
@@ -75,7 +75,7 @@ class ApiClient {
      */
     async getRealTimePrice(symbol, signal = null) {
         const cleanSymbol = symbol.trim().toUpperCase();
-        const url = `${this.baseUrl}/api/price/${cleanSymbol}`;
+        const url = `${this.baseUrl}/price/${cleanSymbol}`;
 
         try {
             const response = await fetch(url, { signal });
@@ -114,7 +114,7 @@ class ApiClient {
             return cached;
         }
 
-        const url = `${this.baseUrl}/api/app-data/${cleanSymbol}?period=${period}&fetch_price=${fetchPrice}`;
+        const url = `${this.baseUrl}/app-data/${cleanSymbol}?period=${period}&fetch_price=${fetchPrice}`;
 
         try {
             const response = await fetch(url, { signal });
@@ -158,7 +158,7 @@ class ApiClient {
             return cached;
         }
 
-        const url = `${this.baseUrl}/api/historical-chart-data/${cleanSymbol}`;
+        const url = `${this.baseUrl}/historical-chart-data/${cleanSymbol}`;
 
         try {
             const response = await fetch(url, { signal });
@@ -185,7 +185,7 @@ class ApiClient {
      */
     async calculateValuation(symbol, data) {
         const cleanSymbol = symbol.trim().toUpperCase();
-        const url = `${this.baseUrl}/api/valuation/${cleanSymbol}`;
+        const url = `${this.baseUrl}/valuation/${cleanSymbol}`;
 
         try {
             const response = await fetch(url, {
@@ -212,7 +212,7 @@ class ApiClient {
      * @returns {string} Absolute URL
      */
     getDownloadUrl(symbol) {
-        return `${this.baseUrl}/api/download/${symbol.trim().toUpperCase()}`;
+        return `${this.baseUrl}/download/${symbol.trim().toUpperCase()}`;
     }
 
     /**

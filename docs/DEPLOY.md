@@ -6,7 +6,7 @@
 |------------|-----|
 | **Production** | https://valuation.quanganh.org |
 | **API** | https://api.quanganh.org |
-| **VPS** | root@10.66.66.1 (qua VPN) |
+| **VPS** | `root@203.55.176.10` (Public) hoặc `10.66.66.1` (VPN) |
 
 ---
 
@@ -53,7 +53,7 @@ systemctl status gunicorn-ec2
 ## 3. Cấu trúc trên VPS
 
 ```
-/var/www/api.quanganh.org/
+/var/www/valuation/
 ├── backend/
 │   ├── server.py       # API server
 │   ├── models.py       # Valuation models
@@ -79,7 +79,7 @@ systemctl status gunicorn-ec2
 ## 4. Cập nhật Dependencies trên VPS
 
 ```bash
-cd /var/www/api.quanganh.org
+cd /var/www/valuation
 source .venv/bin/activate
 pip install -r requirements.txt
 systemctl restart gunicorn-ec2
@@ -105,7 +105,7 @@ systemctl restart gunicorn-ec2
 ### Service không start
 ```bash
 # Kiểm tra syntax Python
-cd /var/www/api.quanganh.org
+cd /var/www/valuation
 source .venv/bin/activate
 python -c "from backend.server import app; print('OK')"
 ```
@@ -120,11 +120,11 @@ python -c "from backend.server import app; print('OK')"
 
 ```bash
 # Trên VPS - backup trước khi thay đổi lớn
-cp -r /var/www/api.quanganh.org /var/www/api.quanganh.org_backup_$(date +%Y%m%d)
+cp -r /var/www/valuation /var/www/valuation_backup_$(date +%Y%m%d)
 
 # Rollback nếu có lỗi
-rm -rf /var/www/api.quanganh.org
-mv /var/www/api.quanganh.org_backup_YYYYMMDD /var/www/api.quanganh.org
+rm -rf /var/www/valuation
+mv /var/www/valuation_backup_YYYYMMDD /var/www/valuation
 systemctl restart gunicorn-ec2
 ```
 
@@ -144,23 +144,53 @@ systemctl list-timers | grep val
 
 ---
 
-## 8. API Gateway Setup (Multi-project Support)
+## 8. API Gateway & Microservices Architecture
 
-Using NGINX as API Gateway to route requests to multiple projects:
+### 8.1. API Gateway (`api.quanganh.org`)
+Using NGINX as API Gateway to route requests to multiple projects via one domain.
 
-| Path | Backward Compatible | Port | Project |
-|------|---------------------|------|---------|
-| `/v1/valuation` | `/api/` | 8000 | Valuation App |
-| `/v1/store` | - | 3001 | POS App |
-| `/v1/invoice` | - | 3000 | Invoice App |
+| Path Prefix | Routing | Backend Port | Project |
+|-------------|---------|--------------|---------|
+| `/v1/valuation/*` | `/*` | 8000 | Valuation API (Flask) |
+| `/v1/store/*` | `/*` | 3001 | POS System (Node) |
+| `/v1/invoice/*` | `/*` | 3000 | Invoice App (Node) |
+| `/api/*` | `/api/*` | 8000 | Legacy Support |
 
-### Deployment
-Config file is located at `deployment/nginx-api-gateway.conf`. To deploy:
+### 8.2. Monitor Dashboard (`vps.quanganh.org`)
+- **App**: Nezha Monitoring
+- **Internal Port**: 8008
+- **Public Access**: `https://vps.quanganh.org` (Proxied via NGINX)
+- **Note**: Direct access to port 8008 from internet is **BLOCKED** by Firewall.
 
+### 8.3. Firewall (UFW) Configuration
+Strict firewall rules are applied. Only the following ports are open to public:
+
+| Port | Protocol | Purpose |
+|------|----------|---------|
+| 22 | TCP | SSH (Remote Access) |
+| 80 | TCP | HTTP (Redirect to HTTPS) |
+| 443 | TCP | HTTPS (Web Traffic) |
+| 51820 | UDP | WireGuard VPN |
+
+**Commands to manage firewall:**
+```bash
+ufw status verbose
+ufw allow 22/tcp
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw enable
+```
+
+### 8.4. Deployment Commands
+
+**Deploy API Gateway Config:**
 ```powershell
-# Upload config
 scp -i "$env:USERPROFILE\Downloads\key.pem" "deployment\nginx-api-gateway.conf" root@203.55.176.10:/etc/nginx/sites-available/api.quanganh.org
+ssh -i "$env:USERPROFILE\Downloads\key.pem" root@203.55.176.10 "nginx -t && systemctl reload nginx"
+```
 
-# Restart NGINX
+**Deploy Monitor Config:**
+```powershell
+scp -i "$env:USERPROFILE\Downloads\key.pem" "deployment\nginx-vps-monitor.conf" root@203.55.176.10:/etc/nginx/sites-available/vps.quanganh.org
 ssh -i "$env:USERPROFILE\Downloads\key.pem" root@203.55.176.10 "nginx -t && systemctl reload nginx"
 ```

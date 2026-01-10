@@ -11,7 +11,7 @@ class NewsManager {
         this.newsContainer.innerHTML = '<div class="loading-spinner"></div>';
 
         try {
-            const response = await fetch(`${this.baseUrl}/api/news/${symbol}`);
+            const response = await fetch(`${this.baseUrl}/news/${symbol}`);
             const result = await response.json();
 
             if (result.success && result.data && result.data.length > 0) {
@@ -31,7 +31,7 @@ class NewsManager {
         this.eventsContainer.innerHTML = '<div class="loading-spinner"></div>';
 
         try {
-            const response = await fetch(`${this.baseUrl}/api/events/${symbol}`);
+            const response = await fetch(`${this.baseUrl}/events/${symbol}`);
             const result = await response.json();
 
             if (result.success && result.data && result.data.length > 0) {

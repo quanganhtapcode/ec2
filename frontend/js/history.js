@@ -83,7 +83,7 @@ class HistoryManager {
         const { start, end } = this.getDateRange(this.currentRange);
 
         try {
-            const response = await fetch(`${this.baseUrl}/api/history/${symbol}?start=${start}&end=${end}`);
+            const response = await fetch(`${this.baseUrl}/history/${symbol}?start=${start}&end=${end}`);
             const result = await response.json();
 
             if (result.success && result.data && result.data.length > 0) {
