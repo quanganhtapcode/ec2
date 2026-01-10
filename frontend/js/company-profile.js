@@ -108,7 +108,7 @@ class CompanyProfileManager {
         descriptionEl.style.color = 'var(--color-text-secondary)';
 
         try {
-            const response = await fetch(`${this.apiBaseUrl}/api/company/profile/${symbol}`);
+            const response = await fetch(`${this.apiBaseUrl}/company/profile/${symbol}`);
             const data = await response.json();
 
             // Check if this is still the current symbol (prevent race conditions)

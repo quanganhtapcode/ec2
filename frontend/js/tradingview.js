@@ -83,7 +83,7 @@ class StockChartManager {
         `;
 
         try {
-            const response = await fetch(`${this.apiBaseUrl}/api/stock/history/${symbol}?range=${range}`);
+            const response = await fetch(`${this.apiBaseUrl}/stock/history/${symbol}?range=${range}`);
 
             if (!response.ok) {
                 const text = await response.text();

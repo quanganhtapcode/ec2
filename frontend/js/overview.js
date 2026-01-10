@@ -484,7 +484,7 @@ function setupLotteryTabs() {
             container.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải dữ liệu xổ số...</div>';
         }
         try {
-            const resp = await fetch(`/api/market/lottery?region=${region}`);
+            const resp = await fetch(`${API_BASE}/market/lottery?region=${region}`);
             const data = await resp.json();
 
             if (data.pubDate && dateDisplay) {
